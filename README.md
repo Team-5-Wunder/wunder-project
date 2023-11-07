@@ -1,4 +1,4 @@
-# 🚀 Next.js for Drupal multilingual template by Wunder
+# 🚀 Next.js for Drupal multilingual template by Wunder!
 
 This is a starter template created by [Wunder](https://www.wunder.io) for a decoupled website using the open-source [Next.js for Drupal](https://next-drupal.org/) project by [Chapter Three](https://www.chapterthree.com) and contributors.
 
