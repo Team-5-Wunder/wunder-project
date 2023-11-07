@@ -1,0 +1,19 @@
+uuid: cb1c277b-efb9-4f1a-a4e0-e3e4395a3658
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_excerpt
+    - node.type.test
+id: node.test.field_excerpt
+field_name: field_excerpt
+entity_type: node
+bundle: test
+label: Excerpt
+description: 'Add an excerpt for this piece of content. It will also be used for search results and HTML meta tags.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
