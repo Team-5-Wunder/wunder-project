@@ -1,0 +1,24 @@
+uuid: 3e15be4a-a5bb-4c23-9c1d-60a02e585cbb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: '-6NLqaX4q4WbtxcgedAHbuMlgzkFmmyM8ajFGCT3Zjk'
+id: case
+label: Case
+type: 'canonical_entities:node'
+pattern: 'cases/[node:title]'
+selection_criteria:
+  65d1f5f0-c417-463c-bfcf-18a511375a0d:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 65d1f5f0-c417-463c-bfcf-18a511375a0d
+    context_mapping:
+      node: node
+    bundles:
+      case: case
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,61 +1,71 @@
-uuid: 90f6de1d-2c35-4184-9353-588a478c76e9
+uuid: 58ee842a-3052-4116-92d9-4f35c7a603b9
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.portfolio_case.body
-    - field.field.node.portfolio_case.field_clients_site_url
-    - field.field.node.portfolio_case.field_main_image
-    - field.field.node.portfolio_case.field_short_description
+    - field.field.node.case.field_content_elements
+    - field.field.node.case.field_excerpt
+    - field.field.node.case.field_image
+    - field.field.node.case.field_tags
     - image.style.thumbnail
-    - node.type.portfolio_case
+    - node.type.case
   module:
     - image
-    - link
+    - paragraphs
     - path
-    - text
-id: node.portfolio_case.default
+id: node.case.default
 targetEntityType: node
-bundle: portfolio_case
+bundle: case
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 121
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_clients_site_url:
-    type: link_default
-    weight: 122
+  field_content_elements:
+    type: paragraphs
+    weight: 10
     region: content
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: modal
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
     third_party_settings: {  }
-  field_main_image:
+  field_excerpt:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
     type: image_image
-    weight: 123
+    weight: 3
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-  field_short_description:
-    type: text_textfield
-    weight: 124
+  field_tags:
+    type: entity_reference_autocomplete_tags
+    weight: 6
     region: content
     settings:
+      match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
@@ -105,6 +115,11 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
