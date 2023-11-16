@@ -9,12 +9,12 @@ _core:
 id: case
 label: Case
 type: 'canonical_entities:node'
-pattern: 'cases/[node:title]'
+pattern: 'clients/[node:title]'
 selection_criteria:
-  65d1f5f0-c417-463c-bfcf-18a511375a0d:
+  43274b1a-64a5-4f3d-934e-f05b5f19af0e:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 65d1f5f0-c417-463c-bfcf-18a511375a0d
+    uuid: 43274b1a-64a5-4f3d-934e-f05b5f19af0e
     context_mapping:
       node: node
     bundles:

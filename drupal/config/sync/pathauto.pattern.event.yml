@@ -11,10 +11,10 @@ label: Event
 type: 'canonical_entities:node'
 pattern: 'events/[node:title]'
 selection_criteria:
-  7246603d-7c03-4593-ac67-f68f42c3510f:
+  dd94a2ef-b974-48d6-8884-a9e4ab523387:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 7246603d-7c03-4593-ac67-f68f42c3510f
+    uuid: dd94a2ef-b974-48d6-8884-a9e4ab523387
     context_mapping:
       node: node
     bundles:
