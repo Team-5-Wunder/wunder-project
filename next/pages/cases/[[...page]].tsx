@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useTranslation } from "next-i18next";
 import { useRef } from "react";
 
-import { ArticleListItem } from "@/components/article-list-item";
 import { HeadingPage } from "@/components/heading--page";
 import { LayoutProps } from "@/components/layout";
 import { Meta } from "@/components/meta";
@@ -11,34 +10,35 @@ import {
   createLanguageLinksForNextOnlyPage,
   LanguageLinks,
 } from "@/lib/contexts/language-links-context";
-import { getLatestArticlesItems } from "@/lib/drupal/get-articles";
+import { getLatestCasesItems } from "@/lib/drupal/get-cases";
 import { getCommonPageProps } from "@/lib/get-common-page-props";
 import {
-  ArticleTeaser as ArticleTeaserType,
-  validateAndCleanupArticleTeaser,
-} from "@/lib/zod/article-teaser";
+  CaseTeaser as CaseTeaserType,
+  validateAndCleanupCaseTeaser,
+} from "@/lib/zod/case-teaser";
+import { CaseTeaser } from "@/components/case-teaser";
 
-interface AllArticlesPageProps extends LayoutProps {
-  articleTeasers: ArticleTeaserType[];
+interface CasesPageProps extends LayoutProps {
+  caseTeasers: CaseTeaserType[];
   paginationProps: PaginationProps;
   languageLinks: LanguageLinks;
 }
 
-export default function AllArticlesPage({
-  articleTeasers = [],
+export default function CasesPage({
+  caseTeasers = [],
   paginationProps,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const focusRef = useRef<HTMLDivElement>(null);
   return (
     <>
-      <Meta title={t("all-articles")} metatags={[]} />
+      <Meta title={t("cases")} metatags={[]} />
       <div ref={focusRef} tabIndex={-1} />
-      <HeadingPage>{t("all-articles")}</HeadingPage>
-      <ul className="mt-4">
-        {articleTeasers?.map((article) => (
-          <li key={article.id}>
-            <ArticleListItem article={article} />
+      <HeadingPage>{t("cases")}</HeadingPage>
+      <ul className="mt-4 grid gap-4 grid-cols-3">
+        {caseTeasers?.map((client) => (
+          <li key={client.id}>
+            <CaseTeaser client={client} />
           </li>
         ))}
       </ul>
@@ -62,7 +62,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<AllArticlesPageProps> = async (
+export const getStaticProps: GetStaticProps<CasesPageProps> = async (
   context,
 ) => {
   // Get the page parameter:
@@ -70,7 +70,7 @@ export const getStaticProps: GetStaticProps<AllArticlesPageProps> = async (
   const currentPage = parseInt(Array.isArray(page) ? page[0] : page || "1");
   const PAGE_SIZE = 6;
 
-  const { totalPages, articles } = await getLatestArticlesItems({
+  const { totalPages, cases } = await getLatestCasesItems({
     limit: PAGE_SIZE,
     offset: currentPage ? PAGE_SIZE * (currentPage - 1) : 0,
     locale: context.locale,
@@ -81,7 +81,7 @@ export const getStaticProps: GetStaticProps<AllArticlesPageProps> = async (
   const nextEnabled = currentPage < totalPages;
 
   // Create links for prev/next pages.
-  const pageRoot = "/all-articles";
+  const pageRoot = "/cases";
   const prevPage = currentPage - 1;
   const nextPage = currentPage + 1;
   const prevPageHref =
@@ -98,8 +98,8 @@ export const getStaticProps: GetStaticProps<AllArticlesPageProps> = async (
   return {
     props: {
       ...(await getCommonPageProps(context)),
-      articleTeasers: articles.map((teaser) =>
-        validateAndCleanupArticleTeaser(teaser),
+      caseTeasers: cases.map((teaser) =>
+        validateAndCleanupCaseTeaser(teaser),
       ),
       paginationProps: {
         currentPage,

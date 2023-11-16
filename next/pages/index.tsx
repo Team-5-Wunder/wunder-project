@@ -3,6 +3,8 @@ import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
 
 import { ArticleTeasers } from "@/components/article-teasers";
+import { CaseTeasers } from "@/components/case-teasers";
+import { EventTeasers } from "@/components/event-teasers";
 import { ContactForm } from "@/components/contact-form";
 import { ContactList } from "@/components/contact-list";
 import { LayoutProps } from "@/components/layout";
@@ -16,6 +18,14 @@ import {
   ArticleTeaser,
   validateAndCleanupArticleTeaser,
 } from "@/lib/zod/article-teaser";
+import {
+  CaseTeaser,
+  validateAndCleanupCaseTeaser,
+} from "@/lib/zod/case-teaser";
+import {
+  EventTeaser,
+  validateAndCleanupEventTeaser,
+} from "@/lib/zod/event-teaser";
 import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 
 import { Divider } from "@/ui/divider";
@@ -23,11 +33,15 @@ import { Divider } from "@/ui/divider";
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
   promotedArticleTeasers: ArticleTeaser[];
+  promotedCaseTeasers: CaseTeaser[];
+  promotedEventTeasers: EventTeaser[];
 }
 
 export default function IndexPage({
   frontpage,
   promotedArticleTeasers,
+  promotedCaseTeasers,
+  promotedEventTeasers,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
 
@@ -42,9 +56,17 @@ export default function IndexPage({
       <Divider className="max-w-4xl" />
       <ContactForm />
       <Divider className="max-w-4xl" />
+      <CaseTeasers
+        cases={promotedCaseTeasers}
+        heading={t("our-work")}
+      />
       <ArticleTeasers
         articles={promotedArticleTeasers}
-        heading={t("promoted-articles")}
+        heading={t("latest-releases-and-innovations")}
+      />
+      <EventTeasers
+        events={promotedEventTeasers}
+        heading={t("coming-events")}
       />
       <ContactList />
       <LogoStrip />
@@ -79,12 +101,30 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
     },
   });
 
+  const promotedCaseTeasers = await drupal.getResourceCollectionFromContext<
+    DrupalNode[]
+  >("node--case", context, {
+    params: getNodePageJsonApiParams("node--case").getQueryObject(),
+    });
+
+  const promotedEventTeasers = await drupal.getResourceCollectionFromContext<
+    DrupalNode[]
+  >("node--event", context, {
+    params: getNodePageJsonApiParams("node--event").getQueryObject(),
+  });
+
   return {
     props: {
       ...(await getCommonPageProps(context)),
       frontpage: frontpage ? validateAndCleanupFrontpage(frontpage) : null,
       promotedArticleTeasers: promotedArticleTeasers.map((teaser) =>
         validateAndCleanupArticleTeaser(teaser),
+      ),
+      promotedCaseTeasers: promotedCaseTeasers.map((teaser) =>
+        validateAndCleanupCaseTeaser(teaser),
+      ),
+      promotedEventTeasers: promotedEventTeasers.map((teaser) =>
+        validateAndCleanupEventTeaser(teaser),
       ),
     },
     revalidate: 60,
