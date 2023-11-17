@@ -1,0 +1,41 @@
+.heroBox {
+  background: linear-gradient(to right, rgba(51, 36, 69), rgba(115, 72, 168));
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+}
+
+.leftPart {
+  width: 50%;
+  height: 100%;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  color: white;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: "Overpass",sans-serif;
+}
+
+.rightPart {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.heroPeople {
+  position: absolute;
+  bottom: 0;
+  left: -100px;
+  max-height: 80%;
+}
+
