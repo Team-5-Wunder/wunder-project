@@ -1,12 +1,22 @@
 import style from './heroBanner.module.scss';
-import { inter, overpass } from "@/styles/fonts";
+import { overpass } from "@/styles/fonts";
 
 
 const HeroBanner = () => {
   return (
     <div className={style.heroBox}>
       <div className={style.leftPart}>
-        <h1 className={`${style.title} ${inter.variable} ${overpass.variable} font-overpass antialiased`}>Shaping the Digital Experience</h1>
+        <div className={style.titleAndButton}>
+          <div className={style.square}></div>
+          <div className={style.longball}></div>
+          <div className={style.ball}></div>
+          <div className={style.redball}></div>
+          <div className={style.halfball}></div>
+          <div className={style.corner}></div>
+          <h1 className={`${style.title} ${overpass.variable} font-overpass antialiased`}>Shaping the <br /> Digital Experience</h1>
+          <button className={style.worksButton}>View our work</button>
+          <div className={style.triangle}></div>
+        </div>
       </div>
       <div className={style.rightPart}>
         <img className={style.heroPeople} src="/heroPeople.png" alt="Man and woman" />
