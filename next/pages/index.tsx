@@ -29,6 +29,7 @@ import {
 import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 
 import { Divider } from "@/ui/divider";
+import HeroBanner from "@/components/herobanner/heroBanner";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
@@ -47,7 +48,8 @@ export default function IndexPage({
 
   return (
     <>
-      <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
+    <HeroBanner />
+      {/* <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
       <div className="grid gap-4">
         {frontpage?.field_content_elements?.map((paragraph) => (
           <Paragraph paragraph={paragraph} key={paragraph.id} />
@@ -69,7 +71,7 @@ export default function IndexPage({
         heading={t("coming-events")}
       />
       <ContactList />
-      <LogoStrip />
+      <LogoStrip /> */}
     </>
   );
 }
