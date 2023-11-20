@@ -35,6 +35,8 @@
 .worksButton {
   margin-top: 1rem;
   background-color: rgba(91, 55, 191);
+  background-color: white;
+  color: rgba(91, 55, 191);
   width: 150px;
   height: 50px;
 }
@@ -64,6 +66,13 @@
   border-radius: 15px;
   background-color: rgba(53, 211, 213);
   box-shadow: rgba(53, 211, 213) 0 0 20px;
+  animation: longballMove 4s linear infinite alternate;
+}
+
+@keyframes longballMove {
+  to {
+      transform: translate(-5%, 10%);
+  }
 }
 
 .ball {
@@ -75,6 +84,13 @@
   border-radius: 50%;
   background-color: rgba(53, 211, 213);
   box-shadow: rgba(53, 211, 213) 0 0 20px;
+  animation: ballMove 4s linear infinite alternate;
+}
+
+@keyframes ballMove {
+  to {
+      transform: translate(-25%);
+  }
 }
 
 
@@ -86,17 +102,31 @@
   height: 57px;
   background-color: rgba(11, 100, 82);
   box-shadow: rgba(11, 100, 82) 0 0 20px;
+  animation: squareMove 4s linear infinite alternate;
+}
+
+@keyframes squareMove {
+  to {
+      transform: translate(0, 15%);
+  }
 }
 
 .redball {
   position: absolute;
-  top: 68%;
-  right: 90px;
+  top: 72%;
+  right: 95px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: rgba(255, 112, 96);
   box-shadow: rgba(255, 112, 96) 0 0 20px;
+  animation: redballMove 4s linear infinite alternate;
+}
+
+@keyframes redballMove {
+  to {
+      transform: translate(-15%, -15%);
+  }
 }
 
 .halfball {
@@ -109,6 +139,13 @@
   border-bottom-left-radius: 33px;
   background-color: rgba(186, 162, 255);
   box-shadow: rgba(186, 162, 255) 0 0 20px;
+  animation: halfballMove 4s linear infinite alternate;
+}
+
+@keyframes halfballMove {
+  to {
+      transform: translate(20%, 0);
+  }
 }
 
 .corner {
@@ -122,6 +159,13 @@
   border-bottom-left-radius: 30px;
   background-color: #9E005D;
   box-shadow: #9E005D 0 0 20px;
+  animation: cornerMove 4s linear infinite alternate;
+}
+
+@keyframes cornerMove {
+  to {
+      transform: translate(15%, 15%);
+  }
 }
 
 .triangle {
@@ -132,6 +176,13 @@
   border-left: 40px solid transparent; 
   border-right: 40px solid transparent; 
   border-bottom: 40px solid rgba(254, 173, 44);
+  // animation: cornerMove 4s linear infinite alternate;
+}
+
+@keyframes triangleMove {
+  to {
+    margin-top: 2rem;
+  }
 }
 
 @media (max-width: 1300px) {
@@ -186,7 +237,7 @@
   }
 
   .redball {
-    top: 62%;
+    top: 64%;
     right: 80px;
     width: 35px;
     height: 35px;
@@ -265,7 +316,7 @@
   }
 
   .redball {
-    top: 63%;
+    top: 65%;
     right: 60px;
     width: 30px;
     height: 30px;
