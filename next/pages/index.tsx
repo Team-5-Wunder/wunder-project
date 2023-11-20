@@ -48,30 +48,30 @@ export default function IndexPage({
 
   return (
     <>
-    <HeroBanner />
-      {/* <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
-      <div className="grid gap-4">
-        {frontpage?.field_content_elements?.map((paragraph) => (
-          <Paragraph paragraph={paragraph} key={paragraph.id} />
-        ))}
-      </div>
-      <Divider className="max-w-4xl" />
-      <ContactForm /> */}
-      <Divider className="max-w-4xl" />
-      <CaseTeasers
-        cases={promotedCaseTeasers}
-        heading={t("our-work")}
-      />
-      <LatestReleases
-        articles={promotedArticleTeasers}
-        heading={t("latest-releases-and-innovations")}
-      />
-      <EventTeasers
+      <HeroBanner />
+      <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-4">
+          {frontpage?.field_content_elements?.map((paragraph) => (
+            <Paragraph paragraph={paragraph} key={paragraph.id} />
+          ))}
+        </div>
+        <Divider className="max-w-4xl" />
+        {/* <ContactForm />  */}
+        {/*       <Divider className="max-w-4xl" />
+      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} /> */}
+
+        <LatestReleases
+          articles={promotedArticleTeasers}
+          heading={t("latest-releases-and-innovations")}
+        />
+        {/*      <EventTeasers
         events={promotedEventTeasers}
         heading={t("coming-events")}
-      />
-      <ContactList />
-      <LogoStrip />
+      /> */}
+        {/*   <ContactList /> */}
+        {/*     <LogoStrip /> */}
+      </div>
     </>
   );
 }
@@ -107,7 +107,7 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
     DrupalNode[]
   >("node--case", context, {
     params: getNodePageJsonApiParams("node--case").getQueryObject(),
-    });
+  });
 
   const promotedEventTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
