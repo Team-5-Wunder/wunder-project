@@ -51,11 +51,11 @@ export default function IndexPage({
       <HeroBanner />
       <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-4">
+        {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
             <Paragraph paragraph={paragraph} key={paragraph.id} />
           ))}
-        </div>
+        </div> */}
         <Divider className="max-w-4xl" />
         {/* <ContactForm />  */}
         {/*       <Divider className="max-w-4xl" />

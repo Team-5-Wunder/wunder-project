@@ -18,32 +18,37 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
   const router = useRouter();
   const date = formatDate(article.created, router.locale);
 
-  const imageClassName = `px-4 w-full md:w-1/2 ${
-    isReversed ? "md:order-last md:ml-auto" : ""
-  }`;
+  // Removed specific width classes from the imageClassName for mobile view
+  const imageClassName = `px-4 ${isReversed ? "md:order-last md:ml-auto" : ""}`;
 
   return (
     <Link
       href={article.path.alias}
       className="relative grid h-full rounded border border-finnishwinter bg-white p-4 transition-all hover:shadow-md"
     >
-      <div className="flex flex-wrap -mx-4 ">
-        <div className={imageClassName}>
+      <div className="flex flex-col md:flex-row -mx-4 ">
+        {" "}
+        {/* Changed this line */}
+        <div className={`w-full ${imageClassName}`}>
           {article.field_image && (
             <Image
               src={absoluteUrl(article.field_image.uri.url)}
               width={384}
               height={240}
               alt={article.field_image.resourceIdObjMeta.alt}
-              className="max-w-full object-cover"
+              className="max-w-full h-auto object-cover" // h-auto to maintain aspect ratio
             />
           )}
         </div>
-        <div className={`flex flex-col h-full justify-between`}>
-          <h3 className="text-primary-600 max-w-xs mb-2 line-clamp-2 text-heading-xs font-bold ${isReversed ? 'text-left' : 'text-right'}">
+        <div className="w-full px-4">
+          <h3
+            className={`text-primary-600 mb-2 line-clamp-2 text-heading-xs font-bold ${
+              isReversed ? "md:text-left" : ""
+            }`}
+          >
             {article.title}
           </h3>
-          <p className={` ${isReversed ? "text-right" : "text-left"}`}>
+          <p className={`${isReversed ? "" : "text-left"}`}>
             lorem ipsum text here
           </p>
           <div className="flex  items-center mt-4">
