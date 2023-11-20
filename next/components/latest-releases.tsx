@@ -13,7 +13,7 @@ interface LatestArticlesProps {
   heading: string;
 }
 
-export function ArticleTeasers({ articles, heading }: LatestArticlesProps) {
+export function LatestReleases({ articles, heading }: LatestArticlesProps) {
   const { t } = useTranslation();
   return (
     <>

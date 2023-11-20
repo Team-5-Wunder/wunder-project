@@ -2,7 +2,7 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
 
-import { ArticleTeasers } from "@/components/article-teasers";
+import { LatestReleases } from "@/components/latest-releases";
 import { CaseTeasers } from "@/components/case-teasers";
 import { EventTeasers } from "@/components/event-teasers";
 import { ContactForm } from "@/components/contact-form";
@@ -56,13 +56,13 @@ export default function IndexPage({
         ))}
       </div>
       <Divider className="max-w-4xl" />
-      <ContactForm />
+      <ContactForm /> */}
       <Divider className="max-w-4xl" />
       <CaseTeasers
         cases={promotedCaseTeasers}
         heading={t("our-work")}
       />
-      <ArticleTeasers
+      <LatestReleases
         articles={promotedArticleTeasers}
         heading={t("latest-releases-and-innovations")}
       />
@@ -71,7 +71,7 @@ export default function IndexPage({
         heading={t("coming-events")}
       />
       <ContactList />
-      <LogoStrip /> */}
+      <LogoStrip />
     </>
   );
 }
