@@ -11,14 +11,12 @@ interface ArticleTeaserProps {
   article: ArticleTeaser;
   isReversed?: boolean;
 }
-
 export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
   const { t } = useTranslation();
   const author = article.uid?.display_name;
   const router = useRouter();
   const date = formatDate(article.created, router.locale);
-
-  // Removed specific width classes from the imageClassName for mobile view
+  const excerpt = article.field_excerpt || "No excerpt available.";
   const imageClassName = `px-4 ${isReversed ? "md:order-last md:ml-auto" : ""}`;
 
   return (
@@ -27,8 +25,6 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
       className="relative grid h-full rounded border border-finnishwinter bg-white p-4 transition-all hover:shadow-md"
     >
       <div className="flex flex-col md:flex-row -mx-4 ">
-        {" "}
-        {/* Changed this line */}
         <div className={`w-full ${imageClassName}`}>
           {article.field_image && (
             <Image
@@ -36,7 +32,7 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
               width={384}
               height={240}
               alt={article.field_image.resourceIdObjMeta.alt}
-              className="max-w-full h-auto object-cover" // h-auto to maintain aspect ratio
+              className="max-w-full h-auto object-cover"
             />
           )}
         </div>
@@ -48,9 +44,7 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
           >
             {article.title}
           </h3>
-          <p className={`${isReversed ? "" : "text-left"}`}>
-            lorem ipsum text here
-          </p>
+          <p className={`${isReversed ? "" : "text-left"}`}>{excerpt}</p>
           <div className="flex  items-center mt-4">
             <p className="text-primary-600">Read More</p>
             <ColorfulArrows />

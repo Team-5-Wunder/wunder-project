@@ -30,6 +30,7 @@ import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 
 import { Divider } from "@/ui/divider";
 import HeroBanner from "@/components/herobanner/heroBanner";
+import { Article } from "@/components/article";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
