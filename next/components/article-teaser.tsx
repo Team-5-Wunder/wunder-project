@@ -16,7 +16,6 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
   const author = article.uid?.display_name;
   const router = useRouter();
   const date = formatDate(article.created, router.locale);
-  const excerpt = article.field_excerpt || "No excerpt available.";
   const imageClassName = `px-4 ${isReversed ? "md:order-last md:ml-auto" : ""}`;
 
   return (
@@ -44,7 +43,9 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
           >
             {article.title}
           </h3>
-          <p className={`${isReversed ? "" : "text-left"}`}>{excerpt}</p>
+          <p className={`${isReversed ? "" : "text-left"}`}>
+            {article.field_excerpt}
+          </p>
           <div className="flex  items-center mt-4">
             <p className="text-primary-600">Read More</p>
             <ColorfulArrows />

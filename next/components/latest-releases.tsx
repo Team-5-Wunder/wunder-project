@@ -17,7 +17,7 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
   const { t } = useTranslation();
   return (
     <>
-      <h2 className="text-heading-sm font-bold md:text-heading-md">
+      <h2 className="text-primary-600 text-heading-sm font-bold md:text-heading-md">
         {heading}
       </h2>
       <ul>
