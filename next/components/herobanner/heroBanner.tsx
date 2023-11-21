@@ -13,7 +13,7 @@ const HeroBanner = () => {
           <div className={style.redball}></div>
           <div className={style.halfball}></div>
           <div className={style.corner}></div>
-          <h1 className={`${style.title} ${overpass.variable} font-overpass antialiased`}>Shaping the <br /> Digital Experience</h1>
+          <h1 className={`${style.title} --font-overpass antialiased`}>Shaping the <br /> Digital Experience</h1>
           <button className={style.worksButton}>View our work</button>
           <div className={style.triangle}></div>
         </div>

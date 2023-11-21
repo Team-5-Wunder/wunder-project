@@ -59,10 +59,10 @@ export default function IndexPage({
             <Paragraph paragraph={paragraph} key={paragraph.id} />
           ))}
         </div> */}
-        <Divider className="max-w-4xl" />
+        {/* <Divider className="max-w-4xl" /> */}
         {/* <ContactForm />  */}
-        {/*       <Divider className="max-w-4xl" />
-      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} /> */}
+        {/* <Divider className="max-w-4xl" /> */}
+      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
 
         <LatestReleases
           articles={filteredPromotedArticleTeasers}
@@ -101,7 +101,7 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
 
   const filteredPromotedArticleTeasers = promotedArticleTeasers
     .filter((article) =>
-    article.field_tags?.some((tag) => tag.name === "Pavel")
+    article.field_tags?.some((tag) => tag.name === "Innovation")
     )
     .slice(0, 3)
 
