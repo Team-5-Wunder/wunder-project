@@ -31,6 +31,7 @@ import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 import { Divider } from "@/ui/divider";
 import HeroBanner from "@/components/herobanner/heroBanner";
 import { Article } from "@/components/article";
+import OurClients from "@/components/OurClients";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
@@ -72,6 +73,7 @@ export default function IndexPage({
       /> */}
         {/*   <ContactList /> */}
         {/*     <LogoStrip /> */}
+        <OurClients />
       </div>
     </>
   );
