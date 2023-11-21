@@ -1,17 +1,17 @@
-uuid: 97942748-bc1b-4f28-b260-61c5615c2036
+uuid: a114181a-2ff1-4889-bd79-e4a5898410cc
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_tags
+    - field.storage.node.field_industry
     - node.type.case
-    - taxonomy.vocabulary.tags
-id: node.case.field_tags
-field_name: field_tags
+    - taxonomy.vocabulary.industry
+id: node.case.field_industry
+field_name: field_industry
 entity_type: node
 bundle: case
-label: Tags
-description: 'Enter a comma-separated list. For example: Amsterdam, Mexico City, "Cleveland, Ohio"'
+label: Industry
+description: 'Enter a comma-separated list. For example: Finance, Transportation'
 required: false
 translatable: true
 default_value: {  }
@@ -20,9 +20,9 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      tags: tags
+      industry: industry
     sort:
-      field: _none
+      field: name
       direction: asc
     auto_create: true
     auto_create_bundle: ''

@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.field_content_elements
+    - field.field.node.event.field_date
     - field.field.node.event.field_excerpt
     - field.field.node.event.field_image
     - field.field.node.event.field_tags
@@ -44,5 +45,6 @@ content:
     region: content
 hidden:
   field_content_elements: true
+  field_date: true
   field_excerpt: true
   langcode: true

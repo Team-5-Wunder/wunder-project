@@ -7,7 +7,9 @@ dependencies:
     - field.field.node.case.field_content_elements
     - field.field.node.case.field_excerpt
     - field.field.node.case.field_image
-    - field.field.node.case.field_tags
+    - field.field.node.case.field_industry
+    - field.field.node.case.field_solution
+    - field.field.node.case.field_technology
     - image.style.medium
     - node.type.case
   module:
@@ -29,14 +31,6 @@ content:
     third_party_settings: {  }
     weight: -1
     region: content
-  field_tags:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 10
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -45,4 +39,7 @@ content:
 hidden:
   field_content_elements: true
   field_excerpt: true
+  field_industry: true
+  field_solution: true
+  field_technology: true
   langcode: true

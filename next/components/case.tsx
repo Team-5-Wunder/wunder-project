@@ -14,11 +14,23 @@ export function Case({ client }: CaseProps) {
     <div className="grid gap-4 grid-cols-2">
       <div>
         <HeadingPage>{client.title}</HeadingPage>
-        {client.field_excerpt && (
-          <div className="my-4 text-xl">{client.field_excerpt}</div>
+        <div className="my-4 text-xl">{client.field_excerpt}</div>
+        {client.field_industry && (
+        client.field_industry.map((tag) => (
+          <h4 key={tag.name}>{tag.name}</h4>
+          ))
+        )}
+        {client.field_solution && (
+        client.field_solution.map((tag) => (
+          <h4 key={tag.name}>{tag.name}</h4>
+          ))
+        )}
+        {client.field_technology && (
+        client.field_technology.map((tag) => (
+          <h4 key={tag.name}>{tag.name}</h4>
+          ))
         )}
       </div>
-      {client.field_image && (
         <figure>
           <Image
             src={absoluteUrl(client.field_image.uri.url)}
@@ -35,7 +47,6 @@ export function Case({ client }: CaseProps) {
             </figcaption>
           )}
         </figure>
-      )}
       <div className="grid gap-4 col-span-2">
         {client.field_content_elements?.map((paragraph) => (
           <Paragraph key={paragraph.id} paragraph={paragraph} />

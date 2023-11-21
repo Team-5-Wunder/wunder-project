@@ -14,11 +14,9 @@ export function Event({ event }: EventProps) {
     <div className="grid gap-4 grid-cols-2">
       <div>
         <HeadingPage>{event.title}</HeadingPage>
-        {event.field_excerpt && (
-          <div className="my-4 text-xl">{event.field_excerpt}</div>
-        )}
+        <div className="my-4 text-xl">{event.field_excerpt}</div>
+        <div>{event.field_date}</div>
       </div>
-      {event.field_image && (
         <figure>
           <Image
             src={absoluteUrl(event.field_image.uri.url)}
@@ -35,7 +33,6 @@ export function Event({ event }: EventProps) {
             </figcaption>
           )}
         </figure>
-      )}
       <div className="grid gap-4 col-span-2">
         {event.field_content_elements?.map((paragraph) => (
           <Paragraph key={paragraph.id} paragraph={paragraph} />

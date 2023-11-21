@@ -1,0 +1,8 @@
+uuid: 0a5889fd-74c4-421b-aef3-305109ecdd13
+langcode: en
+status: true
+dependencies: {  }
+name: Solution
+vid: solution
+description: 'Use to group cases.'
+weight: 0

@@ -6,7 +6,9 @@ dependencies:
     - field.field.node.case.field_content_elements
     - field.field.node.case.field_excerpt
     - field.field.node.case.field_image
-    - field.field.node.case.field_tags
+    - field.field.node.case.field_industry
+    - field.field.node.case.field_solution
+    - field.field.node.case.field_technology
     - image.style.thumbnail
     - node.type.case
   module:
@@ -59,9 +61,29 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-  field_tags:
+  field_industry:
     type: entity_reference_autocomplete_tags
-    weight: 6
+    weight: 121
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_solution:
+    type: entity_reference_autocomplete_tags
+    weight: 122
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_technology:
+    type: entity_reference_autocomplete_tags
+    weight: 123
     region: content
     settings:
       match_operator: CONTAINS
