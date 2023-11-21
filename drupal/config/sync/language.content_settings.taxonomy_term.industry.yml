@@ -1,0 +1,11 @@
+uuid: ac808f0f-084d-42e4-baec-5f1cc54061a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.industry
+id: taxonomy_term.industry
+target_entity_type_id: taxonomy_term
+target_bundle: industry
+default_langcode: site_default
+language_alterable: false

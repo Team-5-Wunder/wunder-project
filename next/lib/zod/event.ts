@@ -27,10 +27,11 @@ export const EventSchema = z.object({
   type: z.literal("node--event"),
   id: z.string(),
   title: z.string(),
-  field_image: ImageShape.nullable(),
-  field_excerpt: z.string().optional().nullable(),
+  field_image: ImageShape,
+  field_excerpt: z.string(),
   field_content_elements: z.array(EventElementsSchema),
   metatag: MetatagsSchema.optional(),
+  field_date: z.string(),
 });
 
 export function validateAndCleanupEvent(event: DrupalNode): Event | null {

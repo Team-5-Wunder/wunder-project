@@ -11,7 +11,7 @@ entity_type: node
 bundle: event
 label: Excerpt
 description: 'Add an excerpt for this piece of content. It will also be used for search results and HTML meta tags.'
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
