@@ -3,7 +3,7 @@ import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
 import { CaseTags } from "@/components/case-tags";
 
-import { ArticleTeasers } from "@/components/article-teasers";
+import { LatestReleases } from "@/components/latest-releases";
 import { CaseTeasers } from "@/components/case-teasers";
 import { EventTeasers } from "@/components/event-teasers";
 import { ContactForm } from "@/components/contact-form";
@@ -30,6 +30,9 @@ import {
 import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 
 import { Divider } from "@/ui/divider";
+import HeroBanner from "@/components/herobanner/heroBanner";
+import { Article } from "@/components/article";
+import OurClients from "@/components/OurClients";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
@@ -48,29 +51,31 @@ export default function IndexPage({
 
   return (
     <>
+      <HeroBanner />
       <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
-      <div className="grid gap-4">
-        {frontpage?.field_content_elements?.map((paragraph) => (
-          <Paragraph paragraph={paragraph} key={paragraph.id} />
-        ))}
-      </div>
-      <Divider className="max-w-4xl" />
-      <ContactForm />
-      <Divider className="max-w-4xl" />
-      <CaseTeasers
-        cases={promotedCaseTeasers}
-        heading={t("our-work")}
-      />
-      <ArticleTeasers
-        articles={filteredPromotedArticleTeasers}
-        heading={t("latest-releases-and-innovations")}
-      />
-      <EventTeasers
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* <div className="grid gap-4">
+          {frontpage?.field_content_elements?.map((paragraph) => (
+            <Paragraph paragraph={paragraph} key={paragraph.id} />
+          ))}
+        </div> */}
+        <Divider className="max-w-4xl" />
+        {/* <ContactForm />  */}
+        {/*       <Divider className="max-w-4xl" />
+      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} /> */}
+
+        <LatestReleases
+          articles={filteredPromotedArticleTeasers}
+          heading={t("latest-releases-and-innovations")}
+        />
+        {/*      <EventTeasers
         events={promotedEventTeasers}
         heading={t("coming-events")}
-      />
-      <ContactList />
-      <LogoStrip />
+      /> */}
+        {/*   <ContactList /> */}
+        {/*     <LogoStrip /> */}
+        <OurClients />
+      </div>
     </>
   );
 }
@@ -105,17 +110,6 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
   >("node--case", context, {
     params: getNodePageJsonApiParams("node--case").addPageLimit(3).getQueryObject(),
   });
-
-  promotedArticleTeasers.map((teaser) => {
-    console.log("Name: " + teaser.title);
-    teaser.field_tags.map((tag) => {
-      console.log(tag.name);
-    })
-  })
-/*   const technology = await drupal.getResourceCollectionFromContext<DrupalTaxonomyTerm[]>('taxonomy_term--technology', {})
-  technology.map((tag) => {
-    console.log(tag.name);
-  }) */
 
   const promotedEventTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
