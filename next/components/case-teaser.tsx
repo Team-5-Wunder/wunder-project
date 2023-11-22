@@ -21,15 +21,19 @@ export function CaseTeaser({ client }: CaseTeaserProps) {
       <h3 className="mb-2 line-clamp-2 text-heading-xs font-bold">
         {client.title}
       </h3>
-      {client.field_image && (
+        <div>
+          <img className="w-full h-1/2" src={absoluteUrl(client.field_image.uri.url)} alt="Man and woman" />
+          <div>{client.field_excerpt}</div>
+        </div>
+      {/* {client.field_image && (
         <Image
           src={absoluteUrl(client.field_image.uri.url)}
-          width={384}
+          width={400}
           height={240}
           alt={client.field_image.resourceIdObjMeta.alt}
           className="max-w-full object-cover"
         />
-      )}
+      )} */}
     </Link>
   );
 }

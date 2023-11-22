@@ -1,13 +1,15 @@
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 
 const WeAreWunder = () => {
+  const { t } = useTranslation();
   return (
     <div className="w-screen flex justify-center">
       <div className="h-[30vh] max-w-[1664px] mt-20 px-16 lg:flex">
         <div className="lg:w-1/2">
           <div className="mb-10 text-primary-600 text-heading-lg font-bold">
-            We are Wunder
+          {t("we-are-wunder")}
           </div>
         </div>
         <div className="lg:w-1/2 flex flex-col">

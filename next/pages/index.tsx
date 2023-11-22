@@ -1,7 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
-import { CaseTags } from "@/components/case-tags";
 
 import { LatestReleases } from "@/components/latest-releases";
 import { CaseTeasers } from "@/components/case-teasers";
@@ -52,10 +51,11 @@ export default function IndexPage({
 
   return (
     <>
+      <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
       <HeroBanner />
       <WeAreWunder />
-      <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
+      
         {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
             <Paragraph paragraph={paragraph} key={paragraph.id} />
@@ -64,20 +64,18 @@ export default function IndexPage({
         {/* <Divider className="max-w-4xl" /> */}
         {/* <ContactForm />  */}
         {/* <Divider className="max-w-4xl" /> */}
-      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
 
-        <LatestReleases
-          articles={filteredPromotedArticleTeasers}
-          heading={t("latest-releases-and-innovations")}
-        />
+      <LatestReleases
+        articles={filteredPromotedArticleTeasers}
+        heading={t("latest-releases-and-innovations")}
+      />
         {/*      <EventTeasers
         events={promotedEventTeasers}
         heading={t("coming-events")}
       /> */}
         {/*   <ContactList /> */}
         {/*     <LogoStrip /> */}
-        <OurClients />
-      </div>
+      <OurClients />
     </>
   );
 }
