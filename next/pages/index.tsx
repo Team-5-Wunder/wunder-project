@@ -1,7 +1,6 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
-import { CaseTags } from "@/components/case-tags";
 
 import { LatestReleases } from "@/components/latest-releases";
 import { CaseTeasers } from "@/components/case-teasers";
