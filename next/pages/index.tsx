@@ -33,6 +33,7 @@ import { Divider } from "@/ui/divider";
 import HeroBanner from "@/components/herobanner/heroBanner";
 import { Article } from "@/components/article";
 import OurClients from "@/components/OurClients";
+import WeAreWunder from "@/components/we-are-wunder";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
@@ -52,6 +53,7 @@ export default function IndexPage({
   return (
     <>
       <HeroBanner />
+      <WeAreWunder />
       <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* <div className="grid gap-4">
