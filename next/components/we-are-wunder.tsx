@@ -24,7 +24,7 @@ const WeAreWunder = () => {
                   "text-base mr-4 mt-4 inline-flex px-5 py-3 h-fit w-fit",
                 )}
           >
-                Get to know us
+                {t("get-to-know-us")}
           </Link>
         </div>
       </div>
