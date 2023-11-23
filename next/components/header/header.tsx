@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
-import { MainMenu, MenuToggle } from "@/components/main-menu/main-menu";
+import { MainMenu, MenuToggle, MenuExpanded } from "../main-menu/main-menu";
 import { Menu } from "@/lib/zod/menu";
 import SearchIcon from "@/styles/icons/search.svg";
 import WunderIcon from "@/styles/icons/wunder.svg";
@@ -23,9 +23,10 @@ export function Header({ menu }: HeaderProps) {
       <nav className="mx-auto flex max-w-6xl flex-row items-center justify-between px-6 py-4">
         <HomeLink />
         <div className="flex flex-row items-center justify-end gap-6 sm:gap-8">
-          <SearchLink />
-          <UserMenu />
+          <MenuExpanded menu={menu} />
+          {/* <UserMenu /> */}
           <LanguageSwitcher />
+          <SearchLink />
           <MenuToggle isOpen={isMainMenuOpen} setIsOpen={setIsMainMenuOpen} />
         </div>
       </nav>
@@ -54,9 +55,9 @@ function SearchLink() {
   const { t } = useTranslation();
   return (
     <Link href="/search" locale={locale} className="hover:underline">
-      <span className="sr-only sm:not-sr-only sm:mr-2 sm:inline">
+{/*       <span className="sr-only sm:not-sr-only sm:mr-2 sm:inline">
         {t("search")}
-      </span>
+      </span> */}
       <SearchIcon className="inline-block h-6 w-6" aria-hidden="true" />
     </Link>
   );
