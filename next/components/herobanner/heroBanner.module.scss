@@ -189,6 +189,12 @@
 }
 
 @media (max-width: 1300px) {
+
+  .heroBox {
+    border-top-left-radius: 120px;
+    border-bottom-right-radius: 120px;
+  }
+
   .leftPart {
     width: 40%;
   }
@@ -265,6 +271,11 @@
 }
 
 @media (max-width: 1075px) {
+
+  .heroBox {
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+  }
 
   .leftPart {
     width: 35%;
@@ -344,6 +355,16 @@
 }
 
 @media (max-width: 950px) {
+
+  .heroBox {
+    border-top-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+  }
+
+  .heroBox {
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+  }
 
   .leftPart {
     width: 100%;
@@ -425,6 +446,11 @@
 }
 
 @media (max-width: 670px) {
+
+  .heroBox {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
   .title {
     font-size: 2.5rem;

@@ -17,7 +17,7 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
   const { t } = useTranslation();
   return (
     <div className="w-screen flex justify-center">
-      <div className="w-full max-w-[1664px] mt-20 px-16 flex flex-col">
+      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex flex-col">
         <h2 className="mb-10 text-primary-600 text-heading-lg font-bold">
           {heading}
         </h2>
