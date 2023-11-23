@@ -36,8 +36,8 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
                     buttonVariants({ variant: "secondary" }),
                     "text-base mr-4 mt-4 inline-flex px-5 py-3 h-fit w-fit",
                   )}>
-                <div className="">
-                  {t("All works")}
+                <div>
+                  {t("all-works")}
                 </div>
               </Link>
             )}
