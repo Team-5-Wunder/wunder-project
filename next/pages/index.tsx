@@ -75,7 +75,7 @@ export default function IndexPage({
       /> */}
         {/*   <ContactList /> */}
         {/*     <LogoStrip /> */}
-      <OurClients />
+      {/* <OurClients /> */}
     </>
   );
 }
@@ -108,7 +108,7 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
   const promotedCaseTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
   >("node--case", context, {
-    params: getNodePageJsonApiParams("node--case").addPageLimit(3).getQueryObject(),
+    params: getNodePageJsonApiParams("node--case").addPageLimit(4).getQueryObject(),
   });
 
   const promotedEventTeasers = await drupal.getResourceCollectionFromContext<
