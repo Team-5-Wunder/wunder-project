@@ -55,6 +55,7 @@ export default function IndexPage({
       <HeroBanner />
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
+      <OurClients />
       
         {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
@@ -75,7 +76,6 @@ export default function IndexPage({
       /> */}
         {/*   <ContactList /> */}
         {/*     <LogoStrip /> */}
-      {/* <OurClients /> */}
     </>
   );
 }
