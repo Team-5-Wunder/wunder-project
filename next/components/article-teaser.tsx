@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { formatDate } from "@/lib/utils";
 import { ArticleTeaser } from "@/lib/zod/article-teaser";
-import ColorfulArrows from "@/styles/icons/colorful-arrows.svg";
+/* import ColorfulArrows from "@/styles/icons/colorful-arrows.svg"; */
 
 interface ArticleTeaserProps {
   article: ArticleTeaser;
@@ -21,7 +21,7 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
   return (
     <Link
       href={article.path.alias}
-      className="pb-20 relative grid h-full rounded border border-finnishwinter bg-white p-4 transition-all hover:shadow-md"
+      className="pb-20  gap-6 relative grid h-full rounded border border-finnishwinter bg-white p-4 transition-all hover:shadow-md"
     >
       <div className="flex flex-col md:flex-row -mx-4  ">
         <div className={`w-full ${imageClassName}`}>
@@ -48,7 +48,7 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
           </p>
           <div className="flex  items-center mt-4">
             <p className="text-primary-600">Read More</p>
-            <ColorfulArrows />
+            {/*   <ColorfulArrows /> */}
           </div>
         </div>
       </div>

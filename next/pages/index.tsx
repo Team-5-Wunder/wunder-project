@@ -56,6 +56,7 @@ export default function IndexPage({
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
       <Divider className="max-w-4xl" />
+      <OurClients />
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
@@ -63,7 +64,7 @@ export default function IndexPage({
       <Divider className="max-w-4xl" />
       <ContactList />
       <Divider className="max-w-4xl" />
-      <OurClients />
+
       {/*  <div className="grid gap-4">
         {frontpage?.field_content_elements?.map((paragraph) => (
           <Paragraph paragraph={paragraph} key={paragraph.id} />
