@@ -13,9 +13,9 @@ const HeroBanner = () => {
           <div className={style.redball}></div>
           <div className={style.halfball}></div>
           <div className={style.corner}></div>
-          <h1 className={`${style.title} overpass`}>Shaping the <br /> Digital Experience</h1>
-          <button className={style.worksButton}>View our work</button>
           <div className={style.triangle}></div>
+          <h1 className={`${style.title} font-overpass`}>Shaping the <br /> Digital Experience</h1>
+          {/* <button className={style.worksButton}>View our work</button> */}
         </div>
       </div>
       <div className={style.rightPart}>

@@ -1,10 +1,10 @@
 .heroBox {
-  background: linear-gradient(to right, rgba(51, 36, 69), rgba(115, 72, 168));
+  background: linear-gradient(to right, rgb(95, 33, 171), rgba(115, 72, 168));
   width: 100vw;
   height: 60vh;
   display: flex;
-  border-top-left-radius: 150px;
-  border-bottom-right-radius: 150px;
+  // border-top-left-radius: 150px;
+  // border-bottom-right-radius: 150px;
   justify-content: flex-end;
   align-items: flex-end;
   overflow: hidden;
@@ -31,18 +31,16 @@
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 3.7rem;
   font-weight: bold;
 }
 
-.worksButton {
-  margin-top: 1rem;
-  background-color: rgba(91, 55, 191);
-  // background-color: white;
-  // color: rgba(91, 55, 191);
-  width: 150px;
-  height: 50px;
-}
+// .worksButton {
+//   margin-top: 1rem;
+//   background-color: rgba(91, 55, 191);
+//   width: 150px;
+//   height: 50px;
+// }
 
 .rightPart {
   position: relative;
@@ -69,7 +67,7 @@
   border-radius: 15px;
   background-color: rgba(53, 211, 213);
   box-shadow: rgba(53, 211, 213) 0 0 20px;
-  animation: longballMove 4s linear infinite alternate;
+  animation: longballMove 2s linear infinite alternate;
 }
 
 @keyframes longballMove {
@@ -87,7 +85,7 @@
   border-radius: 50%;
   background-color: rgba(53, 211, 213);
   box-shadow: rgba(53, 211, 213) 0 0 20px;
-  animation: ballMove 4s linear infinite alternate;
+  animation: ballMove 2s linear infinite alternate;
 }
 
 @keyframes ballMove {
@@ -100,12 +98,12 @@
 .square {
   position: absolute;
   top: -120px;
-  left: 100px;
+  left: 110px;
   width: 57px;
   height: 57px;
   background-color: rgba(11, 100, 82);
   box-shadow: rgba(11, 100, 82) 0 0 20px;
-  animation: squareMove 4s linear infinite alternate;
+  animation: squareMove 2s linear infinite alternate;
 }
 
 @keyframes squareMove {
@@ -116,14 +114,14 @@
 
 .redball {
   position: absolute;
-  top: 72%;
-  right: 95px;
+  top: 220px;
+  right: 105px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: rgba(255, 112, 96);
   box-shadow: rgba(255, 112, 96) 0 0 20px;
-  animation: redballMove 4s linear infinite alternate;
+  animation: redballMove 2s linear infinite alternate;
 }
 
 @keyframes redballMove {
@@ -134,7 +132,7 @@
 
 .halfball {
   position: absolute;
-  top: 35%;
+  top: 110px;
   left: -130px;
   width: 33px;
   height: 66px;
@@ -142,7 +140,7 @@
   border-bottom-left-radius: 33px;
   background-color: rgba(186, 162, 255);
   box-shadow: rgba(186, 162, 255) 0 0 20px;
-  animation: halfballMove 4s linear infinite alternate;
+  animation: halfballMove 2s linear infinite alternate;
 }
 
 @keyframes halfballMove {
@@ -160,9 +158,9 @@
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
-  background-color: #9E005D;
-  box-shadow: #9E005D 0 0 20px;
-  animation: cornerMove 4s linear infinite alternate;
+  background-color: rgba(254, 173, 44);
+  box-shadow: rgba(254, 173, 44) 0 0 20px;
+  animation: cornerMove 2s linear infinite alternate;
 }
 
 @keyframes cornerMove {
@@ -172,19 +170,20 @@
 }
 
 .triangle {
-  margin-top: 1.8rem;
-  margin-left: 3rem;
+  position: absolute;
+  top: 230px;
+  left: 40px;
   width: 0;
   height: 0;
-  border-left: 40px solid transparent; 
-  border-right: 40px solid transparent; 
-  border-bottom: 40px solid rgba(254, 173, 44);
-  // animation: cornerMove 4s linear infinite alternate;
+  border-left: 45px solid transparent; 
+  border-right: 45px solid transparent; 
+  border-bottom: 45px solid #9E005D;
+  animation: triangleMove 2s linear infinite alternate;
 }
 
 @keyframes triangleMove {
   to {
-    margin-top: 2rem;
+    transform: translate(0, 20%);
   }
 }
 
