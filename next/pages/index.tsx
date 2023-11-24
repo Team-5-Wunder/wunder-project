@@ -58,7 +58,7 @@ export default function IndexPage({
       <Divider className="max-w-4xl" />
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
-        heading={t("latest-releases-and-innovations")}
+        heading={t("Latest releases")}
       />
       <Divider className="max-w-4xl" />
       <ContactList />

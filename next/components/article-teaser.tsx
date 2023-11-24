@@ -28,8 +28,8 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
           {article.field_image && (
             <Image
               src={absoluteUrl(article.field_image.uri.url)}
-              width={384}
-              height={240}
+              width={600}
+              height={200}
               alt={article.field_image.resourceIdObjMeta.alt}
               className="max-w-full h-auto object-cover"
             />
@@ -37,7 +37,7 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
         </div>
         <div className="w-full px-4">
           <h3
-            className={`text-primary-600 mb-2 line-clamp-2 text-heading-xs font-bold ${
+            className={`mt-5 text-primary-600 mb-2 line-clamp-2 text-heading-xs font-bold ${
               isReversed ? "md:text-left" : ""
             }`}
           >

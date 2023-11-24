@@ -18,7 +18,7 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
   return (
     <div className="w-screen flex justify-center">
       <div className="w-full max-w-[1500px] mt-20 px-6 sm:px-16 flex flex-col">
-        <h2 className=" text-primary-600 text-heading-lg font-bold">
+        <h2 className="pb-10 text-primary-600 text-heading-lg font-bold">
           {heading}
         </h2>
         <ul>
