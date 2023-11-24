@@ -43,63 +43,65 @@ export function ContactList() {
   const { t } = useTranslation();
 
   return (
-    <section className="px-10">
-      <h2 className="text-heading-sm font-bold md:text-heading-md text-primary-600 ">
-        {t("contact")}
-      </h2>
-      <div className="grid auto-rows-max grid-cols-1 justify-items-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-3">
-        {contacts?.map(({ id, image, name, title, phoneNumber, email }) => {
-          const [firstName, lastName] = name.split(" ");
+    <div className="w-full max-w-[1500px] mt-20 px-6 sm:px-16 flex flex-col">
+      <section>
+        <h2 className="text-heading-sm font-bold md:text-heading-md text-primary-600 ">
+          {t("contact")}
+        </h2>
+        <div className="grid auto-rows-max grid-cols-1 justify-items-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-3">
+          {contacts?.map(({ id, image, name, title, phoneNumber, email }) => {
+            const [firstName, lastName] = name.split(" ");
 
-          return (
-            <div key={id} className="relative">
-              <li className="grid justify-items-center p-4 border border-finnishwinter rounded-lg relative h-[450px] w-[350px] overflow-hidden">
-                <div className="absolute top-0 left-5 pt-5">
-                  <WunderW />
-                </div>
-                <div className="flex h-[200px] w-[200px] items-center justify-center border-finnishwinter">
-                  <div className="circle-clip">
-                    <NextImage
-                      src={image}
-                      alt={t("image-of", { name })}
-                      width={200}
-                      height={200}
-                    />
+            return (
+              <div key={id} className="relative">
+                <li className="grid justify-items-center p-4 border border-finnishwinter rounded-lg relative h-[450px] w-[350px] overflow-hidden">
+                  <div className="absolute top-0 left-5 pt-5">
+                    <WunderW />
                   </div>
-                </div>
+                  <div className="flex h-[200px] w-[200px] items-center justify-center border-finnishwinter">
+                    <div className="circle-clip">
+                      <NextImage
+                        src={image}
+                        alt={t("image-of", { name })}
+                        width={200}
+                        height={200}
+                      />
+                    </div>
+                  </div>
 
-                <p className="text-center">
-                  <span>{firstName}</span>
-                  <br /> {lastName}
-                </p>
+                  <p className="text-center">
+                    <span>{firstName}</span>
+                    <br /> {lastName}
+                  </p>
 
-                <p className="font-bold max-w-[200px] text-primary-600 text-center">
-                  {title}
-                </p>
-                <div className="absolute bottom-4 right-4 flex items-center">
-                  <p className="text-primary-600 pr-2">Read</p> <Arrows />
-                </div>
-                <a
-                  href={`tel:${phoneNumber}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hyperlink no-underline hover:underline text-primary-600"
-                >
-                  {phoneNumber}
-                </a>
-                <a
-                  href={`mailto:${email}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hyperlink no-underline hover:underline text-primary-600"
-                >
-                  {email}
-                </a>
-              </li>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+                  <p className="font-bold max-w-[200px] text-primary-600 text-center">
+                    {title}
+                  </p>
+                  <div className="absolute bottom-4 right-4 flex items-center">
+                    <p className="text-primary-600 pr-2">Read</p> <Arrows />
+                  </div>
+                  <a
+                    href={`tel:${phoneNumber}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hyperlink no-underline hover:underline text-primary-600"
+                  >
+                    {phoneNumber}
+                  </a>
+                  <a
+                    href={`mailto:${email}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hyperlink no-underline hover:underline text-primary-600"
+                  >
+                    {email}
+                  </a>
+                </li>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </div>
   );
 }

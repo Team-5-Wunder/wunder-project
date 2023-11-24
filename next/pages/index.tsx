@@ -55,8 +55,16 @@ export default function IndexPage({
       <HeroBanner />
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
-
-      {/*    <div className="grid gap-4">
+      <Divider className="max-w-4xl" />
+      <LatestReleases
+        articles={filteredPromotedArticleTeasers}
+        heading={t("latest-releases-and-innovations")}
+      />
+      <Divider className="max-w-4xl" />
+      <ContactList />
+      <Divider className="max-w-4xl" />
+      <OurClients />
+      {/*  <div className="grid gap-4">
         {frontpage?.field_content_elements?.map((paragraph) => (
           <Paragraph paragraph={paragraph} key={paragraph.id} />
         ))}
@@ -65,17 +73,12 @@ export default function IndexPage({
       {/* <ContactForm />  */}
       {/* <Divider className="max-w-4xl" /> */}
 
-      <LatestReleases
-        articles={filteredPromotedArticleTeasers}
-        heading={t("latest-releases-and-innovations")}
-      />
       {/*      <EventTeasers
         events={promotedEventTeasers}
         heading={t("coming-events")}
       /> */}
-      <ContactList />
+
       {/*     <LogoStrip /> */}
-      {/* <OurClients /> */}
     </>
   );
 }

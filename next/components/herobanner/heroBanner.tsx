@@ -19,7 +19,7 @@ const HeroBanner = () => {
         </div>
       </div>
       <div className={style.rightPart}>
-        <img className={style.heroPeople} src="/heroPeople.png" alt="Man and woman" />
+        <img className={style.heroPeople} src="/assets/heroPeople.png" alt="Man and woman" />
       </div>
     </div>
   );
