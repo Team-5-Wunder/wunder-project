@@ -2,7 +2,7 @@ import { DrupalJsonApiParams } from "drupal-jsonapi-params";
 
 import { env } from "@/env";
 
-export type ResourceType = "node--frontpage" | "node--page" | "node--article";
+export type ResourceType = "node--frontpage" | "node--page" | "node--article" | "node--case" | "node--event";
 
 export function getNodePageJsonApiParams(resourceType: ResourceType) {
   const apiParams = new DrupalJsonApiParams().addFilter(
@@ -53,7 +53,7 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
 
   // The article content type has an image field, and author information:
   if (resourceType === "node--article") {
-    apiParams.addInclude(["field_image", "uid"]);
+    apiParams.addInclude(["field_image", "uid", "field_tags"]);
     apiParams.addFields(resourceType, [
       "title",
       "body",
@@ -65,7 +65,61 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
       "field_excerpt",
       "path",
       "sticky",
+      "field_tags",
     ]);
+  }
+
+  if (resourceType === "node--case") {
+    apiParams
+      .addInclude([
+        "field_image",
+        "field_content_elements",
+        "field_content_elements.field_image.field_media_image",
+        "field_content_elements.field_video",
+        "field_content_elements.field_file_attachments.field_media_document",
+        "field_content_elements.field_accordion_items",
+        "field_content_elements.field_accordion_items.field_content_elements.field_image.field_media_image",
+        "field_content_elements.field_accordion_items.field_content_elements.field_video",
+        "field_industry",
+        "field_solution",
+        "field_technology",
+      ])
+      .addFields("node--case", [
+        "title",
+        "field_excerpt",
+        "field_image",
+        "field_content_elements",
+        "path",
+        "status",
+        "metatag",
+        "field_industry",
+        "field_solution",
+        "field_technology",
+      ]);
+  }
+
+  if (resourceType === "node--event") {
+    apiParams
+      .addInclude([
+        "field_image",
+        "field_content_elements",
+        "field_content_elements.field_image.field_media_image",
+        "field_content_elements.field_video",
+        "field_content_elements.field_file_attachments.field_media_document",
+        "field_content_elements.field_accordion_items",
+        "field_content_elements.field_accordion_items.field_content_elements.field_image.field_media_image",
+        "field_content_elements.field_accordion_items.field_content_elements.field_video",
+      ])
+      .addFields("node--event", [
+        "title",
+        "field_excerpt",
+        "field_image",
+        "field_content_elements",
+        "path",
+        "status",
+        "metatag",
+        "field_date",
+      ]);
   }
 
   return apiParams;

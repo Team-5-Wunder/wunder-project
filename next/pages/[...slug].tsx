@@ -4,6 +4,8 @@ import { DrupalNode, DrupalTranslatedPath } from "next-drupal";
 import { Article } from "@/components/article";
 import { Meta } from "@/components/meta";
 import { Page } from "@/components/page";
+import { Case } from "@/components/case";
+import { Event } from "@/components/event";
 import {
   createLanguageLinks,
   LanguageLinks,
@@ -21,8 +23,10 @@ import {
   validateAndCleanupArticle,
 } from "@/lib/zod/article";
 import { Page as PageType, validateAndCleanupPage } from "@/lib/zod/page";
+import { Case as CaseType, validateAndCleanupCase } from "@/lib/zod/case";
+import { Event as EventType, validateAndCleanupEvent } from "@/lib/zod/event";
 
-const RESOURCE_TYPES = ["node--article", "node--page"];
+const RESOURCE_TYPES = ["node--article", "node--page", "node--case", "node--event"];
 
 export default function CustomPage({
   resource,
@@ -34,6 +38,8 @@ export default function CustomPage({
       <Meta title={resource.title} metatags={resource.metatag} />
       {resource.type === "node--article" && <Article article={resource} />}
       {resource.type === "node--page" && <Page page={resource} />}
+      {resource.type === "node--case" && <Case client={resource} />}
+      {resource.type === "node--event" && <Event event={resource} />}
     </>
   );
 }
@@ -47,7 +53,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 };
 
 interface PageProps extends CommonPageProps {
-  resource: PageType | ArticleType;
+  resource: PageType | ArticleType | CaseType | EventType;
   languageLinks: LanguageLinks;
 }
 
@@ -122,6 +128,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
       ? validateAndCleanupArticle(resource)
       : type === "node--page"
       ? validateAndCleanupPage(resource)
+      : type === "node--case"
+      ? validateAndCleanupCase(resource)
+      : type === "node--event"
+      ? validateAndCleanupEvent(resource)
       : null;
 
   return {

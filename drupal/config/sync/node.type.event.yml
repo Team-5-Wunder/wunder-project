@@ -1,0 +1,18 @@
+uuid: fbe66bfe-dc71-4c15-b35c-92419eaaf246
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Event
+type: event
+description: 'Page-like content type. Use to create events.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

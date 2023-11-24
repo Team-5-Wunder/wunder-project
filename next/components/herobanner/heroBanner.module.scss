@@ -1,0 +1,810 @@
+.heroBox {
+  background: linear-gradient(to right, rgba(51, 36, 69), rgba(115, 72, 168));
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+  border-top-left-radius: 150px;
+  border-bottom-right-radius: 150px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.leftPart {
+  position: relative;
+  width: 45%;
+  height: 100%;
+  margin-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  color: white;
+}
+
+.titleAndButton {
+  position: absolute;
+  top: 33%;
+  right: -50px;
+  margin-right: 1rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.worksButton {
+  margin-top: 1rem;
+  background-color: rgba(91, 55, 191);
+  // background-color: white;
+  // color: rgba(91, 55, 191);
+  width: 150px;
+  height: 50px;
+}
+
+.rightPart {
+  position: relative;
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.heroPeople {
+  margin-left: 20px;
+  z-index: 2;
+  max-height: 90%;
+}
+
+.longball {
+  position: absolute;
+  top: -45px;
+  right: 30px;
+  width: 130px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: rgba(53, 211, 213);
+  box-shadow: rgba(53, 211, 213) 0 0 20px;
+  animation: longballMove 4s linear infinite alternate;
+}
+
+@keyframes longballMove {
+  to {
+      transform: translate(-5%, 10%);
+  }
+}
+
+.ball {
+  position: absolute;
+  top: 105px;
+  right: -100px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgba(53, 211, 213);
+  box-shadow: rgba(53, 211, 213) 0 0 20px;
+  animation: ballMove 4s linear infinite alternate;
+}
+
+@keyframes ballMove {
+  to {
+      transform: translate(-25%);
+  }
+}
+
+
+.square {
+  position: absolute;
+  top: -120px;
+  left: 100px;
+  width: 57px;
+  height: 57px;
+  background-color: rgba(11, 100, 82);
+  box-shadow: rgba(11, 100, 82) 0 0 20px;
+  animation: squareMove 4s linear infinite alternate;
+}
+
+@keyframes squareMove {
+  to {
+      transform: translate(0, 15%);
+  }
+}
+
+.redball {
+  position: absolute;
+  top: 72%;
+  right: 95px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 112, 96);
+  box-shadow: rgba(255, 112, 96) 0 0 20px;
+  animation: redballMove 4s linear infinite alternate;
+}
+
+@keyframes redballMove {
+  to {
+      transform: translate(-15%, -15%);
+  }
+}
+
+.halfball {
+  position: absolute;
+  top: 35%;
+  left: -130px;
+  width: 33px;
+  height: 66px;
+  border-top-left-radius: 33px;
+  border-bottom-left-radius: 33px;
+  background-color: rgba(186, 162, 255);
+  box-shadow: rgba(186, 162, 255) 0 0 20px;
+  animation: halfballMove 4s linear infinite alternate;
+}
+
+@keyframes halfballMove {
+  to {
+      transform: translate(20%, 0);
+  }
+}
+
+.corner {
+  position: absolute;
+  top: -80px;
+  left: -110px;
+  width: 60px;
+  height: 60px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  background-color: #9E005D;
+  box-shadow: #9E005D 0 0 20px;
+  animation: cornerMove 4s linear infinite alternate;
+}
+
+@keyframes cornerMove {
+  to {
+      transform: translate(15%, 15%);
+  }
+}
+
+.triangle {
+  margin-top: 1.8rem;
+  margin-left: 3rem;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent; 
+  border-right: 40px solid transparent; 
+  border-bottom: 40px solid rgba(254, 173, 44);
+  // animation: cornerMove 4s linear infinite alternate;
+}
+
+@keyframes triangleMove {
+  to {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 1300px) {
+
+  .heroBox {
+    border-top-left-radius: 120px;
+    border-bottom-right-radius: 120px;
+  }
+
+  .leftPart {
+    width: 40%;
+  }
+
+  .rightPart {
+    width: 60%;
+  }
+
+  .heroPeople {
+    margin-left: 0;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .square {
+    top: -100px;
+    left: 70px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .corner {
+    top: -70px;
+    left: -100px;
+    width: 50px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .halfball {
+    top: 35%;
+    left: -110px;
+    width: 25px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .triangle {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    border-left: 35px solid transparent; 
+    border-right: 35px solid transparent; 
+    border-bottom: 35px solid rgba(254, 173, 44);
+  }
+
+  .redball {
+    top: 64%;
+    right: 80px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+
+  .longball {
+    top: -40px;
+    right: 40px;
+    width: 110px;
+    height: 26px;
+    border-radius: 13px;
+  }
+
+  .ball {
+    top: 95px;
+    right: -65px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 1075px) {
+
+  .heroBox {
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+  }
+
+  .leftPart {
+    width: 35%;
+  }
+
+  .rightPart {
+    width: 65%;
+  }
+
+  .titleAndButton {
+    top: 38%;
+    right: -60px;
+    margin-right: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .square {
+    top: -80px;
+    left: 55px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .corner {
+    top: -40px;
+    left: -70px;
+    width: 40px;
+    height: 40px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .halfball {
+    top: 35%;
+    left: -75px;
+    width: 20px;
+    height: 40px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .triangle {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    border-left: 28px solid transparent; 
+    border-right: 28px solid transparent; 
+    border-bottom: 28px solid rgba(254, 173, 44);
+  }
+
+  .redball {
+    top: 65%;
+    right: 60px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  .longball {
+    top: -45px;
+    right: 45px;
+    width: 90px;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+  .ball {
+    top: 70px;
+    right: -45px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 950px) {
+
+  .heroBox {
+    border-top-left-radius: 80px;
+    border-bottom-right-radius: 80px;
+  }
+
+  .heroBox {
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+  }
+
+  .leftPart {
+    width: 100%;
+    align-items: center;
+  }
+
+  .titleAndButton {
+    position: relative;
+    top: 10%;
+    right: -30px;
+  }
+
+  .title {
+    font-size: 3.5rem;
+  }
+
+  .rightPart {
+    display: none;
+  }
+
+  .square {
+    top: -100px;
+    left: 100px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .corner {
+    top: -70px;
+    left: -100px;
+    width: 50px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .halfball {
+    top: 35%;
+    left: -110px;
+    width: 25px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .triangle {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    border-left: 35px solid transparent; 
+    border-right: 35px solid transparent; 
+    border-bottom: 35px solid rgba(254, 173, 44);
+  }
+
+  .redball {
+    top: 72%;
+    right: 120px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+
+  .longball {
+    top: -40px;
+    right: 40px;
+    width: 110px;
+    height: 26px;
+    border-radius: 13px;
+  }
+
+  .ball {
+    top: 95px;
+    right: -65px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+}
+
+@media (max-width: 670px) {
+
+  .heroBox {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .square {
+    top: -100px;
+    left: 70px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .corner {
+    top: -70px;
+    left: -100px;
+    width: 50px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .halfball {
+    top: 35%;
+    left: -110px;
+    width: 25px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .triangle {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    border-left: 35px solid transparent; 
+    border-right: 35px solid transparent; 
+    border-bottom: 35px solid rgba(254, 173, 44);
+  }
+
+  .redball {
+    top: 62%;
+    right: 80px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+
+  .longball {
+    top: -40px;
+    right: 40px;
+    width: 110px;
+    height: 26px;
+    border-radius: 13px;
+  }
+
+  .ball {
+    top: 95px;
+    right: -65px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 560px) {
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .square {
+    top: -90px;
+    left: 60px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .corner {
+    top: -50px;
+    left: -80px;
+    width: 50px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .halfball {
+    top: 35%;
+    left: -85px;
+    width: 25px;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .triangle {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    border-left: 35px solid transparent; 
+    border-right: 35px solid transparent; 
+    border-bottom: 35px solid rgba(254, 173, 44);
+  }
+
+  .redball {
+    top: 62%;
+    right: 60px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+
+  .longball {
+    top: -40px;
+    right: -10px;
+    width: 110px;
+    height: 26px;
+    border-radius: 13px;
+  }
+
+  .ball {
+    top: 90px;
+    right: -55px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 475px) {
+
+  .titleAndButton {
+    position: relative;
+    top: 5%;
+    right: -15px;
+  }
+
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .worksButton {
+    margin-top: 1rem;
+    width: 120px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .square {
+    top: -70px;
+    left: 60px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .corner {
+    top: -40px;
+    left: -70px;
+    width: 40px;
+    height: 40px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .halfball {
+    top: 35%;
+    left: -65px;
+    width: 20px;
+    height: 40px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .triangle {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    border-left: 25px solid transparent; 
+    border-right: 25px solid transparent; 
+    border-bottom: 25px solid rgba(254, 173, 44);
+  }
+
+  .redball {
+    top: 62%;
+    right: 40px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+
+  .longball {
+    top: -20px;
+    right: -30px;
+    width: 80px;
+    height: 22px;
+    border-radius: 11px;
+  }
+
+  .ball {
+    top: 60px;
+    right: -55px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .titleAndButton {
+    position: relative;
+    top: 5%;
+    right: -15px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .worksButton {
+    margin-top: 1rem;
+    width: 102px;
+    height: 34px;
+    font-size: 0.8rem;
+  }
+
+  .square {
+    top: -55px;
+    left: 50px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .corner {
+    top: -30px;
+    left: -50px;
+    width: 30px;
+    height: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .halfball {
+    top: 35%;
+    left: -45px;
+    width: 15px;
+    height: 30px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+
+  .triangle {
+    margin-top: 1rem;
+    margin-left: 3rem;
+    border-left: 20px solid transparent; 
+    border-right: 20px solid transparent; 
+    border-bottom: 20px solid rgba(254, 173, 44);
+  }
+
+  .redball {
+    top: 62%;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  .longball {
+    top: -20px;
+    right: -20px;
+    width: 70px;
+    height: 18px;
+    border-radius: 9px;
+  }
+
+  .ball {
+    top: 47px;
+    right: -45px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 315px) {
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .worksButton {
+    margin-top: 1rem;
+    width: 102px;
+    height: 34px;
+    font-size: 0.8rem;
+  }
+
+  .square {
+    top: -45px;
+    left: 40px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .corner {
+    top: -30px;
+    left: -40px;
+    width: 30px;
+    height: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .halfball {
+    top: 35%;
+    left: -40px;
+    width: 15px;
+    height: 30px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+
+  .triangle {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    border-left: 20px solid transparent; 
+    border-right: 20px solid transparent; 
+    border-bottom: 20px solid rgba(254, 173, 44);
+  }
+
+  .redball {
+    top: 62%;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  .longball {
+    top: -20px;
+    right: -20px;
+    width: 70px;
+    height: 18px;
+    border-radius: 9px;
+  }
+
+  .ball {
+    top: 40px;
+    right: -35px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+}
+

@@ -2,7 +2,9 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
 
-import { ArticleTeasers } from "@/components/article-teasers";
+import { LatestReleases } from "@/components/latest-releases";
+import { CaseTeasers } from "@/components/case-teasers";
+import { EventTeasers } from "@/components/event-teasers";
 import { ContactForm } from "@/components/contact-form";
 import { ContactList } from "@/components/contact-list";
 import { LayoutProps } from "@/components/layout";
@@ -16,38 +18,64 @@ import {
   ArticleTeaser,
   validateAndCleanupArticleTeaser,
 } from "@/lib/zod/article-teaser";
+import {
+  CaseTeaser,
+  validateAndCleanupCaseTeaser,
+} from "@/lib/zod/case-teaser";
+import {
+  EventTeaser,
+  validateAndCleanupEventTeaser,
+} from "@/lib/zod/event-teaser";
 import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 
 import { Divider } from "@/ui/divider";
+import HeroBanner from "@/components/herobanner/heroBanner";
+import { Article } from "@/components/article";
+import OurClients from "@/components/OurClients";
+import WeAreWunder from "@/components/we-are-wunder";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
-  promotedArticleTeasers: ArticleTeaser[];
+  filteredPromotedArticleTeasers: ArticleTeaser[];
+  promotedCaseTeasers: CaseTeaser[];
+  promotedEventTeasers: EventTeaser[];
 }
 
 export default function IndexPage({
   frontpage,
-  promotedArticleTeasers,
+  filteredPromotedArticleTeasers,
+  promotedCaseTeasers,
+  promotedEventTeasers,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
 
   return (
     <>
       <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
-      <div className="grid gap-4">
-        {frontpage?.field_content_elements?.map((paragraph) => (
-          <Paragraph paragraph={paragraph} key={paragraph.id} />
-        ))}
-      </div>
-      <Divider className="max-w-4xl" />
-      <ContactForm />
-      <Divider className="max-w-4xl" />
-      <ArticleTeasers
-        articles={promotedArticleTeasers}
-        heading={t("promoted-articles")}
+      <HeroBanner />
+      <WeAreWunder />
+      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
+      <OurClients />
+      
+        {/* <div className="grid gap-4">
+          {frontpage?.field_content_elements?.map((paragraph) => (
+            <Paragraph paragraph={paragraph} key={paragraph.id} />
+          ))}
+        </div> */}
+        {/* <Divider className="max-w-4xl" /> */}
+        {/* <ContactForm />  */}
+        {/* <Divider className="max-w-4xl" /> */}
+
+      <LatestReleases
+        articles={filteredPromotedArticleTeasers}
+        heading={t("latest-releases-and-innovations")}
       />
-      <ContactList />
-      <LogoStrip />
+        {/*      <EventTeasers
+        events={promotedEventTeasers}
+        heading={t("coming-events")}
+      /> */}
+        {/*   <ContactList /> */}
+        {/*     <LogoStrip /> */}
     </>
   );
 }
@@ -68,23 +96,39 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
   const promotedArticleTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
   >("node--article", context, {
-    params: {
-      "filter[status]": 1,
-      "filter[langcode]": context.locale,
-      "filter[promote]": 1,
-      "fields[node--article]": "title,path,field_image,uid,created",
-      include: "field_image,uid",
-      sort: "-sticky,-created",
-      "page[limit]": 3,
-    },
+    params: getNodePageJsonApiParams("node--article").getQueryObject(),
+  })
+
+  const filteredPromotedArticleTeasers = promotedArticleTeasers
+    .filter((article) =>
+    article.field_tags?.some((tag) => tag.name === "Innovation")
+    )
+    .slice(0, 3)
+
+  const promotedCaseTeasers = await drupal.getResourceCollectionFromContext<
+    DrupalNode[]
+  >("node--case", context, {
+    params: getNodePageJsonApiParams("node--case").addPageLimit(4).getQueryObject(),
+  });
+
+  const promotedEventTeasers = await drupal.getResourceCollectionFromContext<
+    DrupalNode[]
+  >("node--event", context, {
+    params: getNodePageJsonApiParams("node--event").addPageLimit(3).addSort("field_date", "ASC").getQueryObject(),
   });
 
   return {
     props: {
       ...(await getCommonPageProps(context)),
       frontpage: frontpage ? validateAndCleanupFrontpage(frontpage) : null,
-      promotedArticleTeasers: promotedArticleTeasers.map((teaser) =>
+      filteredPromotedArticleTeasers: filteredPromotedArticleTeasers.map((teaser) =>
         validateAndCleanupArticleTeaser(teaser),
+      ),
+      promotedCaseTeasers: promotedCaseTeasers.map((teaser) =>
+        validateAndCleanupCaseTeaser(teaser),
+      ),
+      promotedEventTeasers: promotedEventTeasers.map((teaser) =>
+        validateAndCleanupEventTeaser(teaser),
       ),
     },
     revalidate: 60,

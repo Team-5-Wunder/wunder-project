@@ -1,0 +1,14 @@
+uuid: d5835273-d62b-41c4-bb81-603d2e19774b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wunder_content_editor
+  module:
+    - user
+id: user_add_role_action.wunder_content_editor
+label: 'Add the Wunder content editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: wunder_content_editor
