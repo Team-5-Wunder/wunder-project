@@ -24,7 +24,7 @@ export function MenuContainer({
     <div
       className={clsx(
         css.mainMenu,
-        "relative mx-auto max-w-6xl font-inter tracking-wide lg:hidden",
+        "relative mx-auto max-w-6xl font-inter tracking-wide",
         !isOpen && "hidden",
       )}
     >
@@ -72,7 +72,7 @@ export function MenuToggle({
       aria-label={t("toggle-menu")}
       aria-expanded={isOpen ? "true" : "false"}
     >
-      <ToggleIcon className="inline h-6 w-6 lg:hidden" aria-hidden="true" />
+      <ToggleIcon className="inline h-6 w-6" aria-hidden="true" />
     </button>
   );
 }

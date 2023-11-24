@@ -1,8 +1,0 @@
-uuid: 81694b0e-8e67-41d2-a3fb-0f944eac3f69
-langcode: en
-status: true
-dependencies: {  }
-name: Technology
-vid: technology
-description: 'Use to group cases.'
-weight: 0

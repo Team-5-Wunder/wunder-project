@@ -5,9 +5,6 @@ import { useEffectOnce } from "@/lib/hooks/use-effect-once";
 import { useEventListener } from "@/lib/hooks/use-event-listener";
 import { useOnClickOutside } from "@/lib/hooks/use-on-click-outside";
 import { Menu, MenuItem as MenuItemType } from "@/lib/zod/menu";
-import Link from "next/link";
-import Chevron from "@/styles/icons/chevron-down.svg";
-import "./main-menu.module.css"
 
 import {
   MenuBack,
@@ -28,10 +25,6 @@ interface MainMenuProps {
   menu: Menu;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-interface MenuExpandedProps {
-  menu: Menu;
 }
 
 export function MainMenu({ menu, isOpen, setIsOpen }: MainMenuProps) {
@@ -192,69 +185,6 @@ export function MainMenu({ menu, isOpen, setIsOpen }: MainMenuProps) {
         </MenuList>
       </MenuRoot>
     </MenuContainer>
-  );
-}
-
-export function MenuExpanded({ menu }: MenuExpandedProps) {
-  const [activeSubmenu, setActiveSubmenu] = useState<MenuItemType["id"] | null>(
-    null,
-  );
-
-  return (
-    <div className="hidden lg:block">
-      <nav>
-        <ul className="flex flex-row">
-          {menu.map((item) => (
-            <li
-              key={item.id}
-              onMouseEnter={() => setActiveSubmenu(item.id)}
-              onMouseLeave={() => setActiveSubmenu(null)}
-            >
-              <Link
-                href={item.url}
-                onClick={() => {
-                  setActiveSubmenu(item.id);
-                }}
-              >
-                <div className="flex flex-row ml-4 text-base hover:underline">
-                  <span>
-                    {item.title}
-                    {item.items && item.items.length > 0 && (
-                      <Chevron className="h-6 w-6 inline-block" />
-                    )}
-                  </span>
-                </div>
-              </Link>
-              {item.items && item.items.length > 0 && (
-                <div
-                  className={`absolute z-100 ${
-                    activeSubmenu === item.id ? "block" : "hidden"
-                  }`}
-                >
-                  <div className="w-auto px-4 pt-2 pb-4 bg-primary-600 text-white shadow-lg">
-                    <ul className="grid grid-cols-1 gap-4">
-                      {item.items.map((subitem) => (
-                        <li key={subitem.id}>
-                          <Link
-                            href={subitem.url}
-                            className="hover:underline"
-                            onClick={() => {
-                              setActiveSubmenu(null);
-                            }}
-                          >
-                            {subitem.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
   );
 }
 
