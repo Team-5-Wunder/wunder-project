@@ -55,26 +55,26 @@ export default function IndexPage({
       <HeroBanner />
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
-      
-        {/* <div className="grid gap-4">
-          {frontpage?.field_content_elements?.map((paragraph) => (
-            <Paragraph paragraph={paragraph} key={paragraph.id} />
-          ))}
-        </div> */}
-        {/* <Divider className="max-w-4xl" /> */}
-        {/* <ContactForm />  */}
-        {/* <Divider className="max-w-4xl" /> */}
+
+      {/*    <div className="grid gap-4">
+        {frontpage?.field_content_elements?.map((paragraph) => (
+          <Paragraph paragraph={paragraph} key={paragraph.id} />
+        ))}
+      </div> */}
+      {/* <Divider className="max-w-4xl" /> */}
+      {/* <ContactForm />  */}
+      {/* <Divider className="max-w-4xl" /> */}
 
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
         heading={t("latest-releases-and-innovations")}
       />
-        {/*      <EventTeasers
+      {/*      <EventTeasers
         events={promotedEventTeasers}
         heading={t("coming-events")}
       /> */}
-        {/*   <ContactList /> */}
-        {/*     <LogoStrip /> */}
+      <ContactList />
+      {/*     <LogoStrip /> */}
       {/* <OurClients /> */}
     </>
   );
@@ -97,32 +97,37 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
     DrupalNode[]
   >("node--article", context, {
     params: getNodePageJsonApiParams("node--article").getQueryObject(),
-  })
+  });
 
   const filteredPromotedArticleTeasers = promotedArticleTeasers
-    .filter((article) =>
-    article.field_tags?.some((tag) => tag.name === "Innovation")
+    .filter(
+      (article) => article.field_tags?.some((tag) => tag.name === "Innovation"),
     )
-    .slice(0, 3)
+    .slice(0, 3);
 
   const promotedCaseTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
   >("node--case", context, {
-    params: getNodePageJsonApiParams("node--case").addPageLimit(4).getQueryObject(),
+    params: getNodePageJsonApiParams("node--case")
+      .addPageLimit(4)
+      .getQueryObject(),
   });
 
   const promotedEventTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
   >("node--event", context, {
-    params: getNodePageJsonApiParams("node--event").addPageLimit(3).addSort("field_date", "ASC").getQueryObject(),
+    params: getNodePageJsonApiParams("node--event")
+      .addPageLimit(3)
+      .addSort("field_date", "ASC")
+      .getQueryObject(),
   });
 
   return {
     props: {
       ...(await getCommonPageProps(context)),
       frontpage: frontpage ? validateAndCleanupFrontpage(frontpage) : null,
-      filteredPromotedArticleTeasers: filteredPromotedArticleTeasers.map((teaser) =>
-        validateAndCleanupArticleTeaser(teaser),
+      filteredPromotedArticleTeasers: filteredPromotedArticleTeasers.map(
+        (teaser) => validateAndCleanupArticleTeaser(teaser),
       ),
       promotedCaseTeasers: promotedCaseTeasers.map((teaser) =>
         validateAndCleanupCaseTeaser(teaser),
