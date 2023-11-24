@@ -21,9 +21,9 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
   return (
     <Link
       href={article.path.alias}
-      className="relative grid h-full rounded border border-finnishwinter bg-white p-4 transition-all hover:shadow-md"
+      className="pb-20 relative grid h-full rounded border border-finnishwinter bg-white p-4 transition-all hover:shadow-md"
     >
-      <div className="flex flex-col md:flex-row -mx-4 ">
+      <div className="flex flex-col md:flex-row -mx-4  ">
         <div className={`w-full ${imageClassName}`}>
           {article.field_image && (
             <Image
