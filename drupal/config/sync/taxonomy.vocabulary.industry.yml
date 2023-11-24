@@ -1,8 +1,0 @@
-uuid: 14514968-378e-4127-b04a-2ed15e55dc41
-langcode: en
-status: true
-dependencies: {  }
-name: Industry
-vid: industry
-description: 'Use to group cases.'
-weight: 0
