@@ -56,11 +56,13 @@ export default function IndexPage({
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
 
-      {/*    <div className="grid gap-4">
-        {frontpage?.field_content_elements?.map((paragraph) => (
-          <Paragraph paragraph={paragraph} key={paragraph.id} />
-        ))}
-      </div> */}
+      <OurClients />
+
+      {/* <div className="grid gap-4">
+          {frontpage?.field_content_elements?.map((paragraph) => (
+            <Paragraph paragraph={paragraph} key={paragraph.id} />
+          ))}
+        </div> */}
       {/* <Divider className="max-w-4xl" /> */}
       {/* <ContactForm />  */}
       {/* <Divider className="max-w-4xl" /> */}
@@ -73,9 +75,9 @@ export default function IndexPage({
         events={promotedEventTeasers}
         heading={t("coming-events")}
       /> */}
-      <ContactList />
+
+      {/*   <ContactList /> */}
       {/*     <LogoStrip /> */}
-      {/* <OurClients /> */}
     </>
   );
 }
