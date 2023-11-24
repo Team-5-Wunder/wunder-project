@@ -43,17 +43,19 @@ export function ContactList() {
   const { t } = useTranslation();
 
   return (
-    <section className="px-10">
-      <h2 className="text-heading-sm font-bold md:text-heading-md text-primary-600 ">
+    <>
+      <h2 className="text-center pb-5 text-heading-sm font-bold md:text-heading-md text-primary-600 ">
         {t("contact")}
       </h2>
-      <div className="grid auto-rows-max grid-cols-1 justify-items-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-3">
+      <div className=" mt-10  sm:px-16 flex flex-col"></div>
+
+      <div className="grid auto-rows-max grid-cols-1 justify-items-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {contacts?.map(({ id, image, name, title, phoneNumber, email }) => {
           const [firstName, lastName] = name.split(" ");
 
           return (
             <div key={id} className="relative">
-              <li className="grid justify-items-center p-4 border border-finnishwinter rounded-lg relative h-[450px] w-[350px] overflow-hidden">
+              <li className="grid justify-items-center p-4 border border-finnishwinter rounded-lg relative h-[450px] w-[330px] overflow-hidden">
                 <div className="absolute top-0 left-5 pt-5">
                   <WunderW />
                 </div>
@@ -100,6 +102,6 @@ export function ContactList() {
           );
         })}
       </div>
-    </section>
+    </>
   );
 }

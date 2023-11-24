@@ -55,6 +55,15 @@ export default function IndexPage({
       <HeroBanner />
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
+      <Divider className="max-w-4xl" />
+      <OurClients />
+      <LatestReleases
+        articles={filteredPromotedArticleTeasers}
+        heading={t("Latest releases")}
+      />
+      <Divider className="max-w-4xl" />
+      <ContactList />
+      <Divider className="max-w-4xl" />
 
       <OurClients />
 
@@ -67,16 +76,10 @@ export default function IndexPage({
       {/* <ContactForm />  */}
       {/* <Divider className="max-w-4xl" /> */}
 
-      <LatestReleases
-        articles={filteredPromotedArticleTeasers}
-        heading={t("latest-releases-and-innovations")}
-      />
       {/*      <EventTeasers
         events={promotedEventTeasers}
         heading={t("coming-events")}
       /> */}
-
-      {/*   <ContactList /> */}
       {/*     <LogoStrip /> */}
     </>
   );
