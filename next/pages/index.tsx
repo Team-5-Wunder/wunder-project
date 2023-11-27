@@ -62,10 +62,9 @@ export default function IndexPage({
         heading={t("Latest releases")}
       />
       <Divider className="max-w-4xl" />
-      <ContactList />
-      <Divider className="max-w-4xl" />
-
       <OurClients />
+      <Divider className="max-w-4xl" />
+      <ContactList />
 
       {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (

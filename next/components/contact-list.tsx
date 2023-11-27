@@ -13,7 +13,7 @@ interface Contact {
 
 const contacts: Contact[] = [
   {
-    image: "/expert_resized_1.jpeg",
+    image: "/expert_1.png",
     name: "Markus Virtanen",
     title: "Chat GPT in Drupal projects.",
     phoneNumber: "",
@@ -21,7 +21,7 @@ const contacts: Contact[] = [
     id: 1,
   },
   {
-    image: "/expert_resized_2.jpeg",
+    image: "/expert_2.png",
     name: "Mikko Laitinen",
     title: "Headless future with Drupal and NextJs.",
     phoneNumber: "",
@@ -29,7 +29,7 @@ const contacts: Contact[] = [
     id: 3,
   },
   {
-    image: "/expert_resized_3.jpeg",
+    image: "/expert_3.png",
     name: "Janne Koponen",
     title: "How to grow a beautiful beard.",
     phoneNumber: "",
@@ -43,10 +43,11 @@ export function ContactList() {
 
   return (
     <>
-      <h2 className="text-center pb-5 text-heading-sm font-bold md:text-heading-md text-primary-600 ">
-        {t("contact")}
-      </h2>
-      <div className=" mt-10  sm:px-16 flex flex-col"></div>
+      <div className=" mt-10  sm:px-16 flex flex-col">
+        <h2 className=" pb-5 text-heading-sm font-bold md:text-heading-md text-primary-600 ">
+          Expert talks
+        </h2>
+      </div>
 
       <div className="max-w-[1664px] grid auto-rows-max grid-cols-1 justify-items-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {contacts?.map(({ id, image, name, title, phoneNumber, email }) => {
@@ -63,8 +64,8 @@ export function ContactList() {
                     <NextImage
                       src={image}
                       alt={t("image-of", { name })}
-                      width={200}
-                      height={200}
+                      width={160}
+                      height={160}
                     />
                   </div>
                 </div>
