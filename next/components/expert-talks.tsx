@@ -38,7 +38,7 @@ const contacts: Contact[] = [
   },
 ];
 
-export function ContactList() {
+export function ExpertTalks() {
   const { t } = useTranslation();
 
   return (
