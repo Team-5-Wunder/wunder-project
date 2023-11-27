@@ -4,17 +4,17 @@ const siteConfig = {
     en: {
       name: "English",
       path: "/",
-      langcode: "en",
+      langcode: "EN",
     },
     fi: {
       name: "Suomi",
       path: "/fi",
-      langcode: "fi",
+      langcode: "FI",
     },
     sv: {
       name: "Svenska",
       path: "/sv",
-      langcode: "sv",
+      langcode: "SV",
     },
   },
 };

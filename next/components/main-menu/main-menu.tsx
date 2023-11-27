@@ -196,7 +196,7 @@ export function MainMenu({ menu, isOpen, setIsOpen }: MainMenuProps) {
 }
 
 export function MenuExpanded({ menu }: MenuExpandedProps) {
-  const [activeSubmenu, setActiveSubmenu] = useState<MenuItemType["id"] | null>(
+  const [activeMenu, setActiveMenu] = useState<MenuItemType["id"] | null>(
     null,
   );
 
@@ -207,13 +207,13 @@ export function MenuExpanded({ menu }: MenuExpandedProps) {
           {menu.map((item) => (
             <li
               key={item.id}
-              onMouseEnter={() => setActiveSubmenu(item.id)}
-              onMouseLeave={() => setActiveSubmenu(null)}
+              onMouseEnter={() => setActiveMenu(item.id)}
+              onMouseLeave={() => setActiveMenu(null)}
             >
               <Link
                 href={item.url}
                 onClick={() => {
-                  setActiveSubmenu(item.id);
+                  setActiveMenu(item.id);
                 }}
               >
                 <div className="flex flex-row ml-4 text-base hover:underline">
@@ -228,21 +228,24 @@ export function MenuExpanded({ menu }: MenuExpandedProps) {
               {item.items && item.items.length > 0 && (
                 <div
                   className={`absolute z-100 ${
-                    activeSubmenu === item.id ? "block" : "hidden"
+                    activeMenu === item.id ? "block" : "hidden"
                   }`}
                 >
-                  <div className="w-auto px-4 pt-2 pb-4 bg-primary-600 text-white shadow-lg">
-                    <ul className="grid grid-cols-1 gap-4">
+                  <div className="shadow-lg w-fit border border-finnishwinter bg-mischka">
+                    <ul>
                       {item.items.map((subitem) => (
                         <li key={subitem.id}>
                           <Link
                             href={subitem.url}
-                            className="hover:underline"
+                            className="block p-3 hover:bg-primary-50"
                             onClick={() => {
-                              setActiveSubmenu(null);
+                              setActiveMenu(null);
                             }}
                           >
                             {subitem.title}
+                            {subitem.items && subitem.items.length > 0 && (
+                              <Chevron className="h-6 w-6 inline-block -rotate-90" />
+                            )}
                           </Link>
                         </li>
                       ))}
