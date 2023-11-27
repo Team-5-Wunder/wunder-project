@@ -16,7 +16,7 @@ interface LatestArticlesProps {
 export function ArticleTeasers({ articles, heading }: LatestArticlesProps) {
   const { t } = useTranslation();
   return (
-    <>
+    <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex">
       <h2 className="text-heading-sm font-bold md:text-heading-md">
         {heading}
       </h2>
@@ -27,6 +27,6 @@ export function ArticleTeasers({ articles, heading }: LatestArticlesProps) {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

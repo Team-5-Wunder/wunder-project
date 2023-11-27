@@ -1,7 +1,6 @@
 import NextImage from "next/image";
 import { useTranslation } from "next-i18next";
 import WunderW from "@/styles/icons/wunder-w.svg";
-import Arrows from "@/styles/icons/arrows.svg";
 
 interface Contact {
   image: string;
@@ -49,7 +48,7 @@ export function ContactList() {
       </h2>
       <div className=" mt-10  sm:px-16 flex flex-col"></div>
 
-      <div className="grid auto-rows-max grid-cols-1 justify-items-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+      <div className="max-w-[1664px] grid auto-rows-max grid-cols-1 justify-items-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {contacts?.map(({ id, image, name, title, phoneNumber, email }) => {
           const [firstName, lastName] = name.split(" ");
 
@@ -69,17 +68,18 @@ export function ContactList() {
                     />
                   </div>
                 </div>
-
-                <p className="text-center">
-                  <span>{firstName}</span>
-                  <br /> {lastName}
-                </p>
+                <div className=" w-[280px] text-right absolute pt-20 mt-20">
+                  <p>
+                    <span>{firstName}</span>
+                    <br /> {lastName}
+                  </p>
+                </div>
 
                 <p className="font-bold max-w-[200px] text-primary-600 text-center">
                   {title}
                 </p>
                 <div className="absolute bottom-4 right-4 flex items-center">
-                  <p className="text-primary-600 pr-2">Read</p> <Arrows />
+                  <p className="text-primary-600 pr-2">Read</p>
                 </div>
                 <a
                   href={`tel:${phoneNumber}`}
