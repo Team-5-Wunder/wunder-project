@@ -6,7 +6,7 @@ import { LatestReleases } from "@/components/latest-releases";
 import { CaseTeasers } from "@/components/case-teasers";
 import { EventTeasers } from "@/components/event-teasers";
 import { ContactForm } from "@/components/contact-form";
-import { ExpertTalks } from "@/components/contact-list";
+import { ExpertTalks } from "@/components/expert-talks";
 import { LayoutProps } from "@/components/layout";
 import { LogoStrip } from "@/components/logo-strip";
 import { Meta } from "@/components/meta";
@@ -55,17 +55,14 @@ export default function IndexPage({
       <HeroBanner />
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
-      <Divider className="max-w-4xl" />
+
       <OurClients />
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
       />
-      <Divider className="max-w-4xl" />
-      <ExpertTalks />
-      <Divider className="max-w-4xl" />
 
-      <OurClients />
+      <ExpertTalks />
 
       {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
