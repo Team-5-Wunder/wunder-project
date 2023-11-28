@@ -52,11 +52,13 @@ export function LanguageSwitcher() {
               return (
                 <li key={l}>
                   <Link
-                    className="block p-3 hover:bg-primary-50"
+                    className="block p-3 hover:bg-primary-50 group"
                     locale={l}
                     href={path}
                   >
-                    {name}
+                    <div className="group-hover:translate-x-2 transition-all duration-200 ease-in-out">
+                      {name}
+                    </div>
                   </Link>
                 </li>
               );

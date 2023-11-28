@@ -220,7 +220,11 @@ export function MenuExpanded({ menu }: MenuExpandedProps) {
                   <span>
                     {item.title}
                     {item.items && item.items.length > 0 && (
-                      <Chevron className="h-6 w-6 inline-block" />
+                      <Chevron
+                        className={`inline-block h-6 w-6 transition-all duration-200 ease-in-out ${
+                          activeMenu === item.id ? "rotate-180" : ""
+                        }`}
+                      />
                     )}
                   </span>
                 </div>
@@ -237,15 +241,17 @@ export function MenuExpanded({ menu }: MenuExpandedProps) {
                         <li key={subitem.id}>
                           <Link
                             href={subitem.url}
-                            className="block p-3 hover:bg-primary-50"
+                            className="block p-3 hover:bg-primary-50 group"
                             onClick={() => {
                               setActiveMenu(null);
                             }}
                           >
-                            {subitem.title}
-                            {subitem.items && subitem.items.length > 0 && (
-                              <Chevron className="h-6 w-6 inline-block -rotate-90" />
-                            )}
+                            <div className="group-hover:translate-x-2 transition-all duration-200 ease-in-out">
+                              {subitem.title}
+                              {subitem.items && subitem.items.length > 0 && (
+                                <Chevron className="h-6 w-6 inline-block -rotate-90" />
+                              )}
+                            </div>
                           </Link>
                         </li>
                       ))}
