@@ -6,7 +6,7 @@ const HeroBanner = () => {
   return (
     <div className={style.heroBox}>
       <div className={style.leftPart}>
-        <div className={style.titleAndButton}>
+        <div className={style.titleAndShapes}>
           <div className={style.square}></div>
           <div className={style.longball}></div>
           <div className={style.ball}></div>
