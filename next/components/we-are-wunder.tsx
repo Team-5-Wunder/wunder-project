@@ -10,7 +10,7 @@ const WeAreWunder = () => {
     <div className="w-screen flex justify-center">
       <div className="min-h-[30vh] max-w-[1664px] mt-20 px-6 sm:px-16 lg:flex">
         <div className="lg:w-1/2">
-          <div className="mb-10 text-primary-600 text-heading-lg font-bold">
+          <div className="mb-10 text-primary-600 text-heading-lg font-overpass font-bold">
           {t("we-are-wunder")}
           </div>
         </div>

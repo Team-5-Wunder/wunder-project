@@ -1,10 +1,10 @@
 .heroBox {
-  background: linear-gradient(to right, rgba(51, 36, 69), rgba(115, 72, 168));
+  background: linear-gradient(to right, #333, rgba(115, 72, 168));
   width: 100vw;
   height: 60vh;
   display: flex;
-  border-top-left-radius: 150px;
-  border-bottom-right-radius: 150px;
+  // border-top-left-radius: 150px;
+  // border-bottom-right-radius: 150px;
   justify-content: flex-end;
   align-items: flex-end;
   overflow: hidden;
@@ -23,7 +23,7 @@
   color: white;
 }
 
-.titleAndButton {
+.titleAndShapes {
   position: absolute;
   top: 33%;
   right: -50px;
@@ -31,18 +31,16 @@
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 3.7rem;
   font-weight: bold;
 }
 
-.worksButton {
-  margin-top: 1rem;
-  background-color: rgba(91, 55, 191);
-  // background-color: white;
-  // color: rgba(91, 55, 191);
-  width: 150px;
-  height: 50px;
-}
+// .worksButton {
+//   margin-top: 1rem;
+//   background-color: rgba(91, 55, 191);
+//   width: 150px;
+//   height: 50px;
+// }
 
 .rightPart {
   position: relative;
@@ -69,7 +67,7 @@
   border-radius: 15px;
   background-color: rgba(53, 211, 213);
   box-shadow: rgba(53, 211, 213) 0 0 20px;
-  animation: longballMove 4s linear infinite alternate;
+  animation: longballMove 2s linear infinite alternate;
 }
 
 @keyframes longballMove {
@@ -87,7 +85,7 @@
   border-radius: 50%;
   background-color: rgba(53, 211, 213);
   box-shadow: rgba(53, 211, 213) 0 0 20px;
-  animation: ballMove 4s linear infinite alternate;
+  animation: ballMove 2s linear infinite alternate;
 }
 
 @keyframes ballMove {
@@ -100,12 +98,12 @@
 .square {
   position: absolute;
   top: -120px;
-  left: 100px;
+  left: 110px;
   width: 57px;
   height: 57px;
   background-color: rgba(11, 100, 82);
   box-shadow: rgba(11, 100, 82) 0 0 20px;
-  animation: squareMove 4s linear infinite alternate;
+  animation: squareMove 2s linear infinite alternate;
 }
 
 @keyframes squareMove {
@@ -116,14 +114,14 @@
 
 .redball {
   position: absolute;
-  top: 72%;
-  right: 95px;
+  top: 220px;
+  right: 105px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: rgba(255, 112, 96);
   box-shadow: rgba(255, 112, 96) 0 0 20px;
-  animation: redballMove 4s linear infinite alternate;
+  animation: redballMove 2s linear infinite alternate;
 }
 
 @keyframes redballMove {
@@ -134,7 +132,7 @@
 
 .halfball {
   position: absolute;
-  top: 35%;
+  top: 110px;
   left: -130px;
   width: 33px;
   height: 66px;
@@ -142,7 +140,7 @@
   border-bottom-left-radius: 33px;
   background-color: rgba(186, 162, 255);
   box-shadow: rgba(186, 162, 255) 0 0 20px;
-  animation: halfballMove 4s linear infinite alternate;
+  animation: halfballMove 2s linear infinite alternate;
 }
 
 @keyframes halfballMove {
@@ -160,9 +158,9 @@
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
-  background-color: #9E005D;
-  box-shadow: #9E005D 0 0 20px;
-  animation: cornerMove 4s linear infinite alternate;
+  background-color: rgba(254, 173, 44);
+  box-shadow: rgba(254, 173, 44) 0 0 20px;
+  animation: cornerMove 2s linear infinite alternate;
 }
 
 @keyframes cornerMove {
@@ -172,28 +170,24 @@
 }
 
 .triangle {
-  margin-top: 1.8rem;
-  margin-left: 3rem;
+  position: absolute;
+  top: 230px;
+  left: 40px;
   width: 0;
   height: 0;
-  border-left: 40px solid transparent; 
-  border-right: 40px solid transparent; 
-  border-bottom: 40px solid rgba(254, 173, 44);
-  // animation: cornerMove 4s linear infinite alternate;
+  border-left: 45px solid transparent; 
+  border-right: 45px solid transparent; 
+  border-bottom: 45px solid #9E005D;
+  animation: triangleMove 2s linear infinite alternate;
 }
 
 @keyframes triangleMove {
   to {
-    margin-top: 2rem;
+    transform: translate(0, -20%);
   }
 }
 
 @media (max-width: 1300px) {
-
-  .heroBox {
-    border-top-left-radius: 120px;
-    border-bottom-right-radius: 120px;
-  }
 
   .leftPart {
     width: 40%;
@@ -208,12 +202,12 @@
   }
 
   .title {
-    font-size: 2.5rem;
+    font-size: 2.7rem;
   }
 
   .square {
     top: -100px;
-    left: 70px;
+    left: 50px;
     width: 50px;
     height: 50px;
   }
@@ -229,8 +223,8 @@
   }
 
   .halfball {
-    top: 35%;
-    left: -110px;
+    top: 70px;
+    left: -100px;
     width: 25px;
     height: 50px;
     border-top-left-radius: 25px;
@@ -238,15 +232,16 @@
   }
 
   .triangle {
-    margin-top: 2rem;
-    margin-left: 3rem;
+    position: absolute;
+    top: 175px;
+    left: 25px;
     border-left: 35px solid transparent; 
     border-right: 35px solid transparent; 
-    border-bottom: 35px solid rgba(254, 173, 44);
+    border-bottom: 35px solid #9E005D;
   }
 
   .redball {
-    top: 64%;
+    top: 160px;
     right: 80px;
     width: 35px;
     height: 35px;
@@ -272,11 +267,6 @@
 
 @media (max-width: 1075px) {
 
-  .heroBox {
-    border-top-left-radius: 100px;
-    border-bottom-right-radius: 100px;
-  }
-
   .leftPart {
     width: 35%;
   }
@@ -296,8 +286,8 @@
   }
 
   .square {
-    top: -80px;
-    left: 55px;
+    top: -70px;
+    left: 35px;
     width: 40px;
     height: 40px;
   }
@@ -313,7 +303,7 @@
   }
 
   .halfball {
-    top: 35%;
+    top: 60px;
     left: -75px;
     width: 20px;
     height: 40px;
@@ -322,15 +312,16 @@
   }
 
   .triangle {
-    margin-top: 2rem;
-    margin-left: 3rem;
+    position: absolute;
+    top: 135px;
+    left: 25px;
     border-left: 28px solid transparent; 
     border-right: 28px solid transparent; 
-    border-bottom: 28px solid rgba(254, 173, 44);
+    border-bottom: 28px solid #9E005D;
   }
 
   .redball {
-    top: 65%;
+    top: 120px;
     right: 60px;
     width: 30px;
     height: 30px;
@@ -356,25 +347,17 @@
 
 @media (max-width: 950px) {
 
-  .heroBox {
-    border-top-left-radius: 80px;
-    border-bottom-right-radius: 80px;
-  }
-
-  .heroBox {
-    border-top-left-radius: 100px;
-    border-bottom-right-radius: 100px;
-  }
-
   .leftPart {
     width: 100%;
+    height: 100%;
+    justify-content: center;
     align-items: center;
   }
 
-  .titleAndButton {
+  .titleAndShapes {
     position: relative;
-    top: 10%;
-    right: -30px;
+    top: initial;
+    right: initial;
   }
 
   .title {
@@ -386,7 +369,7 @@
   }
 
   .square {
-    top: -100px;
+    top: -90px;
     left: 100px;
     width: 50px;
     height: 50px;
@@ -412,15 +395,16 @@
   }
 
   .triangle {
-    margin-top: 2rem;
-    margin-left: 3rem;
+    position: absolute;
+    top: 195px;
+    left: 25px;
     border-left: 35px solid transparent; 
     border-right: 35px solid transparent; 
-    border-bottom: 35px solid rgba(254, 173, 44);
+    border-bottom: 35px solid #9E005D;
   }
 
   .redball {
-    top: 72%;
+    top: 180px;
     right: 120px;
     width: 35px;
     height: 35px;
@@ -457,15 +441,15 @@
   }
 
   .square {
-    top: -100px;
-    left: 70px;
+    top: -80px;
+    left: 50px;
     width: 50px;
     height: 50px;
   }
 
   .corner {
-    top: -70px;
-    left: -100px;
+    top: -60px;
+    left: -90px;
     width: 50px;
     height: 50px;
     border-top-left-radius: 25px;
@@ -474,8 +458,8 @@
   }
 
   .halfball {
-    top: 35%;
-    left: -110px;
+    top: 70px;
+    left: -90px;
     width: 25px;
     height: 50px;
     border-top-left-radius: 25px;
@@ -483,15 +467,16 @@
   }
 
   .triangle {
-    margin-top: 2rem;
-    margin-left: 3rem;
+    position: absolute;
+    top: 155px;
+    left: 25px;
     border-left: 35px solid transparent; 
     border-right: 35px solid transparent; 
-    border-bottom: 35px solid rgba(254, 173, 44);
+    border-bottom: 35px solid #9E005D;
   }
 
   .redball {
-    top: 62%;
+    top: 140px;
     right: 80px;
     width: 35px;
     height: 35px;
@@ -507,7 +492,7 @@
   }
 
   .ball {
-    top: 95px;
+    top: 70px;
     right: -65px;
     width: 30px;
     height: 30px;
@@ -522,8 +507,8 @@
   }
 
   .square {
-    top: -90px;
-    left: 60px;
+    top: -80px;
+    left: 50px;
     width: 50px;
     height: 50px;
   }
@@ -539,7 +524,7 @@
   }
 
   .halfball {
-    top: 35%;
+    top: 60px;
     left: -85px;
     width: 25px;
     height: 50px;
@@ -548,15 +533,16 @@
   }
 
   .triangle {
-    margin-top: 2rem;
-    margin-left: 3rem;
+    position: absolute;
+    top: 125px;
+    left: 25px;
     border-left: 35px solid transparent; 
     border-right: 35px solid transparent; 
-    border-bottom: 35px solid rgba(254, 173, 44);
+    border-bottom: 35px solid #9E005D;
   }
 
   .redball {
-    top: 62%;
+    top: 120px;
     right: 60px;
     width: 35px;
     height: 35px;
@@ -572,10 +558,10 @@
   }
 
   .ball {
-    top: 90px;
-    right: -55px;
-    width: 30px;
-    height: 30px;
+    top: 50px;
+    right: -75px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
   }
 }
@@ -601,7 +587,7 @@
 
   .square {
     top: -70px;
-    left: 60px;
+    left: 50px;
     width: 35px;
     height: 35px;
   }
@@ -617,7 +603,7 @@
   }
 
   .halfball {
-    top: 35%;
+    top: 60px;
     left: -65px;
     width: 20px;
     height: 40px;
@@ -626,16 +612,17 @@
   }
 
   .triangle {
-    margin-top: 2rem;
-    margin-left: 3rem;
+    position: absolute;
+    top: 125px;
+    left: 15px;
     border-left: 25px solid transparent; 
     border-right: 25px solid transparent; 
-    border-bottom: 25px solid rgba(254, 173, 44);
+    border-bottom: 25px solid #9E005D;
   }
 
   .redball {
-    top: 62%;
-    right: 40px;
+    top: 110px;
+    right: 50px;
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -695,7 +682,7 @@
   }
 
   .halfball {
-    top: 35%;
+    top: 50px;
     left: -45px;
     width: 15px;
     height: 30px;
@@ -704,16 +691,17 @@
   }
 
   .triangle {
-    margin-top: 1rem;
-    margin-left: 3rem;
+    position: absolute;
+    top: 105px;
+    left: 25px;
     border-left: 20px solid transparent; 
     border-right: 20px solid transparent; 
-    border-bottom: 20px solid rgba(254, 173, 44);
+    border-bottom: 20px solid #9E005D;
   }
 
   .redball {
-    top: 62%;
-    right: 30px;
+    top: 95px;
+    right: 40px;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -767,7 +755,7 @@
   }
 
   .halfball {
-    top: 35%;
+    top: 40px;
     left: -40px;
     width: 15px;
     height: 30px;
@@ -776,16 +764,17 @@
   }
 
   .triangle {
-    margin-top: 1rem;
-    margin-left: 2rem;
+    position: absolute;
+    top: 75px;
+    left: 25px;
     border-left: 20px solid transparent; 
     border-right: 20px solid transparent; 
-    border-bottom: 20px solid rgba(254, 173, 44);
+    border-bottom: 20px solid #9E005D;
   }
 
   .redball {
-    top: 62%;
-    right: 10px;
+    top: 70px;
+    right: 35px;
     width: 20px;
     height: 20px;
     border-radius: 50%;
