@@ -15,9 +15,36 @@ interface LatestCasesProps {
 
 export function CaseTeasers({ cases, heading }: LatestCasesProps) {
   const { t } = useTranslation();
+
+  // Intersection Observer callback function
+  const handleIntersection = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add the animation class when the element is in view
+            const animatedElementId = entry.target.getAttribute('id');
+            if (animatedElementId === 'leftBox') entry.target.classList.add('animate-[slideUp_0.3s_ease-in_forwards]');
+            if (animatedElementId === 'casesBox') entry.target.classList.add('animate-[slideUp_0.3s_ease-in_0.3s_forwards]');
+            observer.unobserve(entry.target);
+        }
+    });
+  };
+
+  // Create an Intersection Observer
+  let observer = null;
+  if (typeof window !== "undefined"){
+    observer = new IntersectionObserver(handleIntersection);
+    // Target the element to be animated
+    const animatedLeftBox = document.getElementById('leftBox');
+    const animatedCasesBox = document.getElementById('casesBox');
+    // Observe the target element
+    observer.observe(animatedLeftBox);
+    observer.observe(animatedCasesBox);
+  }
+
+
   return (
-    <div className="w-screen flex justify-center">
-      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex">
+    <div id="caseTeasers" className="w-screen flex justify-center">
+      <div className="mt-20 lg:mt-0 w-full max-w-[1664px] px-6 sm:px-16 flex">
 
         <div className="w-full flex flex-wrap">
 
@@ -25,25 +52,27 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
             <h2 className="mb-10 text-primary-600 text-heading-lg font-bold">
               {heading}
             </h2>
-          
-            <div className="2xl:w-4/5 mb-4 text-steelgray text-md">
-              <p className="mb-2">We help our clients to improve their digital business, competitiveness and customer experience.</p> 
-              <p>Shaping the digital experiences together with our clients. Take a look at some of our success stories.</p>
+
+            <div id="leftBox" className="mt-20 opacity-0">
+              <div className="2xl:w-4/5 mb-4 text-steelgray text-md">
+                <p className="mb-2">We help our clients to improve their digital business, competitiveness and customer experience.</p> 
+                <p>Shaping the digital experiences together with our clients. Take a look at some of our success stories.</p>
+              </div>
+              {cases?.length && (
+                <Link href="/cases"
+                  className={clsx(
+                      buttonVariants({ variant: "secondary" }),
+                      "text-base mr-4 mt-4 inline-flex px-5 py-3 h-fit w-fit",
+                    )}>
+                  <div>
+                    {t("all-works")}
+                  </div>
+                </Link>
+              )}
             </div>
-            {cases?.length && (
-              <Link href="/cases"
-                className={clsx(
-                    buttonVariants({ variant: "secondary" }),
-                    "text-base mr-4 mt-4 inline-flex px-5 py-3 h-fit w-fit",
-                  )}>
-                <div>
-                  {t("all-works")}
-                </div>
-              </Link>
-            )}
           </div>
 
-          <ul className="lg:w-1/2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
+          <ul id="casesBox" className="mt-20 opacity-0 lg:w-1/2 pt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
             {cases?.map((client) => (
               <li key={client.id}>
                 <CaseTeaser client={client} />
