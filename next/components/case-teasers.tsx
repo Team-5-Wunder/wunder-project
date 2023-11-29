@@ -44,7 +44,7 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
 
   return (
     <div id="caseTeasers" className="w-screen flex justify-center">
-      <div className="w-full max-w-[1664px] px-6 sm:px-16 flex">
+      <div className="mt-20 lg:mt-0 w-full max-w-[1664px] px-6 sm:px-16 flex">
 
         <div className="w-full flex flex-wrap">
 
