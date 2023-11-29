@@ -26,8 +26,7 @@ export function LanguageSwitcher() {
   return (
     <div>
       {/* Drop-down on hover for desktop */}
-      <div
-      ref={ref} 
+      <ul
       className="hidden lg:block"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={close}
@@ -64,7 +63,7 @@ export function LanguageSwitcher() {
               );
             })}
         </ul>
-      </div>
+      </ul>
       {/* Drop-down on click for mobile */}
       <div ref={ref} className="lg:hidden">
         <span className="sr-only">{t("language-switcher")}</span>
