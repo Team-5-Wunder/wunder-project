@@ -78,6 +78,21 @@ module.exports = {
       xl: "1.75",
     },
     extend: {
+      keyframes: {
+        slideUp: {
+          'from': {
+            'margin-top': 'current',
+            'opacity': 'current',
+          },
+          'to': {
+            'margin-top': 0,
+            'opacity': 1,
+          },
+        }
+      },
+      animation: {
+        wiggle: 'wiggle 1s ease-in-out infinite',
+      },
       borderRadius: {
         ...defaultTheme.borderRadius,
         DEFAULT: "3px",

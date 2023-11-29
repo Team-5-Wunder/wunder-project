@@ -21,7 +21,8 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             // Add the animation class when the element is in view
-            entry.target.classList.add('transition-translate', 'ease-in-out', 'delay-150', 'mt-0', 'duration-500');
+            // entry.target.classList.add('transition-transform', 'ease-in-out', 'delay-150', 'opcity-100', 'duration-500');
+            entry.target.classList.add('animate-[slideUp_0.5s_ease-in_forwards]');
             observer.unobserve(entry.target);
         }
     });
@@ -32,19 +33,21 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
   if (typeof window !== "undefined"){
     observer = new IntersectionObserver(handleIntersection);
     // Target the element to be animated
-    const animatedDiv = document.getElementById('caseTeasers');
+    const animatedLeftBox = document.getElementById('leftBox');
+    const animatedCasesBox = document.getElementById('casesBox');
     // Observe the target element
-    observer.observe(animatedDiv);
+    observer.observe(animatedLeftBox);
+    observer.observe(animatedCasesBox);
   }
 
 
   return (
-    <div id="caseTeasers" className="w-screen mt-20 flex justify-center">
-      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex">
+    <div id="caseTeasers" className="w-screen flex justify-center">
+      <div className="w-full max-w-[1664px] px-6 sm:px-16 flex">
 
         <div className="w-full flex flex-wrap">
 
-          <div className="lg:w-1/2 pr-10 flex flex-col">
+          <div id="leftBox" className="mt-20 opacity-0 lg:w-1/2 pr-10 flex flex-col">
             <h2 className="mb-10 text-primary-600 text-heading-lg font-bold">
               {heading}
             </h2>
@@ -66,7 +69,7 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
             )}
           </div>
 
-          <ul className="lg:w-1/2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
+          <ul id="casesBox" className="mt-20 opacity-0 lg:w-1/2 pt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 ">
             {cases?.map((client) => (
               <li key={client.id}>
                 <CaseTeaser client={client} />
