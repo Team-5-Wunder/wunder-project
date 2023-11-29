@@ -3,6 +3,10 @@ import { useTranslation } from "next-i18next";
 import clsx from "clsx";
 import { buttonVariants } from "@/ui/button";
 
+interface WeAreWunder {
+  className?: string | undefined;
+}
+
 
 const WeAreWunder = () => {
   const { t } = useTranslation();

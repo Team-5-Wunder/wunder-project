@@ -15,8 +15,31 @@ interface LatestCasesProps {
 
 export function CaseTeasers({ cases, heading }: LatestCasesProps) {
   const { t } = useTranslation();
+
+  // Intersection Observer callback function
+  const handleIntersection = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add the animation class when the element is in view
+            entry.target.classList.add('transition-translate', 'ease-in-out', 'delay-150', 'mt-0', 'duration-500');
+            observer.unobserve(entry.target);
+        }
+    });
+  };
+
+  // Create an Intersection Observer
+  let observer = null;
+  if (typeof window !== "undefined"){
+    observer = new IntersectionObserver(handleIntersection);
+    // Target the element to be animated
+    const animatedDiv = document.getElementById('caseTeasers');
+    // Observe the target element
+    observer.observe(animatedDiv);
+  }
+
+
   return (
-    <div className="w-screen flex justify-center">
+    <div id="caseTeasers" className="w-screen mt-20 flex justify-center">
       <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex">
 
         <div className="w-full flex flex-wrap">
