@@ -90,9 +90,6 @@ module.exports = {
           },
         }
       },
-      animation: {
-        wiggle: 'wiggle 1s ease-in-out infinite',
-      },
       borderRadius: {
         ...defaultTheme.borderRadius,
         DEFAULT: "3px",
