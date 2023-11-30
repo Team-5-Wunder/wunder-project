@@ -18,9 +18,8 @@ export function Footer({ menu }: FooterProps) {
         <p>WANT TO HEAR MORE?</p>
         <p className="font-normal">
           Our international experts are ready to help you.
-          <p>
-            <span className="underline">Contact us!</span>
-          </p>
+          <br />
+          <span className="underline">Contact us!</span>
         </p>
       </div>
 
