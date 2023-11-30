@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import handleSubmit from "./form-handler";
 import { Button } from "@/ui/button";
 import type { Menu, MenuItem, MenuItemOptions } from "@/lib/zod/menu";
 
@@ -68,9 +68,11 @@ export function Footer({ menu }: FooterProps) {
             privacy policy
           </span>
         </label>
-        <Button variant="quatriary" className="mt-10 text-white">
-          Subscribe
-        </Button>
+        <form onSubmit={handleSubmit}>
+          <Button variant="quatriary" className="mt-10 text-white">
+            Subscribe
+          </Button>
+        </form>
       </div>
     </footer>
   );
