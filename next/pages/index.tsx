@@ -54,13 +54,10 @@ export default function IndexPage({
       <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
       <HeroBanner />
       <WeAreWunder />
-      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
-
       <OurClients />
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
-      />
 
       <ExpertTalks />
 
@@ -71,7 +68,7 @@ export default function IndexPage({
         </div> */}
       {/* <Divider className="max-w-4xl" /> */}
       {/* <ContactForm />  */}
-      {/* <Divider className="max-w-4xl" /> */}
+      <Divider className="max-w-4xl" />
 
       {/*      <EventTeasers
         events={promotedEventTeasers}
