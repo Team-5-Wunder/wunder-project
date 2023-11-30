@@ -37,8 +37,8 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
     const animatedLeftBox = document.getElementById('leftBox');
     const animatedCasesBox = document.getElementById('casesBox');
     // Observe the target element
-    observer.observe(animatedLeftBox);
-    observer.observe(animatedCasesBox);
+    if (animatedLeftBox) observer.observe(animatedLeftBox);
+    if (animatedCasesBox) observer.observe(animatedCasesBox);
   }
 
 

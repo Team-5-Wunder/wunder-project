@@ -22,7 +22,7 @@ const OurClients = () => {
     // Target the element to be animated
     const animatedLogosBox = document.getElementById('logosBox');
     // Observe the target element
-    observer.observe(animatedLogosBox);
+    if (animatedLogosBox) observer.observe(animatedLogosBox);
   }
 
   return (
