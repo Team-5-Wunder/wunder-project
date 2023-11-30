@@ -54,12 +54,11 @@ export default function IndexPage({
       <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
       <HeroBanner />
       <WeAreWunder />
-      <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
       <OurClients />
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
-      />
+
       <ExpertTalks />
 
       {/* <div className="grid gap-4">
