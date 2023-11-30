@@ -21,7 +21,7 @@ module.exports = {
       success: "#007f6c",
       warning: "#f7a700",
       error: "#c80909",
-
+      button: "#7348A8",
       primary: {
         900: "#261da1",
         800: "#3f29ae",
@@ -81,6 +81,10 @@ module.exports = {
       borderRadius: {
         ...defaultTheme.borderRadius,
         DEFAULT: "3px",
+      },
+      gradientColorStops: {
+        dark: "#332445",
+        violet: "#7348A8",
       },
       boxShadow: {
         ...defaultTheme.boxShadow,

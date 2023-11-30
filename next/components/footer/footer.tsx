@@ -1,74 +1,77 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { SocialShare } from "@/components/footer/social-share";
+import { Button } from "@/ui/button";
 import type { Menu, MenuItem, MenuItemOptions } from "@/lib/zod/menu";
-import Facebook from "@/styles/icons/facebook.svg";
-import LinkedIn from "@/styles/icons/linkedin.svg";
-import Twitter from "@/styles/icons/twitter.svg";
-import WunderCarrot from "@/styles/icons/wunder-carrot.svg";
 
 interface FooterProps {
   menu: Menu;
 }
 
 export function Footer({ menu }: FooterProps) {
-  // Only show the menu items that match the current locale:
   const { locale } = useRouter();
   const filteredItems = menu.filter((link) => link.langcode == locale);
+
   return (
-    <footer className="border-t border-finnishwinter">
-      <div className="mx-auto max-w-6xl px-6">
-        <nav className="flex flex-col items-center gap-2 py-8 text-md sm:flex-row sm:justify-between">
-          <ul className="mr-4 flex flex-wrap gap-x-12 gap-y-4">
-            {filteredItems.map((link) => {
-              const icon = Array.isArray(link.options)
-                ? null
-                : link.options.attributes.icon;
-              return (
-                <li key={link.id}>
-                  <FooterLink href={link.url} icon={icon}>
-                    {link.title}
-                  </FooterLink>
-                </li>
-              );
-            })}
-          </ul>
-          <SocialShare />
-          <FooterLink href="https://next-drupal.org" newTab>
-            Next.js for Drupal
-          </FooterLink>
-        </nav>
+    <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t h-[500px] overflow-hidden flex justify-between items-start px-6">
+      <div className="ml-12 flex-1 flex flex-col justify-center ">
+        <p>WANT TO HEAR MORE?</p>
+        <p className="font-normal">
+          Our international experts are ready to help you.
+          <p>
+            <span className="underline">Contact us!</span>
+          </p>
+        </p>
+      </div>
+
+      <div className="flex-1">
+        <p className="pb-5 font-bold">Stay up to date with our newsletter</p>
+        <p className="pb-5">"*" indicates required fields</p>
+        <p className="pb-5">I'M INTERESTED IN</p>
+        <div className="pb-5 flex space-x-4 mt-2">
+          <label className="inline-flex items-center">
+            <input type="checkbox" className="form-checkbox text-primary-600" />
+            <span className="ml-2">Wunder news</span>
+          </label>
+          <label className="inline-flex items-center">
+            <input type="checkbox" className="form-checkbox text-primary-600" />
+            <span className="ml-2">Careers</span>
+          </label>
+          <label className="inline-flex items-center">
+            <input type="checkbox" className="form-checkbox text-primary-600" />
+            <span className="ml-2">Events</span>
+          </label>
+        </div>
+        <div className="pb-5 mt-4">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-white"
+          >
+            Email<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="bg-transparent mt-1 block w-full border-0 border-b-2 border-white focus:ring-0 focus:border-white text-white placeholder-white"
+            required
+          />
+        </div>
+        <label className="inline-flex items-center">
+          <input
+            required
+            type="checkbox"
+            className="form-checkbox text-primary-600"
+          />
+          <span className="ml-2">
+            I approve that Wunder process my personal data according to its
+            privacy policy
+          </span>
+        </label>
+        <Button variant="quatriary" className="mt-10 text-white">
+          Subscribe
+        </Button>
       </div>
     </footer>
-  );
-}
-
-interface FooterLinkProps {
-  href: MenuItem["url"];
-  icon?: MenuItemOptions["attributes"]["icon"] | null;
-  newTab?: boolean;
-  children: React.ReactNode;
-}
-
-function FooterLink({ href, icon, newTab = false, children }: FooterLinkProps) {
-  const [target, rel] = newTab ? ["_blank", "noreferrer"] : [];
-
-  const Icon = {
-    facebook: Facebook,
-    linkedin: LinkedIn,
-    twitter: Twitter,
-    wunder: WunderCarrot,
-  }[icon];
-
-  return (
-    <Link href={href} target={target} rel={rel} className="hyperlink">
-      {icon && (
-        <div className="mr-2 flex h-6 w-6 items-center justify-center">
-          <Icon className="h-auto w-full" aria-hidden />
-        </div>
-      )}
-      {children}
-    </Link>
   );
 }

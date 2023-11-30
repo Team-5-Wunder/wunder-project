@@ -43,18 +43,16 @@ export function ExpertTalks() {
 
   return (
     <>
-      {/*       <div className=" mt-10  sm:px-16 flex flex-col"> */}
       <div className="w-screen flex justify-center">
-        <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex">
-          <h2 className=" pb-5 text-heading-sm font-bold md:text-heading-md text-primary-600 ">
+        <div className="w-full max-w-[1664px] mt-20 pr-6 sm:px-16 flex flex-wrap gap-5">
+          <h2 className="w-full pb-5 text-heading-sm font-bold md:text-heading-md text-primary-600 ">
             Expert talks
           </h2>
-          {/*     <div className="max-w-[1664px] grid auto-rows-max grid-cols-1 justify-items-center gap-4 py-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3"> */}
           {contacts?.map(({ id, image, name, title, phoneNumber, email }) => {
             const [firstName, lastName] = name.split(" ");
 
             return (
-              <div key={id} className="relative">
+              <div key={id} className="relative m-2">
                 <li className="grid justify-items-center p-4 border border-finnishwinter rounded-lg relative h-[450px] w-[330px] overflow-hidden">
                   <div className="absolute top-0 left-5 pt-5">
                     <WunderW />

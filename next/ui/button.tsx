@@ -25,6 +25,12 @@ export const buttonVariants = cva(
           "active:bg-primary-50 active:text-primary-600 active:border-transparent",
           "disabled:!border-transparent disabled:!text-primary-200",
         ],
+        quatriary: [
+          "bg-button text-primary-600 border-transparent",
+          "hover:bg-primary-50 hover:text-primary-600 hover:border-transparent",
+          "active:bg-primary-50 active:text-primary-600 active:border-transparent",
+          "disabled:!border-transparent disabled:!text-primary-200",
+        ],
       },
       size: {
         sm: "text-sm py-2 px-2.5",
@@ -37,7 +43,7 @@ export const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "tertiary";
+  variant?: "primary" | "secondary" | "tertiary" | "quatriary";
   size?: "sm" | "md" | "lg";
   children?: React.ReactNode;
   className?: string;
