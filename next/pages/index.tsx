@@ -58,6 +58,7 @@ export default function IndexPage({
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
+      />
 
       <ExpertTalks />
 
