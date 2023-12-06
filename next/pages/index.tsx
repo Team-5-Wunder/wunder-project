@@ -69,10 +69,7 @@ export default function IndexPage({
           ))}
         </div> */}
       {/* <Divider className="max-w-4xl" /> */}
-      <ContactForm />
-      <LogIn />
-      <Register />
-      <Divider className="max-w-4xl" />
+
       {/*      <EventTeasers
         events={promotedEventTeasers}
         heading={t("coming-events")}
