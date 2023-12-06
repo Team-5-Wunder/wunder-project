@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useTranslation } from "next-i18next";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { ArticleListItem } from "@/components/article-list-item";
 import { HeadingPage } from "@/components/heading--page";
@@ -17,26 +17,65 @@ import {
   ArticleTeaser as ArticleTeaserType,
   validateAndCleanupArticleTeaser,
 } from "@/lib/zod/article-teaser";
+import { drupal } from "@/lib/drupal/drupal-client";
+import { DrupalTaxonomyTerm } from "next-drupal";
+
+import { Checkbox } from "@/ui/checkbox";
 
 interface BlogPageProps extends LayoutProps {
   articleTeasers: ArticleTeaserType[];
   paginationProps: PaginationProps;
   languageLinks: LanguageLinks;
+  tags: DrupalTaxonomyTerm[];
 }
 
 export default function BlogPage({
   articleTeasers = [],
   paginationProps,
+  tags,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const focusRef = useRef<HTMLDivElement>(null);
+  const [tagsSearch, setTagsSearch] = useState<string[]>([]);
+
+  const handleCheckboxChange = (value: string) => {
+    if (tagsSearch.includes(value)) {
+      setTagsSearch(tagsSearch.filter((tag) => tag !== value));
+    } else {
+      setTagsSearch([...tagsSearch, value]);
+    }
+  };
+
   return (
-    <>
+    <div className=" w-full max-w-[1664px] mt-20 px-6 sm:px-16">
       <Meta title={t("blog")} metatags={[]} />
       <div ref={focusRef} tabIndex={-1} />
       <HeadingPage>{t("blog")}</HeadingPage>
+      <div className="mb-16 flex justify-between text-sm text-steelgray">
+        <ul>
+          <h2 className="text-xl">Filter</h2>
+          {tags.map((tag) => (
+            <li
+            key={tag.id}
+            className="flex items-center text-sm text-steelgray">
+              <Checkbox
+                onClick={() => handleCheckboxChange(tag.name)}
+                id={tag.id}
+              />
+              <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
+                {tag.name}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </div>
       <ul className="mt-4">
-        {articleTeasers?.map((article) => (
+        {articleTeasers
+        ?.filter((teaser) => (
+          tagsSearch.every((filteredTag) => (
+            teaser.field_tags.some((tag) => tag.name === filteredTag)
+          ))))
+        .map((article) => (
           <li key={article.id}>
             <ArticleListItem article={article} />
           </li>
@@ -46,7 +85,7 @@ export default function BlogPage({
         focusRestoreRef={focusRef}
         paginationProps={paginationProps}
       />
-    </>
+    </div>
   );
 }
 
@@ -95,6 +134,8 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async (
   // the other pages will exist in all languages.
   const languageLinks = createLanguageLinksForNextOnlyPage(pageRoot, context);
 
+  const tags = await drupal.getResourceCollectionFromContext<DrupalTaxonomyTerm[]>('taxonomy_term--tags', context, {})
+
   return {
     props: {
       ...(await getCommonPageProps(context)),
@@ -110,6 +151,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async (
         nextPageHref,
       },
       languageLinks,
+      tags
     },
     revalidate: 60,
   };
