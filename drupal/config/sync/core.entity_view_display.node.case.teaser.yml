@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.case.field_excerpt
     - field.field.node.case.field_image
     - field.field.node.case.field_industry
+    - field.field.node.case.field_logo
     - field.field.node.case.field_solution
     - field.field.node.case.field_technology
     - image.style.medium
@@ -40,6 +41,7 @@ hidden:
   field_content_elements: true
   field_excerpt: true
   field_industry: true
+  field_logo: true
   field_solution: true
   field_technology: true
   langcode: true

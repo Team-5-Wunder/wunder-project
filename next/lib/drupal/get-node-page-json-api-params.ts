@@ -83,6 +83,7 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "field_industry",
         "field_solution",
         "field_technology",
+        "field_logo",
       ])
       .addFields("node--case", [
         "title",
@@ -95,6 +96,7 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "field_industry",
         "field_solution",
         "field_technology",
+        "field_logo",
       ]);
   }
 
