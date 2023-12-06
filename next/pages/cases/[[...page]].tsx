@@ -21,15 +21,14 @@ import { drupal } from "@/lib/drupal/drupal-client";
 import { DrupalTaxonomyTerm } from "next-drupal";
 
 import { Checkbox } from "@/ui/checkbox";
-import { text } from "stream/consumers";
 
 interface CasesPageProps extends LayoutProps {
   caseTeasers: CaseTeaserType[];
   paginationProps: PaginationProps;
   languageLinks: LanguageLinks;
-  industry: DrupalTaxonomyTerm[],
-  solution: DrupalTaxonomyTerm[],
-  technology: DrupalTaxonomyTerm[],
+  industry: DrupalTaxonomyTerm[];
+  solution: DrupalTaxonomyTerm[];
+  technology: DrupalTaxonomyTerm[];
 }
 
 export default function CasesPage({

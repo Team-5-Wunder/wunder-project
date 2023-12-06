@@ -28,6 +28,7 @@ export const CaseSchema = z.object({
   id: z.string(),
   title: z.string(),
   field_image: ImageShape,
+  field_logo: ImageShape,
   field_excerpt: z.string(),
   field_content_elements: z.array(CaseElementsSchema),
   metatag: MetatagsSchema.optional(),

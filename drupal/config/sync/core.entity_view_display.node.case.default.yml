@@ -7,9 +7,9 @@ dependencies:
     - field.field.node.case.field_excerpt
     - field.field.node.case.field_image
     - field.field.node.case.field_industry
+    - field.field.node.case.field_logo
     - field.field.node.case.field_solution
     - field.field.node.case.field_technology
-    - image.style.wide
     - node.type.case
   module:
     - entity_reference_revisions
@@ -54,6 +54,17 @@ content:
       link: true
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_logo:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 105
     region: content
   field_solution:
     type: entity_reference_label

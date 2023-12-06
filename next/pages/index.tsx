@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
@@ -58,6 +61,23 @@ export default function IndexPage({
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
       <OurClients />
+
+      {/* <div className="grid gap-4 grid-cols-4">
+        {promotedCaseTeasers.map((teaser) => (
+          <Link
+          href={teaser.path.alias}
+          className="hover:grayscale"
+          >
+            <Image
+              src={absoluteUrl(teaser.field_logo.uri.url)}
+              width={150}
+              height={75}
+              style={{ width: 150, height: 75 }}
+              alt={teaser.field_logo.resourceIdObjMeta.alt}
+            />
+          </Link>
+        ))}
+      </div> */}
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
@@ -111,6 +131,10 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
       .addPageLimit(4)
       .getQueryObject(),
   });
+
+  /* promotedCaseTeasers.map((teaser) => {
+    console.log(teaser.path);
+  }) */
 
   const promotedEventTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
