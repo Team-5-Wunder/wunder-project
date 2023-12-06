@@ -1,16 +1,59 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import handleSubmit from "./form-handler";
 import { Button } from "@/ui/button";
-import type { Menu, MenuItem, MenuItemOptions } from "@/lib/zod/menu";
+import type { Menu } from "@/lib/zod/menu";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+/* import { router } from "next/router"; */
+
+const SignupSchema = z.object({
+  news: z.boolean().default(false),
+  careers: z.boolean().default(false),
+  events: z.boolean().default(false),
+  email: z.string().email(),
+  terms: z.boolean().default(false),
+});
+
+type TSignupSchema = z.infer<typeof SignupSchema>;
 
 interface FooterProps {
   menu: Menu;
 }
 
 export function Footer({ menu }: FooterProps) {
-  const { locale } = useRouter();
-  const filteredItems = menu.filter((link) => link.langcode == locale);
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TSignupSchema>({
+    resolver: zodResolver(SignupSchema),
+  });
+  const onSubmit = async (data: TSignupSchema) => {
+    console.log(data);
+    /*  console.log(onSubmit); */
+    // Gather data from the form
+
+    // Make a POST request to API route
+    const response = await fetch(`/api/footer-newsletter`, {
+      method: "POST",
+      body: JSON.stringify({
+        webform_id: "footer_newsletter",
+        news: data.news,
+        careers: data.careers,
+        events: data.events,
+        email: data.email,
+        terms: data.terms,
+      }),
+      headers: {
+        "accept-language": router.locale,
+      },
+    });
+    if (!response.ok) {
+      alert("Error!");
+    }
+  };
 
   return (
     <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t h-[500px] overflow-hidden flex justify-between items-start px-6">
@@ -33,31 +76,34 @@ export function Footer({ menu }: FooterProps) {
             <span className="ml-2">Wunder news</span>
           </label>
           <label className="inline-flex items-center">
-            <input type="checkbox" className="form-checkbox text-primary-600" />
+            <input
+              {...register("careers")}
+              type="checkbox"
+              className="form-checkbox text-primary-600"
+            />
             <span className="ml-2">Careers</span>
           </label>
           <label className="inline-flex items-center">
-            <input type="checkbox" className="form-checkbox text-primary-600" />
+            <input
+              {...register("events")}
+              type="checkbox"
+              className="form-checkbox text-primary-600"
+            />
             <span className="ml-2">Events</span>
           </label>
         </div>
         <div className="pb-5 mt-4">
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-white"
-          >
-            Email<span className="text-red-500">*</span>
-          </label>
+          Email<span className="text-red-500">*</span>
           <input
+            {...register("email")}
             type="email"
-            id="email"
-            name="email"
             className="bg-transparent mt-1 block w-full border-0 border-b-2 border-white focus:ring-0 focus:border-white text-white placeholder-white"
             required
           />
         </div>
         <label className="inline-flex items-center">
           <input
+            {...register("terms")}
             required
             type="checkbox"
             className="form-checkbox text-primary-600"
@@ -67,7 +113,7 @@ export function Footer({ menu }: FooterProps) {
             privacy policy
           </span>
         </label>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
           <Button variant="quatriary" className="mt-10 text-white">
             Subscribe
           </Button>

@@ -1,5 +1,3 @@
-import { authOptions } from "./auth/[...nextauth]";
-import { getServerSession } from "next-auth/next";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { drupal } from "@/lib/drupal/drupal-client";
@@ -8,16 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  // Because we want to allow only registered users to submit
-  // to the contact webform, let's get the session:
-
-  // The locale is passed in this header:
   const languagePrefix = req.headers["accept-language"];
-
-  // if there is no session, return 401:
-
-  // const session = await getServerSession(req, res, authOptions);
-  // console.log(session);
 
   try {
     if (req.method === "POST") {
@@ -28,15 +17,12 @@ export default async function handler(
       const result = await drupal.fetch(url.toString(), {
         method: "POST",
         body: JSON.stringify({
-          webform_id: "contact",
-          name: body.name,
+          webform_id: body.webform_id,
           email: body.email,
-          message: body.message,
-          subject: body.subject,
+          policy_checkbox: body.policy_checkbox,
         }),
         headers: {
           "Content-Type": "application/json",
-          // Pass the token to authenticate the request:
         },
       });
 

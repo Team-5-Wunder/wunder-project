@@ -1,7 +1,0 @@
-{
-  "email": "example@example.com",
-  "name": "John Doe",
-  "message": "This is a dummy message for testing purposes.",
-  "interests": ["Technology", "Art", "Science"],
-  "subscribeNewsletter": true
-}
