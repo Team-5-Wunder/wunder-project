@@ -28,8 +28,8 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
           {article.field_image && (
             <Image
               src={absoluteUrl(article.field_image.uri.url)}
-              width={600}
-              height={200}
+              width={300}
+              height={100}
               alt={article.field_image.resourceIdObjMeta.alt}
               className="max-w-full h-auto object-cover"
             />
