@@ -36,6 +36,8 @@ import HeroBanner from "@/components/herobanner/heroBanner";
 import { Article } from "@/components/article";
 import OurClients from "@/components/OurClients";
 import WeAreWunder from "@/components/we-are-wunder";
+import LogIn from "./auth/login";
+import Register from "./auth/register";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
@@ -76,22 +78,17 @@ export default function IndexPage({
           </Link>
         ))}
       </div> */}
-
       <LatestReleases
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
       />
-
       <ExpertTalks />
-
       {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
             <Paragraph paragraph={paragraph} key={paragraph.id} />
           ))}
         </div> */}
       {/* <Divider className="max-w-4xl" /> */}
-      {/* <ContactForm />  */}
-      <Divider className="max-w-4xl" />
 
       {/*      <EventTeasers
         events={promotedEventTeasers}
