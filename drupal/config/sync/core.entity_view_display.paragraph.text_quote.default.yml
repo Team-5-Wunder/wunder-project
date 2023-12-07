@@ -1,0 +1,39 @@
+uuid: 360dbd45-817e-41c1-8214-d65d34f12b58
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_quote.field_formatted_text
+    - field.field.paragraph.text_quote.field_quote
+    - field.field.paragraph.text_quote.field_text_quote_layout
+    - paragraphs.paragraphs_type.text_quote
+  module:
+    - options
+    - text
+id: paragraph.text_quote.default
+targetEntityType: paragraph
+bundle: text_quote
+mode: default
+content:
+  field_formatted_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_quote:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_text_quote_layout:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

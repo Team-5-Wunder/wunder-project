@@ -12,6 +12,9 @@ dependencies:
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.links
     - paragraphs.paragraphs_type.listing_articles
+    - paragraphs.paragraphs_type.quote
+    - paragraphs.paragraphs_type.text_image
+    - paragraphs.paragraphs_type.text_quote
     - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
@@ -39,6 +42,9 @@ settings:
       video: video
       listing_articles: listing_articles
       file_attachments: file_attachments
+      text_image: text_image
+      quote: quote
+      text_quote: text_quote
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -64,6 +70,15 @@ settings:
         enabled: true
       listing_articles:
         weight: 9
+        enabled: true
+      quote:
+        weight: 22
+        enabled: true
+      text_image:
+        weight: 13
+        enabled: true
+      text_quote:
+        weight: 23
         enabled: true
       video:
         weight: -9

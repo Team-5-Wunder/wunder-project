@@ -7,6 +7,7 @@ export const FormattedTextSchema = z.object({
     processed: z.string(),
   }),
   field_heading: z.string().nullable(),
+  field_text_layout: z.enum(["normal", "column"]),
 });
 
 export const ListingArticlesSchema = z.object({
@@ -149,6 +150,52 @@ export const HeroSchema = z.object({
   field_secondary_link: LinkShape.nullable().optional(),
 });
 
+export const QuoteSchema = z.object({
+  type: z.literal("paragraph--quote"),
+  id: z.string(),
+  field_quote: z.object({
+    processed: z.string(),
+  }),
+  field_author: z.string().nullable(),
+  field_image: z
+    .object({
+      type: z.literal("media--image"),
+      id: z.string(),
+      field_media_image: ImageShape.nullable(),
+    })
+    .nullable()
+    .optional(),
+});
+
+export const TextQuoteSchema = z.object({
+  type: z.literal("paragraph--text_quote"),
+  id: z.string(),
+  field_formatted_text: z.object({
+    processed: z.string(),
+  }),
+  field_quote: z.object({
+    processed: z.string(),
+  }),
+  field_text_quote_layout: z.enum(["left", "right"]),
+});
+
+export const TextImageSchema = z.object({
+  type: z.literal("paragraph--text_image"),
+  id: z.string(),
+  field_formatted_text: z.object({
+    processed: z.string(),
+  }),
+  field_image: z
+    .object({
+      type: z.literal("media--image"),
+      id: z.string(),
+      field_media_image: ImageShape.nullable(),
+    })
+    .nullable()
+    .optional(),
+    field_text_image_layout: z.enum(["left", "right"]),
+});
+
 export type FormattedText = z.infer<typeof FormattedTextSchema>;
 export type Image = z.infer<typeof ImageSchema>;
 export type Video = z.infer<typeof VideoSchema>;
@@ -158,6 +205,9 @@ export type AccordionItem = z.infer<typeof AccordionItemSchema>;
 export type Hero = z.infer<typeof HeroSchema>;
 export type ListingArticles = z.infer<typeof ListingArticlesSchema>;
 export type FileAttachments = z.infer<typeof FileAttachmentsSchema>;
+export type Quote = z.infer<typeof QuoteSchema>;
+export type TextQuote = z.infer<typeof TextQuoteSchema>;
+export type TextImage = z.infer<typeof TextImageSchema>;
 
 export type Paragraph =
   | FormattedText
@@ -168,4 +218,7 @@ export type Paragraph =
   | AccordionItem
   | Hero
   | ListingArticles
-  | FileAttachments;
+  | FileAttachments
+  | Quote
+  | TextQuote
+  | TextImage;

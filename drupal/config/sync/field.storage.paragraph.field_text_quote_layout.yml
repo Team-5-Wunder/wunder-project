@@ -1,0 +1,27 @@
+uuid: 0160f8c8-d5f7-4d1c-92cb-704072047175
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_text_quote_layout
+field_name: field_text_quote_layout
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left
+      label: 'Text on the left'
+    -
+      value: right
+      label: 'Text on the right'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

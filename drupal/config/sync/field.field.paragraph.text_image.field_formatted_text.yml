@@ -1,0 +1,22 @@
+uuid: db4836ef-18f3-471f-81fd-c2ba5ae23354
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_formatted_text
+    - paragraphs.paragraphs_type.text_image
+  module:
+    - text
+id: paragraph.text_image.field_formatted_text
+field_name: field_formatted_text
+entity_type: paragraph
+bundle: text_image
+label: 'Formatted text'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

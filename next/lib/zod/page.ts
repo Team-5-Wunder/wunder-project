@@ -11,6 +11,9 @@ import {
   LinksSchema,
   ListingArticlesSchema,
   VideoSchema,
+  QuoteSchema,
+  TextQuoteSchema,
+  TextImageSchema,
 } from "@/lib/zod/paragraph";
 
 const PageElementsSchema = z.discriminatedUnion("type", [
@@ -22,6 +25,9 @@ const PageElementsSchema = z.discriminatedUnion("type", [
   HeroSchema,
   ListingArticlesSchema,
   FileAttachmentsSchema,
+  QuoteSchema,
+  TextQuoteSchema,
+  TextImageSchema,
 ]);
 
 export const PageSchema = z.object({

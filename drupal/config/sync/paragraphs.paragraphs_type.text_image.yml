@@ -1,0 +1,10 @@
+uuid: d59f8411-815d-405d-9efb-03eb36359f6e
+langcode: en
+status: true
+dependencies: {  }
+id: text_image
+label: 'Text + Image'
+icon_uuid: null
+icon_default: null
+description: 'A paragraph containing text and image.'
+behavior_plugins: {  }

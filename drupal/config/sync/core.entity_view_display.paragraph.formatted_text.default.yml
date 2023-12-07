@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.field.paragraph.formatted_text.field_formatted_text
     - field.field.paragraph.formatted_text.field_heading
+    - field.field.paragraph.formatted_text.field_text_layout
     - paragraphs.paragraphs_type.formatted_text
   module:
+    - options
     - text
 _core:
   default_config_hash: _nSHKj0L-2wWoS9WIIZdkefvEr6rJ32HKP46ka1i0FI
@@ -21,6 +23,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_text_layout:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   field_heading: true
