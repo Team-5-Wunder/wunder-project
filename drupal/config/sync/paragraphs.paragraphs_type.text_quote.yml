@@ -1,0 +1,10 @@
+uuid: 1d5ac38b-574b-4c4f-a23a-309cb0435e23
+langcode: en
+status: true
+dependencies: {  }
+id: text_quote
+label: 'Text + Quote'
+icon_uuid: null
+icon_default: null
+description: 'A paragraph containing text and quote.'
+behavior_plugins: {  }

@@ -6,6 +6,9 @@ import { ParagraphImage } from "@/components/paragraph--image";
 import { ParagraphLinks } from "@/components/paragraph--links";
 import { ParagraphListingArticles } from "@/components/paragraph--listing-articles";
 import { ParagraphText } from "@/components/paragraph--text";
+import { ParagraphQuote } from "@/components/paragraph--quote";
+import { ParagraphTextQuote } from "@/components/paragraph--text_quote";
+import { ParagraphTextImage } from "@/components/paragraph--text_image";
 import { Paragraph } from "@/lib/zod/paragraph";
 
 // Use dynamic imports to defer loading a component until after initial page load: https://nextjs.org/docs/advanced-features/dynamic-import
@@ -46,6 +49,15 @@ export function Paragraph({ paragraph }: { paragraph: Paragraph }) {
     }
     case "paragraph--file_attachments": {
       return <ParagraphFileAttachments paragraph={paragraph} />;
+    }
+    case "paragraph--quote": {
+      return <ParagraphQuote paragraph={paragraph} />;
+    }
+    case "paragraph--text_quote": {
+      return <ParagraphTextQuote paragraph={paragraph} />;
+    }
+    case "paragraph--text_image": {
+      return <ParagraphTextImage paragraph={paragraph} />;
     }
     default:
       return null;

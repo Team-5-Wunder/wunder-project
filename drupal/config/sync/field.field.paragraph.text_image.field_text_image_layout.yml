@@ -1,0 +1,21 @@
+uuid: a98cb092-8764-4d74-91df-1bfee2cc95fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_image_layout
+    - paragraphs.paragraphs_type.text_image
+  module:
+    - options
+id: paragraph.text_image.field_text_image_layout
+field_name: field_text_image_layout
+entity_type: paragraph
+bundle: text_image
+label: Layout
+description: 'Select the layout for this Text + Image paragraph.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

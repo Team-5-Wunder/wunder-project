@@ -11,6 +11,9 @@ import {
   LinksSchema,
   ListingArticlesSchema,
   VideoSchema,
+  QuoteSchema,
+  TextQuoteSchema,
+  TextImageSchema,
 } from "@/lib/zod/paragraph";
 
 const EventElementsSchema = z.discriminatedUnion("type", [
@@ -21,6 +24,9 @@ const EventElementsSchema = z.discriminatedUnion("type", [
   AccordionSchema,
   ListingArticlesSchema,
   FileAttachmentsSchema,
+  QuoteSchema,
+  TextQuoteSchema,
+  TextImageSchema,
 ]);
 
 export const EventSchema = z.object({

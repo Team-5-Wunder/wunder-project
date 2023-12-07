@@ -1,0 +1,10 @@
+uuid: cf0b4798-8575-4acb-9791-4c908213c09e
+langcode: en
+status: true
+dependencies: {  }
+id: quote
+label: Quote
+icon_uuid: null
+icon_default: null
+description: 'A paragraph containing quote.'
+behavior_plugins: {  }

@@ -11,6 +11,9 @@ interface MediaProps {
     | Video["field_video"]
     | FileAttachments["field_file_attachments"];
   priority?: boolean;
+  width: number;
+  height: number;
+  classname: string;
 }
 
 export function Media({ media, ...props }: MediaProps) {

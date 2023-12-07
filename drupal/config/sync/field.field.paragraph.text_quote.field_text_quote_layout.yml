@@ -1,0 +1,21 @@
+uuid: bf57a48b-731d-45b5-96fa-32690aa17a2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_quote_layout
+    - paragraphs.paragraphs_type.text_quote
+  module:
+    - options
+id: paragraph.text_quote.field_text_quote_layout
+field_name: field_text_quote_layout
+entity_type: paragraph
+bundle: text_quote
+label: Layout
+description: 'Select the layout for this Text + Quote paragraph.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
