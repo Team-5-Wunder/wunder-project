@@ -7,7 +7,7 @@ interface PageProps {
 
 export function Page({ page }: PageProps) {
   return (
-    <div className="grid gap-4">
+    <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 grid gap-4">
       {page.field_content_elements?.map((paragraph) => (
         <Paragraph key={paragraph.id} paragraph={paragraph} />
       ))}
