@@ -6,6 +6,7 @@ dependencies:
     - media
     - node
     - subrequests
+    - webform_rest
 _core:
   default_config_hash: D-thmsN09HWkilJq0monV8u7HvP8B8hW7lF9nKmY3OY
 id: next_api_role
@@ -14,6 +15,7 @@ weight: 4
 is_admin: null
 permissions:
   - 'access user profiles'
+  - 'access webform rest settings'
   - 'bypass node access'
   - 'issue subrequests'
   - 'view all media revisions'

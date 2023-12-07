@@ -5,6 +5,13 @@ display:
       exposed_form:
         options:
           reset_button_label: Återställ
+      filters:
+        name:
+          expose:
+            label: Namn
+        langcode:
+          expose:
+            label: Språk
   page:
     display_options:
       fields:
@@ -12,3 +19,18 @@ display:
           text: Redigera
         delete_media:
           text: Radera
+  widget:
+    display_options:
+      filters:
+        name:
+          expose:
+            label: Namn
+  widget_table:
+    display_options:
+      fields:
+        name:
+          label: Namn
+      filters:
+        name:
+          expose:
+            label: Namn

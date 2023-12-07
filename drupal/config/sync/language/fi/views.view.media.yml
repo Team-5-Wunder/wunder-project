@@ -16,3 +16,6 @@ display:
         bundle:
           expose:
             label: Tyyppi
+        langcode:
+          expose:
+            label: Kieli

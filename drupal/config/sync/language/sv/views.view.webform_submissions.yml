@@ -5,16 +5,22 @@ display:
         options:
           reset_button_label: Återställ
       fields:
+        created:
+          label: Skapad
         view_webform_submission:
           label: Funktioner
   embed_administer:
     display_options:
       fields:
+        created:
+          label: Skapad
         operations:
           label: Funktioner
   embed_manage:
     display_options:
       fields:
+        created:
+          label: Skapad
         view_webform_submission:
           label: Funktioner
         edit_webform_submission:
@@ -22,5 +28,7 @@ display:
   embed_review:
     display_options:
       fields:
+        created:
+          label: Skapad
         view_webform_submission:
           label: Funktioner

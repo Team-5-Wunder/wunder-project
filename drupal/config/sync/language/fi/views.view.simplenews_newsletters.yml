@@ -1,0 +1,15 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Palauta
+      fields:
+        title:
+          label: Numero
+        simplenews_issue:
+          label: Uutiskirje
+      filters:
+        simplenews_issue_target_id_1:
+          expose:
+            label: Uutiskirje

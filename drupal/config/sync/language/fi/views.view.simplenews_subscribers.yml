@@ -1,0 +1,34 @@
+label: Tilaajat
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Palauta
+      fields:
+        mail:
+          label: Sähköpostiosoite
+        user_name:
+          label: Käyttäjätunnus
+        subscriptions_target_id:
+          label: Tilaukset
+        status:
+          label: Voimassa
+        created:
+          label: Luotu
+        operations:
+          label: Toimenpiteet
+      filters:
+        mail:
+          expose:
+            label: Sähköpostiosoite
+        subscriptions_target_id:
+          expose:
+            label: Uutiskirjeet
+        status:
+          expose:
+            label: Voimassa
+        subscriptions_status:
+          expose:
+            label: Tila
+      title: Tilaajat

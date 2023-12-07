@@ -16,3 +16,6 @@ display:
         bundle:
           expose:
             label: Typ
+        langcode:
+          expose:
+            label: Språk
