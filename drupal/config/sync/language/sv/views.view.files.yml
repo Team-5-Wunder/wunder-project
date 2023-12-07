@@ -3,6 +3,8 @@ display:
     display_title: Förvald
     display_options:
       fields:
+        filename:
+          label: Namn
         status:
           label: Status
       exposed_form:

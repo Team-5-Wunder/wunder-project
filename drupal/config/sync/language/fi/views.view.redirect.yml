@@ -4,3 +4,6 @@ display:
       exposed_form:
         options:
           reset_button_label: Palauta
+      fields:
+        created:
+          label: Luotu

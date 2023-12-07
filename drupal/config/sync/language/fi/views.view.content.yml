@@ -1,7 +1,9 @@
+label: Sisältö
 display:
   default:
     display_title: Oletus
     display_options:
+      title: Sisältö
       fields:
         status:
           label: Tila
@@ -14,3 +16,12 @@ display:
         status:
           expose:
             label: Tila
+        langcode:
+          expose:
+            label: Kieli
+  page_1:
+    display_options:
+      menu:
+        title: Sisältö
+      tab_options:
+        title: Sisältö

@@ -1,0 +1,34 @@
+label: Prenumeranter
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+      fields:
+        mail:
+          label: E-post
+        user_name:
+          label: Användarnamn
+        subscriptions_target_id:
+          label: Prenumerationer
+        status:
+          label: Aktiv
+        created:
+          label: Skapad
+        operations:
+          label: Funktioner
+      filters:
+        mail:
+          expose:
+            label: E-post
+        subscriptions_target_id:
+          expose:
+            label: Nyhetsbrev
+        status:
+          expose:
+            label: Aktiv
+        subscriptions_status:
+          expose:
+            label: Status
+      title: Prenumeranter

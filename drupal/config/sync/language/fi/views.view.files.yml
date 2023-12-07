@@ -3,6 +3,8 @@ display:
     display_title: Oletus
     display_options:
       fields:
+        filename:
+          label: Nimi
         status:
           label: Tila
       exposed_form:

@@ -1,0 +1,13 @@
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Återställ
+      fields:
+        simplenews_issue:
+          label: Nyhetsbrev
+      filters:
+        simplenews_issue_target_id_1:
+          expose:
+            label: Nyhetsbrev

@@ -1,7 +1,9 @@
+label: Innehåll
 display:
   default:
     display_title: Förvald
     display_options:
+      title: Innehåll
       fields:
         status:
           label: Status
@@ -14,3 +16,12 @@ display:
         status:
           expose:
             label: Status
+        langcode:
+          expose:
+            label: Språk
+  page_1:
+    display_options:
+      menu:
+        title: Innehåll
+      tab_options:
+        title: Innehåll
