@@ -32,9 +32,15 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
   if (typeof window !== "undefined"){
     observer = new IntersectionObserver(handleIntersection);
     // Target the element to be animated
-    const animatedLogosBox = document.getElementById("toSlideUp");
+    const animatedLatestReleases = document.querySelectorAll(".toSlideUp");
     // Observe the target element
-    if (animatedLogosBox) observer.observe(animatedLogosBox);
+    console.log(animatedLatestReleases);
+    
+    if (animatedLatestReleases) {
+      animatedLatestReleases.forEach(element => {
+        observer.observe(element);
+      });
+    }
   }
 
   return (
@@ -44,11 +50,13 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
           {heading}
         </h2>
           {articles?.map((article, index) => (
-              <ArticleTeaser
-                key={article.id}
-                article={article}
-                isReversed={index % 2 !== 0}
-              />
+              <div className="toSlideUp mt-20 opacity-0">
+                <ArticleTeaser
+                  key={article.id}
+                  article={article}
+                  isReversed={index % 2 !== 0}
+                />
+              </div>
           ))}
 
         <div className="flex items-center justify-center">

@@ -30,6 +30,9 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
           <h3 className="text-primary-600 mb-2 text-heading-xs font-bold">
             {article.title}
           </h3>
+          <p className="mb-2 text-stone">
+            {date}
+          </p>
           <p>
             {article.field_excerpt}
           </p>
