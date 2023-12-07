@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -16,42 +15,39 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
   const author = article.uid?.display_name;
   const router = useRouter();
   const date = formatDate(article.created, router.locale);
-  const imageClassName = `px-4 ${isReversed ? "md:order-last md:ml-auto" : ""}`;
 
   return (
-    <Link
-      href={article.path.alias}
-      className="pb-20 gap-6 relative grid h-full rounded border-0 bg-white p-4 transition-all hover:shadow-md"
-    >
-      <div className="flex flex-col lg:flex-row ml-3 mt-5 ">
-        <div className={`w-full ${imageClassName}`}>
-          {article.field_image && (
-            <Image
-              src={absoluteUrl(article.field_image.uri.url)}
-              width={300}
-              height={100}
-              alt={article.field_image.resourceIdObjMeta.alt}
-              className="max-w-full h-auto object-cover"
-            />
-          )}
-        </div>
-        <div className="w-full px-4">
-          <h3
-            className={`mt-5 text-primary-600 mb-2 line-clamp-2 text-heading-xs font-bold ${
-              isReversed ? "md:text-left" : ""
-            }`}
-          >
-            {article.title}
-          </h3>
-          <p className={`${isReversed ? "" : "text-left"}`}>
-            {article.field_excerpt}
-          </p>
-          <div className="flex  items-center mt-4">
-            <p className="text-primary-600">Read More</p>
-            {/*   <ColorfulArrows /> */}
+    <div className="flex justify-center">
+      <Link
+        href={article.path.alias}
+        className="p-4 mb-7 lg:mb-10 xl:max-w-[80%] flex"
+      >
+        <div className="ml-3 mt-5 flex  lg:flex-row">
+            {article.field_image && (
+              <img
+                src={absoluteUrl(article.field_image.uri.url)}
+                alt={article.field_image.resourceIdObjMeta.alt}
+                className={`float-left max-w-[250px] max-h-[250px] h-auto mb-4 mx-4 flex ${isReversed ? "lg:order-last" : ""}`}
+              />
+            )}
+          <div className=" px-4">
+            <h3
+              className={`text-primary-600 mb-2 line-clamp-2 text-heading-xs font-bold ${
+                isReversed ? "md:text-left" : ""
+              }`}
+            >
+              {article.title}
+            </h3>
+            <p>
+              {article.field_excerpt}
+            </p>
+            <div className="flex  items-center mt-4">
+              <p className="text-primary-600">Read More</p>
+              {/*   <ColorfulArrows /> */}
+            </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

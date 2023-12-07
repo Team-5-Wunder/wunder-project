@@ -82,7 +82,7 @@ export default function IndexPage({
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
       />
-      <ExpertTalks />
+      {/* <ExpertTalks /> */}
       {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
             <Paragraph paragraph={paragraph} key={paragraph.id} />
