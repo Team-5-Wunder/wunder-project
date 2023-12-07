@@ -26,14 +26,14 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
             className={`float-left max-w-[250px] max-h-[250px] h-auto mb-4 mx-4 mr-8 ${isReversed ? "md:ml-8 md:mr-4 md:float-right" : ""}`}
           />
         )}
-        <div className="px-4">
+        <div className={`px-4 group/${article.title} group-hover/${article.title}:bg-scapaflow`}>
           <h3 className="text-primary-600 mb-2 text-heading-xs font-bold">
             {article.title}
           </h3>
           <p>
             {article.field_excerpt}
           </p>
-          <Link className="flex items-center mt-4" href={article.path.alias}>
+          <Link className={`flex items-center mt-4 group-hover/${article.title}:bg-scapaflow`} href={article.path.alias}>
             <p className="text-primary-600">Read More</p>
             <ColorfulArrows />
           </Link>
