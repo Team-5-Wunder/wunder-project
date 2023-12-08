@@ -2,39 +2,43 @@ import NextImage from "next/image";
 import { useTranslation } from "next-i18next";
 import WunderW from "@/styles/icons/wunder-w.svg";
 
-interface Contact {
+interface Experts {
   image: string;
-  name: string;
+  speakers: string[];
   title: string;
-  phoneNumber: string;
-  email: string;
+  date: string;
+  time: string;
   id: number;
+  link: string;
 }
 
-const contacts: Contact[] = [
+const contacts: Experts[] = [
   {
-    image: "/expert_1.png",
-    name: "Markus Virtanen",
+    image: "/assets/expert_talks/gpt.png",
+    speakers: ["Markus Virtanen", "Jussi Kalliokoski"],
     title: "Chat GPT in Drupal projects.",
-    phoneNumber: "",
-    email: "",
+    date: "",
+    time: "",
     id: 1,
+    link: "",
   },
   {
     image: "/expert_2.png",
-    name: "Mikko Laitinen",
+    speakers: ["Mikko Laitinen", "Jussi Kalliokoski, Markus Virtanen"],
     title: "Headless future with Drupal and NextJs.",
-    phoneNumber: "",
-    email: "",
+    date: "",
+    time: "",
     id: 3,
+    link: "",
   },
   {
     image: "/expert_3.png",
-    name: "Janne Koponen",
+    speakers: ["Janne Koponen"],
     title: "How to grow a beautiful beard.",
-    phoneNumber: "",
-    email: "",
+    date: "",
+    time: "",
     id: 2,
+    link: "",
   },
 ];
 
@@ -44,62 +48,34 @@ export function ExpertTalks() {
   return (
     <>
       <div className="w-screen flex justify-center">
-        <div className="w-full max-w-[1664px] mt-20 pr-6 sm:px-16 flex flex-wrap gap-5">
-          <h2 className="w-full pb-5 text-heading-sm font-bold md:text-heading-md text-primary-600 ">
-            Expert talks
+        <div className="w-full max-w-[1664px] mt-20 mb-20 px-6 sm:px-16 flex flex-col">
+          <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
+            {t("expert-talks")}
           </h2>
-          {contacts?.map(({ id, image, name, title, phoneNumber, email }) => {
-            const [firstName, lastName] = name.split(" ");
+          <div className="w-full flex gap-14 justify-center">
+            {contacts?.map(({ id, image, title, speakers}) => {
 
-            return (
-              <div key={id} className="relative m-2">
-                <li className="grid justify-items-center p-4 border border-finnishwinter rounded-lg relative h-[450px] w-[330px] overflow-hidden">
-                  <div className="absolute top-0 left-5 pt-5">
-                    <WunderW />
+              return (
+                <div key={id} className="w-64 h-full rounded border border-finnishwinter p-4 transition-all hover:shadow-md">
+                  <div className="w-full h-48 relative">
+                    <NextImage
+                      src={image}
+                      layout="fill"
+                      objectFit="cover"
+                      alt={title}
+                      className=""
+                    />
                   </div>
-                  <div className="flex h-[200px] w-[200px] items-center justify-center border-finnishwinter">
-                    <div className="circle-clip">
-                      <NextImage
-                        src={image}
-                        alt={t("image-of", { name })}
-                        width={160}
-                        height={160}
-                      />
-                    </div>
+                  <div className="text-center">
+                    <h3 className="text-secondary-900 font-bold text-heading-xs">
+                      {title}
+                    </h3>
+                    <p className="text-steelgray text-sm">{speakers.join(", ")}</p>
                   </div>
-                  <div className=" w-[280px] text-right absolute pt-20 mt-20">
-                    <p>
-                      <span>{firstName}</span>
-                      <br /> {lastName}
-                    </p>
-                  </div>
-
-                  <p className="font-bold max-w-[200px] text-primary-600 text-center">
-                    {title}
-                  </p>
-                  <div className="absolute bottom-4 right-4 flex items-center">
-                    <p className="text-primary-600 pr-2">Read</p>
-                  </div>
-                  <a
-                    href={`tel:${phoneNumber}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hyperlink no-underline hover:underline text-primary-600"
-                  >
-                    {phoneNumber}
-                  </a>
-                  <a
-                    href={`mailto:${email}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hyperlink no-underline hover:underline text-primary-600"
-                  >
-                    {email}
-                  </a>
-                </li>
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
