@@ -5,7 +5,6 @@ import type { Menu } from "@/lib/zod/menu";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-/* import { router } from "next/router"; */
 
 const SignupSchema = z.object({
   news: z.boolean().default(false),
@@ -36,6 +35,7 @@ export function Footer({ menu }: FooterProps) {
     // Gather data from the form
 
     // Make a POST request to API route
+
     const response = await fetch(`/api/footer-newsletter`, {
       method: "POST",
       body: JSON.stringify({
@@ -56,8 +56,8 @@ export function Footer({ menu }: FooterProps) {
   };
 
   return (
-    <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t h-[500px] overflow-hidden flex justify-between items-start px-6">
-      <div className="ml-12 flex-1 flex flex-col justify-center ">
+    <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t overflow-hidden px-6 flex flex-col md:flex-row justify-between items-start h-[500px]">
+      <div className=" text-center flex-1 flex flex-col justify-center mb-6 md:mb-0">
         <p>WANT TO HEAR MORE?</p>
         <p className="font-normal">
           Our international experts are ready to help you.
@@ -103,8 +103,9 @@ export function Footer({ menu }: FooterProps) {
         </div>
         <label className="inline-flex items-center">
           <input
-            {...register("terms")}
-            required
+            {...register("terms", {
+              required: true,
+            })}
             type="checkbox"
             className="form-checkbox text-primary-600"
           />
