@@ -34,7 +34,6 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
     // Target the element to be animated
     const animatedLatestReleases = document.querySelectorAll(".toSlideUp");
     // Observe the target element
-    console.log(animatedLatestReleases);
     
     if (animatedLatestReleases) {
       animatedLatestReleases.forEach(element => {
@@ -50,9 +49,8 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
           {heading}
         </h2>
           {articles?.map((article, index) => (
-              <div className="toSlideUp mt-20 opacity-0">
+              <div className="toSlideUp mt-20 opacity-0" key={article.id}>
                 <ArticleTeaser
-                  key={article.id}
                   article={article}
                   isReversed={index % 2 !== 0}
                 />
