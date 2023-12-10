@@ -18,26 +18,26 @@ const contacts: Experts[] = [
     image: "/assets/expert_talks/gpt.png",
     speakers: ["Markus Virtanen", "Jussi Kalliokoski"],
     title: "Chat GPT in Drupal projects.",
-    date: "",
-    time: "",
+    date: "21 DEC",
+    time: "12:00 - 14:00",
     id: 1,
     link: "",
   },
   {
-    image: "/expert_2.png",
+    image: "/assets/expert_talks/headless.jpg",
     speakers: ["Mikko Laitinen", "Jussi Kalliokoski, Markus Virtanen"],
     title: "Headless future with Drupal and NextJs.",
-    date: "",
-    time: "",
+    date: "07 Jan",
+    time: "10:30 - 12:00",
     id: 3,
     link: "",
   },
   {
-    image: "/expert_3.png",
+    image: "/assets/expert_talks/ai.jpg",
     speakers: ["Janne Koponen"],
-    title: "How to grow a beautiful beard.",
-    date: "",
-    time: "",
+    title: "AI potential threats.",
+    date: "15 JAN",
+    time: "9:30 - 11:30",
     id: 2,
     link: "",
   },
@@ -46,6 +46,34 @@ const contacts: Experts[] = [
 export function ExpertTalks() {
   const { t } = useTranslation();
 
+  // Intersection Observer callback function
+  const handleIntersection = (entries, observer) => {
+    let delay = 0
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add the animation class when the element is in view
+            entry.target.classList.add(`animate-[slideUp_0.3s_ease-in_${delay}s_forwards]`);
+            observer.unobserve(entry.target);
+            delay += 0.3
+        }
+    });
+  };
+
+  // Create an Intersection Observer
+  let observer = null;
+  if (typeof window !== "undefined"){
+    observer = new IntersectionObserver(handleIntersection);
+    // Target the element to be animated
+    const animatedLatestReleases = document.querySelectorAll(".toSlideUp");
+    // Observe the target element
+    
+    if (animatedLatestReleases) {
+      animatedLatestReleases.forEach(element => {
+        observer.observe(element);
+      });
+    }
+  }
+
   return (
     <>
       <div className="w-screen flex justify-center">
@@ -53,25 +81,30 @@ export function ExpertTalks() {
           <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
             {t("expert-talks")}
           </h2>
-          <div className="w-full flex flex-wrap gap-8 lg:gap-14 justify-center">
-            {contacts?.map(({ id, image, title, speakers}) => {
+          <div className="toSlideUp mt-20 opacity-0 w-full flex flex-wrap gap-8 lg:gap-14 justify-center">
+            {contacts?.map(({ id, image, title, speakers, date, time}) => {
 
               return (
-                <div key={id} className="w-80 h-[30rem] rounded border border-finnishwinter transition-all hover:shadow-md">
-                  <div className="w-full h-1/2">
-                    {/* <Image
+                <div key={id} className="w-80 h-[30rem] group/card rounded border border-finnishwinter hover:shadow-md">
+                  <div className="w-full h-1/2 overflow-hidden">
+                    <Image
                       src={image}
-                      layout="fill"
-                      objectFit="cover"
+                      width={500}
+                      height={500}
                       alt={title}
-                      className="w-64 h-64 grayscale-1"
-                    /> */}
+                      className="h-full object-cover group-hover/card:scale-110 duration-300"
+                    />
                   </div>
                   <div className="relative h-1/2 text-left p-4 flex flex-col">
-                    {/* <div className="absolut top-0 left-0 w-10 h-10 bg-secondary-200"></div> */}
-                    <h3 className="text-primary-600 mb-4 font-bold text-heading-xs">
-                      {title}
-                    </h3>
+                    <div className="absolute top-[-70px] left-[50px] w-24 h-24 text-white bg-primary-600 shadow-2xl text-center flex flex-col justify-center">
+                      <p className="mb-1 font-bold">{date}</p>
+                      <p className="mt-1 text-xs">{time}</p>
+                    </div>
+                    <Link href="/expert-talks">
+                      <h3 className="text-primary-600 mb-4 mt-8 font-bold text-heading-xs">
+                        {title}
+                      </h3>
+                    </Link>
                     <div className="grow flex items-center">
                       <p className="text-secondary-900 text-left text-xs">Speakers: <br/><b>{speakers.join(", ")}</b></p>
                     </div>
@@ -80,7 +113,7 @@ export function ExpertTalks() {
                         <div className="flex items-center mt-4">
                           <p className="text-primary-600">Read more and register</p>
                           <div className="ml-2 flex items-center text-primary-600">
-                            <hr className="w-0 border-primary-600 group-hover/release:w-10 duration-200" />
+                            <hr className="w-0 border-primary-600 group-hover/card:w-10 duration-200" />
                             &#9654;
                           </div>
                         </div>
