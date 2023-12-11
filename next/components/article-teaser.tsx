@@ -36,7 +36,6 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
             src={absoluteUrl(article.field_image.uri.url)}
             width={768}
             height={480}
-            style={{ width: 768, height: 480 }}
             alt={article.field_image.resourceIdObjMeta.alt}
             className={`float-left max-w-[250px] max-h-[250px] h-auto mb-4 mx-4 mr-8 ${
               isReversed ? "md:ml-8 md:mr-4 md:float-right" : ""
