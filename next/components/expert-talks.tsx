@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import WunderW from "@/styles/icons/wunder-w.svg";
 
 interface Experts {
   image: string;
@@ -46,33 +45,32 @@ const contacts: Experts[] = [
 export function ExpertTalks() {
   const { t } = useTranslation();
 
-  // Intersection Observer callback function
-  const handleIntersection = (entries, observer) => {
-    let delay = 0
-    entries.forEach(entry => {
+    // Intersection Observer callback function
+    const handleIntersection = (entries, observer) => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-            // Add the animation class when the element is in view
-            entry.target.classList.add(`animate-[slideUp_0.3s_ease-in_${delay}s_forwards]`);
-            observer.unobserve(entry.target);
-            delay += 0.3
+          // Add the animation class with a delay for each element
+          entry.target.style.animationDelay = `${index * 200}ms`;
+          entry.target.classList.add('animate-[slideUp_0.5s_ease-in_forwards]');
+          observer.unobserve(entry.target);
         }
-    });
-  };
-
-  // Create an Intersection Observer
-  let observer = null;
-  if (typeof window !== "undefined"){
-    observer = new IntersectionObserver(handleIntersection);
-    // Target the element to be animated
-    const animatedLatestReleases = document.querySelectorAll(".toSlideUp");
-    // Observe the target element
-    
-    if (animatedLatestReleases) {
-      animatedLatestReleases.forEach(element => {
-        observer.observe(element);
       });
+    };
+  
+    // Create an Intersection Observer
+    let observer = null;
+    if (typeof window !== "undefined") {
+      observer = new IntersectionObserver(handleIntersection);
+      // Target the element to be animated
+      const animatedExpertTalks = document.querySelectorAll(".toSlideUpExp");
+      // Observe the target element
+  
+      if (animatedExpertTalks) {
+        animatedExpertTalks.forEach(element => {
+          observer.observe(element);
+        });
+      }
     }
-  }
 
   return (
     <>
@@ -81,11 +79,11 @@ export function ExpertTalks() {
           <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
             {t("expert-talks")}
           </h2>
-          <div className="toSlideUp mt-20 opacity-0 w-full flex flex-wrap gap-8 lg:gap-14 justify-center">
+          <div className="w-full flex flex-wrap gap-8 lg:gap-14 justify-center">
             {contacts?.map(({ id, image, title, speakers, date, time}) => {
 
               return (
-                <div key={id} className="w-80 h-[30rem] group/card rounded border border-finnishwinter hover:shadow-md">
+                <div key={id} className="toSlideUpExp mt-20 opacity-0 w-80 h-[30rem] group/card rounded border border-finnishwinter hover:shadow-md">
                   <div className="w-full h-1/2 overflow-hidden">
                     <Image
                       src={image}
