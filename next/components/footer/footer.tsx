@@ -5,14 +5,24 @@ import type { Menu } from "@/lib/zod/menu";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useState } from "react";
+import { FieldErrors } from "react-hook-form";
 
-const SignupSchema = z.object({
-  news: z.boolean().default(false),
-  careers: z.boolean().default(false),
-  events: z.boolean().default(false),
-  email: z.string().email(),
-  terms: z.boolean().default(false),
-});
+const SignupSchema = z
+  .object({
+    news: z.boolean().default(false),
+    careers: z.boolean().default(false),
+    events: z.boolean().default(false),
+    email: z
+      .string()
+      .email("Please enter a valid email address")
+      .nonempty("Email is required"),
+    terms: z.boolean().refine((val) => val === true, "Terms must be accepted."),
+  })
+  .refine((data) => data.news || data.careers || data.events, {
+    message: "You must select at least one option",
+    path: ["checkboxGroup"],
+  });
 
 type TSignupSchema = z.infer<typeof SignupSchema>;
 
@@ -20,7 +30,15 @@ interface FooterProps {
   menu: Menu;
 }
 
+type CustomFieldErrors = FieldErrors<TSignupSchema> & {
+  checkboxGroup?: {
+    message: string;
+  };
+};
+
 export function Footer({ menu }: FooterProps) {
+  const [checkboxGroupError, setCheckboxGroupError] = useState("");
+
   const router = useRouter();
   const {
     register,
@@ -29,7 +47,15 @@ export function Footer({ menu }: FooterProps) {
   } = useForm<TSignupSchema>({
     resolver: zodResolver(SignupSchema),
   });
+
+  const customErrors = errors as CustomFieldErrors;
+
   const onSubmit = async (data: TSignupSchema) => {
+    if (!data.news && !data.careers && !data.events) {
+      setCheckboxGroupError("You must select at least one option");
+      return; // Prevent form submission
+    }
+    setCheckboxGroupError("");
     console.log(data);
     /*  console.log(onSubmit); */
     // Gather data from the form
@@ -70,9 +96,19 @@ export function Footer({ menu }: FooterProps) {
         <p className="pb-5 font-bold">Stay up to date with our newsletter</p>
         <p className="pb-5">"*" indicates required fields</p>
         <p className="pb-5">I'M INTERESTED IN</p>
+        <div>
+          {customErrors.checkboxGroup && (
+            <p>{customErrors.checkboxGroup.message}</p>
+          )}
+        </div>
+
         <div className="pb-5 flex space-x-4 mt-2">
           <label className="inline-flex items-center">
-            <input type="checkbox" className="form-checkbox text-primary-600" />
+            <input
+              {...register("news")}
+              type="checkbox"
+              className="form-checkbox text-primary-600"
+            />
             <span className="ml-2">Wunder news</span>
           </label>
           <label className="inline-flex items-center">
@@ -98,8 +134,10 @@ export function Footer({ menu }: FooterProps) {
             {...register("email")}
             type="email"
             className="bg-transparent mt-1 block w-full border-0 border-b-2 border-white focus:ring-0 focus:border-white text-white placeholder-white"
-            required
           />
+          {errors.email && (
+            <p className="text-red-500">{errors.email.message}</p>
+          )}
         </div>
         <label className="inline-flex items-center">
           <input
