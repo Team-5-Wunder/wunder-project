@@ -12,6 +12,6 @@ export function ParagraphText({ paragraph }: { paragraph: FormattedTextType }) {
     }
 
     default:
-      return null;
+      return <ParagraphTextNormal paragraph={paragraph} />;
   }
 }
