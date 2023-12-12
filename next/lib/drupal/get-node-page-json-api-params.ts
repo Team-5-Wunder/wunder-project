@@ -2,7 +2,12 @@ import { DrupalJsonApiParams } from "drupal-jsonapi-params";
 
 import { env } from "@/env";
 
-export type ResourceType = "node--frontpage" | "node--page" | "node--article" | "node--case" | "node--event";
+export type ResourceType =
+  | "node--frontpage"
+  | "node--page"
+  | "node--article"
+  | "node--case"
+  | "node--event";
 
 export function getNodePageJsonApiParams(resourceType: ResourceType) {
   const apiParams = new DrupalJsonApiParams().addFilter(

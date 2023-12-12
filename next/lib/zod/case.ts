@@ -10,10 +10,10 @@ import {
   ImageSchema,
   LinksSchema,
   ListingArticlesSchema,
-  VideoSchema,
   QuoteSchema,
-  TextQuoteSchema,
   TextImageSchema,
+  TextQuoteSchema,
+  VideoSchema,
 } from "@/lib/zod/paragraph";
 
 const CaseElementsSchema = z.discriminatedUnion("type", [
@@ -38,15 +38,27 @@ export const CaseSchema = z.object({
   field_excerpt: z.string(),
   field_content_elements: z.array(CaseElementsSchema),
   metatag: MetatagsSchema.optional(),
-  field_industry: z.array(z.object({
-    name: z.string()
-  })).optional(),
-  field_solution: z.array(z.object({
-    name: z.string()
-  })).optional(),
-  field_technology: z.array(z.object({
-    name: z.string()
-  })).optional(),
+  field_industry: z
+    .array(
+      z.object({
+        name: z.string(),
+      }),
+    )
+    .optional(),
+  field_solution: z
+    .array(
+      z.object({
+        name: z.string(),
+      }),
+    )
+    .optional(),
+  field_technology: z
+    .array(
+      z.object({
+        name: z.string(),
+      }),
+    )
+    .optional(),
 });
 
 // use client as an alternative name for the case in the code

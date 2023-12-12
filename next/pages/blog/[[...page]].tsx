@@ -1,4 +1,7 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { useRouter } from "next/router";
+import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal";
+import { deserialize } from "next-drupal";
 import { useTranslation } from "next-i18next";
 import { useEffect, useRef, useState } from "react";
 
@@ -11,18 +14,15 @@ import {
   createLanguageLinksForNextOnlyPage,
   LanguageLinks,
 } from "@/lib/contexts/language-links-context";
+import { drupal } from "@/lib/drupal/drupal-client";
 import { getLatestArticlesItems } from "@/lib/drupal/get-articles";
 import { getCommonPageProps } from "@/lib/get-common-page-props";
 import {
   ArticleTeaser as ArticleTeaserType,
   validateAndCleanupArticleTeaser,
 } from "@/lib/zod/article-teaser";
-import { drupal } from "@/lib/drupal/drupal-client";
-import { DrupalTaxonomyTerm, DrupalNode } from "next-drupal";
-import siteConfig from "@/site.config";
-import { useRouter } from "next/router";
-import { deserialize } from "next-drupal";
 
+import siteConfig from "@/site.config";
 import { Checkbox } from "@/ui/checkbox";
 
 interface BlogPageProps extends LayoutProps {
@@ -41,7 +41,8 @@ export default function BlogPage({
   const focusRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [tagsSearch, setTagsSearch] = useState<string[]>([]);
-  const [paginationNewProps, setPaginationNewProps] = useState<object>(paginationProps);
+  const [paginationNewProps, setPaginationNewProps] =
+    useState<object>(paginationProps);
   const [articles, setArticles] = useState<ArticleTeaserType[]>(articleTeasers);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(6);
@@ -50,14 +51,19 @@ export default function BlogPage({
   useEffect(() => {
     const page = +router.asPath.split("/")[2];
     if (page) {
-      setOffset((page - 1) * limit)
-      setCurrentPage(page)
+      setOffset((page - 1) * limit);
+      setCurrentPage(page);
     }
-  }, [router.asPath])
+  }, [router.asPath]);
 
-  useEffect(() => {    
-    const useBody = async() => {
-      let body = {offset, limit, locale:siteConfig.defaultLocale, tags:tagsSearch}
+  useEffect(() => {
+    const useBody = async () => {
+      const body = {
+        offset,
+        limit,
+        locale: siteConfig.defaultLocale,
+        tags: tagsSearch,
+      };
       const response = await fetch("/api/blog-filter", {
         method: "POST",
         body: JSON.stringify(body),
@@ -72,11 +78,13 @@ export default function BlogPage({
           const nodes = deserialize(result) as DrupalNode[];
           totalPages = Math.ceil(result.meta.count / limit);
           if (currentPage > totalPages) {
-            void router.push([pageRoot, totalPages].join("/"), null, { scroll: false })
+            void router.push([pageRoot, totalPages].join("/"), null, {
+              scroll: false,
+            });
           }
-          setArticles(nodes.map((teaser) =>
-            validateAndCleanupArticleTeaser(teaser),
-          ))
+          setArticles(
+            nodes.map((teaser) => validateAndCleanupArticleTeaser(teaser)),
+          );
         }
 
         // Create pagination props.
@@ -99,11 +107,11 @@ export default function BlogPage({
           nextEnabled,
           prevPageHref,
           nextPageHref,
-        })
+        });
       }
-    }
+    };
     useBody();
-  }, [limit, offset, tagsSearch])
+  }, [limit, offset, tagsSearch]);
 
   /* useEffect(() => {
     Object.keys(articles[1]).map((key) => console.log(articles[1][key]))
@@ -112,7 +120,7 @@ export default function BlogPage({
   /* useEffect(() => {
     console.log("Print data: " + JSON.stringify(articles));
   }, [articles]) */
-  
+
   const handleCheckboxChange = (value: string) => {
     if (tagsSearch.includes(value)) {
       setTagsSearch(tagsSearch.filter((tag) => tag !== value));
@@ -131,8 +139,9 @@ export default function BlogPage({
           <h2 className="text-xl">Filter</h2>
           {tags.map((tag) => (
             <li
-            key={tag.id}
-            className="flex items-center text-sm text-steelgray">
+              key={tag.id}
+              className="flex items-center text-sm text-steelgray"
+            >
               <Checkbox
                 onClick={() => handleCheckboxChange(tag.name)}
                 id={tag.id}
@@ -145,12 +154,12 @@ export default function BlogPage({
         </ul>
       </div>
       <ul className="mt-4">
-        {articles.length > 0 && articles
-        .map((article) => (
-          <li key={article.id}>
-            <ArticleListItem article={article} />
-          </li>
-        ))}
+        {articles.length > 0 &&
+          articles.map((article) => (
+            <li key={article.id}>
+              <ArticleListItem article={article} />
+            </li>
+          ))}
       </ul>
       <Pagination
         focusRestoreRef={focusRef}
@@ -205,7 +214,9 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async (
   // the other pages will exist in all languages.
   const languageLinks = createLanguageLinksForNextOnlyPage(pageRoot, context);
 
-  const tags = await drupal.getResourceCollectionFromContext<DrupalTaxonomyTerm[]>('taxonomy_term--tags', context, {})
+  const tags = await drupal.getResourceCollectionFromContext<
+    DrupalTaxonomyTerm[]
+  >("taxonomy_term--tags", context, {});
 
   return {
     props: {
@@ -222,7 +233,7 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async (
         nextPageHref,
       },
       languageLinks,
-      tags
+      tags,
     },
     revalidate: 60,
   };

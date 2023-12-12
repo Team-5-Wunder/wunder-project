@@ -80,15 +80,15 @@ module.exports = {
     extend: {
       keyframes: {
         slideUp: {
-          'from': {
-            'margin-top': 'current',
-            'opacity': 'current',
+          from: {
+            "margin-top": "current",
+            opacity: "current",
           },
-          'to': {
-            'margin-top': 0,
-            'opacity': 1,
+          to: {
+            "margin-top": 0,
+            opacity: 1,
           },
-        }
+        },
       },
       borderRadius: {
         ...defaultTheme.borderRadius,

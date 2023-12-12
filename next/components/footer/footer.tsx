@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Button } from "@/ui/button";
-import type { Menu } from "@/lib/zod/menu";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+
+import type { Menu } from "@/lib/zod/menu";
+
+import { Button } from "@/ui/button";
 /* import { router } from "next/router"; */
 
 const SignupSchema = z.object({

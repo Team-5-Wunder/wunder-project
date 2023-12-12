@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useTranslation } from "next-i18next";
 import { useRef } from "react";
 
+import { EventTeaser } from "@/components/event-teaser";
 import { HeadingPage } from "@/components/heading--page";
 import { LayoutProps } from "@/components/layout";
 import { Meta } from "@/components/meta";
@@ -16,7 +17,6 @@ import {
   EventTeaser as EventTeaserType,
   validateAndCleanupEventTeaser,
 } from "@/lib/zod/event-teaser";
-import { EventTeaser } from "@/components/event-teaser";
 
 interface NewsAndEventsPageProps extends LayoutProps {
   eventTeasers: EventTeaserType[];

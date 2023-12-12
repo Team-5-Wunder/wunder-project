@@ -193,7 +193,7 @@ export const TextImageSchema = z.object({
     })
     .nullable()
     .optional(),
-    field_text_image_layout: z.enum(["left", "right"]),
+  field_text_image_layout: z.enum(["left", "right"]),
 });
 
 export type FormattedText = z.infer<typeof FormattedTextSchema>;

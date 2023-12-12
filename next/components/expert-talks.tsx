@@ -1,5 +1,6 @@
 import NextImage from "next/image";
 import { useTranslation } from "next-i18next";
+
 import WunderW from "@/styles/icons/wunder-w.svg";
 
 interface Contact {

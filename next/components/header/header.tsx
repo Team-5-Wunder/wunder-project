@@ -3,11 +3,12 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
 
-import { MainMenu, MenuToggle, MenuExpanded } from "../main-menu/main-menu";
 import { Menu } from "@/lib/zod/menu";
 import SearchIcon from "@/styles/icons/search.svg";
 import WunderIcon from "@/styles/icons/wunder.svg";
-import WunderCarrot from "@/styles/icons/wunder-carrot.svg"
+import WunderCarrot from "@/styles/icons/wunder-carrot.svg";
+
+import { MainMenu, MenuExpanded, MenuToggle } from "../main-menu/main-menu";
 
 import { LanguageSwitcher } from "./language-switcher";
 import { UserMenu } from "./user-menu";
@@ -57,7 +58,7 @@ function SearchLink() {
   const { t } = useTranslation();
   return (
     <Link href="/search" locale={locale} className="hover:underline">
- {/*      <span className="sr-only sm:not-sr-only sm:mr-2 sm:inline">
+      {/*      <span className="sr-only sm:not-sr-only sm:mr-2 sm:inline">
         {t("search")}
       </span> */}
       <SearchIcon className="inline-block h-6 w-6" aria-hidden="true" />

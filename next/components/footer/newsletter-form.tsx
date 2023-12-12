@@ -1,16 +1,15 @@
+import Link from "next/link";
+import router, { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+/* import { toast } from "@/ui/use-toast"; */
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
-import { FormControl, FormField, FormItem, FormLabel } from "@/ui/form";
 
 import { Button } from "@/ui/button";
 import { Checkbox } from "@/ui/checkbox";
+import { FormControl, FormField, FormItem, FormLabel } from "@/ui/form";
 import { Input } from "@/ui/input";
-import Link from "next/link";
-/* import { toast } from "@/ui/use-toast"; */
-import { useForm } from "react-hook-form";
-import router, { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 type Inputs = {
   news: boolean;

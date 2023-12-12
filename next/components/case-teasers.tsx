@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+// This 2 imports are for css
+import clsx from "clsx";
 
 import { CaseTeaser } from "@/components/case-teaser";
 import { CaseTeaser as CaseTeaserType } from "@/lib/zod/case-teaser";
 
-// This 2 imports are for css
-import clsx from "clsx";
 import { buttonVariants } from "@/ui/button";
 
 interface LatestCasesProps {
