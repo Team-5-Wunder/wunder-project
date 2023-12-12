@@ -37,7 +37,7 @@ const OurClients = () => {
           <div className="w-full grid grid-cols-3 gap-8 md:grid-cols-4 md:gap-12 lg:grid-cols-5 lg:gap-16 items-center justify-items-center">
               <Link href="/clients/finavia" className="relative h-full w-full flex flex-col items-center justify-center group/finavia">
                 <img className="max-h-[70%] max-w-[80%] grayscale group-hover/finavia:grayscale-0" src="/assets/logos/finavia_logo_col.svg" alt="Finavia" />
-                <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/finavia:w-[80%] group-hover/release:bg-scapaflow"></div>
+                <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/finavia:w-[80%] group-hover/finavia:duration-200"></div>
               </Link>
               <div className="relative h-full w-full flex flex-col items-center justify-center group/sanoma">
                 <img className="max-h-[70%] max-w-[80%] grayscale group-hover/sanoma:grayscale-0" src="/assets/logos/sanoma-logo-new-300x108.webp" alt="Sanoma" />
