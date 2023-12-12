@@ -12,28 +12,45 @@ interface CaseTeaserProps {
 }
 
 export function CaseTeaser({ client }: CaseTeaserProps) {
-  const { t } = useTranslation();
+  
   return (
-    <Link
-      href={client.path.alias}
-      className="grid h-full rounded border border-finnishwinter p-4 transition-all hover:shadow-md"
-    >
-      <div>
+    // <Link
+    // href={client.path.alias}
+    // className="w-80 h-[30rem] p-4 group/card rounded border border-finnishwinter hover:shadow-md"
+    // // className="grid h-full rounded border border-finnishwinter p-4 hover:shadow-md"
+    // >
+    //   <h3 className="mb-2 text-heading-xs text-secondary-900">
+    //     {client.title}
+    //   </h3>
+    //   <div className="w-full h-[80%] overflow-hidden">
+    //     {client.field_image && (
+    //       <Image
+    //       src={absoluteUrl(client.field_image.uri.url)}
+    //       width={600}
+    //       height={600}
+    //       alt={client.field_image.resourceIdObjMeta.alt}
+    //       className="h-full object-cover group-hover/card:scale-110 duration-300"
+    //       />
+    //     )}
+    //   </div>
+    //   <div className="my-4">{client.field_excerpt}</div>
+    // </Link>
+    <div className="w-80 h-[30rem] p-4 group/card rounded border border-finnishwinter hover:shadow-md">
       <h3 className="mb-2 text-heading-xs text-secondary-900">
         {client.title}
       </h3>
-        {/* <img className="w-full h-1/2" src={absoluteUrl(client.field_image.uri.url)} alt="Man and woman" /> */}
+      <div className="w-full h-[80%] overflow-hidden">
+        {client.field_image && (
+          <Image
+          src={absoluteUrl(client.field_image.uri.url)}
+          width={600}
+          height={600}
+          alt={client.field_image.resourceIdObjMeta.alt}
+          className="h-full object-cover group-hover/card:scale-110 duration-300"
+          />
+        )}
       </div>
-      {client.field_image && (
-        <Image
-        src={absoluteUrl(client.field_image.uri.url)}
-        width={600}
-        height={240}
-        alt={client.field_image.resourceIdObjMeta.alt}
-        // className="h-1/2 object-cover"
-        />
-      )}
       <div className="my-4">{client.field_excerpt}</div>
-    </Link>
+    </div>
   );
 }
