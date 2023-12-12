@@ -2,13 +2,27 @@ uuid: fddf3755-0391-47f0-adb1-9a04aeb1d974
 langcode: en
 status: true
 dependencies:
+  config:
+    - field.field.user.user.field_user_image
   module:
+    - image
     - user
 id: user.user.default
 targetEntityType: user
 bundle: user
 mode: default
 content:
+  field_user_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 6
+    region: content
   member_for:
     settings: {  }
     third_party_settings: {  }
@@ -16,3 +30,4 @@ content:
     region: content
 hidden:
   langcode: true
+  simplenews: true
