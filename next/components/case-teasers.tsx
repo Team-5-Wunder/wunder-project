@@ -84,7 +84,7 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
             className="mt-20 opacity-0 lg:w-1/2 pt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
           >
             {cases?.map((client) => (
-              <CaseTeaser client={client} />
+              <CaseTeaser client={client} key={client.id}/>
             ))}
             <div className="flex items-center justify-center">
               {!cases?.length && (
