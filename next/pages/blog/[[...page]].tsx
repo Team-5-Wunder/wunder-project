@@ -113,14 +113,6 @@ export default function BlogPage({
     useBody();
   }, [limit, offset, tagsSearch]);
 
-  /* useEffect(() => {
-    Object.keys(articles[1]).map((key) => console.log(articles[1][key]))
-  }, [articles]) */
-
-  /* useEffect(() => {
-    console.log("Print data: " + JSON.stringify(articles));
-  }, [articles]) */
-
   const handleCheckboxChange = (value: string) => {
     if (tagsSearch.includes(value)) {
       setTagsSearch(tagsSearch.filter((tag) => tag !== value));

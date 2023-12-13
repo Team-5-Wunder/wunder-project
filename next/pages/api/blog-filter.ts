@@ -23,7 +23,6 @@ export default async function handler(
         body.tags.forEach((tag) => {
           apiParams.addFilter("field_tags.name", tag, "CONTAINS", tag);
         });
-        console.log("adding filter");
       }
 
       const result = await drupal.getResourceCollection<JsonApiResponse>(
@@ -44,7 +43,6 @@ export default async function handler(
           defaultLocale: siteConfig.defaultLocale,
         },
       );
-      console.log("Result: " + result);
 
       return res.status(200).json(result);
     }
