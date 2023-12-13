@@ -9,6 +9,8 @@ import { ParagraphQuote } from "@/components/paragraph--quote";
 import { ParagraphText } from "@/components/paragraph--text";
 import { ParagraphTextImage } from "@/components/paragraph--text_image";
 import { ParagraphTextQuote } from "@/components/paragraph--text_quote";
+import { ParagraphPageHero } from "@/components/paragraph--page_hero";
+import { ParagraphSpeaker } from "@/components/paragraph--speaker";
 import { Paragraph } from "@/lib/zod/paragraph";
 
 // Use dynamic imports to defer loading a component until after initial page load: https://nextjs.org/docs/advanced-features/dynamic-import
@@ -58,6 +60,12 @@ export function Paragraph({ paragraph }: { paragraph: Paragraph }) {
     }
     case "paragraph--text_image": {
       return <ParagraphTextImage paragraph={paragraph} />;
+    }
+    case "paragraph--page_hero": {
+      return <ParagraphPageHero paragraph={paragraph} />;
+    }
+    case "paragraph--speaker": {
+      return <ParagraphSpeaker paragraph={paragraph} />;
     }
     default:
       return null;

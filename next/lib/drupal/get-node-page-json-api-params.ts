@@ -117,6 +117,9 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "field_content_elements.field_accordion_items",
         "field_content_elements.field_accordion_items.field_content_elements.field_image.field_media_image",
         "field_content_elements.field_accordion_items.field_content_elements.field_video",
+        "field_event_speakers",
+        "field_event_speakers.field_image.field_media_image",
+        "field_event_tags",
       ])
       .addFields("node--event", [
         "title",
@@ -126,7 +129,11 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "path",
         "status",
         "metatag",
-        "field_date",
+        "field_start_time",
+        "field_end_time",
+        "field_event_speakers",
+        "field_location",
+        "field_event_tags",
       ]);
   }
 

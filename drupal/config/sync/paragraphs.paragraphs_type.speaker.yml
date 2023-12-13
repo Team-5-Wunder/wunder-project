@@ -1,0 +1,10 @@
+uuid: f97679f0-e9ad-4fc0-afa9-789e24696039
+langcode: en
+status: true
+dependencies: {  }
+id: speaker
+label: Speaker
+icon_uuid: null
+icon_default: null
+description: 'Speaker of the event.'
+behavior_plugins: {  }

@@ -1,0 +1,70 @@
+uuid: 3196f4ed-a9a2-45c8-8ec2-efbf61ef7883
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_speakers
+    - node.type.event
+    - paragraphs.paragraphs_type.speaker
+  module:
+    - entity_reference_revisions
+id: node.event.field_event_speakers
+field_name: field_event_speakers
+entity_type: node
+bundle: event
+label: 'Event speakers'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      speaker: speaker
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 16
+        enabled: false
+      accordion_item:
+        weight: 17
+        enabled: false
+      file_attachments:
+        weight: 18
+        enabled: false
+      formatted_text:
+        weight: 19
+        enabled: false
+      hero:
+        weight: 20
+        enabled: false
+      image:
+        weight: 21
+        enabled: false
+      links:
+        weight: 22
+        enabled: false
+      listing_articles:
+        weight: 23
+        enabled: false
+      page_hero:
+        weight: 24
+        enabled: false
+      quote:
+        weight: 25
+        enabled: false
+      speaker:
+        weight: 15
+        enabled: true
+      text_image:
+        weight: 26
+        enabled: false
+      text_quote:
+        weight: 27
+        enabled: false
+      video:
+        weight: 28
+        enabled: false
+field_type: entity_reference_revisions

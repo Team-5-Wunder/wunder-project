@@ -122,7 +122,7 @@ export default function BlogPage({
   };
 
   return (
-    <div className=" w-full max-w-[1664px] mt-20 px-6 sm:px-16">
+    <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
       <Meta title={t("blog")} metatags={[]} />
       <div ref={focusRef} tabIndex={-1} />
       <HeadingPage>{t("blog")}</HeadingPage>

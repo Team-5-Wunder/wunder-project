@@ -196,6 +196,38 @@ export const TextImageSchema = z.object({
   field_text_image_layout: z.enum(["left", "right"]),
 });
 
+export const PageHeroSchema = z.object({
+  type: z.literal("paragraph--page_hero"),
+  id: z.string(),
+  field_formatted_text: z.object({
+    processed: z.string(),
+  })
+  .nullable(),
+  field_heading: z.string(),
+  field_image: z
+    .object({
+      type: z.literal("media--image"),
+      id: z.string(),
+      field_media_image: ImageShape.nullable(),
+    })
+    .nullable()
+    .optional(),
+});
+
+export const SpeakerSchema = z.object({
+  type: z.literal("paragraph--speaker"),
+  id: z.string(),
+  field_speaker: z.string(),
+  field_image: z
+    .object({
+      type: z.literal("media--image"),
+      id: z.string(),
+      field_media_image: ImageShape.nullable(),
+    })
+    .nullable()
+    .optional(),
+});
+
 export type FormattedText = z.infer<typeof FormattedTextSchema>;
 export type Image = z.infer<typeof ImageSchema>;
 export type Video = z.infer<typeof VideoSchema>;
@@ -208,6 +240,8 @@ export type FileAttachments = z.infer<typeof FileAttachmentsSchema>;
 export type Quote = z.infer<typeof QuoteSchema>;
 export type TextQuote = z.infer<typeof TextQuoteSchema>;
 export type TextImage = z.infer<typeof TextImageSchema>;
+export type PageHero = z.infer<typeof PageHeroSchema>;
+export type Speaker = z.infer<typeof SpeakerSchema>;
 
 export type Paragraph =
   | FormattedText
@@ -221,4 +255,6 @@ export type Paragraph =
   | FileAttachments
   | Quote
   | TextQuote
-  | TextImage;
+  | TextImage
+  | PageHero
+  | Speaker;

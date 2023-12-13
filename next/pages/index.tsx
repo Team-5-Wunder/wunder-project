@@ -45,6 +45,7 @@ interface IndexPageProps extends LayoutProps {
   filteredPromotedArticleTeasers: ArticleTeaser[];
   promotedCaseTeasers: CaseTeaser[];
   promotedEventTeasers: EventTeaser[];
+  filteredPromotedExpertTalks: EventTeaser[];
 }
 
 export default function IndexPage({
@@ -52,6 +53,7 @@ export default function IndexPage({
   filteredPromotedArticleTeasers,
   promotedCaseTeasers,
   promotedEventTeasers,
+  filteredPromotedExpertTalks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
 
@@ -83,7 +85,9 @@ export default function IndexPage({
         articles={filteredPromotedArticleTeasers}
         heading={t("Latest releases")}
       />
-      <ExpertTalks />
+      <ExpertTalks
+        events={filteredPromotedExpertTalks}
+      />
       {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
             <Paragraph paragraph={paragraph} key={paragraph.id} />
@@ -142,9 +146,23 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
   >("node--event", context, {
     params: getNodePageJsonApiParams("node--event")
       .addPageLimit(3)
-      .addSort("field_date", "ASC")
+      .addSort("field_start_time", "ASC")
       .getQueryObject(),
   });
+
+  const promotedExpertTalks = await drupal.getResourceCollectionFromContext<
+    DrupalNode[]
+  >("node--event", context, {
+    params: getNodePageJsonApiParams("node--event")
+      .addSort("field_start_time", "ASC")
+      .getQueryObject(),
+  });
+
+  const filteredPromotedExpertTalks = promotedExpertTalks
+    .filter(
+      (event) => event.field_event_tags?.some((tag) => tag.name === "Expert Talks"),
+    )
+    .slice(0, 3);
 
   return {
     props: {
@@ -159,6 +177,9 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
       promotedEventTeasers: promotedEventTeasers.map((teaser) =>
         validateAndCleanupEventTeaser(teaser),
       ),
+      filteredPromotedExpertTalks: filteredPromotedExpertTalks.map((teaser) =>
+        validateAndCleanupEventTeaser(teaser),
+      )
     },
     revalidate: 60,
   };

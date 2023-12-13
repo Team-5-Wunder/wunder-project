@@ -11,11 +11,15 @@ interface EventProps {
 
 export function Event({ event }: EventProps) {
   return (
-    <div className="grid gap-4 grid-cols-2">
+    <div className="grid gap-4 grid-cols-2 w-full max-w-[1664px] mt-20 px-6 sm:px-16">
       <div>
         <HeadingPage>{event.title}</HeadingPage>
         <div className="my-4 text-xl">{event.field_excerpt}</div>
-        <div>{event.field_date}</div>
+        <div>{event.field_start_time}</div>
+        {event.field_end_time && 
+          <div>{event.field_end_time}</div>
+        }
+        <div>{event.field_location}</div>
       </div>
       <figure>
         <Image
@@ -35,6 +39,11 @@ export function Event({ event }: EventProps) {
       </figure>
       <div className="grid gap-4 col-span-2">
         {event.field_content_elements?.map((paragraph) => (
+          <Paragraph key={paragraph.id} paragraph={paragraph} />
+        ))}
+      </div>
+      <div className="flex flex-row justify-center items-center">
+        {event.field_event_speakers?.map((paragraph) => (
           <Paragraph key={paragraph.id} paragraph={paragraph} />
         ))}
       </div>

@@ -1,0 +1,19 @@
+uuid: 16543028-b24f-4470-81e9-e7907ccde958
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.page_hero
+id: paragraph.page_hero.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: page_hero
+label: Heading
+description: 'Heading for the hero banner'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
