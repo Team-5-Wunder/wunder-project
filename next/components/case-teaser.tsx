@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
-
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
-import { formatDate } from "@/lib/utils";
 import { CaseTeaser } from "@/lib/zod/case-teaser";
 
 interface CaseTeaserProps {
@@ -14,12 +10,12 @@ interface CaseTeaserProps {
 export function CaseTeaser({ client }: CaseTeaserProps) {
   
   return (
-    <Link href={client.path.alias}>
-      <div className="w-100 h-[30rem] p-4 group/card rounded border border-finnishwinter hover:shadow-md">
+    <div className="max-w-[22rem] h-[30rem] lg:max-xl:h-[25rem] p-4 group/card rounded border border-finnishwinter hover:shadow-md">
+        <Link href={client.path.alias} className="flex flex-col w-full h-full">
         <h3 className="mb-2 text-heading-xs text-secondary-900">
           {client.title}
         </h3>
-        <div className="w-full h-[75%] overflow-hidden">
+        <div className="w-full h-[70%] overflow-hidden">
           {client.field_image && (
             <Image
             src={absoluteUrl(client.field_image.uri.url)}
@@ -31,7 +27,7 @@ export function CaseTeaser({ client }: CaseTeaserProps) {
           )}
         </div>
         <div className="my-4">{client.field_excerpt}</div>
-      </div>
     </Link>
+      </div>
   );
 }
