@@ -18,25 +18,25 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
 
   // Intersection Observer callback function
   const handleIntersection = (entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Add the animation class when the element is in view
-            entry.target.classList.add('animate-[slideUp_0.5s_ease-in_forwards]');
-            observer.unobserve(entry.target);
-        }
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Add the animation class when the element is in view
+        entry.target.classList.add("animate-[slideUp_0.5s_ease-in_forwards]");
+        observer.unobserve(entry.target);
+      }
     });
   };
 
   // Create an Intersection Observer
   let observer = null;
-  if (typeof window !== "undefined"){
+  if (typeof window !== "undefined") {
     observer = new IntersectionObserver(handleIntersection);
     // Target the element to be animated
     const animatedLatestReleases = document.querySelectorAll(".toSlideUp");
     // Observe the target element
-    
+
     if (animatedLatestReleases) {
-      animatedLatestReleases.forEach(element => {
+      animatedLatestReleases.forEach((element) => {
         observer.observe(element);
       });
     }
@@ -48,14 +48,11 @@ export function LatestReleases({ articles, heading }: LatestArticlesProps) {
         <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
           {heading}
         </h2>
-          {articles?.map((article, index) => (
-              <div className="toSlideUp mt-20 opacity-0" key={article.id}>
-                <ArticleTeaser
-                  article={article}
-                  isReversed={index % 2 !== 0}
-                />
-              </div>
-          ))}
+        {articles?.map((article, index) => (
+          <div className="toSlideUp mt-20 opacity-0" key={article.id}>
+            <ArticleTeaser article={article} isReversed={index % 2 !== 0} />
+          </div>
+        ))}
 
         <div className="flex items-center justify-center">
           {!articles?.length && <p className="py-4">{t("no-content-found")}</p>}
