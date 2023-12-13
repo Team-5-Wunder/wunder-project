@@ -2,9 +2,9 @@ uuid: 95036472-d4cf-410e-9be0-69d9d0b4fbbf
 langcode: en
 status: true
 dependencies: {  }
-name: footer_newsletter
+name: simplenews-subscribtion
 id: footer_newsletter
-description: footer_newsletter
+description: simplenews-subscribtion
 format: plain
 priority: 0
 receipt: true
@@ -13,7 +13,8 @@ subject: '[[simplenews-newsletter:name]] [node:title]'
 from_address: admin@example.com
 hyperlinks: true
 allowed_handlers:
+  0: '0'
   simplenews_all: '0'
-new_account: none
+new_account: 'on'
 access: default
 weight: 0

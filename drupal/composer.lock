@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d26bb2246670b2e5d73f323bc3d0883f",
+    "content-hash": "af3044e6d257d7e4a65cd02eb8c03167",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3577,6 +3577,64 @@
             "homepage": "https://www.drupal.org/project/webform_rest",
             "support": {
                 "source": "https://git.drupalcode.org/project/webform_rest"
+            }
+        },
+        {
+            "name": "drupal/webform_simplenews_handler",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/webform_simplenews_handler.git",
+                "reference": "2.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_simplenews_handler-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "e0c5a93b927145fe96d674c5c9c53f2fe3ae3b82"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10",
+                "drupal/simplenews": "^1.0 || ^2.0 || ^3.0",
+                "drupal/webform": "^5.0 || ^6.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1",
+                    "datestamp": "1684488795",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "jeremiezip",
+                    "homepage": "https://www.drupal.org/user/3559334"
+                },
+                {
+                    "name": "netsliver",
+                    "homepage": "https://www.drupal.org/user/3082011"
+                },
+                {
+                    "name": "vuil",
+                    "homepage": "https://www.drupal.org/user/3568458"
+                }
+            ],
+            "description": "Webform Submission Newsletter Handler give the possibility to subscribe submission email field into simplenews.",
+            "homepage": "https://www.drupal.org/project/webform_simplenews_handler",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform_simplenews_handler",
+                "issues": "https://www.drupal.org/project/issues/webform_simplenews_handler"
             }
         },
         {

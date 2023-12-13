@@ -1,3 +1,4 @@
 role_to_select:
+  next_api_role: next_api_role
   frontend_login: frontend_login
 registration_mode: user
