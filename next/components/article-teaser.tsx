@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
@@ -6,7 +5,7 @@ import { useTranslation } from "next-i18next";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { formatDate } from "@/lib/utils";
 import { ArticleTeaser } from "@/lib/zod/article-teaser";
-/* import ColorfulArrows from "@/styles/icons/colorful-arrows.svg"; */
+import Image from "next/image";
 
 interface ArticleTeaserProps {
   article: ArticleTeaser;
@@ -17,42 +16,49 @@ export function ArticleTeaser({ article, isReversed }: ArticleTeaserProps) {
   const author = article.uid?.display_name;
   const router = useRouter();
   const date = formatDate(article.created, router.locale);
-  const imageClassName = `px-4 ${isReversed ? "md:order-last md:ml-auto" : ""}`;
+  const group = "group/" + article.id;
+  const group_hover = "group-hover/" + article.id + ":bg-scapaflow";
 
   return (
-    <Link
-      href={article.path.alias}
-      className="pb-20 gap-6 relative grid h-full rounded border-0 bg-white p-4 transition-all hover:shadow-md"
-    >
-      <div className="flex flex-col lg:flex-row ml-3 mt-5 ">
-        <div className={`w-full ${imageClassName}`}>
-          {article.field_image && (
-            <Image
-              src={absoluteUrl(article.field_image.uri.url)}
-              width={300}
-              height={100}
-              alt={article.field_image.resourceIdObjMeta.alt}
-              className="max-w-full h-auto object-cover"
-            />
-          )}
-        </div>
-        <div className="w-full px-4">
-          <h3
-            className={`mt-5 text-primary-600 mb-2 line-clamp-2 text-heading-xs font-bold ${
-              isReversed ? "md:text-left" : ""
+    <div className="flex justify-center">
+      <Link
+        href={article.path.alias}
+        className="mb-7 mt-5  group/release lg:mb-10 xl:max-w-[80%] max-md:flex max-md:flex-col"
+      >
+        {article.field_image && (
+          /*     <img
+            src={absoluteUrl(article.field_image.uri.url)}
+            alt={article.field_image.resourceIdObjMeta.alt}
+            className={`float-left max-w-[250px] max-h-[250px] h-auto mb-4 mx-4 mr-8 ${
+              isReversed ? "md:ml-8 md:mr-4 md:float-right" : ""
             }`}
-          >
+          /> */
+          <Image
+            src={absoluteUrl(article.field_image.uri.url)}
+            width={768}
+            height={480}
+            alt={article.field_image.resourceIdObjMeta.alt}
+            className={`float-left max-w-[250px] max-h-[250px] h-auto mb-4 mx-4 mr-8 ${
+              isReversed ? "md:ml-8 md:mr-4 md:float-right" : ""
+            }`}
+            priority
+          />
+        )}
+        <div className="px-4">
+          <h3 className="text-primary-600 mb-2 text-heading-xs font-bold">
             {article.title}
           </h3>
-          <p className={`${isReversed ? "" : "text-left"}`}>
-            {article.field_excerpt}
-          </p>
-          <div className="flex  items-center mt-4">
+          <p className="mb-2 text-stone">{date}</p>
+          <p>{article.field_excerpt}</p>
+          <div className="flex items-center mt-4">
             <p className="text-primary-600">Read More</p>
-            {/*   <ColorfulArrows /> */}
+            <div className="ml-2 flex items-center text-primary-600">
+              <hr className="w-0 border-primary-600 group-hover/release:w-10 duration-200" />
+              &#9654;
+            </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

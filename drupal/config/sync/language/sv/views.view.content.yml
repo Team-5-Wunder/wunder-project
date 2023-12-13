@@ -7,6 +7,8 @@ display:
       fields:
         status:
           label: Status
+        changed:
+          label: Uppdaterad
         operations:
           label: Funktioner
       exposed_form:

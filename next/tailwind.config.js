@@ -48,8 +48,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      inter: ["--font-inter", ...defaultTheme.fontFamily.sans],
-      overpass: ["--font-overpass", ...defaultTheme.fontFamily.sans],
+      inter: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+      overpass: ["var(--font-overpass)", ...defaultTheme.fontFamily.sans],
     },
     fontSize: {
       xs: ["0.813rem", { lineHeight: "1.5" }],

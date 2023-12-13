@@ -19,12 +19,6 @@ export default async function handler(
         body: JSON.stringify({
           webform_id: "footer_newsletter",
           ...body,
-          /* withAuth: true, */
-          /*   email: request.body.email,
-          news: request.body.news,
-          careers: request.body.careers,
-          events: request.body.events,
-          terms: request.body.terms, */
         }),
         headers: {
           "Content-Type": "application/json",

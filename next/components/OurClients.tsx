@@ -30,7 +30,7 @@ const OurClients = () => {
   return (
     <div className="w-screen flex justify-center">
       <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex flex-col">
-        <h2 className="mb-10 text-primary-600 text-heading-lg font-bold">
+        <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
           {t("our-clients")}
         </h2>
         <div id="logosBox" className="mt-20 opacity-0">

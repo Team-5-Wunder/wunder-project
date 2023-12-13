@@ -50,7 +50,7 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
       <div className="mt-20 lg:mt-0 w-full max-w-[1664px] px-6 sm:px-16 flex">
         <div className="w-full flex flex-wrap">
           <div className="lg:w-1/2 pr-10 flex flex-col">
-            <h2 className="mb-10 text-primary-600 text-heading-lg font-bold">
+            <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
               {heading}
             </h2>
 
@@ -79,21 +79,19 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
             </div>
           </div>
 
-          <ul
+          <div
             id="casesBox"
-            className="mt-20 opacity-0 lg:w-1/2 pt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 "
+            className="mt-20 opacity-0 lg:w-1/2 pt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
           >
             {cases?.map((client) => (
-              <li key={client.id}>
-                <CaseTeaser client={client} />
-              </li>
+              <CaseTeaser client={client} key={client.id}/>
             ))}
             <div className="flex items-center justify-center">
               {!cases?.length && (
                 <p className="py-4">{t("no-content-found")}</p>
               )}
             </div>
-          </ul>
+          </div>
         </div>
       </div>
     </div>

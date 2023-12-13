@@ -7,6 +7,8 @@ display:
       fields:
         status:
           label: Tila
+        changed:
+          label: Päivitetty
         operations:
           label: Toimenpiteet
       exposed_form:
