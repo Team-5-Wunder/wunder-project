@@ -1,3 +1,6 @@
+import "./main-menu.module.css";
+
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
@@ -5,9 +8,7 @@ import { useEffectOnce } from "@/lib/hooks/use-effect-once";
 import { useEventListener } from "@/lib/hooks/use-event-listener";
 import { useOnClickOutside } from "@/lib/hooks/use-on-click-outside";
 import { Menu, MenuItem as MenuItemType } from "@/lib/zod/menu";
-import Link from "next/link";
 import Chevron from "@/styles/icons/chevron-down.svg";
-import "./main-menu.module.css"
 
 import {
   MenuBack,
@@ -196,9 +197,7 @@ export function MainMenu({ menu, isOpen, setIsOpen }: MainMenuProps) {
 }
 
 export function MenuExpanded({ menu }: MenuExpandedProps) {
-  const [activeMenu, setActiveMenu] = useState<MenuItemType["id"] | null>(
-    null,
-  );
+  const [activeMenu, setActiveMenu] = useState<MenuItemType["id"] | null>(null);
 
   return (
     <div className="hidden lg:block">

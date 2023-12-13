@@ -7,7 +7,7 @@ export const FormattedTextSchema = z.object({
     processed: z.string(),
   }),
   field_heading: z.string().nullable(),
-  field_text_layout: z.enum(["normal", "column"]),
+  field_text_layout: z.enum(["normal", "column"]).nullable(),
 });
 
 export const ListingArticlesSchema = z.object({
@@ -193,7 +193,7 @@ export const TextImageSchema = z.object({
     })
     .nullable()
     .optional(),
-    field_text_image_layout: z.enum(["left", "right"]),
+  field_text_image_layout: z.enum(["left", "right"]),
 });
 
 export type FormattedText = z.infer<typeof FormattedTextSchema>;

@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+
 import { drupal } from "@/lib/drupal/drupal-client";
 
 export default async function handler(

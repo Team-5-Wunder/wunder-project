@@ -4,7 +4,11 @@ import { FormattedText } from "@/components/formatted-text";
 import { HeadingParagraph } from "@/components/heading--paragraph";
 import { FormattedText as FormattedTextType } from "@/lib/zod/paragraph";
 
-export function ParagraphTextNormal({ paragraph }: { paragraph: FormattedTextType }) {
+export function ParagraphTextNormal({
+  paragraph,
+}: {
+  paragraph: FormattedTextType;
+}) {
   return (
     <div className="md:mx-16">
       {paragraph.field_heading && (

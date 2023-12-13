@@ -23,9 +23,25 @@ export function Article({ article, ...props }: ArticleProps) {
       )}
       <div className="mb-4 text-scapaflow">
         {article.uid?.display_name && (
-          <span>
-            {t("posted-by", { author: article.uid?.display_name })} -{" "}
-          </span>
+          <div className="flex flex-row items-center">
+            {article.uid?.field_user_image &&
+              <Image
+                src={absoluteUrl(article.uid?.field_user_image.uri.url)}
+                width={50}
+                height={50}
+                style={{ width: 50, height: 50 }}
+                alt={article.uid?.field_user_image.resourceIdObjMeta.alt}
+                className="border-0 rounded-full object-cover"
+                priority
+              />
+            }
+            {!article.uid?.field_user_image && 
+              <img src="/assets/carrot.png" alt="wunder" className="h-[50px] w-[50px] border-0 rounded-full" />
+            }
+            <span>
+              {t("posted-by", { author: article.uid?.display_name })} -{" "}
+            </span>
+          </div>
         )}
         <span>{formatDate(article.created, router.locale)}</span>
       </div>

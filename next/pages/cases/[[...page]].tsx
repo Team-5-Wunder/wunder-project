@@ -1,7 +1,11 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { useRouter } from "next/router";
+import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal";
+import { deserialize } from "next-drupal";
 import { useTranslation } from "next-i18next";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
+import { CaseTeaser } from "@/components/case-teaser";
 import { HeadingPage } from "@/components/heading--page";
 import { LayoutProps } from "@/components/layout";
 import { Meta } from "@/components/meta";
@@ -10,16 +14,15 @@ import {
   createLanguageLinksForNextOnlyPage,
   LanguageLinks,
 } from "@/lib/contexts/language-links-context";
+import { drupal } from "@/lib/drupal/drupal-client";
 import { getLatestCasesItems } from "@/lib/drupal/get-cases";
 import { getCommonPageProps } from "@/lib/get-common-page-props";
 import {
   CaseTeaser as CaseTeaserType,
   validateAndCleanupCaseTeaser,
 } from "@/lib/zod/case-teaser";
-import { CaseTeaser } from "@/components/case-teaser";
-import { drupal } from "@/lib/drupal/drupal-client";
-import { DrupalTaxonomyTerm } from "next-drupal";
 
+import siteConfig from "@/site.config";
 import { Checkbox } from "@/ui/checkbox";
 
 interface CasesPageProps extends LayoutProps {
@@ -40,27 +43,109 @@ export default function CasesPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const focusRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const [industrySearch, setIndustrySearch] = useState<string[]>([]);
   const [solutionSearch, setsSolutionSearch] = useState<string[]>([]);
   const [technologySearch, setTechnologySearch] = useState<string[]>([]);
+  /* const [paginationNewProps, setPaginationNewProps] =
+    useState<object>(paginationProps);
+  const [cases, setCases] = useState<CaseTeaserType[]>(caseTeasers);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(6);
+  const [offset, setOffset] = useState<number>(0); */
+
+  /* useEffect(() => {
+    const page = +router.asPath.split("/")[2];
+    if (page) {
+      setOffset((page - 1) * limit);
+      setCurrentPage(page);
+    }
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const useBody = async () => {
+      const body = {
+        offset,
+        limit,
+        locale: siteConfig.defaultLocale,
+        industry: industrySearch,
+        solution: solutionSearch,
+        technology: technologySearch,
+      };
+      const response = await fetch("/api/cases-filter", {
+        method: "POST",
+        body: JSON.stringify(body),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+
+        let totalPages;
+        const pageRoot = "/cases";
+        if (result.data) {
+          const nodes = deserialize(result) as DrupalNode[];
+          totalPages = Math.ceil(result.meta.count / limit);
+          if (currentPage > totalPages) {
+            void router.push([pageRoot, totalPages].join("/"), null, {
+              scroll: false,
+            });
+          }
+          setCases(
+            nodes.map((teaser) => validateAndCleanupCaseTeaser(teaser)),
+          );
+        }
+
+        // Create pagination props.
+        const prevEnabled = currentPage > 1;
+        const nextEnabled = currentPage < totalPages;
+
+        // Create links for prev/next pages.
+        const prevPage = currentPage - 1;
+        const nextPage = currentPage + 1;
+        const prevPageHref =
+          currentPage === 2
+            ? pageRoot
+            : prevEnabled && [pageRoot, prevPage].join("/");
+        const nextPageHref = nextEnabled && [pageRoot, nextPage].join("/");
+
+        setPaginationNewProps({
+          currentPage,
+          totalPages,
+          prevEnabled,
+          nextEnabled,
+          prevPageHref,
+          nextPageHref,
+        });
+      }
+    };
+    useBody();
+  }, [limit, offset, industrySearch, solutionSearch, technologySearch]); */
+
+  /* useEffect(() => {
+    Object.keys(cases[1]).map((key) => console.log(cases[1][key]))
+  }, [cases]) */
+
+  /* useEffect(() => {
+    console.log("Print data: " + JSON.stringify(cases));
+  }, [cases]) */
 
   const handleCheckboxChange = (value: string, type: string) => {
     switch (type) {
-      case 'industry':
+      case "industry":
         if (industrySearch.includes(value)) {
           setIndustrySearch(industrySearch.filter((tag) => tag !== value));
         } else {
           setIndustrySearch([...industrySearch, value]);
         }
         break;
-      case 'solution':
+      case "solution":
         if (solutionSearch.includes(value)) {
           setsSolutionSearch(solutionSearch.filter((tag) => tag !== value));
         } else {
           setsSolutionSearch([...solutionSearch, value]);
         }
         break;
-      case 'technology':
+      case "technology":
         if (technologySearch.includes(value)) {
           setTechnologySearch(technologySearch.filter((tag) => tag !== value));
         } else {
@@ -73,7 +158,7 @@ export default function CasesPage({
   };
 
   return (
-    <>
+    <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
       <Meta title={t("cases")} metatags={[]} />
       <div ref={focusRef} tabIndex={-1} />
       <HeadingPage>{t("cases")}</HeadingPage>
@@ -82,10 +167,11 @@ export default function CasesPage({
           <h2 className="text-xl">Industry</h2>
           {industry.map((tag) => (
             <li
-            key={tag.id}
-            className="flex items-center text-sm text-steelgray">
+              key={tag.id}
+              className="flex items-center text-sm text-steelgray"
+            >
               <Checkbox
-                onClick={() => handleCheckboxChange(tag.name, 'industry')}
+                onClick={() => handleCheckboxChange(tag.name, "industry")}
                 id={tag.id}
               />
               <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
@@ -98,10 +184,11 @@ export default function CasesPage({
           <h2 className="text-xl">Solution</h2>
           {solution.map((tag) => (
             <li
-            key={tag.id}
-            className="flex items-center text-sm text-steelgray">
+              key={tag.id}
+              className="flex items-center text-sm text-steelgray"
+            >
               <Checkbox
-                onClick={() => handleCheckboxChange(tag.name, 'solution')}
+                onClick={() => handleCheckboxChange(tag.name, "solution")}
                 id={tag.id}
               />
               <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
@@ -114,10 +201,11 @@ export default function CasesPage({
           <h2 className="text-xl">Technology</h2>
           {technology.map((tag) => (
             <li
-            key={tag.id}
-            className="flex items-center text-sm text-steelgray">
+              key={tag.id}
+              className="flex items-center text-sm text-steelgray"
+            >
               <Checkbox
-                onClick={() => handleCheckboxChange(tag.name, 'technology')}
+                onClick={() => handleCheckboxChange(tag.name, "technology")}
                 id={tag.id}
               />
               <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
@@ -141,16 +229,16 @@ export default function CasesPage({
             ))
           ))
           .map((client) => (
-          <li key={client.id}>
-            <CaseTeaser client={client} />
-          </li>
-        ))}
+            <li key={client.id}>
+              <CaseTeaser client={client} />
+            </li>
+          ))}
       </ul>
       <Pagination
         focusRestoreRef={focusRef}
         paginationProps={paginationProps}
       />
-    </>
+    </div>
   );
 }
 
@@ -199,18 +287,21 @@ export const getStaticProps: GetStaticProps<CasesPageProps> = async (
   // the other pages will exist in all languages.
   const languageLinks = createLanguageLinksForNextOnlyPage(pageRoot, context);
 
-
   // fetch all taxonomies needed for filtering cases
-  const industry = await drupal.getResourceCollectionFromContext<DrupalTaxonomyTerm[]>('taxonomy_term--industry', context, {})
-  const solution = await drupal.getResourceCollectionFromContext<DrupalTaxonomyTerm[]>('taxonomy_term--solution', context, {})
-  const technology = await drupal.getResourceCollectionFromContext<DrupalTaxonomyTerm[]>('taxonomy_term--technology', context, {})
+  const industry = await drupal.getResourceCollectionFromContext<
+    DrupalTaxonomyTerm[]
+  >("taxonomy_term--industry", context, {});
+  const solution = await drupal.getResourceCollectionFromContext<
+    DrupalTaxonomyTerm[]
+  >("taxonomy_term--solution", context, {});
+  const technology = await drupal.getResourceCollectionFromContext<
+    DrupalTaxonomyTerm[]
+  >("taxonomy_term--technology", context, {});
 
   return {
     props: {
       ...(await getCommonPageProps(context)),
-      caseTeasers: cases.map((teaser) =>
-        validateAndCleanupCaseTeaser(teaser),
-      ),
+      caseTeasers: cases.map((teaser) => validateAndCleanupCaseTeaser(teaser)),
       paginationProps: {
         currentPage,
         totalPages,
@@ -222,7 +313,7 @@ export const getStaticProps: GetStaticProps<CasesPageProps> = async (
       languageLinks,
       industry: industry,
       solution: solution,
-      technology: technology
+      technology: technology,
     },
     revalidate: 60,
   };

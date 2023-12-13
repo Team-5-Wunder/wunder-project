@@ -12,13 +12,18 @@ export const ArticleBaseSchema = z.object({
   uid: z.object({
     id: z.string(),
     display_name: z.string(),
+    field_user_image: ImageShape.nullable(),
   }),
   title: z.string(),
   field_image: ImageShape.nullable(),
   field_excerpt: z.string().optional().nullable(),
-  field_tags: z.array(z.object({
-    name: z.string()
-  })).optional()
+  field_tags: z
+    .array(
+      z.object({
+        name: z.string(),
+      }),
+    )
+    .optional(),
 });
 
 const ArticleSchema = ArticleBaseSchema.extend({

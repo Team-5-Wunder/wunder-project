@@ -15,4 +15,6 @@ content:
     weight: 5
     region: content
 hidden:
+  field_user_image: true
   langcode: true
+  simplenews: true

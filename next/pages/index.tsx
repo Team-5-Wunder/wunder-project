@@ -1,19 +1,23 @@
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { absoluteUrl } from "@/lib/drupal/absolute-url";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
 
-import { LatestReleases } from "@/components/latest-releases";
+import { Article } from "@/components/article";
 import { CaseTeasers } from "@/components/case-teasers";
-import { EventTeasers } from "@/components/event-teasers";
 import { ContactForm } from "@/components/contact-form";
+import { EventTeasers } from "@/components/event-teasers";
 import { ExpertTalks } from "@/components/expert-talks";
+import HeroBanner from "@/components/herobanner/heroBanner";
+import { LatestReleases } from "@/components/latest-releases";
 import { LayoutProps } from "@/components/layout";
 import { LogoStrip } from "@/components/logo-strip";
 import { Meta } from "@/components/meta";
+import OurClients from "@/components/OurClients";
 import { Paragraph } from "@/components/paragraph";
+import WeAreWunder from "@/components/we-are-wunder";
+import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { drupal } from "@/lib/drupal/drupal-client";
 import { getNodePageJsonApiParams } from "@/lib/drupal/get-node-page-json-api-params";
 import { getCommonPageProps } from "@/lib/get-common-page-props";
@@ -31,13 +35,10 @@ import {
 } from "@/lib/zod/event-teaser";
 import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 
-import { Divider } from "@/ui/divider";
-import HeroBanner from "@/components/herobanner/heroBanner";
-import { Article } from "@/components/article";
-import OurClients from "@/components/OurClients";
-import WeAreWunder from "@/components/we-are-wunder";
 import LogIn from "./auth/login";
 import Register from "./auth/register";
+
+import { Divider } from "@/ui/divider";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;

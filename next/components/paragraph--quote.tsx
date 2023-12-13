@@ -1,9 +1,9 @@
-import clsx from "clsx";
 import Image from "next/image";
-import { absoluteUrl } from "@/lib/drupal/absolute-url";
+import clsx from "clsx";
 
-import { Media } from "@/components/media";
 import { FormattedText } from "@/components/formatted-text";
+import { Media } from "@/components/media";
+import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { Quote as QuoteType } from "@/lib/zod/paragraph";
 
 export function ParagraphQuote({ paragraph }: { paragraph: QuoteType }) {
@@ -25,7 +25,9 @@ export function ParagraphQuote({ paragraph }: { paragraph: QuoteType }) {
             height={100}
             classname={"border-0 rounded-full"}
           />
-          <h2 className="text-heading-sm text-scapaflow font-bold ml-4 italic">{paragraph.field_author}</h2>
+          <h2 className="text-heading-sm text-scapaflow font-bold ml-4 italic">
+            {paragraph.field_author}
+          </h2>
         </div>
       )}
     </div>

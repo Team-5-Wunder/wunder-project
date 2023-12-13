@@ -10,10 +10,10 @@ import {
   ImageSchema,
   LinksSchema,
   ListingArticlesSchema,
-  VideoSchema,
   QuoteSchema,
-  TextQuoteSchema,
   TextImageSchema,
+  TextQuoteSchema,
+  VideoSchema,
 } from "@/lib/zod/paragraph";
 
 const PageElementsSchema = z.discriminatedUnion("type", [
