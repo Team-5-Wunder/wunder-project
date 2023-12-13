@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import { FieldErrors } from "react-hook-form";
+import { Button } from "@/ui/button";
+import type { Menu } from "@/lib/zod/menu";
 
 const SignupSchema = z
   .object({
