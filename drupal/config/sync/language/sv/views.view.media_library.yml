@@ -30,6 +30,8 @@ display:
       fields:
         name:
           label: Namn
+        changed:
+          label: Uppdaterad
       filters:
         name:
           expose:

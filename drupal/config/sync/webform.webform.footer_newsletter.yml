@@ -1,7 +1,9 @@
 uuid: edf5490c-3ed3-4549-a0f0-12f260bfc6ac
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - webform_simplenews_handler
 weight: 0
 open: null
 close: null
@@ -83,10 +85,10 @@ settings:
   share_theme_name: ''
   share_title: true
   share_page_body_attributes: {  }
-  submission_label: ''
+  submission_label: footer_submission_label
   submission_exception_message: ''
   submission_locked_message: ''
-  submission_log: false
+  submission_log: true
   submission_excluded_elements: {  }
   submission_exclude_empty: false
   submission_exclude_empty_checkbox: false
@@ -235,5 +237,37 @@ handlers:
       data: ''
       message: ''
       message_type: status
+      debug: false
+  submission_newsletter:
+    id: submission_newsletter
+    handler_id: submission_newsletter
+    label: 'Submission Newsletter'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        -
+          ':input[name="news"]':
+            checked: true
+        - xor
+        -
+          ':input[name="careers"]':
+            checked: true
+        - xor
+        -
+          ':input[name="events"]':
+            checked: true
+    weight: 0
+    settings:
+      states:
+        completed: completed
+        draft: 0
+        converted: 0
+        updated: 0
+      newsletters_lst:
+        footer_newsletter: footer_newsletter
+        default: 0
+      token: news
+      action: subscribe
       debug: false
 variants: {  }

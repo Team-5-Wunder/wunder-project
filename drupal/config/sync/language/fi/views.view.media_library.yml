@@ -30,6 +30,8 @@ display:
       fields:
         name:
           label: Nimi
+        changed:
+          label: Päivitetty
       filters:
         name:
           expose:

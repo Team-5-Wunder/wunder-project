@@ -7,6 +7,8 @@ display:
       fields:
         simplenews_issue:
           label: Nyhetsbrev
+        created:
+          label: Uppdaterad
       filters:
         simplenews_issue_target_id_1:
           expose:

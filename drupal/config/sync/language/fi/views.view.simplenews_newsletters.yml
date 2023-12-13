@@ -9,6 +9,8 @@ display:
           label: Numero
         simplenews_issue:
           label: Uutiskirje
+        created:
+          label: Päivitetty
       filters:
         simplenews_issue_target_id_1:
           expose:
