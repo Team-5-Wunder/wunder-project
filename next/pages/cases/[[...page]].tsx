@@ -1,7 +1,9 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { DrupalTaxonomyTerm } from "next-drupal";
+import { useRouter } from "next/router";
+import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal";
+import { deserialize } from "next-drupal";
 import { useTranslation } from "next-i18next";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { CaseTeaser } from "@/components/case-teaser";
 import { HeadingPage } from "@/components/heading--page";
@@ -20,6 +22,7 @@ import {
   validateAndCleanupCaseTeaser,
 } from "@/lib/zod/case-teaser";
 
+import siteConfig from "@/site.config";
 import { Checkbox } from "@/ui/checkbox";
 
 interface CasesPageProps extends LayoutProps {
@@ -40,9 +43,91 @@ export default function CasesPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const focusRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const [industrySearch, setIndustrySearch] = useState<string[]>([]);
   const [solutionSearch, setsSolutionSearch] = useState<string[]>([]);
   const [technologySearch, setTechnologySearch] = useState<string[]>([]);
+  /* const [paginationNewProps, setPaginationNewProps] =
+    useState<object>(paginationProps);
+  const [cases, setCases] = useState<CaseTeaserType[]>(caseTeasers);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(6);
+  const [offset, setOffset] = useState<number>(0); */
+
+  /* useEffect(() => {
+    const page = +router.asPath.split("/")[2];
+    if (page) {
+      setOffset((page - 1) * limit);
+      setCurrentPage(page);
+    }
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const useBody = async () => {
+      const body = {
+        offset,
+        limit,
+        locale: siteConfig.defaultLocale,
+        industry: industrySearch,
+        solution: solutionSearch,
+        technology: technologySearch,
+      };
+      const response = await fetch("/api/cases-filter", {
+        method: "POST",
+        body: JSON.stringify(body),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+
+        let totalPages;
+        const pageRoot = "/cases";
+        if (result.data) {
+          const nodes = deserialize(result) as DrupalNode[];
+          totalPages = Math.ceil(result.meta.count / limit);
+          if (currentPage > totalPages) {
+            void router.push([pageRoot, totalPages].join("/"), null, {
+              scroll: false,
+            });
+          }
+          setCases(
+            nodes.map((teaser) => validateAndCleanupCaseTeaser(teaser)),
+          );
+        }
+
+        // Create pagination props.
+        const prevEnabled = currentPage > 1;
+        const nextEnabled = currentPage < totalPages;
+
+        // Create links for prev/next pages.
+        const prevPage = currentPage - 1;
+        const nextPage = currentPage + 1;
+        const prevPageHref =
+          currentPage === 2
+            ? pageRoot
+            : prevEnabled && [pageRoot, prevPage].join("/");
+        const nextPageHref = nextEnabled && [pageRoot, nextPage].join("/");
+
+        setPaginationNewProps({
+          currentPage,
+          totalPages,
+          prevEnabled,
+          nextEnabled,
+          prevPageHref,
+          nextPageHref,
+        });
+      }
+    };
+    useBody();
+  }, [limit, offset, industrySearch, solutionSearch, technologySearch]); */
+
+  /* useEffect(() => {
+    Object.keys(cases[1]).map((key) => console.log(cases[1][key]))
+  }, [cases]) */
+
+  /* useEffect(() => {
+    console.log("Print data: " + JSON.stringify(cases));
+  }, [cases]) */
 
   const handleCheckboxChange = (value: string, type: string) => {
     switch (type) {
@@ -73,7 +158,7 @@ export default function CasesPage({
   };
 
   return (
-    <>
+    <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
       <Meta title={t("cases")} metatags={[]} />
       <div ref={focusRef} tabIndex={-1} />
       <HeadingPage>{t("cases")}</HeadingPage>
@@ -132,18 +217,17 @@ export default function CasesPage({
       </div>
       <ul className="mt-4 grid gap-4 grid-cols-3">
         {caseTeasers
-          ?.filter(
-            (teaser) =>
-              industrySearch.every((industry) =>
-                teaser.field_industry.some((tag) => tag.name === industry),
-              ) &&
-              solutionSearch.every((solution) =>
-                teaser.field_solution.some((tag) => tag.name === solution),
-              ) &&
-              technologySearch.every((technology) =>
-                teaser.field_technology.some((tag) => tag.name === technology),
-              ),
-          )
+          ?.filter((teaser) => (
+            industrySearch.every((industry) => (
+              teaser.field_industry.some((tag) => tag.name === industry)
+            )) &&
+            solutionSearch.every((solution) => (
+              teaser.field_solution.some((tag) => tag.name === solution)
+            )) &&
+            technologySearch.every((technology) => (
+              teaser.field_technology.some((tag) => tag.name === technology)
+            ))
+          ))
           .map((client) => (
             <li key={client.id}>
               <CaseTeaser client={client} />
@@ -154,7 +238,7 @@ export default function CasesPage({
         focusRestoreRef={focusRef}
         paginationProps={paginationProps}
       />
-    </>
+    </div>
   );
 }
 
