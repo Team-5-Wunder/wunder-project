@@ -40,6 +40,10 @@ import Register from "./auth/register";
 
 import { Divider } from "@/ui/divider";
 
+import { MapComponent } from "@/components/map";
+import { useJsApiLoader, Libraries } from "@react-google-maps/api";
+import React, { useMemo } from "react";
+
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
   filteredPromotedArticleTeasers: ArticleTeaser[];
@@ -55,6 +59,42 @@ export default function IndexPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
 
+  /* const libraries: Libraries = ["places"]; */
+
+  /*   const options = useMemo(() => loaderOptions, []); */
+
+  /*  const { isLoaded, loadError } = useJsApiLoader({
+    version: "weekly",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  }); */
+
+  /*   if (!isLoaded) return <div>Loading...</div>;
+  if (loadError) return <div>Error loading maps</div>;
+ */
+  const locations = [
+    {
+      name: "Helsinki",
+      address: "Kalevankatu 30, 00100 Helsinki",
+      latitude: undefined,
+      longitude: undefined,
+    },
+    {
+      name: "Turku",
+      address: "Aurakatu 8, 20100 Turku",
+    },
+    {
+      name: "Tallinn Estonia",
+      address: "Valukoja 8, 11415 Tallinn Estonia",
+    },
+    {
+      name: "Latvia",
+      address: "L.Paegles iela 47, Valmiera, LV-4201 Latvia",
+    },
+    {
+      name: "Latvia",
+      address: "Z.A. Meierovica bulvāris 16, Riga, LV-1050 Latvia",
+    },
+  ];
   return (
     <>
       <Meta title={frontpage?.title} metatags={frontpage?.metatag} />
@@ -62,6 +102,7 @@ export default function IndexPage({
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
       <OurClients />
+      {/*     <StaticMapComponent /> */}
 
       {/* <div className="grid gap-4 grid-cols-4">
         {promotedCaseTeasers.map((teaser) => (
@@ -84,6 +125,10 @@ export default function IndexPage({
         heading={t("Latest releases")}
       />
       <ExpertTalks />
+      <div>
+        <h1>Map Page</h1>
+        <MapComponent />
+      </div>
       {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
             <Paragraph paragraph={paragraph} key={paragraph.id} />
