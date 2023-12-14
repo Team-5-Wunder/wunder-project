@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { EventTeaser as EventTeaserType } from "@/lib/zod/event-teaser";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
+import { Speaker as SpeakerType } from "@/lib/zod/paragraph";
 
 
 interface LatestEventsProps {
@@ -72,7 +73,7 @@ export function ExpertTalks({ events }: LatestEventsProps) {
 
               let speakers
               event.field_event_speakers ?
-              speakers = event.field_event_speakers.map((speaker) => speaker.field_speaker).join(", ") 
+              speakers = event.field_event_speakers.map((speaker: SpeakerType) => speaker.field_speaker).join(", ")
                 :
               speakers = null
               
