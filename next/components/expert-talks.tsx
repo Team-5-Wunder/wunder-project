@@ -1,96 +1,15 @@
-import Link from "next/link";
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
-import clsx from "clsx";
-
-import { EventTeaser } from "@/components/event-teaser";
+import Link from "next/link";
 import { EventTeaser as EventTeaserType } from "@/lib/zod/event-teaser";
-import ArrowIcon from "@/styles/icons/arrow-down.svg";
+import { absoluteUrl } from "@/lib/drupal/absolute-url";
 
-import { buttonVariants } from "@/ui/button";
 
 interface LatestEventsProps {
   events?: EventTeaserType[];
 }
 
 export function ExpertTalks({ events }: LatestEventsProps) {
-  const { t } = useTranslation();
-  return (
-    <>
-      <h2 className="text-heading-sm font-bold md:text-heading-md">
-        {/* {heading} */}
-      </h2>
-      <ul className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {events?.map((event) => (
-          <li key={event.id}>
-            <EventTeaser event={event} />
-          </li>
-        ))}
-      </ul>
-      <div className="flex items-center justify-center">
-        {!events?.length && <p className="py-4">{t("no-content-found")}</p>}
-        {events?.length && (
-          <Link
-            href="/news-and-events"
-            className={clsx(
-              buttonVariants({ variant: "primary" }),
-              "text-base mr-4 mt-4 inline-flex px-5 py-3",
-            )}
-          >
-            {t("news-and-events")}
-            <ArrowIcon aria-hidden className="ml-3 h-6 w-6 -rotate-90" />
-          </Link>
-        )}
-      </div>
-    </>
-  );
-}
-
-/* import Image from "next/image";
-import { useTranslation } from "next-i18next";
-
-import Link from "next/link";
-
-interface Experts {
-  image: string;
-  speakers: string[];
-  title: string;
-  date: string;
-  time: string;
-  id: number;
-  link: string;
-}
-
-const contacts: Experts[] = [
-  {
-    image: "/assets/expert_talks/gpt.png",
-    speakers: ["Markus Virtanen", "Jussi Kalliokoski"],
-    title: "Chat GPT in Drupal projects.",
-    date: "21 DEC",
-    time: "12:00 - 14:00",
-    id: 1,
-    link: "",
-  },
-  {
-    image: "/assets/expert_talks/headless.jpg",
-    speakers: ["Mikko Laitinen", "Jussi Kalliokoski, Markus Virtanen"],
-    title: "Headless future with Drupal and NextJs.",
-    date: "07 Jan",
-    time: "10:30 - 12:00",
-    id: 3,
-    link: "",
-  },
-  {
-    image: "/assets/expert_talks/ai.jpg",
-    speakers: ["Janne Koponen"],
-    title: "AI potential threats.",
-    date: "15 JAN",
-    time: "9:30 - 11:30",
-    id: 2,
-    link: "",
-  },
-];
-
-export function ExpertTalks() {
   const { t } = useTranslation();
 
     // Intersection Observer callback function
@@ -124,48 +43,84 @@ export function ExpertTalks() {
     <>
       <div className="w-screen flex justify-center">
         <div className="w-full max-w-[1664px] mt-20 mb-20 px-6 sm:px-16 flex flex-col">
-          <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
-            {t("expert-talks")}
-          </h2>
+          <Link href="/news-and-events">
+            <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
+              {t("expert-talks")}
+            </h2>
+          </Link>
           <div className="w-full flex flex-wrap gap-8 lg:gap-14 justify-center">
-            {contacts?.map(({ id, image, title, speakers, date, time}) => {
+            {events?.map((event) => {
 
+              const date = new Date(event.field_start_time);
+              //Converting the start_time into a format like "27 Dec"
+              const formattedDate = date.toLocaleDateString("en-GB", { day: "numeric", month: "short" }).toUpperCase();
+              // Getting the start_time in format like "19:30"
+              const hours = date.getUTCHours();
+              const minutes = date.getMinutes();
+              // Format hours and minutes with leading zeros if needed
+              const startTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+              
+              let endTime = null
+              if (event.field_end_time) {
+                const endDate = new Date(event.field_end_time);
+                // Getting the end_time in format like "19:30"
+                const endHours = endDate.getUTCHours();
+                const endMinutes = endDate.getMinutes();
+                // Format hours and minutes with leading zeros if needed
+                endTime = `${endHours.toString().padStart(2, '0')}:${endMinutes.toString().padStart(2, '0')}`;
+              }
+
+              let speakers
+              event.field_event_speakers ?
+              speakers = event.field_event_speakers.map((speaker) => speaker.field_speaker).join(", ") 
+                :
+              speakers = null
+              
               return (
-                <div key={id} className="toSlideUpExp mt-20 opacity-0 w-80 h-[30rem] group/card rounded border border-finnishwinter hover:shadow-md">
-                  <div className="w-full h-1/2 overflow-hidden">
-                    <Image
-                      src={image}
-                      width={500}
-                      height={500}
-                      alt={title}
-                      className="h-full object-cover group-hover/card:scale-110 duration-300"
-                    />
-                  </div>
-                  <div className="relative h-1/2 text-left p-4 flex flex-col">
-                    <div className="absolute top-[-70px] left-[50px] w-24 h-24 text-white bg-primary-600 shadow-2xl text-center flex flex-col justify-center">
-                      <p className="mb-1 font-bold">{date}</p>
-                      <p className="mt-1 text-xs">{time}</p>
-                    </div>
-                    <Link href="/expert-talks">
-                      <h3 className="text-primary-600 mb-4 mt-8 font-bold text-heading-xs">
-                        {title}
-                      </h3>
-                    </Link>
-                    <div className="grow flex items-center">
-                      <p className="text-secondary-900 text-left text-xs">Speakers: <br/><b>{speakers.join(", ")}</b></p>
-                    </div>
-                    <div className="flex items-end">
-                      <Link href="/expert-talks">
-                        <div className="flex items-center mt-4">
-                          <p className="text-primary-600">Read more and register</p>
-                          <div className="ml-2 flex items-center text-primary-600">
-                            <hr className="w-0 border-primary-600 group-hover/card:w-10 duration-200" />
-                            &#9654;
-                          </div>
+                <div key={event.id} className="toSlideUpExp mt-20 opacity-0 w-80 h-[30rem] group/card rounded border border-finnishwinter hover:shadow-md">
+                  {!events?.length && <p className="py-4">{t("no-content-found")}</p>}
+                  {events?.length && (
+                    <>
+                      <div className="w-full h-1/2 overflow-hidden">
+                        <Image
+                          src={absoluteUrl(event.field_image.uri.url)}
+                          width={500}
+                          height={500}
+                          priority={true}
+                          alt={event.field_image.resourceIdObjMeta.alt}
+                          className="h-full object-cover group-hover/card:scale-110 duration-300"
+                        />
+                      </div>
+                      <div className="relative h-1/2 text-left p-4 flex flex-col">
+                        <div className="absolute top-[-70px] left-[50px] w-24 h-24 text-white bg-primary-600 shadow-2xl text-center flex flex-col justify-center">
+                          <p className="mb-1 font-bold">{formattedDate}</p>
+                          <div className="mt-1 text-xs">{startTime}{endTime? ` - ${endTime}`:""}</div>
                         </div>
-                      </Link>
-                    </div>
-                  </div>
+                        <Link href={event.path.alias}>
+                          <h3 className="text-primary-600 mb-4 mt-8 font-bold text-heading-xs">
+                            {event.title}
+                          </h3>
+                        </Link>
+
+                        {speakers && (
+                          <div className="grow flex items-center">
+                            <p className="text-secondary-900 text-left text-xs">Speakers: <br/><b>{speakers}</b></p>
+                          </div>
+                        )}
+                        <div className="flex items-end">
+                          <Link href={event.path.alias}>
+                            <div className="flex items-center mt-4">
+                              <p className="text-primary-600">Read more and register</p>
+                              <div className="ml-2 flex items-center text-primary-600">
+                                <hr className="w-0 border-primary-600 group-hover/card:w-10 duration-200" />
+                                &#9654;
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               );
             })}
@@ -175,4 +130,4 @@ export function ExpertTalks() {
     </>
   );
 }
- */
+
