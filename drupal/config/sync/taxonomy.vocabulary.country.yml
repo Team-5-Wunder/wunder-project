@@ -1,0 +1,8 @@
+uuid: 3dd3ba97-7608-40b3-bbb5-62a948c06ef6
+langcode: en
+status: true
+dependencies: {  }
+name: Country
+vid: country
+description: 'Use to group open-positions by country.'
+weight: 0
