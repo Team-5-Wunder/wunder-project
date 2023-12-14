@@ -22,3 +22,13 @@
     clip-path: circle();
   }
 }
+
+.dark {
+  --warning: 48 96% 89%;
+  --warning-foreground: 38 92% 50%;
+
+  .text-steelgray {
+    --tw-text-opacity: 1;
+    color: white;
+  }
+}
