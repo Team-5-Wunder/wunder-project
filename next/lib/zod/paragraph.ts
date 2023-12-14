@@ -228,6 +228,12 @@ export const SpeakerSchema = z.object({
     .optional(),
 });
 
+export const ListingCareersSchema = z.object({
+  type: z.literal("paragraph--listing_careers"),
+  id: z.string(),
+  field_heading: z.string().nullable(),
+});
+
 export type FormattedText = z.infer<typeof FormattedTextSchema>;
 export type Image = z.infer<typeof ImageSchema>;
 export type Video = z.infer<typeof VideoSchema>;
@@ -242,6 +248,7 @@ export type TextQuote = z.infer<typeof TextQuoteSchema>;
 export type TextImage = z.infer<typeof TextImageSchema>;
 export type PageHero = z.infer<typeof PageHeroSchema>;
 export type Speaker = z.infer<typeof SpeakerSchema>;
+export type ListingCareers = z.infer<typeof ListingCareersSchema>;
 
 export type Paragraph =
   | FormattedText
@@ -257,4 +264,5 @@ export type Paragraph =
   | TextQuote
   | TextImage
   | PageHero
-  | Speaker;
+  | Speaker
+  | ListingCareers;

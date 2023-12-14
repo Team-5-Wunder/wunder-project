@@ -14,6 +14,7 @@ import {
   TextImageSchema,
   TextQuoteSchema,
   VideoSchema,
+  ListingCareersSchema,
 } from "@/lib/zod/paragraph";
 
 const CareersElementsSchema = z.discriminatedUnion("type", [
@@ -27,6 +28,7 @@ const CareersElementsSchema = z.discriminatedUnion("type", [
   QuoteSchema,
   TextQuoteSchema,
   TextImageSchema,
+  ListingCareersSchema,
 ]);
 
 export const CareersSchema = z.object({

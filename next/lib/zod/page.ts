@@ -15,6 +15,7 @@ import {
   TextQuoteSchema,
   VideoSchema,
   PageHeroSchema,
+  ListingCareersSchema,
 } from "@/lib/zod/paragraph";
 
 const PageElementsSchema = z.discriminatedUnion("type", [
@@ -30,6 +31,7 @@ const PageElementsSchema = z.discriminatedUnion("type", [
   TextQuoteSchema,
   TextImageSchema,
   PageHeroSchema,
+  ListingCareersSchema,
 ]);
 
 export const PageSchema = z.object({
