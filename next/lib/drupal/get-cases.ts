@@ -7,22 +7,16 @@ import { getNodePageJsonApiParams } from "@/lib/drupal/get-node-page-json-api-pa
 import siteConfig from "@/site.config";
 
 type GetCasesArgs = {
-  limit?: number;
-  offset?: number;
   locale?: string;
 };
 
 export const getCases = async (
-  { limit = 6, offset = 0, locale = siteConfig.defaultLocale }: GetCasesArgs,
+  { locale = siteConfig.defaultLocale }: GetCasesArgs,
   apiParams: DrupalJsonApiParams,
 ): Promise<{
-  totalPages: number;
   nodes: DrupalNode[];
 }> => {
-  apiParams.addPageLimit(limit);
-
   let nodes: DrupalNode[] = [];
-  let totalPages = 1;
   try {
     const result = await drupal.getResourceCollection<JsonApiResponse>(
       "node--case",
@@ -32,10 +26,6 @@ export const getCases = async (
           ...apiParams.getQueryObject(),
           "filter[langcode]": locale,
           "filter[status]": "1",
-          page: {
-            limit,
-            offset,
-          },
           sort: "-sticky,-created",
         },
         locale: locale,
@@ -44,14 +34,12 @@ export const getCases = async (
     );
     if (result.data) {
       nodes = deserialize(result) as DrupalNode[];
-      totalPages = Math.ceil(result.meta.count / limit);
     }
   } catch (error) {
     console.error(error);
   }
 
   return {
-    totalPages,
     nodes,
   };
 };
@@ -59,14 +47,12 @@ export const getCases = async (
 export const getLatestCasesItems = async (
   args: GetCasesArgs,
 ): Promise<{
-  totalPages: number;
   cases: DrupalNode[];
 }> => {
   const apiParams = getNodePageJsonApiParams("node--case");
-  const { totalPages, nodes } = await getCases(args, apiParams);
+  const { nodes } = await getCases(args, apiParams);
 
   return {
-    totalPages,
     cases: nodes,
   };
 };

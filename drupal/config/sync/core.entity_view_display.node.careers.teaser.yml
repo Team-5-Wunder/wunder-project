@@ -1,0 +1,39 @@
+uuid: 0e773ac9-6022-4382-a092-3dcd83a8c382
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.careers.field_content_elements
+    - field.field.node.careers.field_country
+    - field.field.node.careers.field_image
+    - image.style.medium
+    - node.type.careers
+  module:
+    - image
+    - user
+id: node.careers.teaser
+targetEntityType: node
+bundle: careers
+mode: teaser
+content:
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_content_elements: true
+  field_country: true
+  langcode: true

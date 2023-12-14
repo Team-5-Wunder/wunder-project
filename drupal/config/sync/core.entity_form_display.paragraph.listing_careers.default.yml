@@ -1,0 +1,23 @@
+uuid: f10171d4-b742-4fa7-b0ad-960e79afa97c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listing_careers.field_heading
+    - paragraphs.paragraphs_type.listing_careers
+id: paragraph.listing_careers.default
+targetEntityType: paragraph
+bundle: listing_careers
+mode: default
+content:
+  field_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

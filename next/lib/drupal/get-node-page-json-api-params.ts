@@ -7,7 +7,8 @@ export type ResourceType =
   | "node--page"
   | "node--article"
   | "node--case"
-  | "node--event";
+  | "node--event"
+  | "node--careers";
 
 export function getNodePageJsonApiParams(resourceType: ResourceType) {
   const apiParams = new DrupalJsonApiParams().addFilter(
@@ -134,6 +135,28 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "field_event_speakers",
         "field_location",
         "field_event_tags",
+      ]);
+  }
+
+  if (resourceType === "node--careers") {
+    apiParams
+      .addInclude([
+        "field_image",
+        "field_content_elements",
+        "field_content_elements.field_image.field_media_image",
+        "field_content_elements.field_video",
+        "field_content_elements.field_file_attachments.field_media_document",
+        "field_content_elements.field_accordion_items",
+        "field_content_elements.field_accordion_items.field_content_elements.field_image.field_media_image",
+        "field_content_elements.field_accordion_items.field_content_elements.field_video",
+      ])
+      .addFields("node--careers", [
+        "field_image",
+        "title",
+        "field_content_elements",
+        "path",
+        "status",
+        "metatag",
       ]);
   }
 

@@ -6,6 +6,7 @@ import { Case } from "@/components/case";
 import { Event } from "@/components/event";
 import { Meta } from "@/components/meta";
 import { Page } from "@/components/page";
+import { Careers } from "@/components/careers";
 import {
   createLanguageLinks,
   LanguageLinks,
@@ -25,12 +26,14 @@ import {
 import { Case as CaseType, validateAndCleanupCase } from "@/lib/zod/case";
 import { Event as EventType, validateAndCleanupEvent } from "@/lib/zod/event";
 import { Page as PageType, validateAndCleanupPage } from "@/lib/zod/page";
+import { Careers as CareersType, validateAndCleanupCareers } from "@/lib/zod/careers";
 
 const RESOURCE_TYPES = [
   "node--article",
   "node--page",
   "node--case",
   "node--event",
+  "node--careers",
 ];
 
 export default function CustomPage({
@@ -45,6 +48,7 @@ export default function CustomPage({
       {resource.type === "node--page" && <Page page={resource} />}
       {resource.type === "node--case" && <Case client={resource} />}
       {resource.type === "node--event" && <Event event={resource} />}
+      {resource.type === "node--careers" && <Careers careers={resource} />}
     </>
   );
 }
@@ -58,7 +62,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 };
 
 interface PageProps extends CommonPageProps {
-  resource: PageType | ArticleType | CaseType | EventType;
+  resource: PageType | ArticleType | CaseType | EventType | CareersType;
   languageLinks: LanguageLinks;
 }
 
@@ -137,6 +141,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
       ? validateAndCleanupCase(resource)
       : type === "node--event"
       ? validateAndCleanupEvent(resource)
+      : type === "node--careers"
+      ? validateAndCleanupCareers(resource)
       : null;
 
   return {

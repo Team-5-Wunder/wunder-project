@@ -1,14 +1,13 @@
-uuid: a05cd50b-5a97-4a70-b5d1-d7ef087d5cb4
+uuid: 603fb959-798e-47cc-83a8-96a3006e66bd
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_content_elements
-    - node.type.page
+    - node.type.careers
     - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.file_attachments
     - paragraphs.paragraphs_type.formatted_text
-    - paragraphs.paragraphs_type.hero
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.links
     - paragraphs.paragraphs_type.listing_articles
@@ -20,12 +19,10 @@ dependencies:
     - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
-_core:
-  default_config_hash: 8mtvAhPF2U4jLc8oliusJ4b7Fz5wo_pvqIyiBfEnGok
-id: node.page.field_content_elements
+id: node.careers.field_content_elements
 field_name: field_content_elements
 entity_type: node
-bundle: page
+bundle: careers
 label: 'Content elements'
 description: ''
 required: true
@@ -36,11 +33,10 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      hero: hero
       formatted_text: formatted_text
       image: image
-      accordion: accordion
       links: links
+      accordion: accordion
       video: video
       listing_articles: listing_articles
       file_attachments: file_attachments
@@ -52,7 +48,7 @@ settings:
     negate: 0
     target_bundles_drag_drop:
       accordion:
-        weight: -11
+        weight: -10
         enabled: true
       accordion_item:
         weight: -12
@@ -65,12 +61,12 @@ settings:
         enabled: true
       hero:
         weight: -15
-        enabled: true
+        enabled: false
       image:
         weight: -13
         enabled: true
       links:
-        weight: -10
+        weight: -11
         enabled: true
       listing_articles:
         weight: 9
@@ -85,7 +81,7 @@ settings:
         weight: 22
         enabled: true
       speaker:
-        weight: 27
+        weight: 25
         enabled: false
       text_image:
         weight: 13

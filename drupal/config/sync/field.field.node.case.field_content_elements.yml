@@ -69,12 +69,18 @@ settings:
       listing_articles:
         weight: 9
         enabled: true
+      listing_careers:
+        weight: 16
+        enabled: false
       page_hero:
         weight: 14
         enabled: true
       quote:
         weight: 22
         enabled: true
+      speaker:
+        weight: 27
+        enabled: false
       text_image:
         weight: 13
         enabled: true

@@ -1,0 +1,10 @@
+uuid: dae0827b-36bf-40b6-80a7-461518f324df
+langcode: en
+status: true
+dependencies: {  }
+id: listing_careers
+label: 'Listing: careers'
+icon_uuid: null
+icon_default: null
+description: 'Renders a listing of careers in the frontend.'
+behavior_plugins: {  }

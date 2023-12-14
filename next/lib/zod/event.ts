@@ -40,7 +40,7 @@ export const EventSchema = z.object({
   field_image: ImageShape,
   field_excerpt: z.string(),
   field_content_elements: z.array(EventElementsSchema),
-  field_event_speakers: z.array(EventElementsSchema),
+  field_event_speakers: z.array(EventElementsSchema).nullable().optional(),
   metatag: MetatagsSchema.optional(),
   field_start_time: z.string(),
   field_end_time: z.string().optional().nullable(),
