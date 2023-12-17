@@ -1,0 +1,8 @@
+uuid: 306bd85a-3ec8-4287-97e2-1ac4b3a7a88e
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event Tags'
+vid: event_tags
+description: 'Tags used to group events'
+weight: 0

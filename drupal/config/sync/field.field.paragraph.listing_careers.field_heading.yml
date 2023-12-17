@@ -1,0 +1,19 @@
+uuid: 9190688d-9183-4efb-a5cf-8f226136b8b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.listing_careers
+id: paragraph.listing_careers.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: listing_careers
+label: Heading
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

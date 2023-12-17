@@ -11,6 +11,7 @@ dependencies:
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.links
     - paragraphs.paragraphs_type.listing_articles
+    - paragraphs.paragraphs_type.page_hero
     - paragraphs.paragraphs_type.quote
     - paragraphs.paragraphs_type.text_image
     - paragraphs.paragraphs_type.text_quote
@@ -39,6 +40,7 @@ settings:
       listing_articles: listing_articles
       file_attachments: file_attachments
       text_image: text_image
+      page_hero: page_hero
       quote: quote
       text_quote: text_quote
     negate: 0
@@ -67,9 +69,18 @@ settings:
       listing_articles:
         weight: 9
         enabled: true
+      listing_careers:
+        weight: 16
+        enabled: false
+      page_hero:
+        weight: 14
+        enabled: true
       quote:
         weight: 22
         enabled: true
+      speaker:
+        weight: 27
+        enabled: false
       text_image:
         weight: 13
         enabled: true

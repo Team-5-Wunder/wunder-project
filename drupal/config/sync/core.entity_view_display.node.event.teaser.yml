@@ -5,10 +5,13 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.field_content_elements
-    - field.field.node.event.field_date
+    - field.field.node.event.field_end_time
+    - field.field.node.event.field_event_speakers
+    - field.field.node.event.field_event_tags
     - field.field.node.event.field_excerpt
     - field.field.node.event.field_image
-    - field.field.node.event.field_tags
+    - field.field.node.event.field_location
+    - field.field.node.event.field_start_time
     - image.style.medium
     - node.type.event
   module:
@@ -30,14 +33,6 @@ content:
     third_party_settings: {  }
     weight: -1
     region: content
-  field_tags:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 10
-    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -45,6 +40,10 @@ content:
     region: content
 hidden:
   field_content_elements: true
-  field_date: true
+  field_end_time: true
+  field_event_speakers: true
+  field_event_tags: true
   field_excerpt: true
+  field_location: true
+  field_start_time: true
   langcode: true

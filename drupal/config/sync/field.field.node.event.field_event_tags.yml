@@ -1,17 +1,17 @@
-uuid: a0f47aa4-7490-4019-9074-683970778da1
+uuid: 6ad315a8-8226-499e-b952-f4007441e566
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_tags
+    - field.storage.node.field_event_tags
     - node.type.event
-    - taxonomy.vocabulary.tags
-id: node.event.field_tags
-field_name: field_tags
+    - taxonomy.vocabulary.event_tags
+id: node.event.field_event_tags
+field_name: field_event_tags
 entity_type: node
 bundle: event
-label: Tags
-description: 'Enter a comma-separated list. For example: Amsterdam, Mexico City, "Cleveland, Ohio"'
+label: 'Events Tags'
+description: 'Enter a comma-separated list. For example: Expert-talks, Messukuskus'
 required: false
 translatable: true
 default_value: {  }
@@ -20,9 +20,9 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      tags: tags
+      event_tags: event_tags
     sort:
-      field: _none
+      field: name
       direction: asc
     auto_create: true
     auto_create_bundle: ''

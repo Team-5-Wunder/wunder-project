@@ -14,6 +14,8 @@ import {
   TextImageSchema,
   TextQuoteSchema,
   VideoSchema,
+  PageHeroSchema,
+  SpeakerSchema,
 } from "@/lib/zod/paragraph";
 
 const EventElementsSchema = z.discriminatedUnion("type", [
@@ -27,6 +29,8 @@ const EventElementsSchema = z.discriminatedUnion("type", [
   QuoteSchema,
   TextQuoteSchema,
   TextImageSchema,
+  PageHeroSchema,
+  SpeakerSchema,
 ]);
 
 export const EventSchema = z.object({
@@ -36,8 +40,18 @@ export const EventSchema = z.object({
   field_image: ImageShape,
   field_excerpt: z.string(),
   field_content_elements: z.array(EventElementsSchema),
+  field_event_speakers: z.array(EventElementsSchema).nullable().optional(),
   metatag: MetatagsSchema.optional(),
-  field_date: z.string(),
+  field_start_time: z.string(),
+  field_end_time: z.string().optional().nullable(),
+  field_location: z.string(),
+  field_event_tags: z
+    .array(
+      z.object({
+        name: z.string(),
+      }),
+    )
+    .optional(),
 });
 
 export function validateAndCleanupEvent(event: DrupalNode): Event | null {

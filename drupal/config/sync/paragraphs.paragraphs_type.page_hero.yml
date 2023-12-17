@@ -1,0 +1,10 @@
+uuid: 686d2c03-7476-452e-b3c7-04c932c9cd3a
+langcode: en
+status: true
+dependencies: {  }
+id: page_hero
+label: 'Page Hero'
+icon_uuid: null
+icon_default: null
+description: 'Hero banner used to build normal pages.'
+behavior_plugins: {  }

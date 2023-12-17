@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
-import { useRouter } from "next/router";
+/* import { useRouter } from "next/router"; */
 import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal";
-import { deserialize } from "next-drupal";
+/* import { deserialize } from "next-drupal"; */
 import { useTranslation } from "next-i18next";
 import { useEffect, useRef, useState } from "react";
 
@@ -9,7 +9,7 @@ import { CaseTeaser } from "@/components/case-teaser";
 import { HeadingPage } from "@/components/heading--page";
 import { LayoutProps } from "@/components/layout";
 import { Meta } from "@/components/meta";
-import { Pagination, PaginationProps } from "@/components/pagination";
+/* import { Pagination, PaginationProps } from "@/components/pagination"; */
 import {
   createLanguageLinksForNextOnlyPage,
   LanguageLinks,
@@ -22,12 +22,12 @@ import {
   validateAndCleanupCaseTeaser,
 } from "@/lib/zod/case-teaser";
 
-import siteConfig from "@/site.config";
+/* import siteConfig from "@/site.config"; */
 import { Checkbox } from "@/ui/checkbox";
 
 interface CasesPageProps extends LayoutProps {
   caseTeasers: CaseTeaserType[];
-  paginationProps: PaginationProps;
+  /* paginationProps: PaginationProps; */
   languageLinks: LanguageLinks;
   industry: DrupalTaxonomyTerm[];
   solution: DrupalTaxonomyTerm[];
@@ -36,14 +36,14 @@ interface CasesPageProps extends LayoutProps {
 
 export default function CasesPage({
   caseTeasers = [],
-  paginationProps,
+  /* paginationProps, */
   industry,
   solution,
   technology,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
   const focusRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
+  /* const router = useRouter(); */
   const [industrySearch, setIndustrySearch] = useState<string[]>([]);
   const [solutionSearch, setsSolutionSearch] = useState<string[]>([]);
   const [technologySearch, setTechnologySearch] = useState<string[]>([]);
@@ -234,16 +234,16 @@ export default function CasesPage({
             </li>
           ))}
       </ul>
-      <Pagination
+      {/* <Pagination
         focusRestoreRef={focusRef}
         paginationProps={paginationProps}
-      />
+      /> */}
     </div>
   );
 }
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export const getStaticPaths: GetStaticPaths = async () => {
+/* export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
       {
@@ -252,12 +252,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     ],
     fallback: "blocking",
   };
-};
+}; */
 
 export const getStaticProps: GetStaticProps<CasesPageProps> = async (
   context,
 ) => {
-  // Get the page parameter:
+  /* // Get the page parameter:
   const page = context.params.page;
   const currentPage = parseInt(Array.isArray(page) ? page[0] : page || "1");
   const PAGE_SIZE = 6;
@@ -280,12 +280,16 @@ export const getStaticProps: GetStaticProps<CasesPageProps> = async (
     currentPage === 2
       ? pageRoot
       : prevEnabled && [pageRoot, prevPage].join("/");
-  const nextPageHref = nextEnabled && [pageRoot, nextPage].join("/");
+  const nextPageHref = nextEnabled && [pageRoot, nextPage].join("/"); */
+
+  const { cases } = await getLatestCasesItems({
+    locale: context.locale,
+  });
 
   // Create language links for this page.
   // Note: the links will always point to the first page, because we cannot guarantee that
   // the other pages will exist in all languages.
-  const languageLinks = createLanguageLinksForNextOnlyPage(pageRoot, context);
+  const languageLinks = createLanguageLinksForNextOnlyPage("/cases", context);
 
   // fetch all taxonomies needed for filtering cases
   const industry = await drupal.getResourceCollectionFromContext<
@@ -302,14 +306,14 @@ export const getStaticProps: GetStaticProps<CasesPageProps> = async (
     props: {
       ...(await getCommonPageProps(context)),
       caseTeasers: cases.map((teaser) => validateAndCleanupCaseTeaser(teaser)),
-      paginationProps: {
+      /* paginationProps: {
         currentPage,
         totalPages,
         prevEnabled,
         nextEnabled,
         prevPageHref,
         nextPageHref,
-      },
+      }, */
       languageLinks,
       industry: industry,
       solution: solution,

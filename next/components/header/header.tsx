@@ -12,6 +12,8 @@ import { MainMenu, MenuExpanded, MenuToggle } from "../main-menu/main-menu";
 
 import { LanguageSwitcher } from "./language-switcher";
 import { UserMenu } from "./user-menu";
+import { ThemeProvider } from "components/theme-prodiver";
+import { ThemeSwitcher } from "components";
 
 interface HeaderProps {
   menu: Menu;
@@ -30,6 +32,9 @@ export function Header({ menu }: HeaderProps) {
           <LanguageSwitcher />
           <SearchLink />
           <MenuToggle isOpen={isMainMenuOpen} setIsOpen={setIsMainMenuOpen} />
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <ThemeSwitcher />
+          </ThemeProvider>
         </div>
       </nav>
       <MainMenu

@@ -1,0 +1,18 @@
+uuid: 432059d2-0d5d-4941-87cc-33c0adbb16bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Careers
+type: careers
+description: 'Content type for open positions.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false
