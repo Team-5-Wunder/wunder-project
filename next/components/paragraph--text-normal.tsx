@@ -10,14 +10,14 @@ export function ParagraphTextNormal({
   paragraph: FormattedTextType;
 }) {
   return (
-    <div className="md:mx-16">
+    <div className="">
       {paragraph.field_heading && (
         <HeadingParagraph>{paragraph.field_heading}</HeadingParagraph>
       )}
       <FormattedText
         html={paragraph.field_formatted_text.processed}
         className={clsx(
-          "text-left text-md/xl text-scapaflow sm:text-lg",
+          "text-left text-sm/lg text-scapaflow md:text-md/xl",
           paragraph.field_heading && "mt-4",
         )}
       />

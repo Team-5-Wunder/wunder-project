@@ -10,7 +10,7 @@ export function ParagraphSpeaker({
 }) {
   return (
     <>
-        <div className="grid gap-4">
+        <div className="m-2 flex flex-col justify-center items-center">
             {paragraph.field_image && 
                 <Media
                     media={paragraph.field_image}
@@ -23,7 +23,7 @@ export function ParagraphSpeaker({
             {!paragraph.field_image && 
                 <img src="/assets/carrot.png" alt="wunder" className="object-cover h-[100px] w-[100px] border-0 rounded-full" />
             }
-            <HeadingParagraph>{paragraph.field_speaker}</HeadingParagraph>
+            <div className="mt-2 text-secondary-900">{paragraph.field_speaker}</div>
         </div>
     </>
   );
