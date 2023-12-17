@@ -125,10 +125,11 @@ export default function IndexPage({
         heading={t("Latest releases")}
       />
       <ExpertTalks />
-      <div>
+      <ContactForm />
+      {/*  <div>
         <h1>Map Page</h1>
         <MapComponent />
-      </div>
+      </div> */}
       {/* <div className="grid gap-4">
           {frontpage?.field_content_elements?.map((paragraph) => (
             <Paragraph paragraph={paragraph} key={paragraph.id} />

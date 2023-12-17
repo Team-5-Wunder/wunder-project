@@ -3,19 +3,41 @@ import { useTranslation } from "next-i18next";
 import { useForm } from "react-hook-form";
 
 import { AuthGate } from "@/components/auth-gate";
-
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 import { Label } from "@/ui/label";
 import { StatusMessage } from "@/ui/status-message";
 import { Textarea } from "@/ui/textarea";
+import { useState } from "react";
+import { FieldErrors } from "react-hook-form";
+import { MapComponent } from "@/components/map";
 
 type Inputs = {
   name: string;
+  lastname: string;
   email: string;
-  subject: string;
+  phone: string;
+  company: string;
   message: string;
+  terms: boolean;
 };
+
+const SignupSchema = z.object({
+  name: z.string(),
+  lastname: z.string(),
+  email: z
+    .string()
+    .email("Please enter a valid email address")
+    .nonempty("Email is required"),
+  phone: z.number(),
+  company: z.string(),
+  message: z.string(),
+  terms: z.boolean().refine((val) => val === true, "Terms must be accepted."),
+});
+
+type TSignupSchema = z.infer<typeof SignupSchema>;
 
 export function ContactForm() {
   const router = useRouter();
@@ -27,14 +49,24 @@ export function ContactForm() {
     formState: { isSubmitSuccessful },
   } = useForm<Inputs>();
 
-  const onSubmit = async (data: Inputs) => {
+  const [checkboxGroupError, setCheckboxGroupError] = useState("");
+
+  const onSubmit = async (data: TSignupSchema) => {
+    if (!data.terms) {
+      setCheckboxGroupError("You must ");
+      return; // Prevent form submission
+    }
+    setCheckboxGroupError("");
     const response = await fetch(`/api/contact`, {
       method: "POST",
       body: JSON.stringify({
         name: data.name,
+        lastname: data.lastname,
         email: data.email,
+        phone: data.phone,
+        company: data.company,
         message: data.message,
-        subject: data.subject,
+        terms: data.terms,
       }),
       // This will record the submission with the right language:
       headers: {
@@ -61,59 +93,113 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit, onErrors)}
-      className="mx-auto mb-4 flex max-w-3xl flex-col gap-5 rounded border border-finnishwinter bg-white p-4 shadow-md transition-all hover:shadow-md"
-    >
-      <h2 className="text-heading-sm font-bold md:text-heading-md">
-        {t("form-title")}
-      </h2>
-      <AuthGate text={t("login-to-fill-form")}>
+    <div className="flex justify-center pt-10 overflow-hidden flex-col md:flex-row h-[600px]">
+      <div className="w-1/2 flex flex-col mb-6 md:mb-0 pl-10 pr-12">
+        <h2 className="text-heading-lg font-bold lg:text-heading-lg text-primary-800">
+          Send us a message
+        </h2>
+        <MapComponent />
+      </div>
+      <form
+        onSubmit={handleSubmit(onSubmit, onErrors)}
+        className="w-full max-w-lg"
+      >
+        <p className="pb-5">"*" indicates required fields</p>
+        {/*   <AuthGate text={t("login-to-fill-form")}> */}
         <>
-          <p>{t("form-description")}</p>
-          <div>
-            <Label htmlFor="name">{t("form-label-name")}</Label>
+          <div className="flex flex-wrap mb-2">
+            <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
+              <Label htmlFor="firstname">First Name</Label>
+              <Input
+                className="border-primary-100"
+                type="text"
+                id="name"
+                {...register("name", {
+                  required: true,
+                })}
+              />
+            </div>
+            <div className="w-full md:w-1/2 mb-6 md:mb-0">
+              <Label htmlFor="lastname">Last Name</Label>
+              <Input
+                className="border-primary-100"
+                type="text"
+                id="lastname"
+                {...register("lastname", {
+                  required: true,
+                })}
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap mb-2">
+            <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                className="border-primary-100"
+                type="email"
+                id="email"
+                {...register("email", {
+                  required: true,
+                })}
+              />
+              {/*   {errors.email && (
+                <p className="text-red-500">{errors.email.message}</p>
+              )} */}
+            </div>
+
+            <div className="w-full md:w-1/2 mb-6 md:mb-0">
+              <Label htmlFor="email">Phone</Label>
+              <Input
+                className="border-primary-100"
+                type="number"
+                id="phone"
+                {...register("phone", {
+                  required: true,
+                })}
+              />
+            </div>
+          </div>
+          <div className="flex flex-wrap  mb-6">
+            <Label htmlFor="company">Company</Label>
             <Input
+              className="border-primary-100"
               type="text"
-              id="name"
-              {...register("name", {
+              id="company"
+              {...register("company", {
                 required: true,
               })}
             />
           </div>
-          <div>
-            <Label htmlFor="email">{t("form-label-email")}</Label>
-            <Input
-              type="email"
-              id="email"
-              {...register("email", {
-                required: true,
-              })}
-            />
-          </div>
-          <div>
-            <Label htmlFor="subject">{t("form-label-subject")}</Label>
-            <Input
-              type="text"
-              id="subject"
-              {...register("subject", {
-                required: true,
-              })}
-            />
-          </div>
-          <div>
+
+          <div className="flex flex-wrap mb-6">
             <Label htmlFor="message">{t("form-label-message")}</Label>
             <Textarea
+              className="border-primary-100"
               id="message"
               {...register("message", {
                 required: true,
               })}
             />
           </div>
-
-          <Button type="submit">{t("form-submit")}</Button>
+          <label className="inline-flex items-center">
+            <input
+              {...register("terms", {
+                required: true,
+              })}
+              type="checkbox"
+              className="form-checkbox text-primary-100"
+            />
+            <span className="px-5">
+              I approve that Wunder process my personal data according to its
+              privacy policy
+            </span>
+          </label>
+          <Button className="mt-5" type="submit">
+            {t("form-submit")}
+          </Button>
         </>
-      </AuthGate>
-    </form>
+        {/*    </AuthGate> */}
+      </form>
+    </div>
   );
 }

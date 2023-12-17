@@ -103,40 +103,42 @@ export const MapComponent = () => {
   if (!isLoaded) return <LoadingSpinner />;
 
   return (
-    <GoogleMap
-      options={mapOptions}
-      zoom={5}
-      center={{
-        lat: locations[0]?.latitude || 0,
-        lng: locations[0]?.longitude || 0,
-      }}
-      mapContainerClassName="h-96 w-full rounded-xl shadow-xl relative"
-    >
-      {locations.map(
-        (place, index) =>
-          place.latitude !== undefined &&
-          place.longitude !== undefined && (
-            <MarkerF
-              key={index}
-              position={{ lat: place.latitude, lng: place.longitude }}
-              onClick={() => setSelectedPlace(place)}
-            />
-          ),
-      )}
-      {selectedPlace && (
-        <InfoWindow
-          position={{
-            lat: selectedPlace.latitude,
-            lng: selectedPlace.longitude,
-          }}
-          onCloseClick={() => setSelectedPlace(undefined)}
-        >
-          <div>
-            <h3>{selectedPlace.name}</h3>
-            <p>{selectedPlace.address}</p>
-          </div>
-        </InfoWindow>
-      )}
-    </GoogleMap>
+    <div>
+      <GoogleMap
+        options={mapOptions}
+        zoom={5}
+        center={{
+          lat: locations[0]?.latitude || 0,
+          lng: locations[0]?.longitude || 0,
+        }}
+        mapContainerClassName="h-96 w-full rounded-xl shadow-xl relative"
+      >
+        {locations.map(
+          (place, index) =>
+            place.latitude !== undefined &&
+            place.longitude !== undefined && (
+              <MarkerF
+                key={index}
+                position={{ lat: place.latitude, lng: place.longitude }}
+                onClick={() => setSelectedPlace(place)}
+              />
+            ),
+        )}
+        {selectedPlace && (
+          <InfoWindow
+            position={{
+              lat: selectedPlace.latitude,
+              lng: selectedPlace.longitude,
+            }}
+            onCloseClick={() => setSelectedPlace(undefined)}
+          >
+            <div>
+              <h3>{selectedPlace.name}</h3>
+              <p>{selectedPlace.address}</p>
+            </div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
+    </div>
   );
 };
