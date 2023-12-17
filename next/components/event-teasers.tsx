@@ -80,30 +80,28 @@ export function EventTeasers({ events }: LatestEventsProps) {
                   {!events?.length && <p className="py-4">{t("no-content-found")}</p>}
                   {events?.length && (
                     <>
-                      <div className="w-full h-1/2 overflow-hidden">
-                        <Image
-                          src={absoluteUrl(event.field_image.uri.url)}
-                          width={500}
-                          height={500}
-                          priority={true}
-                          alt={event.field_image.resourceIdObjMeta.alt}
-                          className="h-full object-cover group-hover/card:scale-110 duration-300"
-                        />
-                      </div>
-                      <div className="relative h-1/2 py-4 text-left flex flex-col">
-                        <Link href={event.path.alias}>
+                      <Link href={event.path.alias}>
+                        <div className="w-full h-1/2 overflow-hidden">
+                          <Image
+                            src={absoluteUrl(event.field_image.uri.url)}
+                            width={500}
+                            height={500}
+                            priority={true}
+                            alt={event.field_image.resourceIdObjMeta.alt}
+                            className="h-full object-cover group-hover/card:scale-110 duration-300"
+                          />
+                        </div>
+                        <div className="relative h-1/2 py-4 text-left flex flex-col">
                           <h3 className="text-primary-600 mx-4 mb-4 mt-4 font-bold text-heading-xs">
                             {event.title}
                           </h3>
-                        </Link>
-                        <div className="grow flex justify-end items-center">
-                          <div className="p-4 w-52 h-12 text-white bg-secondary-900 flex justify-between items-center shadow-xl">
-                            <p className="mx-4 font-bold">{formattedDate}</p>
-                            <div className="text-xs">{startTime}{endTime? ` - ${endTime}`:""}</div>
+                          <div className="grow flex justify-end items-center">
+                            <div className="p-4 w-52 h-12 text-white bg-secondary-900 flex justify-between items-center shadow-xl">
+                              <p className="mx-4 font-bold">{formattedDate}</p>
+                              <div className="text-xs">{startTime}{endTime? ` - ${endTime}`:""}</div>
+                            </div>
                           </div>
-                        </div>
-                        <div className="mx-4 flex items-end">
-                          <Link href={event.path.alias}>
+                          <div className="mx-4 flex items-end">
                             <div className="flex items-center mt-4">
                               <p className="text-primary-600">Read more and register</p>
                               <div className="ml-2 flex items-center text-primary-600">
@@ -111,9 +109,9 @@ export function EventTeasers({ events }: LatestEventsProps) {
                                 &#9654;
                               </div>
                             </div>
-                          </Link>
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </>
                   )}
                 </div>
