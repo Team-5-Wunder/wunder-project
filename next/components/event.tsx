@@ -79,15 +79,15 @@ export function Event({ event }: EventProps) {
             <div className="flex flex-col flex-wrap">
               <div className="w-full flex flex-wrap">
                 <div className="min-w-[40%] mb-6 mr-4">
-                  <p className="font-bold text-xl">{formattedDate}</p>
+                  <p className="font-bold text-xl text-primary-600">{formattedDate}</p>
                   <div className="text-md">{startTime}{endTime? ` - ${endTime}`:""}</div>
                   <div className="mt-2 text-md">{event.field_location}</div>
                 </div>
                 <div className="flex flex-grow">
                   <div className="mb-4 flex justify-start items-center">
-                    {event.field_event_speakers && 
+                    {event.field_event_speakers[0] && 
                       <div className="flex flex-col">
-                        <div className="font-bold text-xl">{t("speakers")}</div>
+                        <div className="font-bold text-xl text-primary-600">{t("speakers")}</div>
                         <div className="flex flex-wrap">
                           {event.field_event_speakers.map((paragraph) => (
                             <div className="mr-4">
