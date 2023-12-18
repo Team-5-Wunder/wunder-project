@@ -89,7 +89,7 @@ export const MapComponent = () => {
   );
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyB4_LqXj5fnDzD8RD-xPNQNOOVYhgFQ-No",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
     libraries: libraries as any,
   });
 
