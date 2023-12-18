@@ -14,8 +14,7 @@ export type Place = {
   latitude?: number;
   longitude?: number;
 };
-/* const position = { lat: 60.1675, lng: 24.9311 };
- */
+
 const geocodeAddress = async (address: string) => {
   try {
     const results = await getGeocode({ address });
@@ -73,13 +72,7 @@ export const MapComponent = () => {
 
     geocodeAllLocations();
   }, [locations]);
-  /*   const cityRef = useRef(undefined);
 
-  const [position, setPosition] = useState({
-    lat: places[0].latitude,
-    lng: places[0].longitude,
-  });
- */
   const [selectedPlace, setSelectedPlace] = useState<Place | undefined>(
     undefined,
   );
@@ -96,14 +89,14 @@ export const MapComponent = () => {
   );
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
+    googleMapsApiKey: "AIzaSyB4_LqXj5fnDzD8RD-xPNQNOOVYhgFQ-No",
     libraries: libraries as any,
   });
 
   if (!isLoaded) return <LoadingSpinner />;
 
   return (
-    <div>
+    <div className="flex justify-center mb-14">
       <GoogleMap
         options={mapOptions}
         zoom={5}
@@ -111,7 +104,7 @@ export const MapComponent = () => {
           lat: locations[0]?.latitude || 0,
           lng: locations[0]?.longitude || 0,
         }}
-        mapContainerClassName="h-96 w-full rounded-xl shadow-xl relative"
+        mapContainerClassName="h-[800px] w-[1400px] rounded-xl shadow-xl relative"
       >
         {locations.map(
           (place, index) =>

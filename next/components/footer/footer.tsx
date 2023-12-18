@@ -7,7 +7,8 @@ import { useState } from "react";
 import { FieldErrors } from "react-hook-form";
 import { Button } from "@/ui/button";
 import type { Menu } from "@/lib/zod/menu";
-
+import { StatusMessage } from "@/ui/status-message";
+import { useTranslation } from "next-i18next";
 const SignupSchema = z
   .object({
     news: z.boolean().default(false),
@@ -38,12 +39,13 @@ type CustomFieldErrors = FieldErrors<TSignupSchema> & {
 
 export function Footer({ menu }: FooterProps) {
   const [checkboxGroupError, setCheckboxGroupError] = useState("");
-
+  const { t } = useTranslation();
   const router = useRouter();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<TSignupSchema>({
     resolver: zodResolver(SignupSchema),
   });
@@ -80,7 +82,16 @@ export function Footer({ menu }: FooterProps) {
       alert("Error!");
     }
   };
-
+  if (isSubmitSuccessful) {
+    return (
+      <StatusMessage level="success" className="mx-auto w-full max-w-3xl">
+        <p className="mb-4">{t("form-thank-you-message")}</p>
+        <Button type="button" onClick={() => reset()}>
+          {t("form-reset-button")}
+        </Button>
+      </StatusMessage>
+    );
+  }
   return (
     <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t overflow-hidden px-6 flex flex-col md:flex-row justify-between items-start h-[500px]">
       <div className=" text-center flex-1 flex flex-col justify-center mb-6 md:mb-0">

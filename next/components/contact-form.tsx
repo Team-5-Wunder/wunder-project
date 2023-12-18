@@ -93,12 +93,11 @@ export function ContactForm() {
   }
 
   return (
-    <div className="flex justify-center pt-10 overflow-hidden flex-col md:flex-row h-[600px]">
+    <div className="flex justify-center overflow-hidden flex-col md:flex-row h-[600px]">
       <div className="w-1/2 flex flex-col mb-6 md:mb-0 pl-10 pr-12">
-        <h2 className="text-heading-lg font-bold lg:text-heading-lg text-primary-800">
+        <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
           Send us a message
         </h2>
-        <MapComponent />
       </div>
       <form
         onSubmit={handleSubmit(onSubmit, onErrors)}

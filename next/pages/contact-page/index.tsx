@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { ContactForm } from "@/components/contact-form";
 import { Invoicing } from "@/components/invoicing";
+import { MapComponent } from "@/components/map";
 import {
   CommonPageProps,
   getCommonPageProps,
@@ -19,6 +20,7 @@ export default function SearchPage() {
   return (
     <>
       <ContactForm />
+      <MapComponent />
       <Invoicing />
     </>
   );
