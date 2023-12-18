@@ -38,7 +38,6 @@ import { absoluteUrl } from "@/lib/drupal/absolute-url";
 
 import { MapComponent } from "@/components/map";
 import { useJsApiLoader, Libraries } from "@react-google-maps/api";
-import React, { useMemo } from "react";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
@@ -73,6 +72,8 @@ export default function IndexPage({
       />
       <EventTeasers events={filteredpromotedEventTeasers} />
       <ExpertTalks events={filteredPromotedExpertTalks} />
+
+      <ContactForm />
     </>
   );
 }
