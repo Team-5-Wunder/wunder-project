@@ -53,7 +53,7 @@ export const EventMap = ({ address }: { address: string }) => {
     libraries: libraries as any,
   });
 
-  if (!isLoaded || isLoading) return <LoadingSpinner />;
+  if (!isLoaded) return <LoadingSpinner />;
 
   return (
     <div>
