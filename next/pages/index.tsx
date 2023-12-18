@@ -71,9 +71,6 @@ export default function IndexPage({
         heading={t("Latest releases")}
       />
       <EventTeasers events={filteredpromotedEventTeasers} />
-      <ExpertTalks events={filteredPromotedExpertTalks} />
-
-      <ContactForm />
     </>
   );
 }
