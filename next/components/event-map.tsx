@@ -59,11 +59,11 @@ export const EventMap = ({ address }: { address: string }) => {
     <div>
       <GoogleMap
         options={mapOptions}
-        zoom={15} // Adjust zoom level as needed
-        center={location} // Center the map to the geocoded location
+        zoom={15}
+        center={location}
         mapContainerClassName="h-96 w-full rounded-xl shadow-xl relative"
       >
-        <MarkerF position={location} /> {/* Marker for the geocoded location */}
+        <MarkerF position={location} />
       </GoogleMap>
     </div>
   );
