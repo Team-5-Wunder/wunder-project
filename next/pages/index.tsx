@@ -99,7 +99,9 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
     DrupalNode[]
   >("node--event", context, {
     params: getNodePageJsonApiParams("node--event")
-      .addSort("field_start_time", "ASC")
+      .addGroup("Event", "AND", "parent_group")
+      .addGroup("parent_group", "AND")
+      .addFilter("field_event_tags.name", "Event", "CONTAINS", "Event")
       .addPageLimit(3)
       .getQueryObject(),
   });
