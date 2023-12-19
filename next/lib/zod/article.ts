@@ -3,8 +3,33 @@ import { z } from "zod";
 
 import { MetatagsSchema } from "@/lib/zod/metatag";
 import { ImageShape } from "@/lib/zod/paragraph";
+import {
+  AccordionSchema,
+  FileAttachmentsSchema,
+  FormattedTextSchema,
+  ImageSchema,
+  LinksSchema,
+  ListingArticlesSchema,
+  QuoteSchema,
+  TextImageSchema,
+  TextQuoteSchema,
+  VideoSchema,
+} from "@/lib/zod/paragraph";
 
-export const ArticleBaseSchema = z.object({
+const ArticleElementsSchema = z.discriminatedUnion("type", [
+  FormattedTextSchema,
+  ImageSchema,
+  VideoSchema,
+  LinksSchema,
+  AccordionSchema,
+  ListingArticlesSchema,
+  FileAttachmentsSchema,
+  QuoteSchema,
+  TextQuoteSchema,
+  TextImageSchema,
+]);
+
+export const ArticleSchema = z.object({
   type: z.literal("node--article"),
   id: z.string(),
   created: z.string(),
@@ -17,6 +42,7 @@ export const ArticleBaseSchema = z.object({
   title: z.string(),
   field_image: ImageShape.nullable(),
   field_excerpt: z.string().optional().nullable(),
+  metatag: MetatagsSchema.optional(),
   field_tags: z
     .array(
       z.object({
@@ -24,13 +50,7 @@ export const ArticleBaseSchema = z.object({
       }),
     )
     .optional(),
-});
-
-const ArticleSchema = ArticleBaseSchema.extend({
-  metatag: MetatagsSchema.optional(),
-  body: z.object({
-    processed: z.string(),
-  }),
+  field_content_elements: z.array(ArticleElementsSchema).optional().nullable(),
 });
 
 export function validateAndCleanupArticle(article: DrupalNode): Article | null {

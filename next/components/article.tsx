@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 
-import { FormattedText } from "@/components/formatted-text";
+import { Paragraph } from "@/components/paragraph";
 import { HeadingPage } from "@/components/heading--page";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { formatDate } from "@/lib/utils";
@@ -78,13 +78,10 @@ export function Article({ article, ...props }: ArticleProps) {
               <div className="my-4 text-md md:text-xl">
                 {article.field_excerpt}
               </div>
-              <div className="mt-8 flex justify-center items-center">
-                {article.body?.processed && (
-                  <FormattedText
-                    className="mt-4 text-md/xl text-scapaflow sm:text-lg"
-                    html={article.body?.processed}
-                  />
-                )}
+              <div className="grid gap-4 col-span-2">
+                {article.field_content_elements?.map((paragraph) => (
+                  <Paragraph key={paragraph.id} paragraph={paragraph} />
+                ))}
               </div>
             </div>
           </div>
