@@ -21,7 +21,7 @@ export function ParagraphSpeaker({
                 />
             }
             {!paragraph.field_image && 
-                <img src="/assets/carrot.png" alt="wunder" className="object-cover h-[100px] w-[100px] border-0 rounded-full" />
+                <img src="/assets/noPhoto.png" alt="no photo" className="object-cover h-[100px] w-[100px] border-0 rounded-full" />
             }
             <div className="mt-2 text-secondary-900">{paragraph.field_speaker}</div>
         </div>

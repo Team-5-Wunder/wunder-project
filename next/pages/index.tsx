@@ -41,20 +41,18 @@ import { useJsApiLoader, Libraries } from "@react-google-maps/api";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
-  filteredPromotedArticleTeasers: ArticleTeaser[];
+  promotedArticleTeasers: ArticleTeaser[];
   promotedCaseTeasers: CaseTeaser[];
   promotedEventTeasers: EventTeaser[];
-  filteredpromotedEventTeasers: EventTeaser[];
-  filteredPromotedExpertTalks: EventTeaser[];
+  promotedExpertTalks: EventTeaser[];
 }
 
 export default function IndexPage({
   frontpage,
-  filteredPromotedArticleTeasers,
+  promotedArticleTeasers,
   promotedCaseTeasers,
   promotedEventTeasers,
-  filteredpromotedEventTeasers,
-  filteredPromotedExpertTalks,
+  promotedExpertTalks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
 
@@ -65,12 +63,9 @@ export default function IndexPage({
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
       <OurClients />
-
-      <LatestReleases
-        articles={filteredPromotedArticleTeasers}
-        heading={t("Latest releases")}
-      />
-      <EventTeasers events={filteredpromotedEventTeasers} />
+      <LatestReleases articles={promotedArticleTeasers} heading={t("Latest releases")}/>
+      <EventTeasers events={promotedEventTeasers}/>
+      <ExpertTalks events={promotedExpertTalks}/>
     </>
   );
 }
@@ -89,6 +84,18 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
     )
   ).at(0);
 
+  // Recieving and filtering data for ARTICLE TEASERS on the front page
+  const promotedArticleTeasers = await drupal.getResourceCollectionFromContext<
+    DrupalNode[]
+  >("node--article", context, {
+    params: getNodePageJsonApiParams("node--article")
+      .addGroup("Innovation", "AND", "parent_group")
+      .addGroup("parent_group", "AND")
+      .addFilter("field_tags.name", "Innovation", "CONTAINS", "Innovation")
+      .addPageLimit(3)
+      .getQueryObject(),
+  });
+  
   // Recieving data for CASE TEASERS on the front page
   const promotedCaseTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
@@ -98,57 +105,36 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
       .getQueryObject(),
   });
 
-  // Recieving and filtering data for ARTICLE TEASERS on the front page
-  const promotedArticleTeasers = await drupal.getResourceCollectionFromContext<
-    DrupalNode[]
-  >("node--article", context, {
-    params: getNodePageJsonApiParams("node--article").getQueryObject(),
-  });
-
-  const filteredPromotedArticleTeasers = promotedArticleTeasers
-    .filter(
-      (article) => article.field_tags?.some((tag) => tag.name === "Innovation"),
-    )
-    .slice(0, 3);
-
   // Recieving and filtering data for EVENT TEASERS on the front page
   const promotedEventTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
   >("node--event", context, {
     params: getNodePageJsonApiParams("node--event")
-      .addSort("field_start_time", "ASC")
+      .addGroup("Event", "AND", "parent_group")
+      .addGroup("parent_group", "AND")
+      .addFilter("field_event_tags.name", "Event", "CONTAINS", "Event")
+      .addPageLimit(3)
       .getQueryObject(),
   });
-
-  const filteredpromotedEventTeasers = promotedEventTeasers
-    .filter(
-      (event) =>
-        !event.field_event_tags?.some((tag) => (tag.name = "Expert Talks")),
-    )
-    .slice(0, 3);
 
   // Recieving and filtering data for EXPERT TALKS TEASERS on the front page
   const promotedExpertTalks = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
   >("node--event", context, {
     params: getNodePageJsonApiParams("node--event")
-      .addSort("field_start_time", "ASC")
+      .addGroup("Expert", "AND", "parent_group")
+      .addGroup("parent_group", "AND")
+      .addFilter("field_event_tags.name", "Expert", "CONTAINS", "Expert")
+      .addPageLimit(3)
       .getQueryObject(),
   });
-
-  const filteredPromotedExpertTalks = promotedExpertTalks
-    .filter(
-      (event) =>
-        event.field_event_tags?.some((tag) => tag.name === "Expert Talks"),
-    )
-    .slice(0, 3);
-
+  
   // Returning the props
   return {
     props: {
       ...(await getCommonPageProps(context)),
       frontpage: frontpage ? validateAndCleanupFrontpage(frontpage) : null,
-      filteredPromotedArticleTeasers: filteredPromotedArticleTeasers.map(
+      promotedArticleTeasers: promotedArticleTeasers.map(
         (teaser) => validateAndCleanupArticleTeaser(teaser),
       ),
       promotedCaseTeasers: promotedCaseTeasers.map((teaser) =>
@@ -157,10 +143,7 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
       promotedEventTeasers: promotedEventTeasers.map((teaser) =>
         validateAndCleanupEventTeaser(teaser),
       ),
-      filteredpromotedEventTeasers: filteredpromotedEventTeasers.map((teaser) =>
-        validateAndCleanupEventTeaser(teaser),
-      ),
-      filteredPromotedExpertTalks: filteredPromotedExpertTalks.map((teaser) =>
+      promotedExpertTalks: promotedExpertTalks.map((teaser) => 
         validateAndCleanupEventTeaser(teaser),
       ),
     },

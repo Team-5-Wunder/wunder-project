@@ -1,9 +1,9 @@
 import { DrupalNode } from "next-drupal";
 import { z } from "zod";
 
-import { ArticleBaseSchema } from "@/lib/zod/article";
+import { ArticleSchema } from "@/lib/zod/article";
 
-export const ArticleTeaserSchema = ArticleBaseSchema.extend({
+export const ArticleTeaserSchema = ArticleSchema.extend({
   path: z.object({
     alias: z.string(),
   }),
