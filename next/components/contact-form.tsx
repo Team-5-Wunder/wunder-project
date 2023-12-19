@@ -12,7 +12,8 @@ import { StatusMessage } from "@/ui/status-message";
 import { Textarea } from "@/ui/textarea";
 import { useState } from "react";
 import { FieldErrors } from "react-hook-form";
-import { MapComponent } from "@/components/map";
+import React from "react";
+import { inter } from "@/styles/fonts";
 
 type Inputs = {
   name: string;
@@ -37,168 +38,176 @@ const SignupSchema = z.object({
   terms: z.boolean().refine((val) => val === true, "Terms must be accepted."),
 });
 
+interface ContactFormProps {
+  ref: string;
+}
+
 type TSignupSchema = z.infer<typeof SignupSchema>;
 
-export function ContactForm() {
-  const router = useRouter();
-  const { t } = useTranslation();
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { isSubmitSuccessful },
-  } = useForm<Inputs>();
+export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
+  ({}, ref) => {
+    const router = useRouter();
+    const { t } = useTranslation();
+    const {
+      register,
+      handleSubmit,
+      reset,
+      formState: { isSubmitSuccessful },
+    } = useForm<Inputs>();
 
-  const [checkboxGroupError, setCheckboxGroupError] = useState("");
+    const [checkboxGroupError, setCheckboxGroupError] = useState("");
 
-  const onSubmit = async (data: TSignupSchema) => {
-    if (!data.terms) {
-      setCheckboxGroupError("You must ");
-      return; // Prevent form submission
+    const onSubmit = async (data: TSignupSchema) => {
+      if (!data.terms) {
+        setCheckboxGroupError("You must ");
+        return; // Prevent form submission
+      }
+      setCheckboxGroupError("");
+      const response = await fetch(`/api/contact`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: data.name,
+          lastname: data.lastname,
+          email: data.email,
+          phone: data.phone,
+          company: data.company,
+          message: data.message,
+          terms: data.terms,
+        }),
+        // This will record the submission with the right language:
+        headers: {
+          "accept-language": router.locale,
+        },
+      });
+
+      if (!response.ok) {
+        alert("Error!");
+      }
+    };
+
+    const onErrors = (errors) => console.error(errors);
+
+    if (isSubmitSuccessful) {
+      return (
+        <StatusMessage level="success" className="mx-auto w-full max-w-3xl">
+          <p className="mb-4">{t("form-thank-you-message")}</p>
+          <Button type="button" onClick={() => reset()}>
+            {t("form-send-another-message")}
+          </Button>
+        </StatusMessage>
+      );
     }
-    setCheckboxGroupError("");
-    const response = await fetch(`/api/contact`, {
-      method: "POST",
-      body: JSON.stringify({
-        name: data.name,
-        lastname: data.lastname,
-        email: data.email,
-        phone: data.phone,
-        company: data.company,
-        message: data.message,
-        terms: data.terms,
-      }),
-      // This will record the submission with the right language:
-      headers: {
-        "accept-language": router.locale,
-      },
-    });
 
-    if (!response.ok) {
-      alert("Error!");
-    }
-  };
-
-  const onErrors = (errors) => console.error(errors);
-
-  if (isSubmitSuccessful) {
     return (
-      <StatusMessage level="success" className="mx-auto w-full max-w-3xl">
-        <p className="mb-4">{t("form-thank-you-message")}</p>
-        <Button type="button" onClick={() => reset()}>
-          {t("form-send-another-message")}
-        </Button>
-      </StatusMessage>
-    );
-  }
-
-  return (
-    <div className="flex justify-center overflow-hidden flex-col md:flex-row h-[600px]">
-      <div className="w-1/2 flex flex-col mb-6 md:mb-0 pl-10 pr-12">
-        <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
-          Send us a message
-        </h2>
-      </div>
-      <form
-        onSubmit={handleSubmit(onSubmit, onErrors)}
-        className="w-full max-w-lg"
-      >
-        <p className="pb-5">"*" indicates required fields</p>
-        {/*   <AuthGate text={t("login-to-fill-form")}> */}
-        <>
-          <div className="flex flex-wrap mb-2">
-            <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
-              <Label htmlFor="firstname">First Name</Label>
-              <Input
-                className="border-primary-100"
-                type="text"
-                id="name"
-                {...register("name", {
-                  required: true,
-                })}
-              />
-            </div>
-            <div className="w-full md:w-1/2 mb-6 md:mb-0">
-              <Label htmlFor="lastname">Last Name</Label>
-              <Input
-                className="border-primary-100"
-                type="text"
-                id="lastname"
-                {...register("lastname", {
-                  required: true,
-                })}
-              />
-            </div>
+      <div ref={ref}>
+        <div className="mt-12 pt-14 flex justify-center overflow-hidden flex-col md:flex-row h-[700px]">
+          <div className="w-3/5  flex flex-col mb-6 md:mb-0 pl-10 pr-12">
+            <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
+              Send us a message
+            </h2>
           </div>
-          <div className="flex flex-wrap mb-2">
-            <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                className="border-primary-100"
-                type="email"
-                id="email"
-                {...register("email", {
-                  required: true,
-                })}
-              />
-              {/*   {errors.email && (
+          <form
+            onSubmit={handleSubmit(onSubmit, onErrors)}
+            className="w-full max-w-lg"
+          >
+            <p className="pb-5">"*" indicates required fields</p>
+            {/*   <AuthGate text={t("login-to-fill-form")}> */}
+            <>
+              <div className="flex flex-wrap mb-2">
+                <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
+                  <Label htmlFor="firstname">First Name</Label>
+                  <Input
+                    className="border-primary-100"
+                    type="text"
+                    id="name"
+                    {...register("name", {
+                      required: true,
+                    })}
+                  />
+                </div>
+                <div className="w-full md:w-1/2 mb-6 md:mb-0">
+                  <Label htmlFor="lastname">Last Name</Label>
+                  <Input
+                    className="border-primary-100"
+                    type="text"
+                    id="lastname"
+                    {...register("lastname", {
+                      required: true,
+                    })}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-wrap mb-2">
+                <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    className="border-primary-100"
+                    type="email"
+                    id="email"
+                    {...register("email", {
+                      required: true,
+                    })}
+                  />
+                  {/*   {errors.email && (
                 <p className="text-red-500">{errors.email.message}</p>
               )} */}
-            </div>
+                </div>
 
-            <div className="w-full md:w-1/2 mb-6 md:mb-0">
-              <Label htmlFor="email">Phone</Label>
-              <Input
-                className="border-primary-100"
-                type="number"
-                id="phone"
-                {...register("phone", {
-                  required: true,
-                })}
-              />
-            </div>
-          </div>
-          <div className="flex flex-wrap  mb-6">
-            <Label htmlFor="company">Company</Label>
-            <Input
-              className="border-primary-100"
-              type="text"
-              id="company"
-              {...register("company", {
-                required: true,
-              })}
-            />
-          </div>
+                <div className="w-full md:w-1/2 mb-6 md:mb-0">
+                  <Label htmlFor="email">Phone</Label>
+                  <Input
+                    className="border-primary-100"
+                    type="number"
+                    id="phone"
+                    {...register("phone", {
+                      required: true,
+                    })}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-wrap  mb-6">
+                <Label htmlFor="company">Company</Label>
+                <Input
+                  className="border-primary-100"
+                  type="text"
+                  id="company"
+                  {...register("company", {
+                    required: true,
+                  })}
+                />
+              </div>
 
-          <div className="flex flex-wrap mb-6">
-            <Label htmlFor="message">{t("form-label-message")}</Label>
-            <Textarea
-              className="border-primary-100"
-              id="message"
-              {...register("message", {
-                required: true,
-              })}
-            />
-          </div>
-          <label className="inline-flex items-center">
-            <input
-              {...register("terms", {
-                required: true,
-              })}
-              type="checkbox"
-              className="form-checkbox text-primary-100"
-            />
-            <span className="px-5">
-              I approve that Wunder process my personal data according to its
-              privacy policy
-            </span>
-          </label>
-          <Button className="mt-5" type="submit">
-            {t("form-submit")}
-          </Button>
-        </>
-        {/*    </AuthGate> */}
-      </form>
-    </div>
-  );
-}
+              <div className="flex flex-wrap mb-6">
+                <Label htmlFor="message">{t("form-label-message")}</Label>
+                <Textarea
+                  className="border-primary-100"
+                  id="message"
+                  {...register("message", {
+                    required: true,
+                  })}
+                />
+              </div>
+              <label className="inline-flex items-center">
+                <input
+                  {...register("terms", {
+                    required: true,
+                  })}
+                  type="checkbox"
+                  className="form-checkbox text-primary-100"
+                />
+                <span className="px-5">
+                  I approve that Wunder process my personal data according to
+                  its privacy policy
+                </span>
+              </label>
+              <Button className="mt-5" type="submit">
+                {t("form-submit")}
+              </Button>
+            </>
+            {/*    </AuthGate> */}
+          </form>
+        </div>
+      </div>
+    );
+  },
+);

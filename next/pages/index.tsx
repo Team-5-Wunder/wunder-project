@@ -32,7 +32,7 @@ import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 import LogIn from "./auth/login";
 import Register from "./auth/register";
 import { Article } from "@/components/article";
-import { ContactForm } from "@/components/contact-form";
+
 import { Paragraph } from "@/components/paragraph";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 
