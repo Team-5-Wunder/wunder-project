@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
   @import "_focus-visible.css";
 }
@@ -17,12 +19,13 @@
   }
 }
 
+
+
 @layer utilities {
   .circle-clip {
     clip-path: circle();
   }
 }
-
 .dark {
   --warning: 48 96% 89%;
   --warning-foreground: 38 92% 50%;
@@ -30,5 +33,30 @@
   .text-steelgray {
     --tw-text-opacity: 1;
     color: white;
+  }
+    @media (min-width: 768px) {
+      .md\:text-md\/xl {
+        font-size: 1.125rem;
+        line-height: 1.75;
+        color: white;
+      }
+           
+    }
+    .text-scapaflow {
+           --tw-text-opacity: 1;
+           color: white;
+         }
+  }
+        
+#leftBox{
+  margin-top: 1rem;
+    padding-left: 50px;
+    padding-right: 40px;
+}
+@media (min-width: 1024px) {
+  .lg\:text-heading-lg {
+    font-size: 3.0rem;
+    line-height: 1.25;
+    margin-left: 55px;
   }
 }
