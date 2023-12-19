@@ -164,7 +164,7 @@ export default function CasesPage({
       <HeadingPage>{t("cases")}</HeadingPage>
       <div className="mb-16 flex justify-between text-sm text-steelgray">
         <ul>
-          <h2 className="text-xl">Industry</h2>
+          <h2 className="text-xl">{t("Industry")}</h2>
           {industry.map((tag) => (
             <li
               key={tag.id}
@@ -181,7 +181,7 @@ export default function CasesPage({
           ))}
         </ul>
         <ul>
-          <h2 className="text-xl">Solution</h2>
+          <h2 className="text-xl">{t("Solution")}</h2>
           {solution.map((tag) => (
             <li
               key={tag.id}
@@ -198,7 +198,7 @@ export default function CasesPage({
           ))}
         </ul>
         <ul>
-          <h2 className="text-xl">Technology</h2>
+          <h2 className="text-xl">{t("Technology")}</h2>
           {technology.map((tag) => (
             <li
               key={tag.id}

@@ -128,7 +128,7 @@ export default function BlogPage({
       <HeadingPage>{t("blog")}</HeadingPage>
       <div className="mb-16 flex justify-between text-sm text-steelgray">
         <ul>
-          <h2 className="text-xl">Filter</h2>
+          <h2 className="text-xl">{t("Filter")}</h2>
           {tags.map((tag) => (
             <li
               key={tag.id}

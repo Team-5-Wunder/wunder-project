@@ -1,6 +1,9 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import { useRouter } from "next/router";
+import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal";
+import { deserialize } from "next-drupal";
 import { useTranslation } from "next-i18next";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { EventTeaser } from "@/components/event-teaser";
 import { HeadingPage } from "@/components/heading--page";
@@ -11,6 +14,7 @@ import {
   createLanguageLinksForNextOnlyPage,
   LanguageLinks,
 } from "@/lib/contexts/language-links-context";
+import { drupal } from "@/lib/drupal/drupal-client";
 import { getLatestEventsItems } from "@/lib/drupal/get-events";
 import { getCommonPageProps } from "@/lib/get-common-page-props";
 import {
@@ -18,25 +22,131 @@ import {
   validateAndCleanupEventTeaser,
 } from "@/lib/zod/event-teaser";
 
+import siteConfig from "@/site.config";
+import { Checkbox } from "@/ui/checkbox";
+
 interface NewsAndEventsPageProps extends LayoutProps {
   eventTeasers: EventTeaserType[];
   paginationProps: PaginationProps;
   languageLinks: LanguageLinks;
+  event_tags: DrupalTaxonomyTerm[];
 }
 
 export default function NewsAndEventsPage({
   eventTeasers = [],
   paginationProps,
+  event_tags,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { t } = useTranslation();
-  const focusRef = useRef<HTMLDivElement>(null);
+    const { t } = useTranslation();
+    const focusRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
+    const [tagsSearch, setTagsSearch] = useState<string[]>([]);
+    const [paginationNewProps, setPaginationNewProps] =
+      useState<object>(paginationProps);
+    const [events, setEvents] = useState<EventTeaserType[]>(eventTeasers);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [limit, setLimit] = useState<number>(6);
+    const [offset, setOffset] = useState<number>(0);
+
+    useEffect(() => {
+      const page = +router.asPath.split("/")[2];
+      if (page) {
+        setOffset((page - 1) * limit);
+        setCurrentPage(page);
+      }
+    }, [router.asPath]);
+  
+    useEffect(() => {
+      const useBody = async () => {
+        const body = {
+          offset,
+          limit,
+          locale: siteConfig.defaultLocale,
+          tags: tagsSearch,
+        };
+        const response = await fetch("/api/news-and-events-filter", {
+          method: "POST",
+          body: JSON.stringify(body),
+        });
+  
+        if (response.ok) {
+          const result = await response.json();
+  
+          let totalPages;
+          const pageRoot = "/news-and-events";
+          if (result.data) {
+            const nodes = deserialize(result) as DrupalNode[];
+            totalPages = Math.ceil(result.meta.count / limit);
+            if (currentPage > totalPages) {
+              void router.push([pageRoot, totalPages].join("/"), null, {
+                scroll: false,
+              });
+            }
+            setEvents(
+              nodes.map((teaser) => validateAndCleanupEventTeaser(teaser)),
+            );
+          }
+  
+          // Create pagination props.
+          const prevEnabled = currentPage > 1;
+          const nextEnabled = currentPage < totalPages;
+  
+          // Create links for prev/next pages.
+          const prevPage = currentPage - 1;
+          const nextPage = currentPage + 1;
+          const prevPageHref =
+            currentPage === 2
+              ? pageRoot
+              : prevEnabled && [pageRoot, prevPage].join("/");
+          const nextPageHref = nextEnabled && [pageRoot, nextPage].join("/");
+  
+          setPaginationNewProps({
+            currentPage,
+            totalPages,
+            prevEnabled,
+            nextEnabled,
+            prevPageHref,
+            nextPageHref,
+          });
+        }
+      };
+      useBody();
+    }, [limit, offset, tagsSearch]);
+
+    const handleCheckboxChange = (value: string) => {
+      if (tagsSearch.includes(value)) {
+        setTagsSearch(tagsSearch.filter((tag) => tag !== value));
+      } else {
+        setTagsSearch([...tagsSearch, value]);
+      }
+    };
+
   return (
     <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
       <Meta title={t("news-and-events")} metatags={[]} />
       <div ref={focusRef} tabIndex={-1} />
       <HeadingPage>{t("news-and-events")}</HeadingPage>
+      <div className="mb-16 flex justify-between text-sm text-steelgray">
+        <ul>
+          <h2 className="text-xl">{t("Filter")}</h2>
+          {event_tags.map((tag) => (
+            <li
+              key={tag.id}
+              className="flex items-center text-sm text-steelgray"
+            >
+              <Checkbox
+                onClick={() => handleCheckboxChange(tag.name)}
+                id={tag.id}
+              />
+              <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
+                {tag.name}
+              </label>
+            </li>
+          ))}
+        </ul>
+      </div>
       <ul className="mt-4 grid gap-4 grid-cols-3">
-        {eventTeasers?.map((event) => (
+        {events.map((event) => (
           <li key={event.id}>
             <EventTeaser event={event} />
           </li>
@@ -44,7 +154,7 @@ export default function NewsAndEventsPage({
       </ul>
       <Pagination
         focusRestoreRef={focusRef}
-        paginationProps={paginationProps}
+        paginationProps={paginationNewProps}
       />
     </div>
   );
@@ -95,6 +205,10 @@ export const getStaticProps: GetStaticProps<NewsAndEventsPageProps> = async (
   // the other pages will exist in all languages.
   const languageLinks = createLanguageLinksForNextOnlyPage(pageRoot, context);
 
+  const event_tags = await drupal.getResourceCollectionFromContext<
+    DrupalTaxonomyTerm[]
+  >("taxonomy_term--event_tags", context, {});
+
   return {
     props: {
       ...(await getCommonPageProps(context)),
@@ -110,6 +224,7 @@ export const getStaticProps: GetStaticProps<NewsAndEventsPageProps> = async (
         nextPageHref,
       },
       languageLinks,
+      event_tags,
     },
     revalidate: 60,
   };
