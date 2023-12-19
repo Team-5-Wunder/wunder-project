@@ -31,7 +31,7 @@ export default function NewsAndEventsPage({
   const { t } = useTranslation();
   const focusRef = useRef<HTMLDivElement>(null);
   return (
-    <>
+    <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
       <Meta title={t("news-and-events")} metatags={[]} />
       <div ref={focusRef} tabIndex={-1} />
       <HeadingPage>{t("news-and-events")}</HeadingPage>
@@ -46,7 +46,7 @@ export default function NewsAndEventsPage({
         focusRestoreRef={focusRef}
         paginationProps={paginationProps}
       />
-    </>
+    </div>
   );
 }
 
