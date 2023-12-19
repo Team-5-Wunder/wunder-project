@@ -42,9 +42,9 @@ export const EventSchema = z.object({
   field_content_elements: z.array(EventElementsSchema),
   field_event_speakers: z.array(EventElementsSchema).nullable().optional(),
   metatag: MetatagsSchema.optional(),
-  field_start_time: z.string(),
+  field_start_time: z.string().optional().nullable(),
   field_end_time: z.string().optional().nullable(),
-  field_location: z.string(),
+  field_location: z.string().optional().nullable(),
   field_event_tags: z
     .array(
       z.object({
