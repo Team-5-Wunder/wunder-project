@@ -47,7 +47,6 @@ export function Event({ event }: EventProps) {
           
           <div>
             <HeadingPage>{event.title}</HeadingPage>
-            {/* <div className="my-4 text-xl">{event.field_excerpt}</div> */}
             <div className="my-4 text-md md:text-xl">
               {event.field_excerpt}
             </div>
