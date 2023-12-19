@@ -18,16 +18,19 @@ export function Event({ event }: EventProps) {
   
   //DATE AND TIME FORMATTING
   //************************
-
-  // Getting the start_time in format like "19:30"
-  const date = new Date(event.field_start_time);
-  //Converting the start_time into a format like "27 Dec"
-  const formattedDate = date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }).toUpperCase();
-  // Getting the start_time in format like "19:30"
-  const hours = date.getUTCHours();
-  const minutes = date.getMinutes();
-  // Format hours and minutes with leading zeros if needed
-  const startTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  let startTime = null
+  let formattedDate = null
+  if (event.field_start_time) {
+    // Getting the start_time in format like "19:30"
+    const date = new Date(event.field_start_time);
+    //Converting the start_time into a format like "27 Dec"
+    formattedDate = date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }).toUpperCase();
+    // Getting the start_time in format like "19:30"
+    const hours = date.getUTCHours();
+    const minutes = date.getMinutes();
+    // Format hours and minutes with leading zeros if needed
+    const startTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  }
   
   let endTime = null
   if (event.field_end_time) {
@@ -79,9 +82,15 @@ export function Event({ event }: EventProps) {
             <div className="flex flex-col flex-wrap">
               <div className="w-full flex flex-wrap">
                 <div className="min-w-[40%] mb-6 mr-4">
-                  <p className="font-bold text-xl text-primary-600">{formattedDate}</p>
-                  <div className="text-md">{startTime}{endTime? ` - ${endTime}`:""}</div>
-                  <div className="mt-2 text-md">{event.field_location}</div>
+                  {event.field_start_time &&
+                    <div>
+                        <p className="font-bold text-xl text-primary-600">{formattedDate}</p>
+                        <div className="text-md">{startTime}{endTime? ` - ${endTime}`:""}</div>
+                    </div>
+                  }
+                  {event.field_location && 
+                    <div className="mt-2 text-md">{event.field_location}</div>
+                  }
                 </div>
                 <div className="flex flex-grow">
                   <div className="mb-4 flex justify-start items-center">
