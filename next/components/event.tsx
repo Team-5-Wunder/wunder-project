@@ -8,6 +8,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { buttonVariants } from "@/ui/button";
 import { useTranslation } from "next-i18next";
+import { EventRegistration } from "./event-registration";
 
 interface EventProps {
   event: Event;
@@ -99,15 +100,7 @@ export function Event({ event }: EventProps) {
                   </div>
                 </div>
               </div>
-              <Link
-                  href="/cases"
-                  className={clsx(
-                    buttonVariants({ variant: "primary" }),
-                    "text-base inline-flex px-5 py-3 h-fit min-w-fit w-fit",
-                  )}
-                >
-                  <div>{t("register-to-event")}</div>
-              </Link>
+              <EventRegistration event_id={event.id} event_name={event.title} />
             </div>
 
           </div>
