@@ -89,7 +89,7 @@ export function Event({ event }: EventProps) {
                         <div className="font-bold text-xl text-primary-600">{t("speakers")}</div>
                         <div className="flex flex-wrap">
                           {event.field_event_speakers.map((paragraph) => (
-                            <div className="mr-4">
+                            <div key={paragraph.id} className="mr-4">
                               <Paragraph key={paragraph.id} paragraph={paragraph} />
                             </div>
                           ))}
