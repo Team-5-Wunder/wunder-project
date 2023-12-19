@@ -15,17 +15,29 @@ import { Meta } from "@/components/meta";
 import { drupal } from "@/lib/drupal/drupal-client";
 import { getNodePageJsonApiParams } from "@/lib/drupal/get-node-page-json-api-params";
 import { getCommonPageProps } from "@/lib/get-common-page-props";
-import { ArticleTeaser, validateAndCleanupArticleTeaser } from "@/lib/zod/article-teaser";
-import { CaseTeaser, validateAndCleanupCaseTeaser } from "@/lib/zod/case-teaser";
-import { EventTeaser, validateAndCleanupEventTeaser } from "@/lib/zod/event-teaser";
+import {
+  ArticleTeaser,
+  validateAndCleanupArticleTeaser,
+} from "@/lib/zod/article-teaser";
+import {
+  CaseTeaser,
+  validateAndCleanupCaseTeaser,
+} from "@/lib/zod/case-teaser";
+import {
+  EventTeaser,
+  validateAndCleanupEventTeaser,
+} from "@/lib/zod/event-teaser";
 import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 
 import LogIn from "./auth/login";
 import Register from "./auth/register";
 import { Article } from "@/components/article";
-import { ContactForm } from "@/components/contact-form";
+
 import { Paragraph } from "@/components/paragraph";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
+
+import { MapComponent } from "@/components/map";
+import { useJsApiLoader, Libraries } from "@react-google-maps/api";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
@@ -43,7 +55,6 @@ export default function IndexPage({
   promotedExpertTalks,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation();
-  
 
   return (
     <>

@@ -30,10 +30,7 @@ export default async function handler(
         method: "POST",
         body: JSON.stringify({
           webform_id: "contact",
-          name: body.name,
-          email: body.email,
-          message: body.message,
-          subject: body.subject,
+          ...body,
         }),
         headers: {
           "Content-Type": "application/json",

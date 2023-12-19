@@ -8,14 +8,17 @@ import Link from "next/link";
 import clsx from "clsx";
 import { buttonVariants } from "@/ui/button";
 import { useTranslation } from "next-i18next";
+
+/* import { ParagraphMap } from "./paragraph-map"; */
+import EventMap from "./event-map";
 import { EventRegistration } from "./event-registration";
+
 
 interface EventProps {
   event: Event;
 }
 
 export function Event({ event }: EventProps) {
-  
   //DATE AND TIME FORMATTING
   //************************
   let startTime = null
@@ -38,7 +41,9 @@ export function Event({ event }: EventProps) {
     // Getting the end_time in format like "19:30"
     const endHours = endDate.getUTCHours();
     const endMinutes = endDate.getMinutes();
-    endTime = `${endHours.toString().padStart(2, '0')}:${endMinutes.toString().padStart(2, '0')}`;
+    endTime = `${endHours.toString().padStart(2, "0")}:${endMinutes
+      .toString()
+      .padStart(2, "0")}`;
   }
   //************************
 
@@ -48,7 +53,6 @@ export function Event({ event }: EventProps) {
     <div className="w-screen flex justify-center">
       <div className="w-full max-w-[1664px] mb-20 px-6 sm:px-16 flex flex-col">
         <div className="grid gap-8 md:grid-cols-2 w-full mt-20">
-          
           <div>
             <HeadingPage>{event.title}</HeadingPage>
             <div className="my-4 text-md md:text-xl">
@@ -60,9 +64,7 @@ export function Event({ event }: EventProps) {
               ))}
             </div>
           </div>
-          
           <div>
-
             <figure>
               <Image
                 src={absoluteUrl(event.field_image.uri.url)}
@@ -78,7 +80,6 @@ export function Event({ event }: EventProps) {
                 </figcaption>
               )}
             </figure>
-            
             <div className="flex flex-col flex-wrap">
               <div className="w-full flex flex-wrap">
                 <div className="min-w-[40%] mb-6 mr-4">
@@ -94,9 +95,11 @@ export function Event({ event }: EventProps) {
                 </div>
                 <div className="flex flex-grow">
                   <div className="mb-4 flex justify-start items-center">
-                    {event.field_event_speakers[0] && 
+                    {event.field_event_speakers[0] && (
                       <div className="flex flex-col">
-                        <div className="font-bold text-xl text-primary-600">{t("speakers")}</div>
+                        <div className="font-bold text-xl text-primary-600">
+                          {t("speakers")}
+                        </div>
                         <div className="flex flex-wrap">
                           {event.field_event_speakers.map((paragraph) => (
                             <div key={paragraph.id} className="mr-4">
@@ -104,16 +107,19 @@ export function Event({ event }: EventProps) {
                             </div>
                           ))}
                         </div>
-                      </div>  
-                    }
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
               <EventRegistration event_id={event.id} event_name={event.title} />
             </div>
-
+            {event.field_location && 
+              <div className="mt-8">
+                <EventMap address={event.field_location} />;
+              </div>
+            }
           </div>
-
         </div>
       </div>
     </div>
