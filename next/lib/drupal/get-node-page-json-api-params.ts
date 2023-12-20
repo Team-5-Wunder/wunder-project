@@ -165,6 +165,7 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "field_content_elements.field_accordion_items",
         "field_content_elements.field_accordion_items.field_content_elements.field_image.field_media_image",
         "field_content_elements.field_accordion_items.field_content_elements.field_video",
+        "field_country",
       ])
       .addFields("node--careers", [
         "field_image",
@@ -173,6 +174,7 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "path",
         "status",
         "metatag",
+        "field_country",
       ]);
   }
 

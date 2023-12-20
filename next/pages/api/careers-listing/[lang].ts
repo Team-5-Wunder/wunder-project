@@ -21,8 +21,8 @@ export default async function handler(
           "filter[status]": 1,
           "filter[langcode]": languagePrefix,
           "fields[node--careers]":
-            "title,path,field_image,field_content_elements",
-          include: "field_image,field_content_elements",
+            "title,path,field_image,field_content_elements,field_country",
+          include: "field_image,field_content_elements,field_country",
           sort: "-sticky,-created",
         },
         locale: languagePrefix,

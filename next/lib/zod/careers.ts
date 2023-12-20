@@ -38,13 +38,11 @@ export const CareersSchema = z.object({
   field_image: ImageShape,
   field_content_elements: z.array(CareersElementsSchema),
   metatag: MetatagsSchema.optional(),
-  field_country: z
-    .array(
-      z.object({
-        name: z.string(),
-      }),
-    )
-    .optional(),
+  field_country: z.array(
+    z.object({
+      name: z.string(),
+    }),
+  ),
 });
 
 export function validateAndCleanupCareers(careers: DrupalNode): Careers | null {

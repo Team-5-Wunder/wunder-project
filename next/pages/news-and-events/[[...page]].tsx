@@ -132,7 +132,7 @@ export default function NewsAndEventsPage({
 
   return (
     <div className="w-screen flex justify-center">
-      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex flex-col">
+      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
         <Meta title={t("news-and-events")} metatags={[]} />
         <div ref={focusRef} tabIndex={-1} />
         <HeadingPage>{t("our-events")}</HeadingPage>
@@ -178,7 +178,7 @@ export default function NewsAndEventsPage({
             ))}
           </ul>
         </div>
-        <div className="mt-4 grid gap-4 grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-4 grid gap-8 grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3">
           {events.map((event) => (
             <div key={event.id}>
               {event.field_event_tags[0].name.includes("Expert") ? (

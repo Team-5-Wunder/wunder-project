@@ -28,6 +28,9 @@ export function CareersTeaser({ careers }: CareersTeaserProps) {
           className="object-cover h-[240px] w-[384px]"
         />
       )}
+      {careers.field_country.map((career) => (
+        <div className="bg-mischka p-2">{career.name}</div>
+      ))}
     </Link>
   );
 }

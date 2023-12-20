@@ -36,7 +36,7 @@ export const getEvents = async (
             limit,
             offset,
           },
-          sort: "-sticky,-created",
+          sort: "-sticky,-changed",
         },
         locale: locale,
         defaultLocale: siteConfig.defaultLocale,

@@ -37,7 +37,7 @@ export default async function handler(
               limit: body.limit,
               offset: body.offset,
             },
-            sort: "-sticky,-created",
+            sort: "-sticky,-changed",
           },
           locale: body.locale,
           defaultLocale: siteConfig.defaultLocale,

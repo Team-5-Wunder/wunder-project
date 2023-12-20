@@ -129,66 +129,68 @@ export default function BlogPage({
   };
 
   return (
-    <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
-      <Meta title={t("blog")} metatags={[]} />
-      <div ref={focusRef} tabIndex={-1} />
-      <HeadingPage>{t("blog")}</HeadingPage>
-      <button
-        className={clsx(
-          "text-primary-600 flex flex-row w-full justify-between justify-items-center items-center text-heading-sm mt-16 bg-mischka p-8 border-0 rounded-t-2xl",
-        )}
-        onClick={toggleExpansion}
-      >
-        {t("apply-filters")}
-        <Chevron
+    <div className="w-screen flex justify-center">
+      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
+        <Meta title={t("blog")} metatags={[]} />
+        <div ref={focusRef} tabIndex={-1} />
+        <HeadingPage>{t("blog")}</HeadingPage>
+        <button
           className={clsx(
-            "h-10 w-10 transition-all duration-200 ease-in-out",
-            isExpanded ? "rotate-180" : "",
+            "text-primary-600 flex flex-row w-full justify-between justify-items-center items-center text-heading-sm mt-16 bg-mischka p-8 border-0 rounded-t-2xl",
           )}
-        />
-      </button>
-      <div
-        className={clsx(
-          "flex flex-col lg:flex-row justify-between text-sm text-white bg-primary-500 overflow-hidden transition-max-height duration-500 ease-in-out mb-16 px-24 border-0 rounded-b-sm",
-          isExpanded ? "max-h-screen p-16" : "max-h-0 p-0",
-        )}
-      >
-        <ul>
-          {tags.map((tag) => (
-            <li
-              key={tag.id}
-              className="flex items-center text-sm text-steelgray"
-            >
-              <Checkbox
-                onClick={() => handleCheckboxChange(tag.name)}
-                id={tag.id}
-                className="bg-white hover:bg-stone transition-colors duration-200 ease-in-out"
-              />
-              <label
-                className="ml-2 text-sm text-white"
-                htmlFor={tag.id}
-                id={tag.id}
-              >
-                {tag.name}
-              </label>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <ul className="mt-4">
-        {articles.length > 0 &&
-          articles.map((article) => (
-            <li key={article.id}>
-              <ArticleListItem article={article} />
-            </li>
-          ))}
-      </ul>
-      <div className="w-full flex justify-center mt-10 mb-20">
-        <div className="max-w-[700px] flex flex-grow justify-between">
-          <Pagination
-            focusRestoreRef={focusRef}
-            paginationProps={paginationNewProps}
+          onClick={toggleExpansion}
+        >
+          {t("apply-filters")}
+          <Chevron
+            className={clsx(
+              "h-10 w-10 transition-all duration-200 ease-in-out",
+              isExpanded ? "rotate-180" : "",
+            )}
           />
+        </button>
+        <div
+          className={clsx(
+            "flex flex-col lg:flex-row justify-between text-sm text-white bg-primary-500 overflow-hidden transition-max-height duration-500 ease-in-out mb-16 px-24 border-0 rounded-b-sm",
+            isExpanded ? "max-h-screen p-16" : "max-h-0 p-0",
+          )}
+        >
+          <ul>
+            {tags.map((tag) => (
+              <li
+                key={tag.id}
+                className="flex items-center text-sm text-steelgray"
+              >
+                <Checkbox
+                  onClick={() => handleCheckboxChange(tag.name)}
+                  id={tag.id}
+                  className="bg-white hover:bg-stone transition-colors duration-200 ease-in-out"
+                />
+                <label
+                  className="ml-2 text-sm text-white"
+                  htmlFor={tag.id}
+                  id={tag.id}
+                >
+                  {tag.name}
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <ul className="mt-4">
+          {articles.length > 0 &&
+            articles.map((article) => (
+              <li key={article.id}>
+                <ArticleListItem article={article} />
+              </li>
+            ))}
+        </ul>
+        <div className="w-full flex justify-center mt-10 mb-20">
+          <div className="max-w-[700px] flex flex-grow justify-between">
+            <Pagination
+              focusRestoreRef={focusRef}
+              paginationProps={paginationNewProps}
+            />
+          </div>
         </div>
       </div>
     </div>
