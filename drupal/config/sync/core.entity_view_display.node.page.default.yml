@@ -5,10 +5,13 @@ dependencies:
   config:
     - field.field.node.page.field_content_elements
     - field.field.node.page.field_excerpt
+    - field.field.node.page.field_hero_image
     - field.field.node.page.field_image
+    - image.style.wide
     - node.type.page
   module:
     - entity_reference_revisions
+    - image
     - user
 _core:
   default_config_hash: VKWhaiCsOqXl4HWw1liSZQM7Gx1iaJ3XJcezGR69RzY
@@ -33,7 +36,26 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_hero_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: wide
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: -1
+    region: content
 hidden:
-  field_image: true
   langcode: true
   links: true

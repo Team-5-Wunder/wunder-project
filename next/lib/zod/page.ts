@@ -2,6 +2,7 @@ import { DrupalNode } from "next-drupal";
 import { z } from "zod";
 
 import { MetatagsSchema } from "@/lib/zod/metatag";
+import { ImageShape } from "@/lib/zod/paragraph";
 import {
   AccordionSchema,
   FileAttachmentsSchema,
@@ -14,7 +15,6 @@ import {
   TextImageSchema,
   TextQuoteSchema,
   VideoSchema,
-  PageHeroSchema,
   ListingCareersSchema,
 } from "@/lib/zod/paragraph";
 
@@ -30,7 +30,6 @@ const PageElementsSchema = z.discriminatedUnion("type", [
   QuoteSchema,
   TextQuoteSchema,
   TextImageSchema,
-  PageHeroSchema,
   ListingCareersSchema,
 ]);
 
@@ -38,6 +37,14 @@ export const PageSchema = z.object({
   type: z.literal("node--page"),
   id: z.string(),
   title: z.string(),
+  field_hero_image: z
+    .object({
+      type: z.literal("media--image"),
+      id: z.string(),
+      field_media_image: ImageShape.nullable(),
+    })
+    .nullable()
+    .optional(),
   field_content_elements: z.array(PageElementsSchema),
   metatag: MetatagsSchema.optional(),
 });
