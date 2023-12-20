@@ -14,6 +14,7 @@ import { useState } from "react";
 import { FieldErrors } from "react-hook-form";
 import React from "react";
 import { inter } from "@/styles/fonts";
+import { UseTranslation } from "next-i18next";
 
 type Inputs = {
   name: string;
@@ -100,22 +101,17 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
 
     return (
       <div ref={ref}>
-        <div className="mt-12 pt-14 flex justify-center overflow-hidden flex-col md:flex-row h-[700px]">
-          <div className="w-3/5  flex flex-col mb-6 md:mb-0 pl-10 pr-12">
-            <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
-              Send us a message
-            </h2>
-          </div>
+        <div className="mt-12 lg:mt-0 flex justify-center overflow-hidden flex-col md:flex-row h-[700px]">
           <form
             onSubmit={handleSubmit(onSubmit, onErrors)}
             className="w-full max-w-lg"
           >
-            <p className="pb-5">"*" indicates required fields</p>
+            <p className="pb-5">"*" {t("indicates required fields")}</p>
             {/*   <AuthGate text={t("login-to-fill-form")}> */}
             <>
               <div className="flex flex-wrap mb-2">
                 <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
-                  <Label htmlFor="firstname">First Name</Label>
+                  <Label htmlFor="firstname">{t("First Name")} *</Label>
                   <Input
                     className="border-primary-100"
                     type="text"
@@ -126,7 +122,7 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
                   />
                 </div>
                 <div className="w-full md:w-1/2 mb-6 md:mb-0">
-                  <Label htmlFor="lastname">Last Name</Label>
+                  <Label htmlFor="lastname">{t("Last Name")} *</Label>
                   <Input
                     className="border-primary-100"
                     type="text"
@@ -139,7 +135,7 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
               </div>
               <div className="flex flex-wrap mb-2">
                 <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{t("Email")} *</Label>
                   <Input
                     className="border-primary-100"
                     type="email"
@@ -154,7 +150,7 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
                 </div>
 
                 <div className="w-full md:w-1/2 mb-6 md:mb-0">
-                  <Label htmlFor="email">Phone</Label>
+                  <Label htmlFor="email">{t("Phone")} *</Label>
                   <Input
                     className="border-primary-100"
                     type="number"
@@ -166,7 +162,7 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
                 </div>
               </div>
               <div className="flex flex-wrap  mb-6">
-                <Label htmlFor="company">Company</Label>
+                <Label htmlFor="company">{t("Company")} *</Label>
                 <Input
                   className="border-primary-100"
                   type="text"
@@ -178,7 +174,7 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
               </div>
 
               <div className="flex flex-wrap mb-6">
-                <Label htmlFor="message">{t("form-label-message")}</Label>
+                <Label htmlFor="message">{t("form-label-message")} *</Label>
                 <Textarea
                   className="border-primary-100"
                   id="message"
@@ -196,8 +192,7 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
                   className="form-checkbox text-primary-100"
                 />
                 <span className="px-5">
-                  I approve that Wunder process my personal data according to
-                  its privacy policy
+                  {t("I approve that Wunder process my personal data according to its privacy policy")} *
                 </span>
               </label>
               <Button className="mt-5" type="submit">

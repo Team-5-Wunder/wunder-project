@@ -40,26 +40,26 @@ export default function ContactPage() {
       <div className="mt-12 pt-10 flex justify-center overflow-hidden flex-col md:flex-row">
         <div className="w-4/5 -ml-16  flex flex-col">
           <div className="flex items-center border-b border-gray-300 pb-4">
-            <div className="mr-4">JUMP TO:</div>
+            <div className="mr-4">{t("JUMP TO:")}</div>
             <nav>
               <ul className="flex">
                 <li
                   className="mr-4 text-primary-600 cursor-pointer"
                   onClick={() => scrollToRef(contactFormRef)}
                 >
-                  CONTACT FORM
+                  {t("CONTACT FORM")}
                 </li>
                 <li
                   className="mr-4 text-primary-600 cursor-pointer"
                   onClick={() => scrollToRef(mapRef)}
                 >
-                  OUR OFFICES
+                  {t("OUR OFFICES")}
                 </li>
                 <li
                   className="mr-4 text-primary-600 cursor-pointer"
                   onClick={() => scrollToRef(invoicingRef)}
                 >
-                  INVOICING
+                  {t("INVOICING")}
                 </li>
               </ul>
             </nav>
@@ -67,7 +67,12 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <ContactForm ref={contactFormRef} />
+      <div className="mt-12 pt-14 grid grid-cols-1 lg:grid-cols-2 mb-6 md:mb-0 pl-10 pr-12">
+         <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
+           {t("Send us a message")}
+        </h2>
+        <ContactForm ref={contactFormRef} />
+      </div>
       <MapComponent ref={mapRef} />
       <OfficesList />
       <Invoicing ref={invoicingRef} />

@@ -17,27 +17,28 @@ id: contact
 title: Contact
 description: 'Basic email contact webform.'
 categories: {  }
-elements: |
+elements: |-
   name:
-    '#title': 'Your Name'
     '#type': textfield
-    '#required': true
-    '#default_value': '[current-user:display-name]'
+    '#title': Name
+  lastname:
+    '#type': textfield
+    '#title': Lastname
   email:
-    '#title': 'Your Email'
-    '#type': email
-    '#required': true
-    '#default_value': '[current-user:mail]'
-  subject:
-    '#title': Subject
     '#type': textfield
-    '#required': true
-    '#test': 'Testing contact webform from [site:name]'
+    '#title': Email
+  phone:
+    '#type': textfield
+    '#title': Phone
+  company:
+    '#type': textfield
+    '#title': Company
   message:
-    '#title': Message
     '#type': textarea
-    '#required': true
-    '#test': 'Please ignore this email.'
+    '#title': Message
+  terms:
+    '#type': checkbox
+    '#title': Terms
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
