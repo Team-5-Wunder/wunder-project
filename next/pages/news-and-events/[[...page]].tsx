@@ -24,6 +24,8 @@ import {
 
 import siteConfig from "@/site.config";
 import { Checkbox } from "@/ui/checkbox";
+import { ExpertTalksCard } from "@/components/expert-talks-card";
+import { EventCard } from "@/components/event-card";
 
 interface NewsAndEventsPageProps extends LayoutProps {
   eventTeasers: EventTeaserType[];
@@ -122,40 +124,52 @@ export default function NewsAndEventsPage({
     };
 
   return (
-    <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
-      <Meta title={t("news-and-events")} metatags={[]} />
-      <div ref={focusRef} tabIndex={-1} />
-      <HeadingPage>{t("news-and-events")}</HeadingPage>
-      <div className="mb-16 flex justify-between text-sm text-steelgray">
-        <ul>
-          <h2 className="text-xl">{t("Filter")}</h2>
-          {event_tags.map((tag) => (
-            <li
-              key={tag.id}
-              className="flex items-center text-sm text-steelgray"
-            >
-              <Checkbox
-                onClick={() => handleCheckboxChange(tag.name)}
-                id={tag.id}
-              />
-              <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
-                {tag.name}
-              </label>
-            </li>
+    <div className="w-screen flex justify-center">
+      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex flex-col justify-start">
+        <Meta title={t("news-and-events")} metatags={[]} />
+        <div ref={focusRef} tabIndex={-1} />
+        <HeadingPage>{t("our-events")}</HeadingPage>
+        <div className="mb-16 flex justify-between text-sm text-steelgray">
+          <ul>
+            <h2 className="text-xl">{t("filter-by")}:</h2>
+            {event_tags.map((tag) => (
+              <li
+                key={tag.id}
+                className="flex items-center text-sm text-steelgray"
+              >
+                <Checkbox
+                  onClick={() => handleCheckboxChange(tag.name)}
+                  id={tag.id}
+                />
+                <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
+                  {tag.name}
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full mb-20 md:mx-20 flex flex-wrap gap-8 lg:gap-14 justify-start">
+          {events.map((event) =>  (
+            <div key={event.id}>
+              {event.field_event_tags[0].name.includes("Expert")?
+                <ExpertTalksCard event={event} eventUrl={event.path.alias}/>:null
+              }
+
+              {event.field_event_tags[0].name.includes("Event")?
+                <EventCard event={event} eventUrl={event.path.alias}/>:null
+              }
+            </div>
           ))}
-        </ul>
+        </div>
+        <div className="w-full flex justify-center">
+          <div className="max-w-[700px] flex flex-grow justify-between">
+            <Pagination
+              focusRestoreRef={focusRef}
+              paginationProps={paginationNewProps}
+            />
+          </div>
+        </div>
       </div>
-      <ul className="mt-4 grid gap-4 grid-cols-3">
-        {events.map((event) => (
-          <li key={event.id}>
-            <EventTeaser event={event} />
-          </li>
-        ))}
-      </ul>
-      <Pagination
-        focusRestoreRef={focusRef}
-        paginationProps={paginationNewProps}
-      />
     </div>
   );
 }
