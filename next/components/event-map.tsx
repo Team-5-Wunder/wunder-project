@@ -19,41 +19,49 @@ const geocodeAddress = async (address: string) => {
     return null;
   }
 };
+
 export const EventMap = ({ address }: { address: string }) => {
   const [location, setLocation] = useState({ lat: 0, lng: 0 });
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchGeocode = async () => {
-      setIsLoading(true);
-      const coords = await geocodeAddress(address);
-      if (coords) {
-        setLocation(coords);
-      }
-      setIsLoading(false);
-    };
-
-    if (address) {
-      fetchGeocode();
-    }
-  }, [address]);
-
-  const mapOptions = useMemo(
-    () => ({
-      disableDefaultUI: true,
-      clickableIcons: true,
-      scrollwheel: false,
-      gestureHandling: "none",
-    }),
-    [],
-  );
   const libraries = useMemo(() => ["places"], []);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
     libraries: libraries as any,
   });
 
-  if (!isLoaded) return <LoadingSpinner />;
+  useEffect(() => {
+    const fetchGeocode = async () => {
+      if (!isLoaded) {
+        return <LoadingSpinner />;
+      }
+
+      setIsLoading(true);
+      const coords = await geocodeAddress(address);
+
+      if (coords) {
+        setLocation(coords);
+      }
+
+      setIsLoading(false);
+    };
+
+    if (address) {
+      fetchGeocode();
+    }
+  }, [isLoaded]);
+
+  const mapOptions = useMemo(
+    () => ({
+      disableDefaultUI: true,
+      clickableIcons: true,
+      scrollwheel: true,
+      gestureHandling: "auto",
+    }),
+    [],
+  );
+
+
+  if (isLoading && !isLoaded) return <LoadingSpinner />;
 
   return (
     <div>
