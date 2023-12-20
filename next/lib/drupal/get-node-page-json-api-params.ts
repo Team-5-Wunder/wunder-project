@@ -19,6 +19,8 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
   if (resourceType === "node--page") {
     apiParams
       .addInclude([
+        "field_hero_image",
+        "field_hero_image.field_media_image",
         "field_content_elements",
         "field_content_elements.field_image.field_media_image",
         "field_content_elements.field_video",
@@ -28,6 +30,7 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "field_content_elements.field_accordion_items.field_content_elements.field_video",
       ])
       .addFields("node--page", [
+        "field_hero_image",
         "title",
         "field_content_elements",
         "path",

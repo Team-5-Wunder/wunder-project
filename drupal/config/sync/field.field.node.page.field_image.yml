@@ -1,5 +1,5 @@
-uuid: 22892441-eb73-40d2-8b4a-89cb66e65c27
-langcode: fi
+uuid: 92960811-a82b-46e5-a3fd-162235be35d5
+langcode: en
 status: true
 dependencies:
   config:
@@ -14,8 +14,6 @@ third_party_settings:
       alt: alt
       title: title
       file: '0'
-_core:
-  default_config_hash: 7bFJ_1dVk2sU-nBtKPCA6OwJCoKha_36XXCoWEje0tc
 id: node.page.field_image
 field_name: field_image
 entity_type: node
