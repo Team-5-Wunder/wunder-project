@@ -126,12 +126,14 @@ export function Event({ event }: EventProps) {
                   </div>
                 </div>
               </div>
-              {event.field_enable_event_registration === "enable" && (
-                <EventRegistration
-                  event_id={event.id}
-                  event_name={event.title}
-                />
-              )}
+              <div className="w-full flex justify-center md:justify-start">
+                {event.field_enable_event_registration === "enable" && (
+                  <EventRegistration
+                    event_id={event.id}
+                    event_name={event.title}
+                  />
+                )}
+              </div>
             </div>
             {event.field_location && (
               <div className="mt-8">
