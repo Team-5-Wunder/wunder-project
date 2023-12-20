@@ -115,35 +115,35 @@ export function Footer({ menu }: FooterProps) {
         <p className="mt-10 sm:text-base md:text-lg">{t("Follow us")}</p>
         <div className="mt-2 flex items-center space-x-4">
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/wunder.io"
             className="hover:text-primary-600"
             aria-label="Facebook"
           >
             <FontAwesomeIcon icon={faFacebookF} />
           </a>
           <a
-            href="https://www.twitter.com"
+            href="https://twitter.com/Wunder_io"
             className="hover:text-primary-600"
             aria-label="Twitter"
           >
             <FontAwesomeIcon icon={faTwitter} />
           </a>
           <a
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/company/wunder.io/"
             className="hover:text-primary-600"
             aria-label="LinkedIn"
           >
             <FontAwesomeIcon icon={faLinkedinIn} />
           </a>
           <a
-            href="https://www.youtube.com"
+            href="https://www.youtube.com/channel/UCsBoaJt5sX12IFBu1giXZJg"
             className="hover:text-primary-600"
             aria-label="YouTube"
           >
             <FontAwesomeIcon icon={faYoutube} />
           </a>
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/wunder.io/"
             className="hover:text-primary-600"
             aria-label="Instagram"
           >
