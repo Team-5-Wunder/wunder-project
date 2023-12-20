@@ -136,7 +136,7 @@ export function Footer({ menu }: FooterProps) {
           </a>
           <a
             href="https://www.youtube.com/channel/UCsBoaJt5sX12IFBu1giXZJg"
-            className="hover:text-primary-600"
+            className="text-white hover:text-primary-600"
             aria-label="YouTube"
           >
             <YoutubeIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
