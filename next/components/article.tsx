@@ -12,9 +12,12 @@ interface ArticleProps {
   article: Article;
 }
 
+
+
 export function Article({ article, ...props }: ArticleProps) {
   const { t } = useTranslation();
   const router = useRouter();
+  console.log(article);
   return (
     <article {...props}>
       <div className="w-screen flex justify-center">
@@ -78,13 +81,13 @@ export function Article({ article, ...props }: ArticleProps) {
               <div className="my-4 text-md md:text-xl">
                 {article.field_excerpt}
               </div>
-              <div className="grid gap-4 col-span-2">
-                {article.field_content_elements?.map((paragraph) => (
-                  <Paragraph key={paragraph.id} paragraph={paragraph} />
-                ))}
-              </div>
             </div>
           </div>
+            <div className="w-full max-w-[1664px] mb-20 px-6 sm:px-16 flex flex-col">
+              {article.field_content_elements?.map((paragraph) => (
+                <Paragraph key={paragraph.id} paragraph={paragraph} />
+              ))}
+            </div>
         </div>
       </div>
     </article>

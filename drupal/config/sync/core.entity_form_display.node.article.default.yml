@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.article.body
     - field.field.node.article.field_content_elements
     - field.field.node.article.field_excerpt
     - field.field.node.article.field_image
@@ -14,7 +13,6 @@ dependencies:
     - image
     - paragraphs
     - path
-    - text
 _core:
   default_config_hash: _9yL3q1mzr6UIbb-rZLZmr-D8Q-6lYTSL3B_nrCYy3k
 id: node.article.default
@@ -22,16 +20,6 @@ targetEntityType: node
 bundle: article
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 5
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 8

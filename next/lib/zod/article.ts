@@ -10,6 +10,7 @@ import {
   ImageSchema,
   LinksSchema,
   ListingArticlesSchema,
+  ListingCareersSchema,
   QuoteSchema,
   TextImageSchema,
   TextQuoteSchema,
@@ -23,6 +24,7 @@ const ArticleElementsSchema = z.discriminatedUnion("type", [
   LinksSchema,
   AccordionSchema,
   ListingArticlesSchema,
+  ListingCareersSchema,
   FileAttachmentsSchema,
   QuoteSchema,
   TextQuoteSchema,
@@ -55,7 +57,34 @@ export const ArticleSchema = z.object({
 
 export function validateAndCleanupArticle(article: DrupalNode): Article | null {
   try {
-    return ArticleSchema.parse(article);
+    // Validate the top level fields first.
+    const topLevelArticleData = ArticleSchema.omit({
+      field_content_elements: true,
+    }).parse(article);
+
+    // Validate the field_content_elements separately, one by one.
+    // This way, if one of them is invalid, we can still return the rest of the article contents.
+    const validatedParagraphs = article.field_content_elements
+      .map((paragraph: any) => {
+        const result = ArticleElementsSchema.safeParse(paragraph);
+
+        switch (result.success) {
+          case true:
+            return result.data;
+          case false:
+            console.log(
+              `Error validating article paragraph ${paragraph.type}: `,
+              JSON.stringify(result.error, null, 2),
+            );
+            return null;
+        }
+      })
+      .filter(Boolean);
+
+    return {
+      ...topLevelArticleData,
+      field_content_elements: validatedParagraphs,
+    };
   } catch (error) {
     const { name = "ZodError", issues = [] } = error;
     console.log(JSON.stringify({ name, issues, article }, null, 2));
