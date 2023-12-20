@@ -52,10 +52,10 @@ export function EventRegistration(props) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onErrors)}
-      className="mx-auto mb-4 flex max-w-3xl flex-col gap-5 rounded border border-finnishwinter bg-white p-4 shadow-md transition-all hover:shadow-md"
+      className="mb-4 flex w-[300px] flex-col gap-5 rounded border border-finnishwinter bg-white p-4 shadow-md transition-all hover:shadow-md"
     >
-      <h2 className="text-heading-sm font-bold md:text-heading-md">
-        {t("register-for-event-title")}
+      <h2 className="font-bold text-xl text-primary-600">
+        {t("register-to-event")}
       </h2>
         <>
           <div>

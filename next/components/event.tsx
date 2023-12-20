@@ -24,6 +24,7 @@ export function Event({ event }: EventProps) {
   let startTime = null
   let formattedDate = null
   if (event.field_start_time) {
+    
     // Getting the start_time in format like "19:30"
     const date = new Date(event.field_start_time);
     //Converting the start_time into a format like "27 Dec"
@@ -32,7 +33,7 @@ export function Event({ event }: EventProps) {
     const hours = date.getUTCHours();
     const minutes = date.getMinutes();
     // Format hours and minutes with leading zeros if needed
-    const startTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    startTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
   }
   
   let endTime = null
@@ -118,7 +119,7 @@ export function Event({ event }: EventProps) {
             </div>
             {event.field_location && 
               <div className="mt-8">
-                <EventMap address={event.field_location} />;
+                <EventMap address={event.field_location} />
               </div>
             }
           </div>
