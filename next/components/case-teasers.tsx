@@ -57,10 +57,14 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
             <div id="leftBox" className="mt-20 opacity-0">
               <div className="2xl:w-4/5 mb-4 text-steelgray text-md">
                 <p className="mb-2">
-                  {t("We help our clients to improve their digital business, competitiveness and customer experience.")}
+                  {t(
+                    "We help our clients to improve their digital business, competitiveness and customer experience.",
+                  )}
                 </p>
                 <p>
-                  {t("Shaping the digital experiences together with our clients. Take a look at some of our success stories.")}
+                  {t(
+                    "Shaping the digital experiences together with our clients. Take a look at some of our success stories.",
+                  )}
                 </p>
               </div>
               {cases?.length && (
@@ -82,7 +86,7 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
             className="mt-20 opacity-0 lg:w-1/2 pt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
           >
             {cases?.map((client) => (
-              <CaseTeaser client={client} key={client.id}/>
+              <CaseTeaser client={client} key={client.id} />
             ))}
             <div className="flex items-center justify-center">
               {!cases?.length && (

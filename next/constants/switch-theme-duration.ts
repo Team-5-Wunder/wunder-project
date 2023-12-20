@@ -1,1 +1,1 @@
-export const switchThemeDuration: string = "duration-200";
+export const switchThemeDuration = "duration-200";

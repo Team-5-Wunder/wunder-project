@@ -2,11 +2,11 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { DrupalNode, DrupalTranslatedPath } from "next-drupal";
 
 import { Article } from "@/components/article";
+import { Careers } from "@/components/careers";
 import { Case } from "@/components/case";
 import { Event } from "@/components/event";
 import { Meta } from "@/components/meta";
 import { Page } from "@/components/page";
-import { Careers } from "@/components/careers";
 import {
   createLanguageLinks,
   LanguageLinks,
@@ -23,10 +23,13 @@ import {
   Article as ArticleType,
   validateAndCleanupArticle,
 } from "@/lib/zod/article";
+import {
+  Careers as CareersType,
+  validateAndCleanupCareers,
+} from "@/lib/zod/careers";
 import { Case as CaseType, validateAndCleanupCase } from "@/lib/zod/case";
 import { Event as EventType, validateAndCleanupEvent } from "@/lib/zod/event";
 import { Page as PageType, validateAndCleanupPage } from "@/lib/zod/page";
-import { Careers as CareersType, validateAndCleanupCareers } from "@/lib/zod/careers";
 
 const RESOURCE_TYPES = [
   "node--article",

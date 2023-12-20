@@ -10,11 +10,11 @@ import {
   ImageSchema,
   LinksSchema,
   ListingArticlesSchema,
+  ListingCareersSchema,
   QuoteSchema,
   TextImageSchema,
   TextQuoteSchema,
   VideoSchema,
-  ListingCareersSchema,
 } from "@/lib/zod/paragraph";
 
 const CareersElementsSchema = z.discriminatedUnion("type", [

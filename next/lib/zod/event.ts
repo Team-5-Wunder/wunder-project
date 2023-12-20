@@ -10,12 +10,12 @@ import {
   ImageSchema,
   LinksSchema,
   ListingArticlesSchema,
+  PageHeroSchema,
   QuoteSchema,
+  SpeakerSchema,
   TextImageSchema,
   TextQuoteSchema,
   VideoSchema,
-  PageHeroSchema,
-  SpeakerSchema,
 } from "@/lib/zod/paragraph";
 
 const EventElementsSchema = z.discriminatedUnion("type", [

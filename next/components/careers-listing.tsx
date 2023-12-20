@@ -6,24 +6,17 @@ import { CareersTeaser } from "@/components/careers-teaser";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { CareersTeaser as CareersTeaserType } from "@/lib/zod/careers-teaser";
 
-export function CareersListing({
-  listingId,
-}: {
-  listingId: string;
-}) {
+export function CareersListing({ listingId }: { listingId: string }) {
   const { t } = useTranslation();
   const router = useRouter();
   const { data, isLoading } = useQuery(
     [`careers-${router.locale}-${listingId}`],
     async () => {
-      const response = await fetch(
-        `/api/careers-listing/${router.locale}`,
-        {
-          headers: {
-            "accept-language": router.locale,
-          },
+      const response = await fetch(`/api/careers-listing/${router.locale}`, {
+        headers: {
+          "accept-language": router.locale,
         },
-      );
+      });
 
       return await response.json();
     },

@@ -1,10 +1,10 @@
-import clsx from "clsx";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal";
 import { deserialize } from "next-drupal";
 import { useTranslation } from "next-i18next";
 import { useEffect, useRef, useState } from "react";
+import clsx from "clsx";
 
 import { ArticleListItem } from "@/components/article-list-item";
 import { HeadingPage } from "@/components/heading--page";
@@ -22,10 +22,10 @@ import {
   ArticleTeaser as ArticleTeaserType,
   validateAndCleanupArticleTeaser,
 } from "@/lib/zod/article-teaser";
+import Chevron from "@/styles/icons/chevron-down.svg";
 
 import siteConfig from "@/site.config";
 import { Checkbox } from "@/ui/checkbox";
-import Chevron from "@/styles/icons/chevron-down.svg";
 
 interface BlogPageProps extends LayoutProps {
   articleTeasers: ArticleTeaserType[];
@@ -135,20 +135,22 @@ export default function BlogPage({
       <HeadingPage>{t("blog")}</HeadingPage>
       <button
         className={clsx(
-          "text-primary-600 flex flex-row w-full justify-between justify-items-center items-center text-heading-sm mt-16 bg-mischka p-8 border-0 rounded-t-2xl"
+          "text-primary-600 flex flex-row w-full justify-between justify-items-center items-center text-heading-sm mt-16 bg-mischka p-8 border-0 rounded-t-2xl",
         )}
         onClick={toggleExpansion}
       >
         {t("apply-filters")}
-        <Chevron className={clsx(
-          "h-10 w-10 transition-all duration-200 ease-in-out",
-          isExpanded ? "rotate-180" : ""
-        )} />
+        <Chevron
+          className={clsx(
+            "h-10 w-10 transition-all duration-200 ease-in-out",
+            isExpanded ? "rotate-180" : "",
+          )}
+        />
       </button>
       <div
         className={clsx(
           "flex flex-col lg:flex-row justify-between text-sm text-white bg-primary-500 overflow-hidden transition-max-height duration-500 ease-in-out mb-16 px-24 border-0 rounded-b-sm",
-          isExpanded ? 'max-h-screen p-16' : 'max-h-0 p-0'
+          isExpanded ? "max-h-screen p-16" : "max-h-0 p-0",
         )}
       >
         <ul>
@@ -162,7 +164,11 @@ export default function BlogPage({
                 id={tag.id}
                 className="bg-white hover:bg-stone transition-colors duration-200 ease-in-out"
               />
-              <label className="ml-2 text-sm text-white" htmlFor={tag.id} id={tag.id}>
+              <label
+                className="ml-2 text-sm text-white"
+                htmlFor={tag.id}
+                id={tag.id}
+              >
                 {tag.name}
               </label>
             </li>

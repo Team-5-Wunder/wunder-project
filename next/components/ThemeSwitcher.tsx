@@ -1,6 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
 import { switchThemeDuration } from "../constants";
 
 export const ThemeSwitcher = () => {

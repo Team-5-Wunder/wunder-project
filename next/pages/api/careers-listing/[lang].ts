@@ -20,7 +20,8 @@ export default async function handler(
         params: {
           "filter[status]": 1,
           "filter[langcode]": languagePrefix,
-          "fields[node--careers]": "title,path,field_image,field_content_elements",
+          "fields[node--careers]":
+            "title,path,field_image,field_content_elements",
           include: "field_image,field_content_elements",
           sort: "-sticky,-created",
         },

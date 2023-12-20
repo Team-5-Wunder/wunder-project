@@ -1,6 +1,6 @@
+import { Hero } from "@/components/page-hero-banner";
 import { Paragraph } from "@/components/paragraph";
 import type { Page } from "@/lib/zod/page";
-import { Hero } from "@/components/page-hero-banner";
 
 interface PageProps {
   page: Page;

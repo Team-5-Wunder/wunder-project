@@ -199,10 +199,11 @@ export const TextImageSchema = z.object({
 export const PageHeroSchema = z.object({
   type: z.literal("paragraph--page_hero"),
   id: z.string(),
-  field_formatted_text: z.object({
-    processed: z.string(),
-  })
-  .nullable(),
+  field_formatted_text: z
+    .object({
+      processed: z.string(),
+    })
+    .nullable(),
   field_heading: z.string(),
   field_image: z
     .object({

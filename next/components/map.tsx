@@ -1,13 +1,14 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
 import {
   GoogleMap,
+  InfoWindow,
   MarkerF,
   useLoadScript,
-  InfoWindow,
 } from "@react-google-maps/api";
-import { useMemo, useState, useRef, useEffect } from "react";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
+
 import { LoadingSpinner } from "./loading-spinner";
-import React from "react";
 
 export type Place = {
   name: string;
@@ -96,7 +97,7 @@ export const MapComponent = React.forwardRef<HTMLDivElement, MapComponentProps>(
     );
 
     const { isLoaded } = useLoadScript({
-      googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
+      googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
       libraries: libraries as any,
     });
 

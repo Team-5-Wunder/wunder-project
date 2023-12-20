@@ -57,19 +57,19 @@ export function EventRegistration(props) {
       <h2 className="font-bold text-xl text-primary-600">
         {t("register-to-event")}
       </h2>
-        <>
-          <div>
-            <Label htmlFor="email">{t("form-label-email")}</Label>
-            <Input
-              type="email"
-              id="email"
-              {...register("email", {
-                required: true,
-              })}
-            />
-          </div>
-          <Button type="submit">{t("register-button")}</Button>
-        </>
+      <>
+        <div>
+          <Label htmlFor="email">{t("form-label-email")}</Label>
+          <Input
+            type="email"
+            id="email"
+            {...register("email", {
+              required: true,
+            })}
+          />
+        </div>
+        <Button type="submit">{t("register-button")}</Button>
+      </>
     </form>
   );
 }
