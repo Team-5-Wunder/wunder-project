@@ -1,0 +1,27 @@
+uuid: ae374ecf-c5c5-4fd4-965a-dca0e4ecc7df
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_enable_event_registration
+field_name: field_enable_event_registration
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: enable
+      label: Enable
+    -
+      value: disable
+      label: Disable
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

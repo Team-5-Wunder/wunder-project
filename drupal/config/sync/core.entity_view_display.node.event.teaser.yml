@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.field_content_elements
+    - field.field.node.event.field_enable_event_registration
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_speakers
     - field.field.node.event.field_event_tags
@@ -40,6 +41,7 @@ content:
     region: content
 hidden:
   field_content_elements: true
+  field_enable_event_registration: true
   field_end_time: true
   field_event_speakers: true
   field_event_tags: true
