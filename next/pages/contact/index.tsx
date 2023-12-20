@@ -67,7 +67,7 @@ export default function ContactPage() {
       </div>
       {/*       <div className="mt-12 pt-14 grid grid-cols-1 lg:grid-cols-2 gap-4 px-4 md:px-10">
        */}{" "}
-      <div className="py-8 px-4 sm:px-6 lg:px-8">
+      <div className="py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2">
         <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
           {t("Send us a message")}
         </h2>
@@ -80,12 +80,12 @@ export default function ContactPage() {
       </div>
       <MapComponent ref={mapRef} />
       <OfficesList />
-      <div className="px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2">
         <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
           {t("Invoicing")}
         </h2>
+        <Invoicing ref={invoicingRef} />
       </div>
-      <Invoicing ref={invoicingRef} />
     </>
   );
 }

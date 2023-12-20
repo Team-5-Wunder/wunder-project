@@ -101,15 +101,15 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
 
     return (
       <div ref={ref}>
-        <div className="flex justify-end pt-10 overflow-hidden h-126 lg:mr-14 px-5">
+        <div className="flex justify-center pt-10 overflow-hidden h-126 lg:mr-14 px-5">
           <form
             onSubmit={handleSubmit(onSubmit, onErrors)}
             className="w-full max-w-lg"
           >
-            <p className="pb-5">"*" {t("indicates required fields")}</p>
+            <p className="">"*" {t("indicates required fields")}</p>
             {/*   <AuthGate text={t("login-to-fill-form")}> */}
             <>
-              <div className="flex flex-wrap mb-2 mt-12 pt-5">
+              <div className="flex flex-wrap mb-2 pt-5">
                 <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0 ">
                   <Label htmlFor="firstname">{t("First Name")} *</Label>
                   <Input
