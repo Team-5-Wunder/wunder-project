@@ -1,20 +1,21 @@
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import { UseTranslation } from "next-i18next";
+import { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
+import { FieldErrors } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 import { AuthGate } from "@/components/auth-gate";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { inter } from "@/styles/fonts";
+
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 import { Label } from "@/ui/label";
 import { StatusMessage } from "@/ui/status-message";
 import { Textarea } from "@/ui/textarea";
-import { useState } from "react";
-import { FieldErrors } from "react-hook-form";
-import React from "react";
-import { inter } from "@/styles/fonts";
-import { UseTranslation } from "next-i18next";
 
 type Inputs = {
   name: string;

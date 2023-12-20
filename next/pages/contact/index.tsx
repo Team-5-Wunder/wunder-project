@@ -1,17 +1,18 @@
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import React, { useRef } from "react";
+
 import { ContactForm } from "@/components/contact-form";
+import { ExpertTalks } from "@/components/expert-talks";
+import { HeroBannerContact } from "@/components/hero-banner-contact";
 import { Invoicing } from "@/components/invoicing";
 import { MapComponent } from "@/components/map";
+import { OfficesList } from "@/components/office-list";
 import {
   CommonPageProps,
   getCommonPageProps,
 } from "@/lib/get-common-page-props";
-import { ExpertTalks } from "@/components/expert-talks";
-import { HeroBannerContact } from "@/components/hero-banner-contact";
-import React, { useRef } from "react";
-import { OfficesList } from "@/components/office-list";
 
 export default function ContactPage() {
   const contactFormRef = useRef(null);

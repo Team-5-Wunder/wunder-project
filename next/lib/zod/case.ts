@@ -10,11 +10,11 @@ import {
   ImageSchema,
   LinksSchema,
   ListingArticlesSchema,
+  PageHeroSchema,
   QuoteSchema,
   TextImageSchema,
   TextQuoteSchema,
   VideoSchema,
-  PageHeroSchema,
 } from "@/lib/zod/paragraph";
 
 const CaseElementsSchema = z.discriminatedUnion("type", [

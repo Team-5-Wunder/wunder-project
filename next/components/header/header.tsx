@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useState } from "react";
+import { ThemeSwitcher } from "components";
+import { ThemeProvider } from "components/theme-prodiver";
 
 import { Menu } from "@/lib/zod/menu";
 import SearchIcon from "@/styles/icons/search.svg";
@@ -12,8 +14,6 @@ import { MainMenu, MenuExpanded, MenuToggle } from "../main-menu/main-menu";
 
 import { LanguageSwitcher } from "./language-switcher";
 import { UserMenu } from "./user-menu";
-import { ThemeProvider } from "components/theme-prodiver";
-import { ThemeSwitcher } from "components";
 
 interface HeaderProps {
   menu: Menu;

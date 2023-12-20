@@ -1,8 +1,9 @@
-import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { EventTeaser as EventTeaserType } from "@/lib/zod/event-teaser";
-import { EventCard } from "./event-card";
+import { useTranslation } from "next-i18next";
 
+import { EventTeaser as EventTeaserType } from "@/lib/zod/event-teaser";
+
+import { EventCard } from "./event-card";
 
 interface LatestEventsProps {
   events?: EventTeaserType[];
@@ -11,32 +12,32 @@ interface LatestEventsProps {
 export function EventTeasers({ events }: LatestEventsProps) {
   const { t } = useTranslation();
 
-    // Intersection Observer callback function
-    const handleIntersection = (entries, observer) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          // Add the animation class with a delay for each element
-          entry.target.style.animationDelay = `${index * 200}ms`;
-          entry.target.classList.add('animate-[slideUp_0.5s_ease-in_forwards]');
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-  
-    // Create an Intersection Observer
-    let observer = null;
-    if (typeof window !== "undefined") {
-      observer = new IntersectionObserver(handleIntersection);
-      // Target the element to be animated
-      const animatedExpertTalks = document.querySelectorAll(".toSlideUpEvent");
-      // Observe the target element
-  
-      if (animatedExpertTalks) {
-        animatedExpertTalks.forEach(element => {
-          observer.observe(element);
-        });
+  // Intersection Observer callback function
+  const handleIntersection = (entries, observer) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Add the animation class with a delay for each element
+        entry.target.style.animationDelay = `${index * 200}ms`;
+        entry.target.classList.add("animate-[slideUp_0.5s_ease-in_forwards]");
+        observer.unobserve(entry.target);
       }
+    });
+  };
+
+  // Create an Intersection Observer
+  let observer = null;
+  if (typeof window !== "undefined") {
+    observer = new IntersectionObserver(handleIntersection);
+    // Target the element to be animated
+    const animatedExpertTalks = document.querySelectorAll(".toSlideUpEvent");
+    // Observe the target element
+
+    if (animatedExpertTalks) {
+      animatedExpertTalks.forEach((element) => {
+        observer.observe(element);
+      });
     }
+  }
 
   return (
     <>
@@ -49,9 +50,12 @@ export function EventTeasers({ events }: LatestEventsProps) {
           </Link>
           <div className="w-full flex flex-wrap gap-8 lg:gap-14 justify-center">
             {events?.map((event) => {
-              
               return (
-                <EventCard event={event} eventUrl={event.path.alias} className="mt-20 toSlideUpEvent opacity-0" />
+                <EventCard
+                  event={event}
+                  eventUrl={event.path.alias}
+                  className="mt-20 toSlideUpEvent opacity-0"
+                />
               );
             })}
           </div>

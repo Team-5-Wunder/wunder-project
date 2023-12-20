@@ -5,13 +5,13 @@ import { ParagraphHero } from "@/components/paragraph--hero";
 import { ParagraphImage } from "@/components/paragraph--image";
 import { ParagraphLinks } from "@/components/paragraph--links";
 import { ParagraphListingArticles } from "@/components/paragraph--listing-articles";
+import { ParagraphListingCareers } from "@/components/paragraph--listing-careers";
+import { ParagraphPageHero } from "@/components/paragraph--page_hero";
 import { ParagraphQuote } from "@/components/paragraph--quote";
+import { ParagraphSpeaker } from "@/components/paragraph--speaker";
 import { ParagraphText } from "@/components/paragraph--text";
 import { ParagraphTextImage } from "@/components/paragraph--text_image";
 import { ParagraphTextQuote } from "@/components/paragraph--text_quote";
-import { ParagraphPageHero } from "@/components/paragraph--page_hero";
-import { ParagraphSpeaker } from "@/components/paragraph--speaker";
-import { ParagraphListingCareers } from "@/components/paragraph--listing-careers";
 import { Paragraph } from "@/lib/zod/paragraph";
 
 // Use dynamic imports to defer loading a component until after initial page load: https://nextjs.org/docs/advanced-features/dynamic-import

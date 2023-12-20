@@ -1,21 +1,22 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { FieldErrors } from "react-hook-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState, useEffect } from "react";
-import { FieldErrors } from "react-hook-form";
-import { Button } from "@/ui/button";
-import type { Menu } from "@/lib/zod/menu";
-import { StatusMessage } from "@/ui/status-message";
-import { useTranslation } from "next-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import type { Menu } from "@/lib/zod/menu";
+import FacebookIcon from "@/styles/icons/facebook.svg";
+import InstagramIcon from "@/styles/icons/instagram.svg";
 import LinkedinIcon from "@/styles/icons/linkedin.svg";
 import TwitterIcon from "@/styles/icons/twitter.svg";
 import YoutubeIcon from "@/styles/icons/youtube.svg";
-import FacebookIcon from "@/styles/icons/facebook.svg";
-import InstagramIcon from "@/styles/icons/instagram.svg";
+
+import { Button } from "@/ui/button";
+import { StatusMessage } from "@/ui/status-message";
 
 const SignupSchema = z
   .object({

@@ -1,17 +1,21 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { DrupalNode } from "next-drupal";
 import { useTranslation } from "next-i18next";
+import { Libraries, useJsApiLoader } from "@react-google-maps/api";
 
-import HeroBanner from "@/components/herobanner/heroBanner";
-import WeAreWunder from "@/components/we-are-wunder";
+import { Article } from "@/components/article";
 import { CaseTeasers } from "@/components/case-teasers";
-import OurClients from "@/components/OurClients";
-import { LatestReleases } from "@/components/latest-releases";
 import { EventTeasers } from "@/components/event-teasers";
 import { ExpertTalks } from "@/components/expert-talks";
-
+import HeroBanner from "@/components/herobanner/heroBanner";
+import { LatestReleases } from "@/components/latest-releases";
 import { LayoutProps } from "@/components/layout";
+import { MapComponent } from "@/components/map";
 import { Meta } from "@/components/meta";
+import OurClients from "@/components/OurClients";
+import { Paragraph } from "@/components/paragraph";
+import WeAreWunder from "@/components/we-are-wunder";
+import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { drupal } from "@/lib/drupal/drupal-client";
 import { getNodePageJsonApiParams } from "@/lib/drupal/get-node-page-json-api-params";
 import { getCommonPageProps } from "@/lib/get-common-page-props";
@@ -31,13 +35,6 @@ import { Frontpage, validateAndCleanupFrontpage } from "@/lib/zod/frontpage";
 
 import LogIn from "./auth/login";
 import Register from "./auth/register";
-import { Article } from "@/components/article";
-
-import { Paragraph } from "@/components/paragraph";
-import { absoluteUrl } from "@/lib/drupal/absolute-url";
-
-import { MapComponent } from "@/components/map";
-import { useJsApiLoader, Libraries } from "@react-google-maps/api";
 
 interface IndexPageProps extends LayoutProps {
   frontpage: Frontpage | null;
@@ -63,9 +60,12 @@ export default function IndexPage({
       <WeAreWunder />
       <CaseTeasers cases={promotedCaseTeasers} heading={t("our-work")} />
       <OurClients />
-      <LatestReleases articles={promotedArticleTeasers} heading={t("Latest releases")}/>
-      <EventTeasers events={promotedEventTeasers}/>
-      <ExpertTalks events={promotedExpertTalks}/>
+      <LatestReleases
+        articles={promotedArticleTeasers}
+        heading={t("Latest releases")}
+      />
+      <EventTeasers events={promotedEventTeasers} />
+      <ExpertTalks events={promotedExpertTalks} />
     </>
   );
 }
@@ -95,7 +95,7 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
       .addPageLimit(3)
       .getQueryObject(),
   });
-  
+
   // Recieving data for CASE TEASERS on the front page
   const promotedCaseTeasers = await drupal.getResourceCollectionFromContext<
     DrupalNode[]
@@ -128,14 +128,14 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
       .addPageLimit(3)
       .getQueryObject(),
   });
-  
+
   // Returning the props
   return {
     props: {
       ...(await getCommonPageProps(context)),
       frontpage: frontpage ? validateAndCleanupFrontpage(frontpage) : null,
-      promotedArticleTeasers: promotedArticleTeasers.map(
-        (teaser) => validateAndCleanupArticleTeaser(teaser),
+      promotedArticleTeasers: promotedArticleTeasers.map((teaser) =>
+        validateAndCleanupArticleTeaser(teaser),
       ),
       promotedCaseTeasers: promotedCaseTeasers.map((teaser) =>
         validateAndCleanupCaseTeaser(teaser),
@@ -143,7 +143,7 @@ export const getStaticProps: GetStaticProps<IndexPageProps> = async (
       promotedEventTeasers: promotedEventTeasers.map((teaser) =>
         validateAndCleanupEventTeaser(teaser),
       ),
-      promotedExpertTalks: promotedExpertTalks.map((teaser) => 
+      promotedExpertTalks: promotedExpertTalks.map((teaser) =>
         validateAndCleanupEventTeaser(teaser),
       ),
     },

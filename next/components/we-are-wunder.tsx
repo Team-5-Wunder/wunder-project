@@ -15,7 +15,7 @@ const WeAreWunder = () => {
       <div className="min-h-[30vh] max-w-[1664px] mt-20 px-6 sm:px-16 lg:flex">
         <div className="lg:w-1/2">
           <h2 className="mb-5 md:mb-10 text-primary-600 font-overpass font-bold text-heading-sm md:text-heading-md lg:text-heading-lg">
-          {t("we-are-wunder")}
+            {t("we-are-wunder")}
           </h2>
         </div>
         <div className="lg:w-1/2 flex flex-col">

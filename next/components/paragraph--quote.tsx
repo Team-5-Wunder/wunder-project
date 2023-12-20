@@ -16,22 +16,22 @@ export function ParagraphQuote({ paragraph }: { paragraph: QuoteType }) {
           paragraph.field_author && "mt-4",
         )}
       />
-      {paragraph.field_author && 
+      {paragraph.field_author && (
         <div className="flex flex-row justify-end items-center">
-           {paragraph.field_image &&
-              <Media
-                media={paragraph.field_image}
-                priority={true}
-                width={100}
-                height={100}
-                classname={"border-0 rounded-full"}
-              />
-            }
+          {paragraph.field_image && (
+            <Media
+              media={paragraph.field_image}
+              priority={true}
+              width={100}
+              height={100}
+              classname={"border-0 rounded-full"}
+            />
+          )}
           <h2 className="text-heading-sm text-scapaflow font-bold ml-4 italic">
             {paragraph.field_author}
           </h2>
         </div>
-      }
+      )}
     </div>
   );
 }
