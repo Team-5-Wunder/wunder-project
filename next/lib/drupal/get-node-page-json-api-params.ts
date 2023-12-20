@@ -146,6 +146,7 @@ export function getNodePageJsonApiParams(resourceType: ResourceType) {
         "field_event_speakers",
         "field_location",
         "field_event_tags",
+        "field_enable_event_registration",
       ]);
   }
 

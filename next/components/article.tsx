@@ -17,7 +17,6 @@ interface ArticleProps {
 export function Article({ article, ...props }: ArticleProps) {
   const { t } = useTranslation();
   const router = useRouter();
-  console.log(article);
   return (
     <article {...props}>
       <div className="w-screen flex justify-center">

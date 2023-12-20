@@ -52,6 +52,7 @@ export const EventSchema = z.object({
       }),
     )
     .optional(),
+  field_enable_event_registration: z.enum(["enable", "disable"]).nullable(),
 });
 
 export function validateAndCleanupEvent(event: DrupalNode): Event | null {

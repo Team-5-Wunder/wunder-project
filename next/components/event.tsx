@@ -112,7 +112,9 @@ export function Event({ event }: EventProps) {
                   </div>
                 </div>
               </div>
-              <EventRegistration event_id={event.id} event_name={event.title} />
+              {event.field_enable_event_registration === "enable" && 
+                <EventRegistration event_id={event.id} event_name={event.title} />
+              }
             </div>
             {event.field_location && 
               <div className="mt-8">
