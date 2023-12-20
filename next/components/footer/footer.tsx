@@ -102,52 +102,59 @@ export function Footer({ menu }: FooterProps) {
 
   return (
     <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t overflow-hidden px-6 flex flex-col md:flex-row justify-between items-start h-126 relative">
-      <div className="mr-10 ml-0 lg:ml-10 lg:pl-8  flex-1 flex flex-col mb-6 md:mb-0 ">
-        <p className="mb-5">{t("WANT TO HEAR MORE?")}</p>
-        <p className="font-normal text-lg">
-          {t("Our international experts are ready to help you.")}
-          <br />
-          <Link href={"/contact-page"} className="underline">
-            Contact us!
-          </Link>
-        </p>
-        <p className="mt-10 sm:text-base md:text-lg">{t("Follow us")}</p>
-        <div className="mt-2 flex items-center space-x-4">
-          <a
-            href="https://www.facebook.com/wunder.io"
-            className="hover:text-primary-600"
-            aria-label="Facebook"
-          >
-            <FacebookIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
-          </a>
-          <a
-            href="https://twitter.com/Wunder_io"
-            className="hover:text-primary-600"
-            aria-label="Twitter"
-          >
-            <TwitterIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/wunder.io/"
-            className="hover:text-primary-600"
-            aria-label="LinkedIn"
-          >
-            <LinkedinIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
-          </a>
-          <a
-            href="https://www.youtube.com/channel/UCsBoaJt5sX12IFBu1giXZJg"
-            className="text-white hover:text-primary-600"
-            aria-label="YouTube"
-          >
-            <YoutubeIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
-          </a>
-          <a
-            href="https://www.instagram.com/wunder.io/"
-            className="hover:text-primary-600"
-            aria-label="Instagram"
-          >
-            <InstagramIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
-          </a>
+      <div className="mr-10 ml-0 lg:ml-10 lg:pl-8  flex-1 flex flex-col justify-between mb-6 md:mb-0 h-96">
+        <div>
+          <p className="mb-5">{t("WANT TO HEAR MORE?")}</p>
+          <p className="font-normal text-lg">
+            {t("Our international experts are ready to help you.")}
+            <br />
+            <Link href={"/contact"} className="underline">
+              Contact us!
+            </Link>
+          </p>
+        </div>
+        <div>
+          <p className=" mt-10 sm:text-base md:text-lg">{t("Follow us")}</p>
+          <div className="mt-2 flex items-center space-x-4">
+            <a
+              href="https://www.facebook.com/wunder.io"
+              className="hover:text-primary-600"
+              aria-label="Facebook"
+            >
+              <FacebookIcon className="inline-block h-8 w-8" aria-hidden />
+            </a>
+            <a
+              href="https://twitter.com/Wunder_io"
+              className="hover:text-primary-600"
+              aria-label="Twitter"
+            >
+              <TwitterIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/wunder.io/"
+              className="hover:text-primary-600"
+              aria-label="LinkedIn"
+            >
+              <LinkedinIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCsBoaJt5sX12IFBu1giXZJg"
+              className="text-white hover:text-primary-600"
+              aria-label="YouTube"
+            >
+              <YoutubeIcon className="ml-2 inline-block h-8 w-8" aria-hidden />
+            </a>
+            <a
+              href="https://www.instagram.com/wunder.io/"
+              className="hover:text-primary-600"
+              aria-label="Instagram"
+            >
+              <InstagramIcon
+                className="ml-2 inline-block h-8 w-8"
+                aria-hidden
+              />
+            </a>
+          </div>
         </div>
       </div>
 
