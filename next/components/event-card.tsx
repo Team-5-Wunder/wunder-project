@@ -42,7 +42,7 @@ export function EventCard({ event, className, eventUrl }: EventProps) {
   speakers = null
 
   return (
-    <div key={event.id} className={clsx(className, "mt-20 w-80 h-[30rem] group/card rounded border border-finnishwinter hover:shadow-md")}>
+    <div key={event.id} className={clsx(className, "w-80 h-[30rem] group/card rounded border border-finnishwinter hover:shadow-md")}>
       <Link href={eventUrl}>
         <div className="w-full h-1/2 overflow-hidden">
           <Image

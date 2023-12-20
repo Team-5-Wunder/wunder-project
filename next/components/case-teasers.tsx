@@ -57,12 +57,10 @@ export function CaseTeasers({ cases, heading }: LatestCasesProps) {
             <div id="leftBox" className="mt-20 opacity-0">
               <div className="2xl:w-4/5 mb-4 text-steelgray text-md">
                 <p className="mb-2">
-                  We help our clients to improve their digital business,
-                  competitiveness and customer experience.
+                  {t("We help our clients to improve their digital business, competitiveness and customer experience.")}
                 </p>
                 <p>
-                  Shaping the digital experiences together with our clients.
-                  Take a look at some of our success stories.
+                  {t("Shaping the digital experiences together with our clients. Take a look at some of our success stories.")}
                 </p>
               </div>
               {cases?.length && (

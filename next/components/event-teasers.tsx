@@ -51,7 +51,7 @@ export function EventTeasers({ events }: LatestEventsProps) {
             {events?.map((event) => {
               
               return (
-                <EventCard event={event} eventUrl={event.path.alias} className="toSlideUpEvent opacity-0" />
+                <EventCard event={event} eventUrl={event.path.alias} className="mt-20 toSlideUpEvent opacity-0" />
               );
             })}
           </div>

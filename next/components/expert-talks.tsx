@@ -51,7 +51,7 @@ export function ExpertTalks({ events }: LatestEventsProps) {
               {events?.map((event) => {
                 
                 return (
-                  <ExpertTalksCard event={event} eventUrl={event.path.alias} className="toSlideUpExp opacity-0" />
+                  <ExpertTalksCard event={event} eventUrl={event.path.alias} className="mt-20 toSlideUpExp opacity-0" />
                 );
             })}
           </div>

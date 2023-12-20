@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal";
@@ -26,6 +27,7 @@ import siteConfig from "@/site.config";
 import { Checkbox } from "@/ui/checkbox";
 import { ExpertTalksCard } from "@/components/expert-talks-card";
 import { EventCard } from "@/components/event-card";
+import Chevron from "@/styles/icons/chevron-down.svg";
 
 interface NewsAndEventsPageProps extends LayoutProps {
   eventTeasers: EventTeaserType[];
@@ -49,6 +51,7 @@ export default function NewsAndEventsPage({
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [limit, setLimit] = useState<number>(6);
     const [offset, setOffset] = useState<number>(0);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     useEffect(() => {
       const page = +router.asPath.split("/")[2];
@@ -123,15 +126,35 @@ export default function NewsAndEventsPage({
       }
     };
 
+    const toggleExpansion = () => {
+      setIsExpanded((value) => !value);
+    };
+
   return (
     <div className="w-screen flex justify-center">
-      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex flex-col justify-start">
+      <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16 flex flex-col">
         <Meta title={t("news-and-events")} metatags={[]} />
         <div ref={focusRef} tabIndex={-1} />
         <HeadingPage>{t("our-events")}</HeadingPage>
-        <div className="mb-16 flex justify-between text-sm text-steelgray">
+        <button
+          className={clsx(
+            "text-primary-600 flex flex-row w-full justify-between justify-items-center items-center text-heading-sm mt-16 bg-mischka p-8 border-0 rounded-t-2xl"
+          )}
+          onClick={toggleExpansion}
+        >
+          {t("apply-filters")}
+          <Chevron className={clsx(
+            "h-10 w-10 transition-all duration-200 ease-in-out",
+            isExpanded ? "rotate-180" : ""
+          )} />
+        </button>
+        <div
+          className={clsx(
+            "flex flex-col lg:flex-row justify-between text-sm text-white bg-primary-500 overflow-hidden transition-max-height duration-500 ease-in-out mb-12 px-24 border-0 rounded-b-sm",
+            isExpanded ? 'max-h-screen p-16' : 'max-h-0 p-0'
+          )}
+        >
           <ul>
-            <h2 className="text-xl">{t("filter-by")}:</h2>
             {event_tags.map((tag) => (
               <li
                 key={tag.id}
@@ -140,15 +163,16 @@ export default function NewsAndEventsPage({
                 <Checkbox
                   onClick={() => handleCheckboxChange(tag.name)}
                   id={tag.id}
+                  className="bg-white hover:bg-stone transition-colors duration-200 ease-in-out"
                 />
-                <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
+                <label className="ml-2 text-sm text-white" htmlFor={tag.id} id={tag.id}>
                   {tag.name}
                 </label>
               </li>
             ))}
           </ul>
         </div>
-        <div className="w-full mb-20 md:mx-20 flex flex-wrap gap-8 lg:gap-14 justify-start">
+        <div className="mt-4 grid gap-4 grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3">
           {events.map((event) =>  (
             <div key={event.id}>
               {event.field_event_tags[0].name.includes("Expert")?
@@ -161,7 +185,7 @@ export default function NewsAndEventsPage({
             </div>
           ))}
         </div>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center mt-10 mb-20">
           <div className="max-w-[700px] flex flex-grow justify-between">
             <Pagination
               focusRestoreRef={focusRef}

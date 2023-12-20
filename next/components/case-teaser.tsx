@@ -19,14 +19,14 @@ export function CaseTeaser({ client }: CaseTeaserProps) {
               {client.field_image && (
                 <Image
                 src={absoluteUrl(client.field_image.uri.url)}
-                width={600}
-                height={600}
+                width={1000}
+                height={1000}
                 alt={client.field_image.resourceIdObjMeta.alt}
                 className="h-full object-cover group-hover/card:scale-110 duration-300"
                 />
               )}
             </div>
-            <div className="my-4">{client.field_excerpt}</div>
+            <div className="mt-4">{client.field_excerpt}</div>
         </Link>
       </div>
   );

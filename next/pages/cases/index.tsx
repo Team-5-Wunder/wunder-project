@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 /* import { useRouter } from "next/router"; */
 import { DrupalNode, DrupalTaxonomyTerm } from "next-drupal";
@@ -24,6 +25,7 @@ import {
 
 /* import siteConfig from "@/site.config"; */
 import { Checkbox } from "@/ui/checkbox";
+import Chevron from "@/styles/icons/chevron-down.svg";
 
 interface CasesPageProps extends LayoutProps {
   caseTeasers: CaseTeaserType[];
@@ -47,6 +49,7 @@ export default function CasesPage({
   const [industrySearch, setIndustrySearch] = useState<string[]>([]);
   const [solutionSearch, setsSolutionSearch] = useState<string[]>([]);
   const [technologySearch, setTechnologySearch] = useState<string[]>([]);
+  const [isExpanded, setIsExpanded] = useState(false);
   /* const [paginationNewProps, setPaginationNewProps] =
     useState<object>(paginationProps);
   const [cases, setCases] = useState<CaseTeaserType[]>(caseTeasers);
@@ -157,14 +160,35 @@ export default function CasesPage({
     }
   };
 
+  const toggleExpansion = () => {
+    setIsExpanded((value) => !value);
+  };
+
   return (
     <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
       <Meta title={t("cases")} metatags={[]} />
       <div ref={focusRef} tabIndex={-1} />
       <HeadingPage>{t("cases")}</HeadingPage>
-      <div className="mb-16 flex justify-between text-sm text-steelgray">
+      <button
+        className={clsx(
+          "text-primary-600 flex flex-row w-full justify-between justify-items-center items-center text-heading-sm mt-16 bg-mischka p-8 border-0 rounded-t-2xl"
+        )}
+        onClick={toggleExpansion}
+      >
+        {t("apply-filters")}
+        <Chevron className={clsx(
+          "h-10 w-10 transition-all duration-200 ease-in-out",
+          isExpanded ? "rotate-180" : ""
+        )} />
+      </button>
+      <div 
+        className={clsx(
+          "flex flex-col lg:flex-row justify-between text-sm text-white bg-primary-500 overflow-hidden transition-max-height duration-500 ease-in-out mb-16 px-24 border-0 rounded-b-sm",
+          isExpanded ? 'max-h-screen p-16' : 'max-h-0 p-0'
+        )}
+      >
         <ul>
-          <h2 className="text-xl">{t("Industry")}</h2>
+          <h2 className="text-xl mb-8">{t("Industry")}</h2>
           {industry.map((tag) => (
             <li
               key={tag.id}
@@ -173,15 +197,16 @@ export default function CasesPage({
               <Checkbox
                 onClick={() => handleCheckboxChange(tag.name, "industry")}
                 id={tag.id}
+                className="bg-white hover:bg-stone transition-colors duration-200 ease-in-out"
               />
-              <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
+              <label className="ml-2 text-sm text-white" htmlFor={tag.id} id={tag.id}>
                 {tag.name}
               </label>
             </li>
           ))}
         </ul>
         <ul>
-          <h2 className="text-xl">{t("Solution")}</h2>
+          <h2 className="text-xl mb-8 mt-12 lg:mt-0">{t("Solution")}</h2>
           {solution.map((tag) => (
             <li
               key={tag.id}
@@ -190,15 +215,16 @@ export default function CasesPage({
               <Checkbox
                 onClick={() => handleCheckboxChange(tag.name, "solution")}
                 id={tag.id}
+                className="bg-white hover:bg-stone transition-colors duration-200 ease-in-out"
               />
-              <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
+              <label className="ml-2 text-sm text-white" htmlFor={tag.id} id={tag.id}>
                 {tag.name}
               </label>
             </li>
           ))}
         </ul>
         <ul>
-          <h2 className="text-xl">{t("Technology")}</h2>
+          <h2 className="text-xl mb-8 mt-12 lg:mt-0">{t("Technology")}</h2>
           {technology.map((tag) => (
             <li
               key={tag.id}
@@ -207,15 +233,16 @@ export default function CasesPage({
               <Checkbox
                 onClick={() => handleCheckboxChange(tag.name, "technology")}
                 id={tag.id}
+                className="bg-white hover:bg-stone transition-colors duration-200 ease-in-out"
               />
-              <label className="ml-2 text-sm" htmlFor={tag.id} id={tag.id}>
+              <label className="ml-2 text-sm text-white" htmlFor={tag.id} id={tag.id}>
                 {tag.name}
               </label>
             </li>
           ))}
         </ul>
       </div>
-      <ul className="mt-4 grid gap-4 grid-cols-3">
+      <ul className="mt-4 grid gap-4 grid-cols-1 justify-items-center pb-20 md:grid-cols-2 lg:grid-cols-3">
         {caseTeasers
           ?.filter((teaser) => (
             industrySearch.every((industry) => (

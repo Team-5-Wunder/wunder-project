@@ -40,7 +40,7 @@ export function ArticleListItem({ article }: ArticleListItemProps) {
             src={absoluteUrl(article.field_image.uri.url)}
             width={500}
             height={300}
-            className="w-full sm:w-40"
+            className="w-[160px] h-[160px] object-cover"
             alt={article.field_image.resourceIdObjMeta.alt}
           />
         )}
