@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.article.body
     - field.field.node.article.field_content_elements
     - field.field.node.article.field_excerpt
     - field.field.node.article.field_image
@@ -13,7 +12,6 @@ dependencies:
     - node.type.article
   module:
     - image
-    - text
     - user
 _core:
   default_config_hash: DYdq7x2DhdE7lsai65unpnFSfMXVPntvS6aJZFazric
@@ -22,14 +20,6 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
-    label: hidden
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 0
-    region: content
   field_image:
     type: image
     label: hidden
