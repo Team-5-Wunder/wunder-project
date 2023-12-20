@@ -3,12 +3,14 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FieldErrors } from "react-hook-form";
 import { Button } from "@/ui/button";
 import type { Menu } from "@/lib/zod/menu";
 import { StatusMessage } from "@/ui/status-message";
 import { useTranslation } from "next-i18next";
+import { ModalSubmit } from "./modal-submit";
+
 const SignupSchema = z
   .object({
     news: z.boolean().default(false),
@@ -59,10 +61,6 @@ export function Footer({ menu }: FooterProps) {
     }
     setCheckboxGroupError("");
     console.log(data);
-    /*  console.log(onSubmit); */
-    // Gather data from the form
-
-    // Make a POST request to API route
 
     const response = await fetch(`/api/footer-newsletter`, {
       method: "POST",
@@ -82,28 +80,30 @@ export function Footer({ menu }: FooterProps) {
       alert("Error!");
     }
   };
-  if (isSubmitSuccessful) {
-    return (
-      <StatusMessage level="success" className="mx-auto w-full max-w-3xl">
-        <p className="mb-4">{t("form-thank-you-message")}</p>
-        <Button type="button" onClick={() => reset()}>
-          {t("form-reset-button")}
-        </Button>
-      </StatusMessage>
-    );
-  }
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset({
+        news: false,
+        careers: false,
+        events: false,
+        email: "",
+        terms: false,
+      });
+    }
+  }, [isSubmitSuccessful, reset]);
+
   return (
-    <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t overflow-hidden px-6 flex flex-col md:flex-row justify-between items-start h-[500px]">
-      <div className=" text-center flex-1 flex flex-col justify-center mb-6 md:mb-0">
-        <p>WANT TO HEAR MORE?</p>
-        <p className="font-normal">
+    <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t overflow-hidden px-6 flex flex-col md:flex-row justify-between items-start h-126">
+      <div className="mr-10 ml-0 lg:ml-10 lg:pl-8  flex-1 flex flex-col mb-6 md:mb-0 ">
+        <p className="mb-5">WANT TO HEAR MORE?</p>
+        <p className="font-normal text-lg">
           Our international experts are ready to help you.
           <br />
           <span className="underline">Contact us!</span>
         </p>
       </div>
 
-      <div className="flex-1">
+      <div className="flex-1 mb-10">
         <p className="pb-5 font-bold">Stay up to date with our newsletter</p>
         <p className="pb-5">"*" indicates required fields</p>
         <p className="pb-5">I'M INTERESTED IN</p>
@@ -163,8 +163,8 @@ export function Footer({ menu }: FooterProps) {
             privacy policy
           </span>
         </label>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-          <Button variant="quatriary" className="mt-10 text-white">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Button variant="quatriary" className="mt-10  text-white">
             Subscribe
           </Button>
         </form>
