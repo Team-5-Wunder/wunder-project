@@ -104,9 +104,6 @@ export const MapComponent = React.forwardRef<HTMLDivElement, MapComponentProps>(
 
     return (
       <div ref={ref}>
-        <h2 className="mb-10 ml-16 pl-16 text-heading-lg lg:text-heading-lg text-primary-800">
-          Our offices
-        </h2>
         <div className="flex justify-center mb-14">
           <GoogleMap
             options={mapOptions}

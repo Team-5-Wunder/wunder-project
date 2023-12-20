@@ -101,7 +101,7 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
 
     return (
       <div ref={ref}>
-        <div className="mt-12 lg:mt-0 flex justify-center overflow-hidden flex-col md:flex-row h-[700px]">
+        <div className="flex justify-end pt-10 overflow-hidden h-126 lg:mr-14 px-5">
           <form
             onSubmit={handleSubmit(onSubmit, onErrors)}
             className="w-full max-w-lg"
@@ -109,8 +109,8 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
             <p className="pb-5">"*" {t("indicates required fields")}</p>
             {/*   <AuthGate text={t("login-to-fill-form")}> */}
             <>
-              <div className="flex flex-wrap mb-2">
-                <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0">
+              <div className="flex flex-wrap mb-2 mt-12 pt-5">
+                <div className="w-full md:w-1/2 pr-2 mb-6 md:mb-0 ">
                   <Label htmlFor="firstname">{t("First Name")} *</Label>
                   <Input
                     className="border-primary-100"
@@ -192,7 +192,10 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
                   className="form-checkbox text-primary-100"
                 />
                 <span className="px-5">
-                  {t("I approve that Wunder process my personal data according to its privacy policy")} *
+                  {t(
+                    "I approve that Wunder process my personal data according to its privacy policy",
+                  )}{" "}
+                  *
                 </span>
               </label>
               <Button className="mt-5" type="submit">

@@ -23,7 +23,6 @@ export default function ContactPage() {
 
     if (ref.current) {
       const position = ref.current.offsetTop - offset;
-
       window.scrollTo({
         top: position,
         behavior: "smooth",
@@ -38,7 +37,7 @@ export default function ContactPage() {
     <>
       <HeroBannerContact />
       <div className="mt-12 pt-10 flex justify-center overflow-hidden flex-col md:flex-row">
-        <div className="w-4/5 -ml-16  flex flex-col">
+        <div className="w-full md:w-4/5 px-4 md:px-0 md:-ml-16 flex flex-col">
           <div className="flex items-center border-b border-gray-300 pb-4">
             <div className="mr-4">{t("JUMP TO:")}</div>
             <nav>
@@ -66,15 +65,26 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-
-      <div className="mt-12 pt-14 grid grid-cols-1 lg:grid-cols-2 mb-6 md:mb-0 pl-10 pr-12">
-         <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
-           {t("Send us a message")}
+      {/*       <div className="mt-12 pt-14 grid grid-cols-1 lg:grid-cols-2 gap-4 px-4 md:px-10">
+       */}{" "}
+      <div className="py-8 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
+          {t("Send us a message")}
         </h2>
         <ContactForm ref={contactFormRef} />
       </div>
+      <div className="py-8 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
+          {t("Our offices")}
+        </h2>
+      </div>
       <MapComponent ref={mapRef} />
       <OfficesList />
+      <div className="px-4 sm:px-6 lg:px-8">
+        <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
+          {t("Invoicing")}
+        </h2>
+      </div>
       <Invoicing ref={invoicingRef} />
     </>
   );

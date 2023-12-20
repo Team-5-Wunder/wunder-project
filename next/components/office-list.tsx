@@ -36,7 +36,7 @@ const officeLocations = [
   },
 ];
 export const OfficesList = () => (
-  <div className="mx-14 px-14 mb-10 grid md:grid-cols-3 gap-4">
+  <div className=" mx-14 px-14 mb-10 grid md:grid-cols-3 gap-4 ">
     {officeLocations.map((location, index) => (
       <div key={index} className="p-4 rounded">
         <h3 className="text-xl font-bold">{location.city}</h3>
