@@ -9,7 +9,14 @@ import { Button } from "@/ui/button";
 import type { Menu } from "@/lib/zod/menu";
 import { StatusMessage } from "@/ui/status-message";
 import { useTranslation } from "next-i18next";
-import { ModalSubmit } from "./modal-submit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faTwitter,
+  faLinkedinIn,
+  faYoutube,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 const SignupSchema = z
   .object({
@@ -52,7 +59,7 @@ export function Footer({ menu }: FooterProps) {
     resolver: zodResolver(SignupSchema),
   });
 
-  const [message, setMessage] = useState<string>()
+  const [message, setMessage] = useState<string>();
   const customErrors = errors as CustomFieldErrors;
 
   const onSubmit = async (data: TSignupSchema) => {
@@ -90,7 +97,7 @@ export function Footer({ menu }: FooterProps) {
         email: "",
         terms: false,
       });
-      setMessage(t("your-preferences-are-saved"))
+      setMessage(t("your-preferences-are-saved"));
     }
   }, [isSubmitSuccessful, reset]);
 
@@ -101,12 +108,54 @@ export function Footer({ menu }: FooterProps) {
         <p className="font-normal text-lg">
           {t("Our international experts are ready to help you.")}
           <br />
-          <Link href={"/contact-page"} className="underline">Contact us!</Link>
+          <Link href={"/contact-page"} className="underline">
+            Contact us!
+          </Link>
         </p>
+        <p className="mt-10 sm:text-base md:text-lg">{t("Follow us")}</p>
+        <div className="mt-2 flex items-center space-x-4">
+          <a
+            href="https://www.facebook.com"
+            className="hover:text-primary-600"
+            aria-label="Facebook"
+          >
+            <FontAwesomeIcon icon={faFacebookF} />
+          </a>
+          <a
+            href="https://www.twitter.com"
+            className="hover:text-primary-600"
+            aria-label="Twitter"
+          >
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a
+            href="https://www.linkedin.com"
+            className="hover:text-primary-600"
+            aria-label="LinkedIn"
+          >
+            <FontAwesomeIcon icon={faLinkedinIn} />
+          </a>
+          <a
+            href="https://www.youtube.com"
+            className="hover:text-primary-600"
+            aria-label="YouTube"
+          >
+            <FontAwesomeIcon icon={faYoutube} />
+          </a>
+          <a
+            href="https://www.instagram.com"
+            className="hover:text-primary-600"
+            aria-label="Instagram"
+          >
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+        </div>
       </div>
 
       <div className="flex-1 mb-10">
-        <p className="pb-5 font-bold">{t("Stay up to date with our newsletter")}</p>
+        <p className="pb-5 font-bold sm:text-base md:text-lg">
+          {t("Stay up to date with our newsletter")}
+        </p>
         <p className="pb-5">"*" {t("indicates required fields")}</p>
         <p className="pb-5">{t("I'M INTERESTED IN")}</p>
         <div>
@@ -142,15 +191,14 @@ export function Footer({ menu }: FooterProps) {
           </label>
         </div>
         <div className="pb-5 mt-4">
-          {t("Email")}<span className="text-red-500"> *</span>
+          {t("Email")}
+          <span className="text-red-500"> *</span>
           <input
             {...register("email")}
             type="email"
             className="bg-transparent mt-1 block w-full border-0 border-b-2 border-white focus:ring-0 focus:border-white text-white placeholder-white"
           />
-          {errors.email && (
-            <p className="text-white">{errors.email.message}</p>
-          )}
+          {errors.email && <p className="text-white">{errors.email.message}</p>}
         </div>
         <label className="inline-flex items-center">
           <input
@@ -161,17 +209,24 @@ export function Footer({ menu }: FooterProps) {
             className="form-checkbox text-primary-600"
           />
           <span className="ml-2">
-            {t("I approve that Wunder process my personal data according to its privacy policy")}
+            {t(
+              "I approve that Wunder process my personal data according to its privacy policy",
+            )}
             <span className="text-red-500"> *</span>
           </span>
         </label>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-row justify-items-center items-center mt-10">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-row justify-items-center items-center mt-10"
+        >
           <Button variant="quatriary" className="text-white">
             {t("subscribe")}
           </Button>
-          {message &&
-            <span className="text-white ml-8 text-center items-center">{message}</span>
-          }
+          {message && (
+            <span className="text-white ml-8 text-center items-center">
+              {message}
+            </span>
+          )}
         </form>
       </div>
     </footer>

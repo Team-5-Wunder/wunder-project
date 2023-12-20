@@ -8,11 +8,8 @@ export const Invoicing = React.forwardRef<HTMLDivElement, InvoicingProps>(
   ({}, ref) => {
     return (
       <div ref={ref}>
-        <div className="flex justify-center pt-10 overflow-hidden flex-col md:flex-row h-[800px]">
-          <h2 className="w-3/5 flex flex-col mb-6 md:mb-0 pl-10 pr-12 text-heading-lg text-primary-800">
-            Invoicing
-          </h2>
-          <p className="mt-8 md:mt-0 md:ml-8 text-lg max-w-lg">
+        <div className="ml-10  mb-10 flex md:justify-end pt-10 overflow-hidden h-126">
+          <p className="mt-8 md:mt-0 text-sm sm:text-base md:text-lg max-w-lg mr-14">
             Please note: Invoices sent to our visiting address or in any other
             way not described on this page are not handled. Electronic invoices
             (primary) Wunder Finland Oy Business ID: 2307947-9 OVT: 003723079479
