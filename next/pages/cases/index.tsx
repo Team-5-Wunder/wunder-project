@@ -169,7 +169,7 @@ export default function CasesPage({
       <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
         <Meta title={t("cases")} metatags={[]} />
         <div ref={focusRef} tabIndex={-1} />
-        <HeadingPage>{t("cases")}</HeadingPage>
+        <HeadingPage>{t("our-cases")}</HeadingPage>
         <button
           className={clsx(
             "text-primary-600 flex flex-row w-full justify-between justify-items-center items-center text-heading-sm mt-16 bg-mischka p-8 border-0 rounded-t-2xl",
@@ -257,7 +257,7 @@ export default function CasesPage({
             ))}
           </ul>
         </div>
-        <ul className="mt-4 grid gap-4 grid-cols-1 justify-items-center pb-20 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-4 grid gap-8 grid-cols-1 justify-items-center pb-20 md:grid-cols-2 lg:grid-cols-3">
           {caseTeasers
             ?.filter(
               (teaser) =>

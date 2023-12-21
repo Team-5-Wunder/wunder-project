@@ -51,11 +51,13 @@ export function EventTeasers({ events }: LatestEventsProps) {
           <div className="w-full flex flex-wrap gap-8 lg:gap-14 justify-center">
             {events?.map((event) => {
               return (
-                <EventCard
-                  event={event}
-                  eventUrl={event.path.alias}
-                  className="mt-20 toSlideUpEvent opacity-0"
-                />
+                <div key={event.id}>
+                  <EventCard
+                    event={event}
+                    eventUrl={event.path.alias}
+                    className="mt-20 toSlideUpEvent opacity-0"
+                  />
+                </div>
               );
             })}
           </div>

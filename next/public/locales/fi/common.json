@@ -1,4 +1,5 @@
 {
+  "apply-filters": "Käytä suodattimia",
   "brand-logos": "Brändilogoja",
   "homepage-link-sr": "Etusivu",
   "menu-back": "Takaisin",
@@ -8,6 +9,7 @@
   "latest-releases-and-innovations": "Uusimmat julkaisut ja innovaatiot",
   "we-are-wunder": "Olemme Wunder",
   "get-to-know-us": "Tutustu meihin",
+  "our-cases": "Asiakastapaukset",
   "our-work": "Meidän työmme",
   "all-works": "Kaikki toimii",
   "our-clients": "Asiakkaamme",
@@ -19,6 +21,7 @@
   "posted-by": "Kirjoittaja: {{author}}",
   "register-to-event": "Rekisteröidy tapahtumaan",
   "register-button": "Rekisteröidy",
+  "releases": "Julkaisut",
   "search-bar-placeholder-text": "Hae sisältöä",
   "search-button-text": "Hae",
   "search": "Haku",

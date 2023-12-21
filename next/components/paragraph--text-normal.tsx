@@ -10,17 +10,19 @@ export function ParagraphTextNormal({
   paragraph: FormattedTextType;
 }) {
   return (
-    <div className="">
-      {paragraph.field_heading && (
-        <HeadingParagraph>{paragraph.field_heading}</HeadingParagraph>
-      )}
-      <FormattedText
-        html={paragraph.field_formatted_text.processed}
-        className={clsx(
-          "text-left text-sm/lg text-scapaflow md:text-md/xl",
-          paragraph.field_heading && "mt-4",
+    <div className="mt-10 w-full flex justify-center items-center">
+      <div className="max-w-[800px] flex flex-col text-left">
+        {paragraph.field_heading && (
+          <HeadingParagraph>{paragraph.field_heading}</HeadingParagraph>
         )}
-      />
+        <FormattedText
+          html={paragraph.field_formatted_text.processed}
+          className={clsx(
+            "text-left text-sm/lg text-scapaflow md:text-md/xl",
+            paragraph.field_heading && "mt-0",
+          )}
+        />
+      </div>
     </div>
   );
 }
