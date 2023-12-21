@@ -8,11 +8,11 @@ export function ParagraphListingCareers({
   paragraph: ListingCareers;
 }) {
   return (
-    <>
+    <div className="">
       {paragraph.field_heading && (
         <HeadingParagraph>{paragraph.field_heading}</HeadingParagraph>
       )}
       <CareersListing listingId={paragraph.id} />
-    </>
+    </div>
   );
 }
