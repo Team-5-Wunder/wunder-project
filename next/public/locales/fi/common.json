@@ -94,5 +94,15 @@
   "password-reset-check-your-email": "Jos {{email}} oli liitetty oikeaan tiliin, tarkista sähköpostistasi linkki salasanan vaihtamiseen.",
   "password-updated-login-below": "Salasanasi on päivitetty. Voit kirjautua sisään alla olevalla lomakkeella.",
   "reset-your-password": "Nollaa salasanasi",
-  "field-is-required": "'{{field}}' kenttä on pakollinen"
+  "field-is-required": "'{{field}}' kenttä on pakollinen",
+  "Our mission is to bring people together and shape the way digital services are used in everyday life. We help our clients to improve their digital business, competitiveness and customer experience.": "Tehtävämme on tuoda ihmiset yhteen ja muokata digitaalisten palveluiden käyttöä arkielämässä. Autamme asiakkaitamme parantamaan digitaalista liiketoimintaansa, kilpailukykyä ja asiakaskokemusta.",
+  "We help our clients to improve their digital business, competitiveness and customer experience.": "Autamme asiakkaitamme parantamaan digitaalista liiketoimintaansa, kilpailukykyä ja asiakaskokemusta.",
+  "Shaping the digital experiences together with our clients. Take a look at some of our success stories.": "Muokkaamme digitaalisia kokemuksia yhdessä asiakkaidemme kanssa. Tutustu joihinkin menestystarinoihimme.",
+  "your-preferences-are-saved": "Asetuksesi tallennettu.",
+  "Our international experts are ready to help you.": "Kansainväliset asiantuntijamme ovat valmiina auttamaan sinua.",
+  "Contact us!": "Ota yhteyttä!",
+  "indicates required fields": "osoittaa pakolliset kentät",
+  "I'M INTERESTED IN": "OLEN KIINNOSTUNUT",
+  "subscribe": "tilaa",
+  "cases": "Tapaukset"
 }

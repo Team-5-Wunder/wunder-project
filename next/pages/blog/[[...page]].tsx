@@ -131,9 +131,9 @@ export default function BlogPage({
   return (
     <div className="w-screen flex justify-center">
       <div className="w-full max-w-[1664px] mt-20 px-6 sm:px-16">
-        <Meta title={t("releases")} metatags={[]} />
+        <Meta title={t("cases")} metatags={[]} />
         <div ref={focusRef} tabIndex={-1} />
-        <HeadingPage>{t("releases")}</HeadingPage>
+        <HeadingPage>{t("cases")}</HeadingPage>
         <button
           className={clsx(
             "text-primary-600 flex flex-row w-full justify-between justify-items-center items-center text-heading-sm mt-16 bg-mischka p-8 border-0 rounded-t-2xl",

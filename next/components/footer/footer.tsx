@@ -110,7 +110,7 @@ export function Footer({ menu }: FooterProps) {
             {t("Our international experts are ready to help you.")}
             <br />
             <Link href={"/contact"} className="underline">
-              Contact us!
+              {t("Contact us!")}
             </Link>
           </p>
         </div>

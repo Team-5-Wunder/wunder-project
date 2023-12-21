@@ -94,5 +94,15 @@
   "password-updated-login-below": "Your password has been updated. Please log in below.",
   "password-reset-check-your-email": "If {{email}} was associated with a actual account, check your email for a link to reset your password.",
   "reset-your-password": "Reset your password",
-  "field-is-required": "The {{field}} field is required."
+  "field-is-required": "The {{field}} field is required.",
+  "Our mission is to bring people together and shape the way digital services are used in everyday life. We help our clients to improve their digital business, competitiveness and customer experience.": "Our mission is to bring people together and shape the way digital services are used in everyday life. We help our clients to improve their digital business, competitiveness and customer experience.",
+  "We help our clients to improve their digital business, competitiveness and customer experience.": "We help our clients to improve their digital business, competitiveness and customer experience.",
+  "Shaping the digital experiences together with our clients. Take a look at some of our success stories.": "Shaping the digital experiences together with our clients. Take a look at some of our success stories.",
+  "your-preferences-are-saved": "Your preferences are saved.",
+  "Our international experts are ready to help you.": "Our international experts are ready to help you.",
+  "Contact us!": "Contact us!",
+  "indicates required fields": "indicates required fields",
+  "I'M INTERESTED IN": "I'M INTERESTED IN",
+  "subscribe": "subscribe",
+  "cases": "Cases"
 }

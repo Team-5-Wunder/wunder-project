@@ -20,9 +20,7 @@ const WeAreWunder = () => {
         </div>
         <div className="lg:w-1/2 flex flex-col">
           <div className="mb-4 text-steelgray text-md">
-            Our mission is to bring people together and shape the way digital
-            services are used in everyday life. We help our clients to improve
-            their digital business, competitiveness and customer experience.
+            {t("Our mission is to bring people together and shape the way digital services are used in everyday life. We help our clients to improve their digital business, competitiveness and customer experience.")}
           </div>
           <Link
             href="/cases"

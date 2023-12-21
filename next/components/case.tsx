@@ -18,11 +18,9 @@ export function Case({ client }: CaseProps) {
       {/*  {
         client.field_page_hero && ( <ParagraphPageHero paragraph={client.field_page_hero} /> )
       } */}
-      {client.field_technology &&
-        client.field_technology.map((tag) => (
-          <h4 key={tag.name}>{tag.name}</h4>
-        ))}
-      <div className="grid gap-4 grid-cols-2">
+      <div className="w-screen flex justify-center">
+      <div className="w-full max-w-[1664px] mb-20 px-6 sm:px-16 flex flex-col">
+      <div className="grid gap-8 md:grid-cols-2 w-full mt-20">
         <div className="ml-10 pl-10">
           <HeadingPage>{client.title}</HeadingPage>
           <div className="my-4 text-xl">{client.field_excerpt}</div>
@@ -55,11 +53,13 @@ export function Case({ client }: CaseProps) {
             </figcaption>
           )}
         </figure>
-        <div className="ml-10 grid gap-4 col-span-2">
+        <div className="grid gap-4 col-span-2">
           {client.field_content_elements?.map((paragraph) => (
             <Paragraph key={paragraph.id} paragraph={paragraph} />
           ))}
         </div>
+      </div>
+      </div>
       </div>
     </>
   );

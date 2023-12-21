@@ -94,5 +94,15 @@
   "password-updated-login-below": "Ditt lösenord har uppdaterats. Du kan logga in med formuläret nedan.",
   "password-reset-check-your-email": "Om {{email}} var associerad med ett faktiskt konto, kontrollera din e-post efter en länk för att återställa ditt lösenord.",
   "reset-your-password": "Återställ ditt lösenord",
-  "field-is-required": "{{field}} är obligatoriskt."
+  "field-is-required": "{{field}} är obligatoriskt.",
+  "Our mission is to bring people together and shape the way digital services are used in everyday life. We help our clients to improve their digital business, competitiveness and customer experience.": "Vårt uppdrag är att förena människor och forma hur digitala tjänster används i vardagen. Vi hjälper våra kunder att förbättra sin digitala verksamhet, konkurrenskraft och kundupplevelse.",
+  "We help our clients to improve their digital business, competitiveness and customer experience.": "Vi hjälper våra kunder att förbättra sin digitala verksamhet, konkurrenskraft och kundupplevelse.",
+  "Shaping the digital experiences together with our clients. Take a look at some of our success stories.": "Forma de digitala upplevelserna tillsammans med våra kunder. Ta en titt på några av våra framgångshistorier.",
+  "your-preferences-are-saved": "Dina inställningar har sparats.",
+  "Our international experts are ready to help you.": "Våra internationella experter är redo att hjälpa dig.",
+  "Contact us!": "Kontakta oss!",
+  "indicates required fields": "anger obligatoriska fält",
+  "I'M INTERESTED IN": "JAG ÄR INTRESSERAD AV",
+  "subscribe": "prenumerera",
+  "cases": "Fall"
 }
