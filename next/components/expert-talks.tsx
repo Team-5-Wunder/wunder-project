@@ -51,11 +51,13 @@ export function ExpertTalks({ events }: LatestEventsProps) {
           <div className="w-full flex flex-wrap gap-8 lg:gap-14 justify-center">
             {events?.map((event) => {
               return (
-                <ExpertTalksCard
-                  event={event}
-                  eventUrl={event.path.alias}
-                  className="mt-20 toSlideUpExp opacity-0"
-                />
+                <div key={event.id}>
+                  <ExpertTalksCard
+                    event={event}
+                    eventUrl={event.path.alias}
+                    className="mt-20 toSlideUpExp opacity-0"
+                  />
+                </div>
               );
             })}
           </div>

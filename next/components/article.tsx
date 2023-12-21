@@ -80,7 +80,7 @@ export function Article({ article, ...props }: ArticleProps) {
                   )}
                 </div>
               </div>
-              <div className="my-4 text-md md:text-xl">
+              <div className="my-4 text-info text-md md:text-xl">
                 {article.field_excerpt}
               </div>
             </div>

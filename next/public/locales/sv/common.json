@@ -1,4 +1,5 @@
 {
+  "apply-filters": "Tillämpa filter",
   "brand-logos": "Varumärkeslogotyper",
   "homepage-link-sr": "Hemsida",
   "menu-back": "Tillbaka",
@@ -10,6 +11,7 @@
   "get-to-know-us": "Lär känna oss",
   "our-work": "Vårt arbete",
   "all-works": "Alla fungerar",
+  "our-cases": "Våra fall",
   "our-clients": "Våra kunder",
   "our-events": "Våra evenemang",
   "coming-events": "Kommande evenemang",
@@ -19,6 +21,7 @@
   "posted-by": "Författare: {{author}}",
   "register-to-event": "Registrera dig för evenemanget",
   "register-button": "Registrera",
+  "releases": "Releaser",
   "share-page": "Dela denna sida",
   "share-to": "Dela till {{location}}",
   "search-bar-placeholder-text": "Sök innehåll",

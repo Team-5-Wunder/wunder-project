@@ -28,3 +28,8 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+// module.exports = {
+//   compiler: {
+//     styledComponents: true,
+//   },
+// }
