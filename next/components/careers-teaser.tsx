@@ -28,9 +28,11 @@ export function CareersTeaser({ careers }: CareersTeaserProps) {
           className="object-cover h-[240px] w-[384px]"
         />
       )}
-      {careers.field_country.map((career) => (
-        <div className="bg-mischka p-2">{career.name}</div>
-      ))}
+      <div className="flex flex-row justify-center items-center pt-2">
+        {careers.field_country.map((career) => (
+          <div className="bg-mischka p-1 m-1 text-xs">{career.name}</div>
+        ))}
+      </div>
     </Link>
   );
 }
