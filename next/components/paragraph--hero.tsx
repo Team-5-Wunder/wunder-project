@@ -58,6 +58,7 @@ export function ParagraphHero({ paragraph }: { paragraph: HeroType }) {
             media={paragraph.field_image}
             alt="site-banner"
             priority
+            classname="object-cover w-full h-full"
           />
         </div>
       </div>
