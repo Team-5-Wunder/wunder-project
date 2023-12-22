@@ -6,7 +6,13 @@ import { PageHero as PageHeroType } from "@/lib/zod/paragraph";
 export function ParagraphPageHero({ paragraph }: { paragraph: PageHeroType }) {
   return (
     <>
-      <Media media={paragraph.field_image} priority={true} />
+      <Media 
+        media={paragraph.field_image}
+        priority={true}
+        width={800}
+        height={800}
+        classname={""}
+      />
       <HeadingParagraph>{paragraph.field_heading}</HeadingParagraph>
       {paragraph.field_formatted_text && (
         <FormattedText

@@ -18,13 +18,21 @@ export function ParagraphTextImage({
           <Media
             media={paragraph.field_image}
             priority={true}
+            width={800}
+            height={800}
             classname={"object-fill"}
           />
         </div>
       )}
       {paragraph.field_text_image_layout === "right" && (
         <div className="grid xl:grid-cols-2">
-          <Media media={paragraph.field_image} priority={true} />
+          <Media 
+            media={paragraph.field_image}  
+            priority={true} 
+            width={800}
+            height={800}
+            classname={""}
+          />
           <FormattedText
             html={paragraph.field_formatted_text.processed}
             className="text-left text-md/xl text-white bg-primary-500 p-8 sm:text-lg"
