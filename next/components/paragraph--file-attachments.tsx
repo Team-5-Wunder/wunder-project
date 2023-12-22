@@ -24,7 +24,12 @@ export function ParagraphFileAttachments({
         />
       )}
 
-      <Media media={paragraph.field_file_attachments} />
+      <Media 
+        media={paragraph.field_file_attachments}
+        width={800}
+        height={800}
+        classname={""}
+      />
     </section>
   );
 }
