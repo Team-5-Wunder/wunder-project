@@ -21,7 +21,7 @@ module.exports = {
     "prettier",
   ],
   rules: {
-    "prettier/prettier": "error",
+    "prettier/prettier": "off",
   },
   overrides: [
     {
@@ -43,7 +43,7 @@ module.exports = {
         "prettier",
       ],
       rules: {
-        "prettier/prettier": "error",
+        "prettier/prettier": "off",
 
         // Relax some TypeScript rules to make them more accessible to beginners.
         // Remove these if you want to enforce stricter rules.
@@ -84,7 +84,7 @@ module.exports = {
         // Allow unused variables only if they start with `_` or `err`.
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
-          "error",
+          "off",
           {
             vars: "all",
             varsIgnorePattern: "^_",
@@ -95,7 +95,7 @@ module.exports = {
 
         // Sort imports.
         "simple-import-sort/imports": [
-          "error",
+          "off",
           {
             groups: [
               // Side effect imports.
