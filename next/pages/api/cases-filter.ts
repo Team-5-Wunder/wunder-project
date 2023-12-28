@@ -63,7 +63,6 @@ export default async function handler(
           defaultLocale: siteConfig.defaultLocale,
         },
       );
-      console.log("Result: " + result);
 
       return res.status(200).json(result);
     }

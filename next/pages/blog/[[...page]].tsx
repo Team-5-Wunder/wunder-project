@@ -52,12 +52,12 @@ export default function BlogPage({
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
-    const page = +router.asPath.split("/")[2];
+    const page = parseInt(router.asPath.split("/")[2], 0);
     if (page) {
       setOffset((page - 1) * limit);
       setCurrentPage(page);
     }
-  }, [router.asPath]);
+  }, [router.asPath, limit]);
 
   useEffect(() => {
     const useBody = async () => {

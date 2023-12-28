@@ -32,8 +32,8 @@ export function EventTeaser({ event }: EventTeaserProps) {
         </div>
         <div className="flex flex-row justify-center items-center my-4">
           {event.field_event_tags &&
-            event.field_event_tags.map((tag) => (
-              <div className="bg-primary-600 text-white p-2 text-sm border-0 rounded-md">
+            event.field_event_tags.map((tag, index) => (
+              <div key={index} className="bg-primary-600 text-white p-2 text-sm border-0 rounded-md">
                 {tag.name}
               </div>
             ))}

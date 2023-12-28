@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
+import { env } from "process";
 
 import { LoadingSpinner } from "./loading-spinner";
 
@@ -13,7 +14,7 @@ export type Place = {
 const geocodeAddress = async (address: string) => {
   try {
     const results = await getGeocode({ address });
-    const { lat, lng } = await getLatLng(results[0]);
+    const { lat, lng } = getLatLng(results[0]);
     return { lat, lng };
   } catch (error) {
     console.error("Error: ", error);
@@ -26,7 +27,7 @@ export const EventMap = ({ address }: { address: string }) => {
   const [isLoading, setIsLoading] = useState(true);
   const libraries = useMemo(() => ["places"], []);
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries: libraries as any,
   });
 
@@ -49,7 +50,7 @@ export const EventMap = ({ address }: { address: string }) => {
     if (address) {
       fetchGeocode();
     }
-  }, [isLoaded]);
+  }, [isLoaded, address]);
 
   const mapOptions = useMemo(
     () => ({
