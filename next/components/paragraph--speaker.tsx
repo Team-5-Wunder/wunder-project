@@ -1,5 +1,4 @@
-import { FormattedText } from "@/components/formatted-text";
-import { HeadingParagraph } from "@/components/heading--paragraph";
+import Image from "next/image";
 import { Media } from "@/components/media";
 import { Speaker as SpeakerType } from "@/lib/zod/paragraph";
 
@@ -17,7 +16,10 @@ export function ParagraphSpeaker({ paragraph }: { paragraph: SpeakerType }) {
           />
         )}
         {!paragraph.field_image && (
-          <img
+          <Image
+            width={100}
+            height={100}
+            priority={true}
             src="/assets/noPhoto.png"
             alt="no photo"
             className="object-cover h-[100px] w-[100px] border-0 rounded-full"

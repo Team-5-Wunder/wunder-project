@@ -44,7 +44,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/finavia:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/finavia:grayscale-0"
                 src="/assets/logos/finavia_logo_col.svg"
                 alt="Finavia"
               />
@@ -54,7 +54,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/sanoma:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/sanoma:grayscale-0"
                 src="/assets/logos/sanoma-logo-new-300x108.webp"
                 alt="Sanoma"
               />
@@ -67,7 +67,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/tikkurila:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/tikkurila:grayscale-0"
                 src="/assets/logos/tikkurila.png"
                 alt="Tikkurila"
               />
@@ -77,7 +77,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/traficom:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/traficom:grayscale-0"
                 src="/assets/logos/traficom.png"
                 alt="Traficom"
               />
@@ -87,7 +87,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/nelonen:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/nelonen:grayscale-0"
                 src="/assets/logos/nelonen.png"
                 alt="Nelonen media"
               />
@@ -100,7 +100,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/fortum:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/fortum:grayscale-0"
                 src="/assets/logos/fortum_logo.svg"
                 alt="Fortum"
               />
@@ -110,7 +110,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/omnia:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/omnia:grayscale-0"
                 src="/assets/logos/omnia-logo-grey-300x96.webp"
                 alt="Omnia"
               />
@@ -120,7 +120,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/tapio:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/tapio:grayscale-0"
                 src="/assets/logos/tapio.png"
                 alt="Tapio"
               />
@@ -130,7 +130,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/university:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/university:grayscale-0"
                 src="/assets/logos/university-of-helsinki-logo-300x80.webp"
                 alt="University of Helsinki"
               />
@@ -143,7 +143,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[70%] max-w-[80%] grayscale group-hover/trimble:grayscale-0"
+                className="h-auto w-auto max-h-[70%] max-w-[80%] grayscale group-hover/trimble:grayscale-0"
                 src="/assets/logos/trimble.svg"
                 alt="Trimble"
               />
@@ -153,7 +153,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[60%] max-w-[60%] grayscale group-hover/hus:grayscale-0"
+                className="h-auto w-auto max-h-[60%] max-w-[60%] grayscale group-hover/hus:grayscale-0"
                 src="/assets/logos/hus-logo.png"
                 alt="HUS"
               />
@@ -163,7 +163,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[60%] max-w-[60%] grayscale group-hover/luke:grayscale-0"
+                className="h-auto w-auto max-h-[60%] max-w-[60%] grayscale group-hover/luke:grayscale-0"
                 src="/assets/logos/luke.png"
                 alt="Luke"
               />
@@ -173,7 +173,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[60%] max-w-[60%] grayscale group-hover/turku:grayscale-0"
+                className="h-auto w-auto max-h-[60%] max-w-[60%] grayscale group-hover/turku:grayscale-0"
                 src="/assets/logos/turku.png"
                 alt="Turko Abo"
               />
@@ -183,7 +183,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[60%] max-w-[60%] grayscale group-hover/lat:grayscale-0"
+                className="h-auto w-auto max-h-[60%] max-w-[60%] grayscale group-hover/lat:grayscale-0"
                 src="/assets/logos/logo_lat_v_1_0.png"
                 alt="Latvian MOD"
               />
@@ -193,7 +193,7 @@ const OurClients = () => {
               <Image
                 width={300}
                 height={300}
-                className="max-h-[60%] max-w-[60%] grayscale group-hover/library:grayscale-0"
+                className="h-auto w-auto max-h-[60%] max-w-[60%] grayscale group-hover/library:grayscale-0"
                 src="/assets/logos/national_library_fi_logo.webp"
                 alt="National library"
               />

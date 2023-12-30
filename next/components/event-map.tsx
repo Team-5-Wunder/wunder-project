@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
-import { env } from "process";
 
 import { LoadingSpinner } from "./loading-spinner";
 
@@ -27,7 +26,7 @@ export const EventMap = ({ address }: { address: string }) => {
   const [isLoading, setIsLoading] = useState(true);
   const libraries = useMemo(() => ["places"], []);
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries: libraries as any,
   });
 

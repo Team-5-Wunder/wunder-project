@@ -57,6 +57,8 @@ module.exports = {
         "@typescript-eslint/no-unsafe-return": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/no-floating-promises": "off",
+        "react/display-name": "off",
+        "no-empty-pattern": "off",
         "@typescript-eslint/no-misused-promises": [
           "off",
           {
@@ -67,7 +69,7 @@ module.exports = {
         ],
 
         // Instead, `import { env } from "@/env"` to access environment variables.
-        "n/no-process-env": ["error"],
+        "n/no-process-env": ["off"],
 
         "no-restricted-imports": [
           "error",

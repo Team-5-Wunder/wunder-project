@@ -1,6 +1,6 @@
 import Image from "next/image";
 import style from "./heroBanner.module.scss";
-import { max } from "cypress/types/lodash";
+import React from 'react';
 
 const HeroBanner = () => {
   return (

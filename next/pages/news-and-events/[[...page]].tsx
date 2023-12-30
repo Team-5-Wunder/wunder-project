@@ -59,10 +59,10 @@ export default function NewsAndEventsPage({
       setOffset((page - 1) * limit);
       setCurrentPage(page);
     }
-  }, [router.asPath]);
+  }, [router.asPath, limit]);
 
   useEffect(() => {
-    const useBody = async () => {
+    const doBody = async () => {
       const body = {
         offset,
         limit,
@@ -115,8 +115,8 @@ export default function NewsAndEventsPage({
         });
       }
     };
-    useBody();
-  }, [limit, offset, tagsSearch]);
+    doBody();
+  }, [limit, offset, tagsSearch, currentPage, router]);
 
   const handleCheckboxChange = (value: string) => {
     if (tagsSearch.includes(value)) {
