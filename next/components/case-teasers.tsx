@@ -1,11 +1,9 @@
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-// This 2 imports are for css
 import clsx from "clsx";
-
 import { CaseTeaser } from "@/components/case-teaser";
 import { CaseTeaser as CaseTeaserType } from "@/lib/zod/case-teaser";
-
 import { buttonVariants } from "@/ui/button";
 
 interface LatestCasesProps {
@@ -16,34 +14,40 @@ interface LatestCasesProps {
 export function CaseTeasers({ cases, heading }: LatestCasesProps) {
   const { t } = useTranslation();
 
-  // Intersection Observer callback function
-  const handleIntersection = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Add the animation class when the element is in view
-        const animatedElementId = entry.target.getAttribute("id");
-        if (animatedElementId === "leftBox")
-          entry.target.classList.add("animate-[slideUp_0.3s_ease-in_forwards]");
-        if (animatedElementId === "casesBox")
-          entry.target.classList.add(
-            "animate-[slideUp_0.3s_ease-in_0.3s_forwards]",
-          );
-        observer.unobserve(entry.target);
-      }
-    });
-  };
+  useEffect(() => {
+    // Intersection Observer callback function
+    const handleIntersection = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const animatedElementId = entry.target.getAttribute("id");
+          if (animatedElementId === "leftBox")
+            entry.target.classList.add("animate-[slideUp_0.3s_ease-in_forwards]");
+          if (animatedElementId === "casesBox")
+            entry.target.classList.add(
+              "animate-[slideUp_0.3s_ease-in_0.3s_forwards]",
+            );
+          observer.unobserve(entry.target);
+        }
+      });
+    };
 
-  // Create an Intersection Observer
-  let observer = null;
-  if (typeof window !== "undefined") {
-    observer = new IntersectionObserver(handleIntersection);
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(handleIntersection);
+
     // Target the element to be animated
     const animatedLeftBox = document.getElementById("leftBox");
     const animatedCasesBox = document.getElementById("casesBox");
+
     // Observe the target element
     if (animatedLeftBox) observer.observe(animatedLeftBox);
     if (animatedCasesBox) observer.observe(animatedCasesBox);
-  }
+
+    return () => {
+      // Clean up the observer when the component unmounts
+      if (animatedLeftBox) observer.unobserve(animatedLeftBox);
+      if (animatedCasesBox) observer.unobserve(animatedCasesBox);
+    };
+  }, []); // Empty dependency array ensures this effect runs once on mount
 
   return (
     <div id="caseTeasers" className="w-screen flex justify-center">

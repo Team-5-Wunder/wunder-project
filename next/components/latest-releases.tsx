@@ -1,12 +1,7 @@
-import Link from "next/link";
+import React, { useEffect } from "react";
 import { useTranslation } from "next-i18next";
-import clsx from "clsx";
-
 import { ArticleTeaser } from "@/components/article-teaser";
 import { ArticleTeaser as ArticleTeaserType } from "@/lib/zod/article-teaser";
-import ArrowIcon from "@/styles/icons/arrow-down.svg";
-
-import { buttonVariants } from "@/ui/button";
 
 interface LatestArticlesProps {
   articles?: ArticleTeaserType[];
@@ -16,31 +11,40 @@ interface LatestArticlesProps {
 export function LatestReleases({ articles, heading }: LatestArticlesProps) {
   const { t } = useTranslation();
 
-  // Intersection Observer callback function
-  const handleIntersection = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Add the animation class when the element is in view
-        entry.target.classList.add("animate-[slideUp_0.5s_ease-in_forwards]");
-        observer.unobserve(entry.target);
-      }
-    });
-  };
+  useEffect(() => {
+    // Intersection Observer callback function
+    const handleIntersection = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Add the animation class when the element is in view
+          entry.target.classList.add("animate-[slideUp_0.5s_ease-in_forwards]");
+          observer.unobserve(entry.target);
+        }
+      });
+    };
 
-  // Create an Intersection Observer
-  let observer = null;
-  if (typeof window !== "undefined") {
-    observer = new IntersectionObserver(handleIntersection);
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(handleIntersection);
+
     // Target the element to be animated
     const animatedLatestReleases = document.querySelectorAll(".toSlideUp");
-    // Observe the target element
 
+    // Observe the target element
     if (animatedLatestReleases) {
       animatedLatestReleases.forEach((element) => {
         observer.observe(element);
       });
     }
-  }
+
+    return () => {
+      // Clean up the observer when the component unmounts
+      if (animatedLatestReleases) {
+        animatedLatestReleases.forEach((element) => {
+          observer.unobserve(element);
+        });
+      }
+    };
+  }, []); // Empty dependency array ensures this effect runs once on mount
 
   return (
     <div className="w-screen flex justify-center" id="toSlideUp">

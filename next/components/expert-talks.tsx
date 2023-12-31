@@ -1,8 +1,7 @@
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-
 import { EventTeaser as EventTeaserType } from "@/lib/zod/event-teaser";
-
 import { ExpertTalksCard } from "./expert-talks-card";
 
 interface LatestEventsProps {
@@ -12,32 +11,41 @@ interface LatestEventsProps {
 export function ExpertTalks({ events }: LatestEventsProps) {
   const { t } = useTranslation();
 
-  // Intersection Observer callback function
-  const handleIntersection = (entries, observer) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Add the animation class with a delay for each element
-        entry.target.style.animationDelay = `${index * 200}ms`;
-        entry.target.classList.add("animate-[slideUp_0.5s_ease-in_forwards]");
-        observer.unobserve(entry.target);
-      }
-    });
-  };
+  useEffect(() => {
+    // Intersection Observer callback function
+    const handleIntersection = (entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Add the animation class when the element is in view
+          entry.target.style.animationDelay = `${index * 200}ms`;
+          entry.target.classList.add("animate-[slideUp_0.5s_ease-in_forwards]");
+          observer.unobserve(entry.target);
+        }
+      });
+    };
 
-  // Create an Intersection Observer
-  let observer = null;
-  if (typeof window !== "undefined") {
-    observer = new IntersectionObserver(handleIntersection);
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(handleIntersection);
+
     // Target the element to be animated
-    const animatedExpertTalks = document.querySelectorAll(".toSlideUpExp");
-    // Observe the target element
+    const animatedLatestReleases = document.querySelectorAll(".toSlideUpExp");
 
-    if (animatedExpertTalks) {
-      animatedExpertTalks.forEach((element) => {
+    // Observe the target element
+    if (animatedLatestReleases) {
+      animatedLatestReleases.forEach((element) => {
         observer.observe(element);
       });
     }
-  }
+
+    return () => {
+      // Clean up the observer when the component unmounts
+      if (animatedLatestReleases) {
+        animatedLatestReleases.forEach((element) => {
+          observer.unobserve(element);
+        });
+      }
+    };
+  }, []); // Empty dependency array ensures this effect runs once on mount
 
   return (
     <>
