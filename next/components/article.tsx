@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-
 import { HeadingPage } from "@/components/heading--page";
 import { Paragraph } from "@/components/paragraph";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";

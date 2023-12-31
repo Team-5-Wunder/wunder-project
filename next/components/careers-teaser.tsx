@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { CareersTeaser } from "@/lib/zod/careers-teaser";
 

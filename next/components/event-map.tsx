@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
-
 import { LoadingSpinner } from "./loading-spinner";
 
 export type Place = {

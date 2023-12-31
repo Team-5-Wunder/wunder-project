@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import clsx from "clsx";
-
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { Event as EventType } from "@/lib/zod/event";
 import { Speaker as SpeakerType } from "@/lib/zod/paragraph";

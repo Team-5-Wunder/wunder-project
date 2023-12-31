@@ -1,11 +1,9 @@
 import Image from "next/image";
-
 import { HeadingPage } from "@/components/heading--page";
 import { Paragraph } from "@/components/paragraph";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import type { Case } from "@/lib/zod/case";
 import { HeroBannerCase } from "./case-hero-banner";
-import { ParagraphPageHero } from "./paragraph--page_hero";
 
 interface CaseProps {
   client: Case;
@@ -15,9 +13,6 @@ export function Case({ client }: CaseProps) {
   return (
     <>
       <HeroBannerCase />
-      {/*  {
-        client.field_page_hero && ( <ParagraphPageHero paragraph={client.field_page_hero} /> )
-      } */}
       <div className="w-screen flex justify-center">
       <div className="w-full max-w-[1664px] mb-20 px-6 sm:px-16 flex flex-col">
       <div className="grid gap-8 md:grid-cols-2 w-full mt-20">

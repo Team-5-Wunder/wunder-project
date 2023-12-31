@@ -1,8 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import clsx from "clsx";
-
 import { HeadingPage } from "@/components/heading--page";
 import { Paragraph } from "@/components/paragraph";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";

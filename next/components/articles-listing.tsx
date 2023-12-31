@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useQuery } from "@tanstack/react-query";
-
 import { ArticleTeaser } from "@/components/article-teaser";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { ArticleTeaser as ArticleTeaserType } from "@/lib/zod/article-teaser";

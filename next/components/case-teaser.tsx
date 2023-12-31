@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { CaseTeaser } from "@/lib/zod/case-teaser";
 
