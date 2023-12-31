@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import { Paragraph } from "@/components/paragraph";
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import type { Careers } from "@/lib/zod/careers";

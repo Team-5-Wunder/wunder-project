@@ -4,7 +4,6 @@ import { useState } from "react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
 import { Label } from "@/ui/label";
@@ -139,9 +138,6 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
                       required: true,
                     })}
                   />
-                  {/*   {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
-              )} */}
                 </div>
 
                 <div className="w-full md:w-1/2 mb-6 md:mb-0">

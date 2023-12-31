@@ -1,5 +1,4 @@
 import YouTube from "react-youtube";
-
 import { Video } from "@/lib/zod/paragraph";
 
 interface MediaVideoProps {

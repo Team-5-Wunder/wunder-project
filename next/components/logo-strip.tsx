@@ -1,6 +1,5 @@
 import { useTranslation } from "next-i18next";
 import { ReactElement } from "react";
-
 import Drupal from "@/styles/icons/drupal-icon.svg";
 import Lando from "@/styles/icons/lando-logo.svg";
 import NextJS from "@/styles/icons/nextjs-logo.svg";

@@ -1,6 +1,5 @@
 import NextImage, { ImageProps } from "next/image";
 import clsx from "clsx";
-
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { Image } from "@/lib/zod/paragraph";
 

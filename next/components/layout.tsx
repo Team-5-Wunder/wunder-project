@@ -1,7 +1,6 @@
 import { useTranslation } from "next-i18next";
 import React from "react";
 import clsx from "clsx";
-
 import { Footer } from "@/components/footer/footer";
 import { Header } from "@/components/header/header";
 import {
@@ -9,7 +8,6 @@ import {
   useIsPreviewBannerVisible,
 } from "@/components/preview-banner";
 import { Menu } from "@/lib/zod/menu";
-
 import { SkipToContentLink } from "@/ui/skip-to-content-link";
 
 export interface LayoutProps {

@@ -1,5 +1,4 @@
 import { useTranslation } from "next-i18next";
-
 import { absoluteUrl } from "@/lib/drupal/absolute-url";
 import { formatFileSizeInBytes, getFileType } from "@/lib/utils";
 import { FileAttachments } from "@/lib/zod/paragraph";

@@ -1,6 +1,5 @@
 import { useSession } from "next-auth/react";
 import { useTranslation } from "next-i18next";
-
 import { StatusMessage } from "@/ui/status-message";
 
 type AuthGateProps = {
