@@ -1,6 +1,6 @@
-import { overpass } from "@/styles/fonts";
-
+import Image from "next/image";
 import style from "./heroBanner.module.scss";
+import React from 'react';
 
 const HeroBanner = () => {
   return (
@@ -21,10 +21,14 @@ const HeroBanner = () => {
         </div>
       </div>
       <div className={style.rightPart}>
-        <img
+        <Image
+          width={900}
+          height={900}
+          priority={true}
           className={style.heroPeople}
           src="/assets/heroPeople.png"
           alt="Man and woman"
+          style={{ maxHeight: "90%", width: "auto" }}
         />
       </div>
     </div>

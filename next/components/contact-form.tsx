@@ -1,15 +1,9 @@
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { UseTranslation } from "next-i18next";
 import { useState } from "react";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { FieldErrors } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
-import { AuthGate } from "@/components/auth-gate";
-import { inter } from "@/styles/fonts";
 
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
@@ -107,7 +101,7 @@ export const ContactForm = React.forwardRef<HTMLDivElement, ContactFormProps>(
             onSubmit={handleSubmit(onSubmit, onErrors)}
             className="w-full max-w-lg"
           >
-            <p className="">"*" {t("indicates required fields")}</p>
+            <p className="">{`*`} {t("indicates required fields")}</p>
             {/*   <AuthGate text={t("login-to-fill-form")}> */}
             <>
               <div className="flex flex-wrap mb-2 pt-5">

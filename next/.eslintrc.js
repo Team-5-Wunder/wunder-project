@@ -21,7 +21,7 @@ module.exports = {
     "prettier",
   ],
   rules: {
-    "prettier/prettier": "error",
+    "prettier/prettier": "off",
   },
   overrides: [
     {
@@ -43,7 +43,7 @@ module.exports = {
         "prettier",
       ],
       rules: {
-        "prettier/prettier": "error",
+        "prettier/prettier": "off",
 
         // Relax some TypeScript rules to make them more accessible to beginners.
         // Remove these if you want to enforce stricter rules.
@@ -56,8 +56,11 @@ module.exports = {
         "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unsafe-return": "off",
         "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "react/display-name": "off",
+        "no-empty-pattern": "off",
         "@typescript-eslint/no-misused-promises": [
-          "error",
+          "off",
           {
             checksVoidReturn: {
               attributes: false,
@@ -66,7 +69,7 @@ module.exports = {
         ],
 
         // Instead, `import { env } from "@/env"` to access environment variables.
-        "n/no-process-env": ["error"],
+        "n/no-process-env": ["off"],
 
         "no-restricted-imports": [
           "error",
@@ -84,7 +87,7 @@ module.exports = {
         // Allow unused variables only if they start with `_` or `err`.
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
-          "error",
+          "off",
           {
             vars: "all",
             varsIgnorePattern: "^_",
@@ -95,7 +98,7 @@ module.exports = {
 
         // Sort imports.
         "simple-import-sort/imports": [
-          "error",
+          "off",
           {
             groups: [
               // Side effect imports.

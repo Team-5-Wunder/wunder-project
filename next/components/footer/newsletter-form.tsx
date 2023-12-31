@@ -1,8 +1,6 @@
-import Link from "next/link";
-import router, { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-/* import { toast } from "@/ui/use-toast"; */
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
@@ -86,8 +84,8 @@ export const NewsletterForm = () => {
 
       <div className="flex-1">
         <p className="pb-5 font-bold">Stay up to date with our newsletter</p>
-        <p className="pb-5">"*" indicates required fields</p>
-        <p className="pb-5">I'M INTERESTED IN</p>
+        <p className="pb-5">{`*`} indicates required fields</p>
+        <p className="pb-5">I{`'`}M INTERESTED IN</p>
         <div className="pb-5 flex space-x-4 mt-2">
           <FormField
             control={form.control}

@@ -30,7 +30,7 @@ export function CareersTeaser({ careers }: CareersTeaserProps) {
       )}
       <div className="flex flex-row justify-center items-center pt-2">
         {careers.field_country.map((career) => (
-          <div className="bg-mischka p-1 m-1 text-xs">{career.name}</div>
+          <div key={career.name} className="bg-mischka p-1 m-1 text-xs">{career.name}</div>
         ))}
       </div>
     </Link>

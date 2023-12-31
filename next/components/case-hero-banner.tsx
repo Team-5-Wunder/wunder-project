@@ -1,10 +1,12 @@
-import { overpass } from "@/styles/fonts";
+import Image from "next/image";
 
 export const HeroBannerCase = () => {
   return (
     <div>
       <div className="mb-14 relative w-full h-[600px]">
-        <img
+        <Image
+          width={1920}
+          height={600}
           className="w-full h-full object-cover"
           src="/assets/client-hero.png"
           alt="client-hero"

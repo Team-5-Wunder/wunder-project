@@ -4,7 +4,6 @@ import { useTranslation } from "next-i18next";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FieldErrors } from "react-hook-form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
@@ -16,7 +15,6 @@ import TwitterIcon from "@/styles/icons/twitter.svg";
 import YoutubeIcon from "@/styles/icons/youtube.svg";
 
 import { Button } from "@/ui/button";
-import { StatusMessage } from "@/ui/status-message";
 
 const SignupSchema = z
   .object({
@@ -99,7 +97,7 @@ export function Footer({ menu }: FooterProps) {
       });
       setMessage(t("your-preferences-are-saved"));
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, reset, t]);
 
   return (
     <footer className="pt-10 bg-gradient-to-br from-dark to-violet text-white border-t overflow-hidden px-6 flex flex-col md:flex-row justify-between items-start h-126 relative">
@@ -163,7 +161,7 @@ export function Footer({ menu }: FooterProps) {
         <p className="pb-5 font-bold sm:text-base md:text-lg">
           {t("Stay up to date with our newsletter")}
         </p>
-        <p className="pb-5">"*" {t("indicates required fields")}</p>
+        <p className="pb-5">{`*`} {t("indicates required fields")}</p>
         <p className="pb-5">{t("I'M INTERESTED IN")}</p>
         <div>
           {customErrors.checkboxGroup && (

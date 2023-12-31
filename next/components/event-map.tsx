@@ -13,7 +13,7 @@ export type Place = {
 const geocodeAddress = async (address: string) => {
   try {
     const results = await getGeocode({ address });
-    const { lat, lng } = await getLatLng(results[0]);
+    const { lat, lng } = getLatLng(results[0]);
     return { lat, lng };
   } catch (error) {
     console.error("Error: ", error);
@@ -49,7 +49,7 @@ export const EventMap = ({ address }: { address: string }) => {
     if (address) {
       fetchGeocode();
     }
-  }, [isLoaded]);
+  }, [isLoaded, address]);
 
   const mapOptions = useMemo(
     () => ({
