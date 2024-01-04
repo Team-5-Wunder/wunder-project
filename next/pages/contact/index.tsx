@@ -4,7 +4,6 @@ import { useTranslation } from "next-i18next";
 import React, { useRef } from "react";
 
 import { ContactForm } from "@/components/contact-form";
-import { ExpertTalks } from "@/components/expert-talks";
 import { HeroBannerContact } from "@/components/hero-banner-contact";
 import { Invoicing } from "@/components/invoicing";
 import { MapComponent } from "@/components/map";
@@ -81,7 +80,7 @@ export default function ContactPage() {
       </div>
       <MapComponent ref={mapRef} />
       <OfficesList />
-      <div className="px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2">
+      <div className="max-w-[1664px] px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2">
         <h2 className="text-heading-lg lg:text-heading-lg text-primary-800">
           {t("Invoicing")}
         </h2>

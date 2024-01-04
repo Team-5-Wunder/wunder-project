@@ -28,7 +28,7 @@ export const EventMap = ({ address }: { address: string }) => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries: libraries as any,
   });
-
+  
   useEffect(() => {
     const fetchGeocode = async () => {
       if (!isLoaded) {
