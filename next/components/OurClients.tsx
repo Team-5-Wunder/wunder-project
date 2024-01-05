@@ -46,7 +46,7 @@ const OurClients = () => {
           <div className="w-full grid grid-cols-3 gap-8 md:grid-cols-4 md:gap-12 lg:grid-cols-5 lg:gap-16 items-center justify-items-center">
             <Link
               href="/clients/finavia"
-              className="relative h-full w-full flex flex-col items-center justify-center group/finavia"
+              className="space-y-2 h-full w-full flex flex-col items-center justify-center group/finavia"
             >
               <Image
                 width={300}
@@ -55,9 +55,9 @@ const OurClients = () => {
                 src="/assets/logos/finavia_logo_col.svg"
                 alt="Finavia"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/finavia:w-[80%] group-hover/finavia:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/finavia:w-[80%] group-hover/finavia:duration-200"></div>
             </Link>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/sanoma">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/sanoma">
               <Image
                 width={300}
                 height={300}
@@ -65,11 +65,11 @@ const OurClients = () => {
                 src="/assets/logos/sanoma-logo-new-300x108.webp"
                 alt="Sanoma"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/sanoma:w-[60%] group-hover/sanoma:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/sanoma:w-[60%] group-hover/sanoma:duration-200"></div>
             </div>
             <Link
               href="/clients/tikkurila"
-              className="relative h-full w-full flex flex-col items-center justify-center group/tikkurila"
+              className="space-y-2 h-full w-full flex flex-col items-center justify-center group/tikkurila"
             >
               <Image
                 width={300}
@@ -78,9 +78,9 @@ const OurClients = () => {
                 src="/assets/logos/tikkurila.png"
                 alt="Tikkurila"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/tikkurila:w-[80%] group-hover/tikkurila:duration-200"></div>
+              <div className="bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/tikkurila:w-[80%] group-hover/tikkurila:duration-200"></div>
             </Link>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/traficom">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/traficom">
               <Image
                 width={300}
                 height={300}
@@ -88,9 +88,9 @@ const OurClients = () => {
                 src="/assets/logos/traficom.png"
                 alt="Traficom"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/traficom:w-[60%] group-hover/traficom:duration-200"></div>
+              <div className="bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/traficom:w-[60%] group-hover/traficom:duration-200"></div>
             </div>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/nelonen">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/nelonen">
               <Image
                 width={300}
                 height={300}
@@ -98,11 +98,11 @@ const OurClients = () => {
                 src="/assets/logos/nelonen.png"
                 alt="Nelonen media"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/nelonen:w-[80%] group-hover/nelonen:duration-200"></div>
+              <div className="bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/nelonen:w-[80%] group-hover/nelonen:duration-200"></div>
             </div>
             <Link
               href="/clients/fortum"
-              className="relative h-full w-full flex flex-col items-center justify-center group/fortum"
+              className="space-y-2 h-full w-full flex flex-col items-center justify-center group/fortum"
             >
               <Image
                 width={300}
@@ -111,9 +111,9 @@ const OurClients = () => {
                 src="/assets/logos/fortum_logo.svg"
                 alt="Fortum"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/fortum:w-[80%] group-hover/fortum:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/fortum:w-[80%] group-hover/fortum:duration-200"></div>
             </Link>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/omnia">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/omnia">
               <Image
                 width={300}
                 height={300}
@@ -121,9 +121,9 @@ const OurClients = () => {
                 src="/assets/logos/omnia-logo-grey-300x96.webp"
                 alt="Omnia"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/omnia:w-[60%] group-hover/omnia:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/omnia:w-[65%] group-hover/omnia:duration-200"></div>
             </div>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/tapio">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/tapio">
               <Image
                 width={300}
                 height={300}
@@ -131,9 +131,9 @@ const OurClients = () => {
                 src="/assets/logos/tapio.png"
                 alt="Tapio"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/tapio:w-[70%] group-hover/tapio:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/tapio:w-[70%] group-hover/tapio:duration-200"></div>
             </div>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/university">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/university">
               <Image
                 width={300}
                 height={300}
@@ -141,11 +141,11 @@ const OurClients = () => {
                 src="/assets/logos/university-of-helsinki-logo-300x80.webp"
                 alt="University of Helsinki"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/university:w-[70%] group-hover/university:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/university:w-[70%] group-hover/university:duration-200"></div>
             </div>
             <Link
               href="/clients/trimble"
-              className="relative h-full w-full flex flex-col items-center justify-center group/trimble"
+              className="space-y-2 h-full w-full flex flex-col items-center justify-center group/trimble"
             >
               <Image
                 width={300}
@@ -154,9 +154,9 @@ const OurClients = () => {
                 src="/assets/logos/trimble.svg"
                 alt="Trimble"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/trimble:w-[80%] group-hover/trimble:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/trimble:w-[80%] group-hover/trimble:duration-200"></div>
             </Link>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/hus">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/hus">
               <Image
                 width={300}
                 height={300}
@@ -164,9 +164,9 @@ const OurClients = () => {
                 src="/assets/logos/hus-logo.png"
                 alt="HUS"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/hus:w-[60%] group-hover/hus:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/hus:w-[60%] group-hover/hus:duration-200"></div>
             </div>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/luke">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/luke">
               <Image
                 width={300}
                 height={300}
@@ -174,9 +174,9 @@ const OurClients = () => {
                 src="/assets/logos/luke.png"
                 alt="Luke"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/luke:w-[50%] group-hover/luke:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/luke:w-[50%] group-hover/luke:duration-200"></div>
             </div>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/turku">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/turku">
               <Image
                 width={300}
                 height={300}
@@ -184,9 +184,9 @@ const OurClients = () => {
                 src="/assets/logos/turku.png"
                 alt="Turko Abo"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/turku:w-[60%] group-hover/turku:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/turku:w-[60%] group-hover/turku:duration-200"></div>
             </div>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/lat">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/lat">
               <Image
                 width={300}
                 height={300}
@@ -194,9 +194,9 @@ const OurClients = () => {
                 src="/assets/logos/logo_lat_v_1_0.png"
                 alt="Latvian MOD"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/lat:w-[50%] group-hover/lat:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/lat:w-[45%] group-hover/lat:duration-200"></div>
             </div>
-            <div className="relative h-full w-full flex flex-col items-center justify-center group/library">
+            <div className="space-y-2 h-full w-full flex flex-col items-center justify-center group/library">
               <Image
                 width={300}
                 height={300}
@@ -204,7 +204,7 @@ const OurClients = () => {
                 src="/assets/logos/national_library_fi_logo.webp"
                 alt="National library"
               />
-              <div className="absolute bottom-0 h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/library:w-[60%] group-hover/library:duration-200"></div>
+              <div className="h-0.5 w-0 bg-primary-600 transition-width ease-in-out group-hover/library:w-[55%] group-hover/library:duration-200"></div>
             </div>
           </div>
           <Divider className="w-full max-w-4xl" />
